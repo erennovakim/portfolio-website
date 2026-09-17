@@ -1,0 +1,29 @@
+{
+  "name": "eren-nova-kim-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^3.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.1.5"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.0",
+    "@types/mdx": "^2.0.13",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
