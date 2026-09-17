@@ -55,8 +55,8 @@
   --size-body-lg: 0.9375rem;
   --size-small: 0.9375rem;
   --size-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.5rem);
-  /* Four points larger than the original 1.75–2.75rem display heading. */
-  --size-h2: clamp(2rem, 1.6rem + 1.7vw, 3rem);
+  /* Eight points larger than the last pass (2–3rem). */
+  --size-h2: clamp(2.5rem, 2.1rem + 1.7vw, 3.5rem);
   --size-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
   /* Smaller than the first pass, which ran to 8rem. */
   --size-display: clamp(2.5rem, 1.35rem + 4.6vw, 5.25rem);
@@ -242,7 +242,7 @@ a {
 /* Over bare photograph. */
 .cloud--white {
   background-color: var(--on-image);
-  opacity: 0.55;
+  opacity: 0.28;
 }
 
 /*
@@ -253,6 +253,7 @@ a {
  */
 .cloud--reveal {
   background: url('./assets/dark-sunset.jpeg') center / cover fixed no-repeat;
+  opacity: 0.36;
 }
 
 .cloud--bank {
@@ -499,6 +500,7 @@ a {
      scrollbar the moment a cloud bank hangs off the side. */
   overflow: hidden;
   padding-block: var(--space-3xl);
+  padding-top: calc(var(--space-3xl) - 20px);
 }
 
 /*
@@ -507,7 +509,7 @@ a {
  * sits on solid overlay.
  */
 .section--washed {
-  padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem));
+  padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem) - 20px);
   background-image: linear-gradient(
     180deg,
     var(--overlay-clear) 0,
@@ -529,7 +531,7 @@ a {
   align-items: end;
   justify-content: space-between;
   gap: var(--space-md);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .headingText {
@@ -1179,7 +1181,7 @@ a {
 .footer {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-3xl) var(--space-xl);
+  padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
   background-image: linear-gradient(
     180deg,
     transparent 0,
@@ -1320,7 +1322,6 @@ a {
 .at-footer-corner {
   right: -210px;
   bottom: -90px;
-  opacity: 0.3;
 }
 
 /* ---------------------------------------------------------------- *
