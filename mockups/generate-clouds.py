@@ -35,6 +35,10 @@ OUT_PITCH = 6  # centre-to-centre in the output, so dots stay separate
 # four-pointed sparkles in the `group` reference are deliberately left out.
 CLOUDS = {
     "long": ("group", (246, 120, 494, 224)),
+    # The complete lower cloud from the same sheet as `long`. Used as the
+    # hero crest because `long` is the right half of a connected pair and
+    # reads as cut off on its left edge.
+    "billow": ("group", (142, 243, 404, 351)),
     "puff": ("group", (384, 239, 496, 296)),
     "mass": ("big", (2, 0, 496, 250)),
     # The wisps are cropped narrow on purpose: a side bank has to fit in the
@@ -68,10 +72,8 @@ PIECES = {
     },
     # Corner clusters: the single dense cloud, which has the most weight.
     "cloud-corner": {"stack": [("mass", 0, 0, False)]},
-    # Crest above the hero name.
-    "cloud-crest": {"stack": [("long", 0, 0, False)]},
-    # Heading ornament: the smallest complete cloud, boxed to 5:2.
-    "cloud-heading": {"stack": [("puff", 0, 0, False)], "ratio": 2.5},
+    # Crest above the hero name: one complete cloud, not a cropped fragment.
+    "cloud-crest": {"stack": [("billow", 0, 0, False)]},
 }
 
 

@@ -28,7 +28,10 @@
   --overlay: rgba(var(--paper-rgb), 0.72);
   --overlay-clear: rgba(var(--paper-rgb), 0);
   /* How far the wash takes to fade in and out at a section edge. */
-  --overlay-fade: clamp(80px, 11vh, 170px);
+  /* Longer ramp than the first pass, so the wash dissolves instead of
+     arriving. The fade still begins at the top of the washed section —
+     the same point it always started relative to the hero. */
+  --overlay-fade: clamp(180px, 28vh, 420px);
   --scrim-footer: rgba(16, 27, 51, 0.72);
 
   /* Text sitting directly on the photograph. */
@@ -45,7 +48,8 @@
   --size-body-lg: 1.1875rem;
   --size-small: 0.9375rem;
   --size-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.5rem);
-  --size-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
+  /* Four points larger than the original 1.75–2.75rem display heading. */
+  --size-h2: clamp(2rem, 1.6rem + 1.7vw, 3rem);
   --size-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
   /* Smaller than the first pass, which ran to 8rem. */
   --size-display: clamp(2.5rem, 1.35rem + 4.6vw, 5.25rem);
@@ -252,19 +256,10 @@ a {
 }
 
 .cloud--crest {
-  width: 346px;
-  height: 153px;
+  width: 416px;
+  height: 135px;
   mask-image: url('./art/cloud-crest.svg');
   -webkit-mask-image: url('./art/cloud-crest.svg');
-}
-
-/* Sits in the flow above a section heading, where the rule used to be. */
-.cloud--heading {
-  width: 159px;
-  height: 64px;
-  margin-bottom: var(--space-xs);
-  mask-image: url('./art/cloud-heading.svg');
-  -webkit-mask-image: url('./art/cloud-heading.svg');
 }
 
 .cloud--flip {
@@ -830,10 +825,6 @@ a {
 
 .aboutHeading h2 {
   color: var(--on-image);
-}
-
-.aboutHeading .lede {
-  color: var(--on-image-soft);
 }
 
 .aboutProse {
