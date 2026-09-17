@@ -29,10 +29,11 @@
   --on-image: #f7f1eb;
   --on-image-soft: rgba(var(--paper-rgb), 0.82);
 
-  --font-display: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --font-display: 'Shippori Mincho B1', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-accent: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-mono: 'SFMono-Regular', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  /* Shippori Mincho B1 ships no italic, so the italic accents stay on
+     Cormorant Garamond and only fall back to the display face. */
+  --font-accent: 'Cormorant Garamond', 'Shippori Mincho B1', Georgia, serif;
 
   --size-body: 1.0625rem;
   --size-body-lg: 1.1875rem;
@@ -40,7 +41,8 @@
   --size-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.5rem);
   --size-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
   --size-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
-  --size-display: clamp(3.25rem, 1.2rem + 8.4vw, 8rem);
+  /* Smaller than the first pass, which ran to 8rem. */
+  --size-display: clamp(2.5rem, 1.35rem + 4.6vw, 5.25rem);
 
   --weight-regular: 400;
   --weight-medium: 500;
@@ -75,7 +77,6 @@
      overlay by shadow rather than by outline. */
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.18);
   --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.26);
-  --shadow-glass: 0 6px 24px rgba(0, 0, 0, 0.22);
 
   --nav-height: 4.75rem;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -187,61 +188,87 @@ a {
 }
 
 /* ---------------------------------------------------------------- *
- * ASCII ornaments
+ * Cloud dot art
  * ---------------------------------------------------------------- */
 
 /*
  * Replaces the botanical SVG line work in src/components/Motif.
- * Decorative only: always aria-hidden, kept out of the reading column,
- * and hidden below the desktop breakpoint exactly as the motifs were.
+ *
+ * Each piece is an SVG of 4px circles used as a CSS mask, never as an
+ * image. The element supplies the fill, so the same artwork can be flat
+ * white in one place and the photograph itself in another. Sizes are
+ * always the SVG's own pixel dimensions: scaling the mask would scale
+ * the dots off 4px, which is the one thing this system must not do.
  */
-.ascii {
-  position: absolute;
-  z-index: 0;
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  line-height: 1.04;
-  letter-spacing: 0;
-  white-space: pre;
+.cloud {
+  display: block;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
   pointer-events: none;
-  user-select: none;
 }
 
-/* On bare photograph: solid new-white glyphs. */
-.ascii--white {
-  color: var(--on-image);
-  opacity: 0.62;
+/* Pieces in the margins rather than in the flow. */
+.cloud--float {
+  position: absolute;
+  z-index: 0;
+}
+
+/* Over bare photograph. */
+.cloud--white {
+  background-color: var(--on-image);
+  opacity: 0.55;
 }
 
 /*
- * On a washed section: the glyphs are cut out of the 64% overlay and
- * filled with the photograph at full strength. `fixed` matches the
- * sizing of .backdrop, so the fill lines up with the image behind it.
- * The solid colour is declared first as the fallback for engines that
- * ignore background-clip: text.
+ * Over a washed section: the dots are filled with the photograph at full
+ * strength, so the art reads as holes punched through the 64% overlay.
+ * `fixed` matches the sizing of .backdrop, which is what makes the fill
+ * line up with the image behind the page.
  */
-.ascii--reveal {
-  color: rgba(42, 35, 51, 0.5);
+.cloud--reveal {
   background: url('./assets/dark-sunset.jpeg') center / cover fixed no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* Bold widens each glyph, so more of the photograph comes through and
-     the ornament separates from the 64% wash it is cut out of. */
-  font-weight: 700;
-  font-size: 0.66rem;
 }
 
-@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .ascii--reveal {
-    background: none;
-    -webkit-text-fill-color: currentColor;
-  }
+.cloud--bank {
+  width: 238px;
+  height: 644px;
+  mask-image: url('./art/cloud-bank.svg');
+  -webkit-mask-image: url('./art/cloud-bank.svg');
 }
 
-@media (max-width: 1180px) {
-  .ascii {
+.cloud--corner {
+  width: 252px;
+  height: 140px;
+  mask-image: url('./art/cloud-corner.svg');
+  -webkit-mask-image: url('./art/cloud-corner.svg');
+}
+
+.cloud--crest {
+  width: 280px;
+  height: 84px;
+  mask-image: url('./art/cloud-crest.svg');
+  -webkit-mask-image: url('./art/cloud-crest.svg');
+}
+
+/* Sits in the flow above a section heading, where the rule used to be. */
+.cloud--heading {
+  width: 266px;
+  height: 63px;
+  margin-bottom: var(--space-xs);
+  mask-image: url('./art/cloud-heading.svg');
+  -webkit-mask-image: url('./art/cloud-heading.svg');
+}
+
+.cloud--flip {
+  transform: scaleX(-1);
+}
+
+/* The edge banks need room beside the reading column to bleed into. */
+@media (max-width: 1240px) {
+  .cloud--bank,
+  .cloud--corner {
     display: none;
   }
 }
@@ -262,6 +289,7 @@ a {
   pointer-events: none;
 }
 
+/* Fully opaque on desktop: no blur, no specular edge, no glass. */
 .pill {
   position: relative;
   pointer-events: auto;
@@ -270,49 +298,8 @@ a {
   gap: var(--space-lg);
   padding: 0.55rem 0.9rem;
   border-radius: var(--radius-pill);
-  /* 48% of the new white over the photograph. */
-  background-color: rgba(var(--paper-rgb), 0.48);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow:
-    var(--shadow-glass),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-/*
- * Edge refraction, faked with a rim band that blurs harder than the
- * body of the pill. Reads as the image bending at the glass edge and
- * degrades to nothing if mask-composite is unsupported.
- */
-.pill::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 7px;
-  border-radius: inherit;
-  backdrop-filter: blur(7px) saturate(140%) contrast(1.08);
-  -webkit-backdrop-filter: blur(7px) saturate(140%) contrast(1.08);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  pointer-events: none;
-}
-
-/*
- * Progressive enhancement: true displacement refraction. Supported in
- * Firefox, silently ignored elsewhere, which is why the blur/saturate
- * pair above is declared as its own earlier rule.
- */
-.controls:has(#glass-refract:checked) ~ .navWrapper .pill {
-  backdrop-filter: blur(16px) saturate(180%) url('#glassRefract');
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
 }
 
 .navList {
@@ -351,14 +338,7 @@ a {
   padding-inline: var(--space-2xs);
 }
 
-/*
- * Variant A (default): ink links. The pill sits mid-luminance over the
- * sunset, so dark type holds the stronger contrast ratio.
- */
-.navLink {
-  color: var(--ink);
-}
-
+.navLink,
 .wordmark {
   color: var(--ink);
 }
@@ -369,57 +349,99 @@ a {
 
 .navLink[aria-current='true'] {
   color: var(--iris-deep);
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(22, 35, 63, 0.07);
 }
 
-/* Variant B: new-white links, for when the photograph reads darker. */
-.controls:has(#nav-light:checked) ~ .navWrapper .navLink,
-.controls:has(#nav-light:checked) ~ .navWrapper .wordmark {
-  color: var(--on-image);
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+/* ---------------------------------------------------------------- *
+ * Nav: mobile
+ * ---------------------------------------------------------------- */
+
+/*
+ * Below the breakpoint the pill disappears entirely and the nav becomes
+ * a single dot icon in the right corner that drops the menu down.
+ * Driven by a checkbox so the mockup stays HTML and CSS only.
+ */
+.navCheckbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.controls:has(#nav-light:checked) ~ .navWrapper .navLink:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-}
-
-.controls:has(#nav-light:checked) ~ .navWrapper .navLink[aria-current='true'] {
-  background-color: rgba(255, 255, 255, 0.22);
-}
-
-/* Mockup-only affordance for comparing the two nav treatments. */
-.controls {
-  position: fixed;
-  right: var(--space-sm);
-  bottom: var(--space-sm);
-  z-index: 60;
-  display: grid;
-  gap: 0.35rem;
-  margin: 0;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.navToggle {
+  display: none;
+  pointer-events: auto;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: var(--radius-md);
-  background-color: rgba(16, 27, 51, 0.62);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  color: var(--on-image);
-  font-size: 0.8125rem;
-  line-height: 1.4;
-}
-
-.controlsTitle {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1rem;
-  padding: 0;
-  color: var(--on-image-soft);
-}
-
-.controls label {
-  display: flex;
-  gap: 0.45rem;
-  align-items: center;
+  /* The chip is what makes the dots legible: filling them with the
+     photograph only reads if they sit on something opaque. */
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
   cursor: pointer;
+}
+
+/* Same 4px dots and same reveal fill as the cloud art. */
+.navToggleIcon {
+  width: 35px;
+  height: 35px;
+}
+
+.navToggleIcon--open {
+  mask-image: url('./art/menu-open.svg');
+  -webkit-mask-image: url('./art/menu-open.svg');
+}
+
+.navToggleIcon--close {
+  display: none;
+  mask-image: url('./art/menu-close.svg');
+  -webkit-mask-image: url('./art/menu-close.svg');
+}
+
+.navCheckbox:checked ~ .navToggle .navToggleIcon--open {
+  display: none;
+}
+
+.navCheckbox:checked ~ .navToggle .navToggleIcon--close {
+  display: block;
+}
+
+.navSheet {
+  display: none;
+  pointer-events: auto;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(17rem, calc(100vw - 2rem));
+  padding: var(--space-xs);
+  border-radius: var(--radius-md);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.navCheckbox:checked ~ .navSheet {
+  display: block;
+}
+
+.navSheetList {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navSheetLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.navSheetLink:hover {
+  background-color: #f0e7dd;
 }
 
 /* ---------------------------------------------------------------- *
@@ -441,6 +463,12 @@ a {
   overflow: hidden;
 }
 
+/* Content clears the decoration in every section. */
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
 .heading {
   display: flex;
   flex-wrap: wrap;
@@ -452,13 +480,6 @@ a {
 
 .headingText {
   max-width: var(--measure-narrow);
-}
-
-.rule {
-  width: 3rem;
-  height: 2px;
-  margin-bottom: var(--space-sm);
-  background-color: var(--iris);
 }
 
 .lede {
@@ -561,14 +582,15 @@ a {
 /*
  * The old radial-plus-linear light gradient is gone entirely; the hero
  * is now just the photograph. The postcard and portrait are removed.
+ *
+ * The top padding is literal rather than flex centring, so the 100px of
+ * extra clearance below the nav stays exactly 100px at every height.
  */
 .hero {
   position: relative;
-  padding-top: calc(var(--nav-height) + var(--space-2xl));
+  padding-top: calc(var(--nav-height) + var(--space-2xl) + 100px);
   padding-bottom: var(--space-3xl);
   min-height: 92vh;
-  display: flex;
-  align-items: center;
 }
 
 .heroInner {
@@ -762,17 +784,12 @@ a {
   width: min(100% - 2.5rem, 62ch);
 }
 
-.aboutHeading h2,
-.aboutHeading .lede {
+.aboutHeading h2 {
   color: var(--on-image);
 }
 
 .aboutHeading .lede {
   color: var(--on-image-soft);
-}
-
-.aboutHeading .rule {
-  background-color: var(--on-image);
 }
 
 .aboutProse {
@@ -872,19 +889,23 @@ a {
   color: var(--slate);
 }
 
+/*
+ * Positioned against the About column rather than the section, so they
+ * sit just outside the text instead of out at the page edges.
+ */
 .polaroid--left {
-  top: 16%;
-  left: -1rem;
+  top: 15%;
+  left: -16.5rem;
   transform: rotate(-5deg);
 }
 
 .polaroid--right {
-  top: 54%;
-  right: -1rem;
+  top: 52%;
+  right: -16.5rem;
   transform: rotate(4.5deg);
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1140px) {
   .polaroid {
     display: none;
   }
@@ -1135,54 +1156,54 @@ a {
  * Ornament placement
  * ---------------------------------------------------------------- */
 
-.ascii--heroVine {
-  top: 14%;
-  left: 2.5%;
+/*
+ * Banks bleed off the page edge, the way the botanical art does on the
+ * reference sites, and the sections carry the content above them.
+ */
+.at-hero-left {
+  top: 12%;
+  left: -96px;
 }
 
-.ascii--heroCrane {
-  top: 18%;
-  right: 2%;
-  font-size: 0.45rem;
+.at-hero-right {
+  top: 22%;
+  right: -96px;
 }
 
-.ascii--workRosette {
-  top: 4%;
-  right: 1.5%;
+.at-work-right {
+  top: 6%;
+  right: -104px;
 }
 
-.ascii--workSpark {
-  bottom: 6%;
-  left: 1.5%;
+.at-work-corner {
+  top: 0;
+  left: -40px;
 }
 
-.ascii--aboutVine {
-  top: 8%;
-  right: 2%;
-  transform: scaleX(-1);
+.at-about-left {
+  top: 6%;
+  left: -104px;
 }
 
-.ascii--aboutSpark {
-  bottom: 10%;
-  left: 2.5%;
-}
-
-.ascii--resumeRosette {
-  top: 5%;
-  left: 1.5%;
-}
-
-.ascii--resumeCrane {
+.at-about-right {
   bottom: 4%;
-  right: 1.5%;
-  font-size: 0.45rem;
+  right: -112px;
 }
 
-.ascii--footerCrane {
-  right: 2%;
-  bottom: -1rem;
-  font-size: 0.45rem;
-  opacity: 0.22;
+.at-resume-left {
+  top: 4%;
+  left: -104px;
+}
+
+.at-resume-corner {
+  right: -40px;
+  bottom: 0;
+}
+
+.at-footer-corner {
+  right: -30px;
+  bottom: -20px;
+  opacity: 0.28;
 }
 
 /* ---------------------------------------------------------------- *
@@ -1201,12 +1222,22 @@ a {
 }
 
 @media (max-width: 860px) {
-  .navList {
-    display: none;
+  /* The pill gives way to a single dot icon in the right corner. */
+  .navWrapper {
+    justify-content: flex-end;
   }
 
   .pill {
-    gap: var(--space-sm);
+    display: none;
+  }
+
+  .navToggle {
+    display: grid;
+  }
+
+  /* The extra 100px of hero clearance is a desktop concern only. */
+  .hero {
+    padding-top: calc(var(--nav-height) + var(--space-2xl));
   }
 }
 
