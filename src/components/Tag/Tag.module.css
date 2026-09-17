@@ -1,0 +1,19 @@
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background-color: var(--haze);
+  color: var(--slate);
+  font-size: var(--size-small);
+  line-height: 1.5;
+}
