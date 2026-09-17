@@ -450,17 +450,16 @@ a {
 
 .section {
   position: relative;
+  /* Decoration is placed to bleed past the section edges, so every
+     section clips its own; otherwise the page gains a horizontal
+     scrollbar the moment a cloud bank hangs off the side. */
+  overflow: hidden;
   padding-block: var(--space-3xl);
 }
 
 /* The washed sections: works and resume. */
 .section--washed {
   background-color: var(--overlay);
-}
-
-/* The bare sections: hero and about, where the photograph is untouched. */
-.section--bare {
-  overflow: hidden;
 }
 
 /* Content clears the decoration in every section. */
