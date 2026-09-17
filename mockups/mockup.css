@@ -879,6 +879,10 @@ a {
   color: var(--on-image);
 }
 
+.aboutHeading .headingText {
+  max-width: none;
+}
+
 .aboutProse {
   display: grid;
   gap: var(--space-md);
