@@ -34,7 +34,9 @@
   /* Short ramps so headings sit on solid cream, without a hard seam. */
   --overlay-fade: 4.5rem;
   --footer-fade: 3.5rem;
-  --page-gutter: calc(clamp(1.25rem, 4vw, 2.5rem) + 60px);
+  /* Desktop: original clamp plus 32px. Mobile restores the original
+     clamp with no extra (see the 860px query). */
+  --page-gutter: calc(clamp(1.25rem, 4vw, 2.5rem) + 32px);
   --scrim-footer: rgba(16, 27, 51, 0.72);
 
   /* Text sitting directly on the photograph. */
@@ -47,8 +49,10 @@
      Cormorant Garamond and only fall back to the display face. */
   --font-accent: 'Cormorant Garamond', 'Shippori Mincho B1', Georgia, serif;
 
-  --size-body: 1.0625rem;
-  --size-body-lg: 1.1875rem;
+  /* Body locked to the honors-list size so running copy, ledes, and
+     resume bullets share one measure. */
+  --size-body: 0.9375rem;
+  --size-body-lg: 0.9375rem;
   --size-small: 0.9375rem;
   --size-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.5rem);
   /* Four points larger than the original 1.75–2.75rem display heading. */
@@ -541,7 +545,7 @@ a {
 /* Cream-overlay ledes only: four points larger, still secondary, but
    pulled toward ink so they hold against the 72% wash. */
 .section--washed .lede {
-  font-size: calc(var(--size-body-lg) + 0.25rem);
+  font-size: var(--size-body);
   color: #323c55;
 }
 
@@ -689,6 +693,18 @@ a {
   font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem);
   line-height: 1.25;
   color: var(--on-image);
+}
+
+@media (min-width: 861px) {
+  .heroName {
+    font-size: calc(var(--size-display) - 0.5rem);
+  }
+
+  .heroTagline {
+    font-size: calc(clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem) - 0.5rem);
+    line-height: 1.15;
+    padding-bottom: 0.15rem;
+  }
 }
 
 .heroTaglineAccent {
@@ -1274,8 +1290,12 @@ a {
 }
 
 .at-work-corner {
-  top: -70px;
-  left: -230px;
+  top: -110px;
+  left: -310px;
+  width: 360px;
+  height: 185px;
+  mask-size: contain;
+  -webkit-mask-size: contain;
 }
 
 .at-about-left {
@@ -1324,6 +1344,10 @@ a {
 }
 
 @media (max-width: 860px) {
+  :root {
+    --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
   /* The pill gives way to a single dot icon in the right corner. */
   .navWrapper {
     justify-content: flex-end;
@@ -1343,6 +1367,15 @@ a {
 
   .heroInner {
     gap: var(--space-md);
+  }
+
+  .heroInner .cloud--crest {
+    width: 100%;
+    max-width: 416px;
+    height: auto;
+    aspect-ratio: 416 / 135;
+    mask-size: contain;
+    -webkit-mask-size: contain;
   }
 
   .workGrid {
