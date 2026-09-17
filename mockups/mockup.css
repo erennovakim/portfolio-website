@@ -31,10 +31,10 @@
   /* Longer ramp than the first pass, so the wash dissolves instead of
      arriving. The fade still begins at the top of the washed section —
      the same point it always started relative to the hero. */
-  --overlay-fade: clamp(180px, 28vh, 420px);
-  /* Footer darkens faster so the contact copy sits on solid dusk. */
-  --footer-fade: clamp(56px, 8vh, 110px);
-  --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  /* Short ramps so headings sit on solid cream, without a hard seam. */
+  --overlay-fade: 4.5rem;
+  --footer-fade: 3.5rem;
+  --page-gutter: calc(clamp(1.25rem, 4vw, 2.5rem) + 20px);
   --scrim-footer: rgba(16, 27, 51, 0.72);
 
   /* Text sitting directly on the photograph. */
@@ -498,40 +498,19 @@ a {
 }
 
 /*
- * The washed sections: works and resume. The wash ramps in and out at the
- * top and bottom edges instead of stopping on a hard line, so a section
- * dissolves into the photograph rather than butting against it.
- */
-/*
- * The wash is solid from the top of the section so headings sit on cream.
- * The fade into that cream lives on the previous section (see .fadeToWash)
- * rather than eating this section's padding.
+ * Cream wash on Selected Works and Resume. The ramp is short: long enough
+ * to avoid a hard edge, short enough that the heading (below this padding)
+ * sits on solid overlay.
  */
 .section--washed {
-  padding-top: clamp(8.5rem, 20vh, 13rem);
-  background-color: var(--overlay);
+  padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem));
   background-image: linear-gradient(
     180deg,
-    var(--overlay) 0,
+    var(--overlay-clear) 0,
+    var(--overlay) var(--overlay-fade),
     var(--overlay) calc(100% - var(--overlay-fade)),
     var(--overlay-clear) 100%
   );
-}
-
-/*
- * Sits at the bottom of a bare section and ramps into the cream wash of
- * the section below, which is what "start the gradient higher" means:
- * the fade begins in the hero (and in About) rather than at the heading.
- */
-.fadeToWash {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--overlay-fade);
-  background: linear-gradient(180deg, var(--overlay-clear), var(--overlay));
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* Content clears the decoration in every section. */
@@ -1169,7 +1148,6 @@ a {
   position: relative;
   overflow: hidden;
   padding-block: var(--space-3xl) var(--space-xl);
-  background-color: var(--scrim-footer);
   background-image: linear-gradient(
     180deg,
     transparent 0,
