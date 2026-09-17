@@ -10,14 +10,20 @@
 (function () {
   const wrapper = document.querySelector('.navWrapper');
   const toggle = document.querySelector('.navToggle');
+  const menu = document.getElementById('nav-menu');
   const washed = Array.from(document.querySelectorAll('.section--washed'));
 
-  if (!wrapper || !toggle || washed.length === 0) return;
+  if (!wrapper || !toggle) return;
 
   let queued = false;
 
+  function closeMenu() {
+    if (menu && menu.checked) menu.checked = false;
+  }
+
   function apply() {
     queued = false;
+    if (washed.length === 0) return;
     const box = toggle.getBoundingClientRect();
     const midpoint = box.top + box.height / 2;
     const overWash = washed.some((section) => {
@@ -34,6 +40,17 @@
   }
 
   apply();
-  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener(
+    'scroll',
+    function () {
+      closeMenu();
+      schedule();
+    },
+    { passive: true }
+  );
   window.addEventListener('resize', schedule);
+
+  document.querySelectorAll('.navSheetLink').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
 })();
