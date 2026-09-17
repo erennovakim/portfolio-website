@@ -32,13 +32,19 @@
   border-color: rgba(255, 255, 255, 0.9);
 }
 
+/* Equal-width flanks keep the wordmark optically centred in the pill. */
 .list {
   display: flex;
+  flex: 1 1 0;
   align-items: center;
   gap: var(--space-xs);
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.list:first-of-type {
+  justify-content: flex-end;
 }
 
 .link {

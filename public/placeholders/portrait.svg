@@ -8,9 +8,4 @@
   <rect width="208" height="240" fill="url(#pt)"/>
   <circle cx="104" cy="94" r="42" fill="#c9d4e6"/>
   <path d="M28 240c0-42 34-76 76-76s76 34 76 76z" fill="#c9d4e6"/>
-  <g fill="none" stroke="#a9b8d2" stroke-width="1.4" stroke-linecap="round" opacity="0.9">
-    <path d="M176 30c-10 22 4 40-6 58"/>
-    <path d="M0 0c14-11 36-8 47 5-13 12-35 10-47-5z" transform="translate(176 44) rotate(-22) scale(0.5)"/>
-    <path d="M0 0c14-11 36-8 47 5-13 12-35 10-47-5z" transform="translate(172 68) rotate(152) scale(-0.5 0.5)"/>
-  </g>
 </svg>

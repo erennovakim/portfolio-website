@@ -67,5 +67,5 @@
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --motion-fast: 180ms;
   --motion-mid: 420ms;
-  --motion-slow: 900ms;
+  --motion-slow: 560ms;
 }

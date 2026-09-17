@@ -38,12 +38,21 @@
   background-color: var(--mist);
 }
 
+/* Capped to the reading measure so the date stays beside its entry
+   rather than drifting to the far edge of the page. */
 .entryHead {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
-  justify-content: space-between;
   gap: var(--space-sm);
+  max-width: var(--measure);
+}
+
+@media (max-width: 620px) {
+  .entryHead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+  }
 }
 
 .role {

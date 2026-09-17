@@ -4,8 +4,8 @@
   padding-top: calc(var(--nav-height) + var(--space-2xl));
   padding-bottom: var(--space-3xl);
   background:
-    radial-gradient(90% 60% at 50% 0%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 60%),
-    linear-gradient(180deg, #ccdef5 0%, var(--dawn) 34%, var(--haze) 72%, var(--mist) 100%);
+    radial-gradient(70% 46% at 50% 6%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%),
+    linear-gradient(180deg, #a8c6ee 0%, #c4d9f4 26%, var(--dawn) 52%, var(--haze) 82%, var(--mist) 100%);
 }
 
 .inner {
@@ -28,7 +28,7 @@
 .tagline {
   display: grid;
   gap: 0.1em;
-  max-width: 24ch;
+  max-width: 34ch;
   font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem);
   line-height: 1.25;
   color: var(--ink);
