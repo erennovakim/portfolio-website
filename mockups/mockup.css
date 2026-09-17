@@ -200,7 +200,7 @@ a {
   z-index: 0;
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.5rem;
+  font-size: 0.58rem;
   line-height: 1.04;
   letter-spacing: 0;
   white-space: pre;
@@ -211,7 +211,7 @@ a {
 /* On bare photograph: solid new-white glyphs. */
 .ascii--white {
   color: var(--on-image);
-  opacity: 0.5;
+  opacity: 0.62;
 }
 
 /*
@@ -227,6 +227,10 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Bold widens each glyph, so more of the photograph comes through and
+     the ornament separates from the 64% wash it is cut out of. */
+  font-weight: 700;
+  font-size: 0.66rem;
 }
 
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -750,9 +754,12 @@ a {
  * About: bare photograph, hazed white type, polaroid placeholders
  * ---------------------------------------------------------------- */
 
+/* About is a single centred column so the heading and the prose share a
+   left edge, rather than a heading at the container edge over centred text. */
 .aboutInner {
   position: relative;
   z-index: 1;
+  width: min(100% - 2.5rem, 62ch);
 }
 
 .aboutHeading h2,
@@ -771,14 +778,12 @@ a {
 .aboutProse {
   display: grid;
   gap: var(--space-md);
-  max-width: var(--measure-narrow);
-  margin-inline: auto;
   font-size: var(--size-body-lg);
   color: var(--on-image);
 }
 
 .aboutHaze {
-  inset: 4% 6% 2%;
+  inset: -2% -14%;
 }
 
 .aboutPullquote {
