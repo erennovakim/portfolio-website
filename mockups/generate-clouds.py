@@ -1,231 +1,216 @@
 #!/usr/bin/env python3
-"""Generate the cloud dot art the mockup uses for decoration.
+"""Build the cloud dot art from the braille cloud references.
 
-Every piece is a union of soft ellipse lobes sampled onto a fixed grid. A dot
-is either there or it is not, and every dot is the same 4px circle, so the art
-reads as one material no matter where it appears. Tone comes from dot density:
-edges are dithered with an ordered Bayer matrix, which is what lets a cloud
-fade out instead of stopping on an outline.
+The references are screenshots of braille art, so the dots already sit on a
+grid. This reads the dot centres straight out of the PNGs rather than trying
+to redraw them: every dot in the reference becomes one 4px circle here, and
+the spacing between braille cells (which is uneven by design) is preserved,
+because that irregularity is most of what makes the art look hand-made.
 
-The SVGs are consumed as CSS masks, not as images. That is what allows the
-same piece to be filled with flat white in one place and with the fixed sunset
-photograph in another.
+The output SVGs are used as CSS masks, not as images, so a single piece can
+be filled with flat white in one place and with the sunset photograph in
+another.
 
 Run from the mockups directory:  python3 generate-clouds.py
 """
 
-import math
 import os
+from collections import deque
 
-DOT_DIAMETER = 4  # the size asked for; do not scale the SVG in CSS
-SPACING = 7  # centre-to-centre, so dots stay separate at every size
+import numpy as np
+from PIL import Image
 
-BAYER = [
-    [0, 32, 8, 40, 2, 34, 10, 42],
-    [48, 16, 56, 24, 50, 18, 58, 26],
-    [12, 44, 4, 36, 14, 46, 6, 38],
-    [60, 28, 52, 20, 62, 30, 54, 22],
-    [3, 35, 11, 43, 1, 33, 9, 41],
-    [51, 19, 59, 27, 49, 17, 57, 25],
-    [15, 47, 7, 39, 13, 45, 5, 37],
-    [63, 31, 55, 23, 61, 29, 53, 21],
-]
+REF_DIR = "/home/ubuntu/.cursor/projects/workspace/assets"
 
-# Lobes are (centre x, centre y, radius x, radius y) in grid cells.
-# Wide, flat lobes read as cirrus streaks; round ones read as cumulus.
-#
-# `feather` sets how much of a lobe is dithered rather than solid: a high
-# value keeps almost the whole piece in halftone, which is what makes a mass
-# of dots read as vapour instead of as a block.
-#
-# `fade` thins the piece out along an axis, so an edge bank is dense where it
-# leaves the page and dissolves as it reaches the reading column.
+REFS = {
+    "wisps": f"{REF_DIR}/e2fa42d8-fea0-4733-92b6-942b2bfc8b34.png",
+    "group": f"{REF_DIR}/a69e8fa0-dc30-4b9d-aae3-42c42eebc023.png",
+    "big": f"{REF_DIR}/d12f98ed-3bd2-4975-9940-36bf5373d778.png",
+}
+
+DOT_DIAMETER = 4  # the size asked for; never scale a mask off this
+OUT_PITCH = 6  # centre-to-centre in the output, so dots stay separate
+
+# Crops in source pixels, picked by eye off the references. The two
+# four-pointed sparkles in the `group` reference are deliberately left out.
+CLOUDS = {
+    "long": ("group", (246, 120, 494, 224)),
+    "puff": ("group", (384, 239, 496, 296)),
+    "mass": ("big", (2, 0, 496, 250)),
+    # The wisps are cropped narrow on purpose: a side bank has to fit in the
+    # page margin beside the reading column, so its widest part sets its width.
+    "wisp_top": ("wisps", (0, 12, 172, 112)),
+    "wisp_mid": ("wisps", (0, 138, 172, 222)),
+    "wisp_low": ("wisps", (0, 208, 172, 266)),
+    "wisp_bottom": ("wisps", (184, 252, 356, 302)),
+    "wisp_right": ("wisps", (332, 52, 476, 148)),
+    "wisp_trail": ("wisps", (232, 122, 298, 238)),
+}
+
+# Parts are (cloud, x offset in cells, gap in cells above this part, flipped).
+# Y positions stack automatically, which is what "extend vertically" means
+# here: the references are restacked rather than redrawn.
 PIECES = {
-    # Tall bank meant to bleed off the side edge of a section, the way the
-    # botanical art does on the reference sites.
+    # Side banks: a tall column, wisps carrying between the fuller clouds.
     "cloud-bank": {
-        "cols": 34,
-        "rows": 92,
-        "feather": 1.15,
-        "fade": ("x", 1.0, 0.22),
-        "lobes": [
-            (0, 8, 16, 7),
-            (10, 5, 11, 4),
-            (18, 10, 13, 4.5),
-            (4, 15, 15, 5),
-            (22, 17, 17, 1.8),
-            (-2, 25, 13, 6),
-            (8, 30, 17, 5.5),
-            (19, 26, 11, 4),
-            (14, 36, 13, 4),
-            (24, 39, 15, 1.6),
-            (0, 45, 15, 6.5),
-            (12, 50, 13, 5),
-            (21, 45, 10, 3.5),
-            (25, 56, 14, 1.5),
-            (2, 61, 14, 6),
-            (14, 66, 16, 5),
-            (23, 61, 9, 3.5),
-            (22, 73, 16, 1.7),
-            (0, 79, 14, 6),
-            (10, 84, 13, 4.5),
-            (18, 90, 13, 1.4),
+        "stack": [
+            ("wisp_top", 0, 0, False),
+            ("wisp_trail", 24, -4, False),
+            ("puff", 2, 1, False),
+            ("wisp_mid", 0, 3, False),
+            ("wisp_right", 8, -2, True),
+            ("wisp_low", 1, 3, False),
+            ("puff", 14, 2, True),
+            ("wisp_bottom", 0, 1, False),
+            ("wisp_trail", 20, 2, True),
+            ("wisp_top", 2, 3, True),
         ],
     },
-    # Small wide wisp that replaces the rule above each section heading.
-    "cloud-heading": {
-        "cols": 38,
-        "rows": 9,
-        "feather": 0.6,
-        "lobes": [
-            (13, 4, 7, 2.8),
-            (20, 3.2, 5.5, 2.2),
-            (26, 4.6, 4.5, 1.8),
-            (19, 6, 15, 1.1),
-            (6, 6.2, 7, 0.9),
-            (31, 5.8, 6, 0.9),
-        ],
-    },
-    # Crest that sits above the hero name.
-    "cloud-crest": {
-        "cols": 40,
-        "rows": 12,
-        "feather": 0.55,
-        "lobes": [
-            (20, 6, 7.5, 3.4),
-            (13, 7, 5.5, 2.6),
-            (27, 7, 5.5, 2.6),
-            (20, 9, 16, 1.2),
-            (5, 9.6, 6, 0.9),
-            (35, 9.6, 6, 0.9),
-        ],
-    },
-    # Corner cluster, densest toward the top-left of its own box.
-    "cloud-corner": {
-        "cols": 36,
-        "rows": 20,
-        "feather": 1.05,
-        "fade": ("corner", 1.0, 0.18),
-        "lobes": [
-            (2, 3, 13, 5),
-            (12, 7, 13, 5),
-            (22, 3, 10, 3.5),
-            (6, 13, 11, 4),
-            (20, 15, 15, 2.4),
-            (30, 9, 8, 3),
-        ],
-    },
-}
-
-# The menu icon is spelled out by hand: a dithered cloud would not read as a
-# control. Same dot size as everything else, so it belongs to the same set.
-GRIDS = {
-    "menu-open": [
-        "#####",
-        ".....",
-        "#####",
-        ".....",
-        "#####",
-    ],
-    "menu-close": [
-        "#...#",
-        ".#.#.",
-        "..#..",
-        ".#.#.",
-        "#...#",
-    ],
+    # Corner clusters: the single dense cloud, which has the most weight.
+    "cloud-corner": {"stack": [("mass", 0, 0, False)]},
+    # Crest above the hero name.
+    "cloud-crest": {"stack": [("long", 0, 0, False)]},
+    # Heading ornament: the smallest complete cloud, boxed to 5:2.
+    "cloud-heading": {"stack": [("puff", 0, 0, False)], "ratio": 2.5},
 }
 
 
-def fade_factor(x, y, cols, rows, fade):
-    if fade is None:
-        return 1.0
-    axis, near, far = fade
-    if axis == "x":
-        t = x / max(cols - 1, 1)
-    else:  # distance from the top-left corner of the piece
-        t = min(1.0, math.hypot(x / max(cols - 1, 1), y / max(rows - 1, 1)))
-    return near + (far - near) * t
+def dot_centroids(path):
+    """Centre of every dot in a braille screenshot, in source pixels."""
+    grey = np.asarray(Image.open(path).convert("L")).astype(float)
+    mask = grey > (grey.min() + grey.max()) * 0.5
+    height, width = mask.shape
+    seen = np.zeros_like(mask, bool)
+    dots = []
+    for y in range(height):
+        for x in range(width):
+            if not mask[y, x] or seen[y, x]:
+                continue
+            queue = deque([(y, x)])
+            seen[y, x] = True
+            pixels = []
+            while queue:
+                cy, cx = queue.popleft()
+                pixels.append((cy, cx))
+                for dy in (-1, 0, 1):
+                    for dx in (-1, 0, 1):
+                        ny, nx = cy + dy, cx + dx
+                        if (
+                            0 <= ny < height
+                            and 0 <= nx < width
+                            and mask[ny, nx]
+                            and not seen[ny, nx]
+                        ):
+                            seen[ny, nx] = True
+                            queue.append((ny, nx))
+            # Anti-aliased single pixels are noise, not dots.
+            if len(pixels) >= 3:
+                dots.append(
+                    (
+                        sum(p[1] for p in pixels) / len(pixels),
+                        sum(p[0] for p in pixels) / len(pixels),
+                    )
+                )
+    return dots
 
 
-def density(x, y, cols, rows, lobes, feather, fade):
-    """Coverage at a cell: 1 inside the cloud, tapering to 0 past its edge."""
-    field = 0.0
-    for cx, cy, rx, ry in lobes:
-        t = math.sqrt(((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2)
-        field = max(field, 1.0 - t)
-    if field <= 0:
-        return 0.0
-    # A slow ripple keeps the dithered edge from reading as a regular screen.
-    ripple = 0.86 + 0.28 * math.sin(x * 0.7) * math.cos(y * 0.55)
-    coverage = field / feather * ripple * fade_factor(x, y, cols, rows, fade)
-    return min(1.0, coverage)
+def dot_pitch(dots):
+    """Median nearest-neighbour distance: the reference's own dot spacing."""
+    pts = np.array(dots)
+    gaps = []
+    for i, p in enumerate(pts):
+        d = np.hypot(pts[:, 0] - p[0], pts[:, 1] - p[1])
+        d[i] = np.inf
+        gaps.append(d.min())
+    return float(np.median(gaps))
 
 
-def dots_from_lobes(cols, rows, lobes, feather, fade):
-    for row in range(rows):
-        for col in range(cols):
-            threshold = (BAYER[row % 8][col % 8] + 0.5) / 64.0
-            if density(col, row, cols, rows, lobes, feather, fade) > threshold:
-                yield col, row
+def load_refs():
+    loaded = {}
+    for name, path in REFS.items():
+        dots = dot_centroids(path)
+        loaded[name] = (dots, dot_pitch(dots))
+    return loaded
 
 
-def dots_from_grid(grid):
-    for row, line in enumerate(grid):
-        for col, char in enumerate(line):
-            if char != ".":
-                yield col, row
+def cloud_cells(refs, cloud):
+    """A cloud's dots as grid-cell coordinates, origin at its own top left."""
+    ref_name, (x0, y0, x1, y1) = CLOUDS[cloud]
+    dots, pitch = refs[ref_name]
+    inside = [(x, y) for x, y in dots if x0 <= x <= x1 and y0 <= y <= y1]
+    if not inside:
+        raise ValueError(f"crop for {cloud} caught no dots")
+    cells = [((x - x0) / pitch, (y - y0) / pitch) for x, y in inside]
+    width = max(c[0] for c in cells)
+    height = max(c[1] for c in cells)
+    return cells, width, height
 
 
-def write_svg(name, cols, rows, dots):
-    width = cols * SPACING
-    height = rows * SPACING
+def compose(refs, spec):
+    placed = []
+    cursor = 0.0
+    for cloud, dx, gap, flip in spec["stack"]:
+        cells, width, height = cloud_cells(refs, cloud)
+        cursor += gap
+        for cx, cy in cells:
+            x = (width - cx) if flip else cx
+            placed.append((x + dx, cy + cursor))
+        cursor += height
+    return placed
+
+
+def to_svg(name, dots, ratio=None):
+    xs = [d[0] for d in dots]
+    ys = [d[1] for d in dots]
+    x0, y0 = min(xs), min(ys)
+    dots = [(x - x0, y - y0) for x, y in dots]
+
     radius = DOT_DIAMETER / 2
-    offset = SPACING / 2
+    pad = radius + 1  # keep edge dots from being clipped by the viewBox
+    width = max(d[0] for d in dots) * OUT_PITCH + pad * 2
+    height = max(d[1] for d in dots) * OUT_PITCH + pad * 2
+    shift_x = shift_y = 0.0
+
+    if ratio:
+        # Box the piece to the asked-for aspect without distorting the dots:
+        # whichever axis is short gets padding, and the art stays centred.
+        if width / height > ratio:
+            target = width / ratio
+            shift_y = (target - height) / 2
+            height = target
+        else:
+            target = height * ratio
+            shift_x = (target - width) / 2
+            width = target
 
     circles = "".join(
-        f'<circle cx="{col * SPACING + offset:g}" cy="{row * SPACING + offset:g}" '
-        f'r="{radius:g}"/>'
-        for col, row in dots
+        f'<circle cx="{x * OUT_PITCH + pad + shift_x:.1f}" '
+        f'cy="{y * OUT_PITCH + pad + shift_y:.1f}" r="{radius:g}"/>'
+        for x, y in dots
     )
-
     svg = (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}">'
-        f'<g fill="#000">{circles}</g>'
-        f"</svg>"
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.0f}" '
+        f'height="{height:.0f}" viewBox="0 0 {width:.0f} {height:.0f}">'
+        f'<g fill="#000">{circles}</g></svg>'
     )
 
     path = os.path.join("art", f"{name}.svg")
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(svg + "\n")
-    return path, width, height, svg.count("<circle")
+    return path, round(width), round(height), len(dots)
 
 
 def main():
     os.makedirs("art", exist_ok=True)
+    refs = load_refs()
+    for name, (dots, pitch) in refs.items():
+        print(f"{name}: {len(dots)} dots, source pitch {pitch:.2f}px")
 
+    print()
     for name, spec in PIECES.items():
-        dots = list(
-            dots_from_lobes(
-                spec["cols"],
-                spec["rows"],
-                spec["lobes"],
-                spec["feather"],
-                spec.get("fade"),
-            )
-        )
-        path, width, height, count = write_svg(
-            name, spec["cols"], spec["rows"], dots
-        )
-        print(f"{path}: {width}x{height}px, {count} dots")
-
-    for name, grid in GRIDS.items():
-        dots = list(dots_from_grid(grid))
-        path, width, height, count = write_svg(
-            name, len(grid[0]), len(grid), dots
-        )
-        print(f"{path}: {width}x{height}px, {count} dots")
+        dots = compose(refs, spec)
+        path, width, height, count = to_svg(name, dots, spec.get("ratio"))
+        print(f"{path}: {width}x{height}px, {count} dots, ratio {width / height:.2f}")
 
 
 if __name__ == "__main__":

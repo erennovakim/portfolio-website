@@ -33,11 +33,11 @@
       </nav>
 
       <!-- Mobile: a dot icon in the right corner that drops the menu down.
-           A checkbox drives it so the mockup needs no script. -->
+           A checkbox drives the open state; mockup.js only decides what
+           colour the bars take from the section behind them. -->
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
       <label class="navToggle" for="nav-menu">
-        <span class="cloud cloud--reveal navToggleIcon navToggleIcon--open"></span>
-        <span class="cloud cloud--reveal navToggleIcon navToggleIcon--close"></span>
+        <span class="navToggleBars" aria-hidden="true"></span>
         <span class="visually-hidden">Menu</span>
       </label>
 
@@ -697,5 +697,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="./mockup.js"></script>
   </body>
 </html>
