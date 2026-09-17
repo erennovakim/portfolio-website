@@ -32,6 +32,9 @@
      arriving. The fade still begins at the top of the washed section —
      the same point it always started relative to the hero. */
   --overlay-fade: clamp(180px, 28vh, 420px);
+  /* Footer darkens faster so the contact copy sits on solid dusk. */
+  --footer-fade: clamp(56px, 8vh, 110px);
+  --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
   --scrim-footer: rgba(16, 27, 51, 0.72);
 
   /* Text sitting directly on the photograph. */
@@ -182,8 +185,15 @@ a {
 }
 
 .container {
-  width: min(100% - 2.5rem, var(--container));
+  width: min(100% - 2 * var(--page-gutter), var(--container));
   margin-inline: auto;
+}
+
+/* Works and resume run edge to edge aside from the page gutter, so the
+   heading sits further left and the cards use the full measure. */
+.container--wide {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: none;
 }
 
 .visually-hidden {
@@ -492,14 +502,36 @@ a {
  * top and bottom edges instead of stopping on a hard line, so a section
  * dissolves into the photograph rather than butting against it.
  */
+/*
+ * The wash is solid from the top of the section so headings sit on cream.
+ * The fade into that cream lives on the previous section (see .fadeToWash)
+ * rather than eating this section's padding.
+ */
 .section--washed {
+  padding-top: clamp(8.5rem, 20vh, 13rem);
+  background-color: var(--overlay);
   background-image: linear-gradient(
     180deg,
-    var(--overlay-clear) 0,
-    var(--overlay) var(--overlay-fade),
+    var(--overlay) 0,
     var(--overlay) calc(100% - var(--overlay-fade)),
     var(--overlay-clear) 100%
   );
+}
+
+/*
+ * Sits at the bottom of a bare section and ramps into the cream wash of
+ * the section below, which is what "start the gradient higher" means:
+ * the fade begins in the hero (and in About) rather than at the heading.
+ */
+.fadeToWash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--overlay-fade);
+  background: linear-gradient(180deg, var(--overlay-clear), var(--overlay));
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Content clears the decoration in every section. */
@@ -525,6 +557,17 @@ a {
   margin-top: var(--space-sm);
   font-size: var(--size-body-lg);
   color: var(--slate);
+}
+
+/* Cream-overlay ledes only: four points larger, still secondary, but
+   pulled toward ink so they hold against the 72% wash. */
+.section--washed .lede {
+  font-size: calc(var(--size-body-lg) + 0.25rem);
+  color: #323c55;
+}
+
+.section--washed .headingText {
+  max-width: 46rem;
 }
 
 .headingAction {
@@ -619,17 +662,19 @@ a {
  * ---------------------------------------------------------------- */
 
 /*
- * The old radial-plus-linear light gradient is gone entirely; the hero
- * is now just the photograph. The postcard and portrait are removed.
- *
- * The top padding is literal rather than flex centring, so the 100px of
- * extra clearance below the nav stays exactly 100px at every height.
+ * The postcard and portrait are gone, as is the old light gradient.
+ * The whole stack — crest, name, tagline, buttons — is centred in the
+ * viewport on load. The hero is one viewport tall so that landing
+ * position is the section; it is not kept centred after you scroll.
  */
 .hero {
   position: relative;
-  padding-top: calc(var(--nav-height) + var(--space-2xl) + 100px);
-  padding-bottom: var(--space-3xl);
-  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-block: 0;
 }
 
 .heroInner {
@@ -815,12 +860,19 @@ a {
  * About: bare photograph, hazed white type, polaroid placeholders
  * ---------------------------------------------------------------- */
 
-/* About is a single centred column so the heading and the prose share a
-   left edge, rather than a heading at the container edge over centred text. */
+/* About shares the works gutter on the left. The copy stops short of
+   the right gutter so the polaroid column can sit there, with the
+   rightmost frame the same distance from the page edge as the text. */
 .aboutInner {
   position: relative;
   z-index: 1;
-  width: min(100% - 2.5rem, 62ch);
+}
+
+.aboutLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
 }
 
 .aboutHeading h2 {
@@ -832,6 +884,10 @@ a {
   gap: var(--space-md);
   font-size: var(--size-body-lg);
   color: var(--on-image);
+}
+
+.aboutProse p {
+  max-width: none;
 }
 
 .aboutHaze {
@@ -893,14 +949,22 @@ a {
 }
 
 /*
- * Empty polaroid frames, staggered down the left and right margins,
- * waiting on real photographs. The window is left translucent so the
+ * Empty polaroid frames stacked on the right, waiting on real photographs.
+ * Upper frame is 1.5× the area of the lower one. Neither is tilted; they
+ * are staggered on both axes. The window is left translucent so the
  * sunset shows through rather than reading as a grey hole.
  */
+.aboutPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-lg);
+  padding-top: var(--space-xl);
+}
+
 .polaroid {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  width: 13.5rem;
   padding: 0.75rem 0.75rem 3rem;
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
@@ -924,25 +988,18 @@ a {
   color: var(--slate);
 }
 
-/*
- * Positioned against the About column rather than the section, with a
- * 100px gap between the text edge and the frame.
- */
-.polaroid--left {
-  top: 15%;
-  left: calc(-100px - 13.5rem);
-  transform: rotate(-5deg);
+/* Linear scale of √1.5 so the areas sit at 1.5:1. */
+.polaroid--large {
+  width: 16.5rem;
+  margin-right: 2.25rem;
 }
 
-.polaroid--right {
-  top: 52%;
-  right: calc(-100px - 13.5rem);
-  transform: rotate(4.5deg);
+.polaroid--small {
+  width: 13.47rem;
 }
 
-/* Below this the 100px gaps no longer fit beside the column. */
-@media (max-width: 1260px) {
-  .polaroid {
+@media (max-width: 720px) {
+  .aboutPhotos {
     display: none;
   }
 }
@@ -1109,6 +1166,12 @@ a {
   overflow: hidden;
   padding-block: var(--space-3xl) var(--space-xl);
   background-color: var(--scrim-footer);
+  background-image: linear-gradient(
+    180deg,
+    transparent 0,
+    var(--scrim-footer) var(--footer-fade),
+    var(--scrim-footer) 100%
+  );
   color: var(--on-image);
 }
 
@@ -1255,6 +1318,10 @@ a {
   .skills {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .aboutLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 860px) {
@@ -1269,11 +1336,6 @@ a {
 
   .navToggle {
     display: grid;
-  }
-
-  /* The extra 100px of hero clearance is a desktop concern only. */
-  .hero {
-    padding-top: calc(var(--nav-height) + var(--space-2xl));
   }
 }
 
