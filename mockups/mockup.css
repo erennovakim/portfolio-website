@@ -1,0 +1,1232 @@
+/*
+ * Static mockup stylesheet for the dark-sunset overhaul.
+ * Self-contained on purpose: nothing here is imported by src/, so the
+ * token block below is a copy of src/styles/tokens.css with the
+ * overhaul values swapped in. Comments mark every deliberate departure.
+ */
+
+:root {
+  /* Paper is no longer pure white. Every translucent white in the old
+     component CSS is re-expressed against this triplet. */
+  --paper: #f7f1eb;
+  --paper-rgb: 247, 241, 235;
+
+  --ink: #16233f;
+  --slate: #4c5a79;
+  --iris: #2b4aa8;
+  --iris-deep: #1e3680;
+  --dusk: #101b33;
+
+  /* Warmed to sit on cream instead of the old cool mist. */
+  --line: #ded4c8;
+  --line-strong: #c3b5a5;
+
+  /* Sections that wash the photograph rather than hide it. */
+  --overlay: rgba(var(--paper-rgb), 0.64);
+  --scrim-footer: rgba(16, 27, 51, 0.72);
+
+  /* Text sitting directly on the photograph. */
+  --on-image: #f7f1eb;
+  --on-image-soft: rgba(var(--paper-rgb), 0.82);
+
+  --font-display: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-mono: 'SFMono-Regular', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+  --size-body: 1.0625rem;
+  --size-body-lg: 1.1875rem;
+  --size-small: 0.9375rem;
+  --size-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.5rem);
+  --size-h2: clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
+  --size-h1: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+  --size-display: clamp(3.25rem, 1.2rem + 8.4vw, 8rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.3;
+  --leading-body: 1.65;
+
+  --space-2xs: 0.375rem;
+  --space-xs: 0.625rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: clamp(5rem, 3rem + 8vw, 9rem);
+
+  --measure: 68ch;
+  --measure-narrow: 56ch;
+  --container: 74rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --border: 1.5px solid var(--line);
+  --border-strong: 1.5px solid var(--line-strong);
+
+  /* The specified card shadow: Y=4, blur=16. Cards now separate from the
+     overlay by shadow rather than by outline. */
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.18);
+  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.26);
+  --shadow-glass: 0 6px 24px rgba(0, 0, 0, 0.22);
+
+  --nav-height: 4.75rem;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-fast: 180ms;
+  --motion-mid: 420ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  /* Transparent so the fixed photograph layer shows through the whole
+     document. The colour is only a load-in floor. */
+  background-color: #2a2333;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+ * A fixed full-viewport layer rather than `background-attachment: fixed`
+ * on the body: the latter is ignored on iOS Safari, which would drop the
+ * whole effect on phones.
+ */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('./assets/dark-sunset.jpeg') center / cover no-repeat;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--size-h1);
+  line-height: var(--leading-tight);
+}
+
+h2 {
+  font-size: var(--size-h2);
+}
+
+h3 {
+  font-size: var(--size-h3);
+}
+
+p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--iris);
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--on-image);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-lg));
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--container));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- *
+ * ASCII ornaments
+ * ---------------------------------------------------------------- */
+
+/*
+ * Replaces the botanical SVG line work in src/components/Motif.
+ * Decorative only: always aria-hidden, kept out of the reading column,
+ * and hidden below the desktop breakpoint exactly as the motifs were.
+ */
+.ascii {
+  position: absolute;
+  z-index: 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  line-height: 1.04;
+  letter-spacing: 0;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* On bare photograph: solid new-white glyphs. */
+.ascii--white {
+  color: var(--on-image);
+  opacity: 0.5;
+}
+
+/*
+ * On a washed section: the glyphs are cut out of the 64% overlay and
+ * filled with the photograph at full strength. `fixed` matches the
+ * sizing of .backdrop, so the fill lines up with the image behind it.
+ * The solid colour is declared first as the fallback for engines that
+ * ignore background-clip: text.
+ */
+.ascii--reveal {
+  color: rgba(42, 35, 51, 0.5);
+  background: url('./assets/dark-sunset.jpeg') center / cover fixed no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .ascii--reveal {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+@media (max-width: 1180px) {
+  .ascii {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Nav: liquid glass
+ * ---------------------------------------------------------------- */
+
+.navWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-sm) 0;
+  pointer-events: none;
+}
+
+.pill {
+  position: relative;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  /* 48% of the new white over the photograph. */
+  background-color: rgba(var(--paper-rgb), 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/*
+ * Edge refraction, faked with a rim band that blurs harder than the
+ * body of the pill. Reads as the image bending at the glass edge and
+ * degrades to nothing if mask-composite is unsupported.
+ */
+.pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 7px;
+  border-radius: inherit;
+  backdrop-filter: blur(7px) saturate(140%) contrast(1.08);
+  -webkit-backdrop-filter: blur(7px) saturate(140%) contrast(1.08);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+/*
+ * Progressive enhancement: true displacement refraction. Supported in
+ * Firefox, silently ignored elsewhere, which is why the blur/saturate
+ * pair above is declared as its own earlier rule.
+ */
+.controls:has(#glass-refract:checked) ~ .navWrapper .pill {
+  backdrop-filter: blur(16px) saturate(180%) url('#glassRefract');
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+.navList {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navList:first-of-type {
+  justify-content: flex-end;
+}
+
+.navLink {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transition:
+    color var(--motion-fast) var(--ease),
+    background-color var(--motion-fast) var(--ease);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  padding-inline: var(--space-2xs);
+}
+
+/*
+ * Variant A (default): ink links. The pill sits mid-luminance over the
+ * sunset, so dark type holds the stronger contrast ratio.
+ */
+.navLink {
+  color: var(--ink);
+}
+
+.wordmark {
+  color: var(--ink);
+}
+
+.navLink:hover {
+  background-color: rgba(22, 35, 63, 0.09);
+}
+
+.navLink[aria-current='true'] {
+  color: var(--iris-deep);
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Variant B: new-white links, for when the photograph reads darker. */
+.controls:has(#nav-light:checked) ~ .navWrapper .navLink,
+.controls:has(#nav-light:checked) ~ .navWrapper .wordmark {
+  color: var(--on-image);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.controls:has(#nav-light:checked) ~ .navWrapper .navLink:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.controls:has(#nav-light:checked) ~ .navWrapper .navLink[aria-current='true'] {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Mockup-only affordance for comparing the two nav treatments. */
+.controls {
+  position: fixed;
+  right: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 60;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  background-color: rgba(16, 27, 51, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--on-image);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.controlsTitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1rem;
+  padding: 0;
+  color: var(--on-image-soft);
+}
+
+.controls label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------- *
+ * Shared section furniture
+ * ---------------------------------------------------------------- */
+
+.section {
+  position: relative;
+  padding-block: var(--space-3xl);
+}
+
+/* The washed sections: works and resume. */
+.section--washed {
+  background-color: var(--overlay);
+}
+
+/* The bare sections: hero and about, where the photograph is untouched. */
+.section--bare {
+  overflow: hidden;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.headingText {
+  max-width: var(--measure-narrow);
+}
+
+.rule {
+  width: 3rem;
+  height: 2px;
+  margin-bottom: var(--space-sm);
+  background-color: var(--iris);
+}
+
+.lede {
+  margin-top: var(--space-sm);
+  font-size: var(--size-body-lg);
+  color: var(--slate);
+}
+
+.headingAction {
+  flex-shrink: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease),
+    border-color var(--motion-fast) var(--ease),
+    color var(--motion-fast) var(--ease);
+}
+
+.button--primary {
+  background-color: var(--iris);
+  color: var(--paper);
+}
+
+.button--primary:hover {
+  background-color: var(--iris-deep);
+}
+
+.button--secondary {
+  background-color: var(--paper);
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.button--secondary:hover {
+  border-color: var(--iris);
+  color: var(--iris);
+}
+
+/* Buttons that sit on the bare photograph. */
+.button--onImage {
+  background-color: var(--paper);
+  color: var(--dusk);
+  box-shadow: var(--shadow-card);
+}
+
+.button--onImage:hover {
+  background-color: #fff;
+  color: var(--dusk);
+}
+
+.button--outlineOnImage {
+  background-color: rgba(var(--paper-rgb), 0.12);
+  border-color: rgba(var(--paper-rgb), 0.7);
+  color: var(--on-image);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.button--outlineOnImage:hover {
+  background-color: rgba(var(--paper-rgb), 0.24);
+  color: var(--on-image);
+}
+
+/*
+ * The soft haze. Edgeless by construction: a heavily blurred radial
+ * gradient at 10% black with no border, radius or visible boundary,
+ * so the text gains contrast without a panel appearing behind it.
+ */
+.haze {
+  position: absolute;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 34%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- *
+ * Hero
+ * ---------------------------------------------------------------- */
+
+/*
+ * The old radial-plus-linear light gradient is gone entirely; the hero
+ * is now just the photograph. The postcard and portrait are removed.
+ */
+.hero {
+  position: relative;
+  padding-top: calc(var(--nav-height) + var(--space-2xl));
+  padding-bottom: var(--space-3xl);
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--space-lg);
+}
+
+.heroHaze {
+  inset: -12% -8%;
+}
+
+.heroName {
+  font-size: var(--size-display);
+  font-weight: var(--weight-medium);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: var(--on-image);
+}
+
+.heroTagline {
+  display: grid;
+  gap: 0.1em;
+  max-width: 34ch;
+  font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem);
+  line-height: 1.25;
+  color: var(--on-image);
+}
+
+.heroTaglineAccent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.12em;
+  color: var(--on-image-soft);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+/* ---------------------------------------------------------------- *
+ * Selected works
+ * ---------------------------------------------------------------- */
+
+.workGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-sm);
+  border-radius: var(--radius-lg);
+  /* Fully opaque against the 64% wash. */
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    box-shadow var(--motion-mid) var(--ease),
+    transform var(--motion-mid) var(--ease);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  color: var(--ink);
+}
+
+.coverFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: #efe6dc;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--paper);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  color: var(--slate);
+  font-size: var(--size-small);
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xs) var(--space-xs);
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+}
+
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--size-small);
+  color: var(--slate);
+}
+
+.cardMetaDivider {
+  width: 1px;
+  height: 0.9rem;
+  background-color: var(--line-strong);
+}
+
+.cardSummary {
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background-color: #f2e9df;
+  color: var(--slate);
+  font-size: var(--size-small);
+  line-height: 1.5;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--iris);
+  color: var(--paper);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-small);
+}
+
+.card:hover .cta {
+  background-color: var(--iris-deep);
+}
+
+/* ---------------------------------------------------------------- *
+ * About: bare photograph, hazed white type, polaroid placeholders
+ * ---------------------------------------------------------------- */
+
+.aboutInner {
+  position: relative;
+  z-index: 1;
+}
+
+.aboutHeading h2,
+.aboutHeading .lede {
+  color: var(--on-image);
+}
+
+.aboutHeading .lede {
+  color: var(--on-image-soft);
+}
+
+.aboutHeading .rule {
+  background-color: var(--on-image);
+}
+
+.aboutProse {
+  display: grid;
+  gap: var(--space-md);
+  max-width: var(--measure-narrow);
+  margin-inline: auto;
+  font-size: var(--size-body-lg);
+  color: var(--on-image);
+}
+
+.aboutHaze {
+  inset: 4% 6% 2%;
+}
+
+.aboutPullquote {
+  margin: var(--space-sm) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid rgba(var(--paper-rgb), 0.55);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--on-image);
+}
+
+.aboutSchool {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1.5px solid rgba(var(--paper-rgb), 0.3);
+}
+
+.schoolName {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--on-image);
+}
+
+.degree {
+  margin-top: 0.3rem;
+  font-size: var(--size-small);
+  color: var(--on-image-soft);
+}
+
+.honors {
+  display: grid;
+  gap: 0.5rem;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--size-small);
+  color: var(--on-image);
+}
+
+.honor {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.honorDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--on-image);
+}
+
+/*
+ * Empty polaroid frames, staggered down the left and right margins,
+ * waiting on real photographs. The window is left translucent so the
+ * sunset shows through rather than reading as a grey hole.
+ */
+.polaroid {
+  position: absolute;
+  z-index: 2;
+  width: 13.5rem;
+  padding: 0.75rem 0.75rem 3rem;
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.polaroidWindow {
+  aspect-ratio: 1 / 1;
+  background-color: rgba(16, 27, 51, 0.28);
+  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+.polaroidCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.9rem;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--slate);
+}
+
+.polaroid--left {
+  top: 16%;
+  left: -1rem;
+  transform: rotate(-5deg);
+}
+
+.polaroid--right {
+  top: 54%;
+  right: -1rem;
+  transform: rotate(4.5deg);
+}
+
+@media (max-width: 1240px) {
+  .polaroid {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- *
+ * Resume
+ * ---------------------------------------------------------------- */
+
+.resumeGroup {
+  margin-bottom: var(--space-2xl);
+}
+
+.resumeGroupLabel {
+  margin-bottom: var(--space-md);
+  font-size: var(--size-h3);
+  color: var(--ink);
+}
+
+.rail {
+  display: grid;
+  gap: var(--space-lg);
+  margin: 0;
+  padding: 0 0 0 var(--space-lg);
+  border-left: 2px solid rgba(22, 35, 63, 0.18);
+  list-style: none;
+}
+
+/* Each entry is now a card on the wash instead of bare text on mist. */
+.entry {
+  position: relative;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.node {
+  position: absolute;
+  top: 1.6rem;
+  left: calc(-1 * var(--space-lg) - 7px);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--iris);
+  border-radius: 50%;
+  background-color: var(--paper);
+}
+
+.entryHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.role {
+  font-size: 1.3rem;
+}
+
+.timeframe {
+  flex-shrink: 0;
+  font-size: var(--size-small);
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+}
+
+.org {
+  margin-top: 0.15rem;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--iris);
+}
+
+.points {
+  display: grid;
+  gap: 0.5rem;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--slate);
+}
+
+.point {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.pointMark {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  margin-top: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--line-strong);
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.skillGroup {
+  display: grid;
+  align-content: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.skillLabel {
+  font-size: 1.25rem;
+}
+
+.skillDescription {
+  font-size: var(--size-small);
+  color: var(--slate);
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill {
+  padding: 0.3rem 0.75rem;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background-color: #f2e9df;
+  font-size: var(--size-small);
+  color: var(--ink);
+}
+
+.footnote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+}
+
+.footnoteText {
+  flex: 1 1 18rem;
+  color: var(--slate);
+}
+
+/* ---------------------------------------------------------------- *
+ * Footer: darkened photograph rather than a white wash
+ * ---------------------------------------------------------------- */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-3xl) var(--space-xl);
+  background-color: var(--scrim-footer);
+  color: var(--on-image);
+}
+
+.footerLayout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.footerTitle {
+  color: var(--on-image);
+  font-size: var(--size-h2);
+}
+
+.footerLede {
+  margin-top: var(--space-sm);
+  max-width: 34ch;
+  font-size: var(--size-body-lg);
+  color: var(--on-image-soft);
+}
+
+.footerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.contact {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.contactRow {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.contactLabel {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--on-image-soft);
+}
+
+.contactLink {
+  color: var(--on-image);
+  font-size: var(--size-body-lg);
+  text-decoration-color: rgba(var(--paper-rgb), 0.45);
+}
+
+.contactLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.baseline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-md);
+  border-top: 1.5px solid rgba(var(--paper-rgb), 0.2);
+  font-size: var(--size-small);
+  color: var(--on-image-soft);
+}
+
+.topLink {
+  color: var(--on-image);
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(var(--paper-rgb), 0.4);
+}
+
+/* ---------------------------------------------------------------- *
+ * Ornament placement
+ * ---------------------------------------------------------------- */
+
+.ascii--heroVine {
+  top: 14%;
+  left: 2.5%;
+}
+
+.ascii--heroCrane {
+  top: 18%;
+  right: 2%;
+  font-size: 0.45rem;
+}
+
+.ascii--workRosette {
+  top: 4%;
+  right: 1.5%;
+}
+
+.ascii--workSpark {
+  bottom: 6%;
+  left: 1.5%;
+}
+
+.ascii--aboutVine {
+  top: 8%;
+  right: 2%;
+  transform: scaleX(-1);
+}
+
+.ascii--aboutSpark {
+  bottom: 10%;
+  left: 2.5%;
+}
+
+.ascii--resumeRosette {
+  top: 5%;
+  left: 1.5%;
+}
+
+.ascii--resumeCrane {
+  bottom: 4%;
+  right: 1.5%;
+  font-size: 0.45rem;
+}
+
+.ascii--footerCrane {
+  right: 2%;
+  bottom: -1rem;
+  font-size: 0.45rem;
+  opacity: 0.22;
+}
+
+/* ---------------------------------------------------------------- *
+ * Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .footerLayout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .skills {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .navList {
+    display: none;
+  }
+
+  .pill {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 820px) {
+  .workGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .entryHead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
