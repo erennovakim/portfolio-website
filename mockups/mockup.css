@@ -418,7 +418,8 @@ a {
   color: var(--ink);
 }
 
-.navLink.is-current {
+.navLink.is-current,
+.navWrapper[data-scrolled='true'] .navLink.is-current {
   color: var(--iris);
 }
 
@@ -758,10 +759,16 @@ a {
   inset: -18% -10%;
 }
 
+.heroKicker,
+.heroSub {
+  font-size: 1.625rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--on-image-soft);
+}
+
 .heroKicker {
   margin: 0 0 1.25rem;
-  font-size: 1.125rem;
-  color: var(--on-image-soft);
 }
 
 .heroTitle {
@@ -786,10 +793,6 @@ a {
 .heroSub {
   margin: 0;
   max-width: 46ch;
-  font-size: 1.625rem;
-  font-weight: 300;
-  line-height: 1.45;
-  color: var(--on-image-soft);
 }
 
 /* ---------------------------------------------------------------- *
@@ -1169,9 +1172,6 @@ a {
   display: grid;
   align-content: start;
   gap: var(--space-sm);
-  padding: 1rem 1.15rem;
-  border-radius: var(--radius-md);
-  background-color: rgba(var(--paper-rgb), 0.1);
 }
 
 .skillLabel {
@@ -1183,8 +1183,10 @@ a {
   flex-wrap: wrap;
   gap: var(--space-2xs);
   margin: 0;
-  padding: 0;
+  padding: 0.85rem 1rem;
   list-style: none;
+  border-radius: var(--radius-md);
+  background-color: rgba(var(--paper-rgb), 0.1);
 }
 
 .skill {
