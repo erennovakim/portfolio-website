@@ -25,7 +25,7 @@
   --line-strong: #c3b5a5;
 
   /* Sections that wash the photograph rather than hide it. */
-  --overlay: rgba(var(--paper-rgb), 0.72);
+  --overlay: rgb(var(--paper-rgb));
   --overlay-clear: rgba(var(--paper-rgb), 0);
   /* How far the wash takes to fade in and out at a section edge. */
   /* Longer ramp than the first pass, so the wash dissolves instead of
@@ -306,45 +306,38 @@ a {
 }
 
 /*
- * At rest the bar is just type on the photograph. After a short scroll
- * it collapses into the sticky cream pill.
+ * Compact bar, same size at rest and after scroll. Cream fill only
+ * appears once you leave the top. Link groups sit 40px off the name.
  */
 .pill {
   position: relative;
   pointer-events: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-md);
-  width: min(100% - 2 * var(--page-gutter), 72rem);
-  padding: 0.35rem 0.25rem;
-  border-radius: var(--radius-pill);
+  width: max-content;
+  max-width: calc(100% - 2 * var(--page-gutter));
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-md);
   background-color: transparent;
   box-shadow: none;
   transition:
-    width var(--motion-mid) var(--ease),
     background-color var(--motion-mid) var(--ease),
-    box-shadow var(--motion-mid) var(--ease),
-    padding var(--motion-mid) var(--ease);
+    box-shadow var(--motion-mid) var(--ease);
 }
 
 .navWrapper[data-scrolled='true'] .pill {
-  width: auto;
-  gap: var(--space-lg);
-  padding: 0.55rem 1.1rem;
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
 }
 
 .navList {
   display: flex;
-  flex: 1 1 0;
+  flex: 0 0 auto;
   align-items: center;
   gap: 0.15rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  min-width: max-content;
 }
 
 .navList:first-of-type {
@@ -358,7 +351,7 @@ a {
 .navLink {
   display: inline-block;
   padding: 0.4rem 0.75rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-size: var(--size-small);
   font-weight: var(--weight-medium);
   text-decoration: none;
@@ -379,7 +372,8 @@ a {
   padding-bottom: 0.12rem;
   text-decoration: none;
   white-space: nowrap;
-  padding-inline: var(--space-sm);
+  padding-inline: 0;
+  margin-inline: 40px;
   color: var(--on-image);
 }
 
@@ -547,6 +541,10 @@ a {
   );
 }
 
+#work.section--washed {
+  padding-top: calc(var(--overlay-fade) + var(--space-xl));
+}
+
 /* Content clears the decoration in every section. */
 .section > .container {
   position: relative;
@@ -593,7 +591,7 @@ a {
   justify-content: center;
   gap: var(--space-2xs);
   padding: 0.7rem 1.4rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1.5px solid transparent;
   font-family: var(--font-body);
   font-size: var(--size-body);
@@ -703,37 +701,28 @@ a {
   inset: -18% -10%;
 }
 
-.heroEyebrow {
+.heroKicker {
   margin: 0;
   font-size: var(--size-body);
   color: var(--on-image-soft);
 }
 
 .heroTitle {
-  display: grid;
-  justify-items: center;
   margin: 0;
-  font-size: clamp(3rem, 1.4rem + 6.4vw, 6.75rem);
+  max-width: 16em;
+  font-size: clamp(1.7rem, 1.05rem + 2.3vw, 2.55rem);
   font-weight: var(--weight-medium);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--on-image);
-}
-
-.heroTitleLead {
-  display: block;
-}
-
-.heroTitleAccent {
-  display: block;
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: var(--weight-regular);
-  font-size: clamp(1.85rem, 1.1rem + 2.6vw, 3.4rem);
-  line-height: 1.12;
-  padding-bottom: 0.2rem;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--on-image);
+}
+
+.heroSub {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--on-image-soft);
 }
 
 /* ---------------------------------------------------------------- *
@@ -753,19 +742,19 @@ a {
   height: 100%;
   padding: var(--space-sm);
   border-radius: var(--radius-lg);
-  /* Fully opaque against the 64% wash. */
+  border: var(--border);
   background-color: var(--paper);
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
   color: var(--ink);
   text-decoration: none;
   transition:
-    box-shadow var(--motion-mid) var(--ease),
+    border-color var(--motion-mid) var(--ease),
     transform var(--motion-mid) var(--ease);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
   color: var(--ink);
 }
 
@@ -785,7 +774,7 @@ a {
 .cardHead {
   display: grid;
   gap: 0.15rem;
-  padding: var(--space-xs) var(--space-xs) var(--space-sm);
+  padding: var(--space-sm) var(--space-xs) var(--space-2xs);
 }
 
 .cardRole {
@@ -799,9 +788,8 @@ a {
   top: var(--space-xs);
   left: var(--space-xs);
   padding: 0.2rem 0.7rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background-color: var(--paper);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
   color: var(--slate);
   font-size: var(--size-small);
 }
@@ -851,7 +839,7 @@ a {
   display: inline-block;
   padding: 0.25rem 0.7rem;
   border: var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background-color: #f2e9df;
   color: var(--slate);
   font-size: var(--size-small);
@@ -871,7 +859,7 @@ a {
   display: inline-flex;
   align-items: center;
   padding: 0.6rem 1.25rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background-color: var(--iris);
   color: var(--paper);
   font-weight: var(--weight-semibold);
@@ -1038,8 +1026,14 @@ a {
  * Resume
  * ---------------------------------------------------------------- */
 
+.resumeTop {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-lg);
+}
+
 .resumeGroup {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .resumeGroupLabel {
@@ -1048,108 +1042,86 @@ a {
   color: var(--ink);
 }
 
-.rail {
+.resumeList {
   display: grid;
-  gap: var(--space-lg);
-  margin: 0;
-  padding: 0 0 0 var(--space-lg);
-  border-left: 2px solid rgba(22, 35, 63, 0.18);
-  list-style: none;
+  gap: 0;
 }
 
-/* Each entry is now a card on the wash instead of bare text on mist. */
-.entry {
-  position: relative;
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  background-color: var(--paper);
-  box-shadow: var(--shadow-card);
+.resumeItem {
+  border-bottom: 1.5px solid var(--line);
 }
 
-.node {
-  position: absolute;
-  top: 1.6rem;
-  left: calc(-1 * var(--space-lg) - 7px);
-  width: 12px;
-  height: 12px;
-  border: 2px solid var(--iris);
-  border-radius: 50%;
-  background-color: var(--paper);
+.resumeItem:first-child {
+  border-top: 1.5px solid var(--line);
 }
 
-.entryHead {
+.resumeItem summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: var(--space-sm);
+  align-items: center;
+  gap: var(--space-md);
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;
 }
 
-.role {
-  font-size: 1.3rem;
+.resumeItem summary::-webkit-details-marker {
+  display: none;
 }
 
-.timeframe {
-  flex-shrink: 0;
+.resumeSummary {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.resumeOrg {
+  font-size: 1.15rem;
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+}
+
+.resumeMeta {
   font-size: var(--size-small);
   color: var(--slate);
-  font-variant-numeric: tabular-nums;
 }
 
-.org {
-  margin-top: 0.15rem;
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--iris);
+.resumeChevron {
+  display: block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.2rem;
+  border-right: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  transform: rotate(45deg);
+  transition: transform var(--motion-fast) var(--ease);
 }
 
-.points {
+.resumeItem[open] .resumeChevron {
+  transform: rotate(225deg);
+}
+
+.resumePoints {
   display: grid;
-  gap: 0.5rem;
-  margin: var(--space-sm) 0 0;
-  padding: 0;
-  list-style: none;
+  gap: 0.45rem;
+  margin: 0 0 1.1rem;
+  padding: 0 1.25rem 0.2rem;
   color: var(--slate);
-}
-
-.point {
-  display: flex;
-  gap: 0.7rem;
-}
-
-.pointMark {
-  flex-shrink: 0;
-  width: 5px;
-  height: 5px;
-  margin-top: 0.7rem;
-  border-radius: 50%;
-  background-color: var(--line-strong);
 }
 
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-lg);
-  margin-top: var(--space-xl);
 }
 
 .skillGroup {
   display: grid;
   align-content: start;
   gap: var(--space-sm);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  background-color: var(--paper);
-  box-shadow: var(--shadow-card);
 }
 
 .skillLabel {
-  font-size: 1.25rem;
-}
-
-.skillDescription {
-  font-size: var(--size-small);
-  color: var(--slate);
+  font-size: 1.05rem;
+  font-weight: var(--weight-semibold);
 }
 
 .skillList {
@@ -1164,27 +1136,10 @@ a {
 .skill {
   padding: 0.3rem 0.75rem;
   border: var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   background-color: #f2e9df;
   font-size: var(--size-small);
   color: var(--ink);
-}
-
-.footnote {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-top: var(--space-xl);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  background-color: var(--paper);
-  box-shadow: var(--shadow-card);
-}
-
-.footnoteText {
-  flex: 1 1 18rem;
-  color: var(--slate);
 }
 
 /* ---------------------------------------------------------------- *
@@ -1388,13 +1343,6 @@ a {
 
   .tagList {
     display: none;
-  }
-}
-
-@media (max-width: 620px) {
-  .entryHead {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.2rem;
   }
 }
 
