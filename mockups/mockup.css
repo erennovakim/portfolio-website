@@ -530,9 +530,7 @@ a {
 }
 
 /*
- * Cream wash on Selected Works and Resume. The ramp is short: long enough
- * to avoid a hard edge, short enough that the heading (below this padding)
- * sits on solid overlay.
+ * Cream wash on Selected Works and About.
  */
 .section--washed {
   padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem) - 20px);
@@ -993,9 +991,9 @@ a {
 }
 
 #resume .skill {
-  background-color: rgba(var(--paper-rgb), 0.16);
-  border-color: rgba(var(--paper-rgb), 0.38);
-  color: var(--on-image);
+  background-color: rgba(var(--paper-rgb), 0.88);
+  border-color: rgba(var(--paper-rgb), 0.92);
+  color: var(--ink);
 }
 
 .resumeExperienceFooter {
@@ -1129,6 +1127,7 @@ a {
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
   transform-origin: center bottom;
+  cursor: pointer;
   transition: transform var(--motion-mid) var(--ease);
 }
 
@@ -1154,21 +1153,21 @@ a {
   right: 18%;
   width: 15.2rem;
   z-index: 2;
-  transform: translateY(56%) rotate(-11deg);
+  transform: translateY(58%) rotate(-11deg);
 }
 
 .polaroid--b {
-  right: 7%;
+  right: 6%;
   width: 12.1rem;
   z-index: 3;
-  transform: translateY(52%) rotate(8deg);
+  transform: translateY(54%) rotate(8deg);
 }
 
 .polaroid--c {
-  right: 27%;
+  right: 30%;
   width: 11rem;
   z-index: 1;
-  transform: translateY(58%) rotate(15deg);
+  transform: translateY(60%) rotate(15deg);
 }
 
 .polaroid:hover {
@@ -1176,15 +1175,15 @@ a {
 }
 
 .polaroid--a:hover {
-  transform: translateY(-16%) rotate(-6deg);
+  transform: translateY(-8%) rotate(-6deg);
 }
 
 .polaroid--b:hover {
-  transform: translateY(-20%) rotate(4deg);
+  transform: translateY(-10%) rotate(4deg);
 }
 
 .polaroid--c:hover {
-  transform: translateY(-28%) rotate(9deg);
+  transform: translateY(-22%) rotate(9deg);
 }
 
 /* ---------------------------------------------------------------- *
