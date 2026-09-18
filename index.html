@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Eren Nova Kim — Product Designer</title>
+    <title>Eren Nova Kim - Product Designer</title>
     <meta
       name="description"
       content="Eren Nova Kim is a product designer driven by research and a background in development, studying Informatics at UC Irvine."
     />
-    <meta name="theme-color" content="#2a2333" />
-    <meta property="og:title" content="Eren Nova Kim — Product Designer" />
+    <meta name="theme-color" content="#2b1638" />
+    <meta property="og:title" content="Eren Nova Kim - Product Designer" />
     <meta
       property="og:description"
       content="A product designer driven by research and a background in development."
@@ -18,13 +18,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400;1,500&family=Shippori+Mincho+B1:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/site.css" />
   </head>
-  <body>
-    <div class="backdrop" aria-hidden="true"></div>
+  <body class="page-home">
+    <div class="backdrop" aria-hidden="true">
+      <div class="sunsetVeil"></div>
+    </div>
 
     <header class="navWrapper" data-scrolled="false">
       <nav class="pill" aria-label="Primary">
@@ -41,9 +43,6 @@
         </ul>
       </nav>
 
-      <!-- Mobile: a dot icon in the right corner that drops the menu down.
-           A checkbox drives the open state; mockup.js only decides what
-           colour the bars take from the section behind them. -->
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
       <label class="navToggle" for="nav-menu">
         <span class="navToggleBars" aria-hidden="true"></span>
@@ -61,13 +60,28 @@
     </header>
 
     <main>
-      <!-- ============================ HERO ============================ -->
       <section class="section hero" id="home" aria-labelledby="hero-name">
-        <span class="cloud cloud--float cloud--white cloud--bank at-hero-left" aria-hidden="true"></span>
-        <span
-          class="cloud cloud--float cloud--white cloud--bank cloud--flip at-hero-right"
-          aria-hidden="true"
-        ></span>
+        <div class="cloudWrap cloudWrap--drift-a at-hero-left" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
+        </div>
+        <div class="cloudWrap cloudWrap--drift-b at-hero-right" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--bank cloud--flip"></span>
+        </div>
+        <pre class="asciiCloud asciiCloud--crest asciiCloud--drift-slow" aria-hidden="true">
+          ⢀⣀⣀⡀
+       ⢀⣴⣿⣿⣿⣿⣿⣦⡀
+     ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀
+      ⠈⠻⣿⣿⣿⣿⣿⠟⠁
+         ⠈⠉⠉⠁</pre>
+        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-left at-ascii-hero-mid" aria-hidden="true">
+    ⢀⣀⡀
+  ⢀⣾⣿⣿⣷⡀
+ ⢀⣿⣿⣿⣿⣿⣆
+  ⠈⠻⣿⠟⠁</pre>
+        <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-right at-ascii-hero-far" aria-hidden="true">
+  ⢀⡀   ⣀
+⢀⣾⣿⣷⡀⢀⣾⣿⣆
+⠈⢿⣿⠟⠁⠈⠛⠁</pre>
 
         <div class="container heroInner">
           <div class="haze heroHaze" aria-hidden="true"></div>
@@ -83,22 +97,24 @@
         </div>
       </section>
 
-      <!-- ======================= WORKS ======================= -->
       <section class="section section--washed" id="work" aria-labelledby="work-heading">
-        <span
-          class="cloud cloud--float cloud--reveal cloud--bank cloud--flip at-work-right"
-          aria-hidden="true"
-        ></span>
-        <span
-          class="cloud cloud--float cloud--reveal cloud--corner at-work-corner"
-          aria-hidden="true"
-        ></span>
+        <div class="cloudWrap cloudWrap--drift-c at-work-right" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--bank cloud--flip"></span>
+        </div>
+        <div class="cloudWrap cloudWrap--drift-a at-work-corner" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--corner"></span>
+        </div>
+        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-slow at-ascii-work" aria-hidden="true">
+     ⣀⣤⣤⣀
+   ⢀⣾⣿⣿⣿⣿⣷⡀
+  ⢠⣿⣿⣿⣿⣿⣿⣿⣿⡄
+   ⠈⠛⢿⣿⣿⡿⠛⠁</pre>
 
         <div class="container container--wide">
           <h2 class="visually-hidden" id="work-heading">Works</h2>
 
           <div class="workGrid">
-            <a class="card" href="/work/peterplate/">
+            <a class="card glass" href="/work/peterplate/" data-reveal style="--reveal-delay: 0ms">
               <div class="coverFrame">
                 <img
                   class="cover"
@@ -128,7 +144,7 @@
               </div>
             </a>
 
-            <a class="card" href="/work/ekyu/">
+            <a class="card glass" href="/work/ekyu/" data-reveal style="--reveal-delay: 80ms">
               <div class="coverFrame">
                 <img
                   class="cover"
@@ -158,7 +174,7 @@
               </div>
             </a>
 
-            <a class="card" href="/work/cosi/">
+            <a class="card glass" href="/work/cosi/" data-reveal style="--reveal-delay: 40ms">
               <div class="coverFrame">
                 <img
                   class="cover"
@@ -189,7 +205,7 @@
               </div>
             </a>
 
-            <a class="card" href="/work/fourth-project/">
+            <a class="card glass" href="/work/fourth-project/" data-reveal style="--reveal-delay: 120ms">
               <div class="coverFrame">
                 <img
                   class="cover"
@@ -221,19 +237,24 @@
         </div>
       </section>
 
-      <!-- =========================== RESUME =========================== -->
       <section class="section" id="resume" aria-labelledby="resume-heading">
-        <span class="cloud cloud--float cloud--white cloud--bank at-resume-left" aria-hidden="true"></span>
-        <span
-          class="cloud cloud--float cloud--white cloud--corner cloud--flip at-resume-corner"
-          aria-hidden="true"
-        ></span>
+        <div class="cloudWrap cloudWrap--drift-b at-resume-left" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
+        </div>
+        <div class="cloudWrap cloudWrap--drift-c at-resume-corner" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
+        </div>
+        <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-left at-ascii-resume" aria-hidden="true">
+     ⢀⣀⣤⡀
+   ⣰⣿⣿⣿⣿⣆
+  ⣿⣿⣿⣿⣿⣿⣿
+   ⠙⢿⣿⣿⡿⠋</pre>
 
         <div class="container container--wide resumeInner">
           <div class="haze resumeHaze" aria-hidden="true"></div>
           <h2 class="visually-hidden" id="resume-heading">Resume</h2>
 
-          <div class="resumeGroup">
+          <div class="resumeGroup glass" data-reveal>
             <h3 class="resumeGroupLabel" id="resume-experience">Experience</h3>
 
             <h4 class="resumeSubhead" id="resume-projects">Projects</h4>
@@ -349,7 +370,7 @@
             </div>
           </div>
 
-          <div class="resumeGroup">
+          <div class="resumeGroup glass" data-reveal>
             <h3 class="resumeGroupLabel" id="resume-education">Education</h3>
             <div class="resumeList">
               <details class="resumeItem">
@@ -369,7 +390,7 @@
             </div>
           </div>
 
-          <div class="resumeGroup">
+          <div class="resumeGroup glass" data-reveal>
             <h3 class="resumeGroupLabel" id="resume-skills">Skills</h3>
             <div class="skills">
               <div class="skillGroup">
@@ -425,17 +446,22 @@
         </div>
 
       </section>
-      <!-- ============================ ABOUT =========================== -->
       <section class="section section--washed" id="about" aria-labelledby="about-heading">
-        <span class="cloud cloud--float cloud--reveal cloud--bank at-about-left" aria-hidden="true"></span>
-        <span
-          class="cloud cloud--float cloud--reveal cloud--corner cloud--flip at-about-right"
-          aria-hidden="true"
-        ></span>
+        <div class="cloudWrap cloudWrap--drift-a at-about-left" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
+        </div>
+        <div class="cloudWrap cloudWrap--drift-b at-about-right" aria-hidden="true">
+          <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
+        </div>
+        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-right at-ascii-about" aria-hidden="true">
+  ⣀⣤⣶⣶⣤⣀
+⢰⣿⣿⣿⣿⣿⣿⣿⡆
+⠈⠻⣿⣿⣿⣿⣿⠟⠁
+   ⠉⠛⠋</pre>
 
         <div class="container container--wide aboutInner">
           <div class="aboutLayout">
-            <div class="aboutCopy">
+            <div class="aboutCopy glass" data-reveal>
               <div class="heading aboutHeading">
                 <div class="headingText">
                   <h2 id="about-heading">About</h2>
@@ -498,15 +524,17 @@
       </figure>
     </div>
 
-    <!-- =========================== FOOTER =========================== -->
     <footer class="footer">
-      <span
-        class="cloud cloud--float cloud--white cloud--corner cloud--flip at-footer-corner"
-        aria-hidden="true"
-      ></span>
+      <div class="cloudWrap cloudWrap--drift-c at-footer-corner" aria-hidden="true">
+        <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
+      </div>
+      <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-slow at-ascii-footer" aria-hidden="true">
+   ⢀⣤⣾⣷⣤⡀
+  ⣾⣿⣿⣿⣿⣿⣷
+   ⠙⠻⣿⠟⠋</pre>
 
       <div class="container">
-        <div class="footerLayout">
+        <div class="footerLayout glass" data-reveal>
           <div>
             <h2 class="footerTitle" id="contact-heading">Let’s Build Together!</h2>
             <p class="footerLede">
