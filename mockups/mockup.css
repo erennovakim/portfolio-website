@@ -710,7 +710,7 @@ a {
 .heroTitle {
   margin: 0;
   max-width: 22em;
-  font-size: clamp(1.55rem, 1rem + 1.8vw, 2.35rem);
+  font-size: var(--size-h2);
   font-weight: var(--weight-medium);
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -1036,7 +1036,7 @@ a {
 
 .resumeGroupLabel {
   margin-bottom: var(--space-md);
-  font-size: var(--size-h3);
+  font-size: var(--size-h2);
   color: var(--ink);
 }
 
