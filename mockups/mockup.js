@@ -23,6 +23,8 @@
 
   function apply() {
     queued = false;
+    wrapper.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
+
     if (washed.length === 0) return;
     const box = toggle.getBoundingClientRect();
     const midpoint = box.top + box.height / 2;

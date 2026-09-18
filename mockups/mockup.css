@@ -290,7 +290,7 @@ a {
 }
 
 /* ---------------------------------------------------------------- *
- * Nav: liquid glass
+ * Nav
  * ---------------------------------------------------------------- */
 
 .navWrapper {
@@ -301,19 +301,37 @@ a {
   z-index: 50;
   display: flex;
   justify-content: center;
-  padding: var(--space-sm) var(--space-sm) 0;
+  padding: 1.15rem var(--space-sm) 0;
   pointer-events: none;
 }
 
-/* Fully opaque on desktop: no blur, no specular edge, no glass. */
+/*
+ * At rest the bar is just type on the photograph. After a short scroll
+ * it collapses into the sticky cream pill.
+ */
 .pill {
   position: relative;
   pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  padding: 0.55rem 0.9rem;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: min(100% - 2 * var(--page-gutter), 72rem);
+  padding: 0.35rem 0.25rem;
   border-radius: var(--radius-pill);
+  background-color: transparent;
+  box-shadow: none;
+  transition:
+    width var(--motion-mid) var(--ease),
+    background-color var(--motion-mid) var(--ease),
+    box-shadow var(--motion-mid) var(--ease),
+    padding var(--motion-mid) var(--ease);
+}
+
+.navWrapper[data-scrolled='true'] .pill {
+  width: auto;
+  gap: var(--space-lg);
+  padding: 0.55rem 1.1rem;
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
 }
@@ -322,50 +340,58 @@ a {
   display: flex;
   flex: 1 1 0;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 0.15rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .navList:first-of-type {
+  justify-content: flex-start;
+}
+
+.navList:last-of-type {
   justify-content: flex-end;
 }
 
 .navLink {
   display: inline-block;
-  padding: 0.4rem 0.85rem;
+  padding: 0.4rem 0.75rem;
   border-radius: var(--radius-pill);
   font-size: var(--size-small);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-medium);
   text-decoration: none;
+  color: var(--on-image);
   transition:
     color var(--motion-fast) var(--ease),
     background-color var(--motion-fast) var(--ease);
 }
 
 .wordmark {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: var(--weight-medium);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: var(--weight-regular);
   letter-spacing: 0.01em;
+  line-height: 1.1;
+  padding-bottom: 0.12rem;
   text-decoration: none;
   white-space: nowrap;
-  padding-inline: var(--space-2xs);
-}
-
-.navLink,
-.wordmark {
-  color: var(--ink);
+  padding-inline: var(--space-sm);
+  color: var(--on-image);
 }
 
 .navLink:hover {
-  background-color: rgba(22, 35, 63, 0.09);
+  background-color: rgba(var(--paper-rgb), 0.14);
 }
 
-.navLink[aria-current='true'] {
-  color: var(--iris-deep);
-  background-color: rgba(22, 35, 63, 0.07);
+.navWrapper[data-scrolled='true'] .navLink,
+.navWrapper[data-scrolled='true'] .wordmark {
+  color: var(--ink);
+}
+
+.navWrapper[data-scrolled='true'] .navLink:hover {
+  background-color: rgba(22, 35, 63, 0.09);
 }
 
 /* ---------------------------------------------------------------- *
@@ -647,18 +673,14 @@ a {
  * ---------------------------------------------------------------- */
 
 /*
- * The postcard and portrait are gone, as is the old light gradient.
- * The whole stack — crest, name, tagline, buttons — is centred in the
- * viewport on load. The hero is one viewport tall so that landing
- * position is the section; it is not kept centred after you scroll.
+ * Type-led hero: name lives in the nav wordmark. No postcard, no CTAs.
+ * The stack is centred on first paint the way the reference is.
  */
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* svh last so the first paint centres in the visible mobile viewport
-     (URL bar showing), not the larger layout viewport. */
   min-height: 100vh;
   min-height: 100dvh;
   min-height: 100svh;
@@ -672,55 +694,45 @@ a {
   justify-items: center;
   align-content: center;
   text-align: center;
-  gap: var(--space-lg);
+  gap: var(--space-sm);
 }
 
 .heroHaze {
-  inset: -12% -8%;
+  inset: -18% -10%;
 }
 
-.heroName {
-  font-size: var(--size-display);
-  font-weight: var(--weight-medium);
-  line-height: 0.95;
-  letter-spacing: -0.015em;
-  color: var(--on-image);
-}
-
-.heroTagline {
-  display: grid;
-  gap: 0.1em;
-  max-width: 34ch;
-  font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem);
-  line-height: 1.25;
-  color: var(--on-image);
-}
-
-@media (min-width: 861px) {
-  .heroName {
-    font-size: calc(var(--size-display) - 0.5rem);
-  }
-
-  .heroTagline {
-    font-size: calc(clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem) - 0.5rem);
-    line-height: 1.15;
-    padding-bottom: 0.15rem;
-  }
-}
-
-.heroTaglineAccent {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.12em;
+.heroEyebrow {
+  margin: 0;
+  font-size: var(--size-body);
   color: var(--on-image-soft);
 }
 
-.heroActions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin-top: var(--space-sm);
+.heroTitle {
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  font-size: clamp(3rem, 1.4rem + 6.4vw, 6.75rem);
+  font-weight: var(--weight-medium);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--on-image);
+}
+
+.heroTitleLead {
+  display: block;
+}
+
+.heroTitleAccent {
+  display: block;
+  max-width: 18ch;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: clamp(1.85rem, 1.1rem + 2.6vw, 3.4rem);
+  line-height: 1.12;
+  padding-bottom: 0.2rem;
+  letter-spacing: -0.02em;
+  color: var(--on-image);
 }
 
 /* ---------------------------------------------------------------- *
@@ -1366,16 +1378,7 @@ a {
   }
 
   .heroInner {
-    gap: var(--space-md);
-  }
-
-  .heroInner .cloud--crest {
-    width: 100%;
-    max-width: 416px;
-    height: auto;
-    aspect-ratio: 416 / 135;
-    mask-size: contain;
-    -webkit-mask-size: contain;
+    gap: var(--space-sm);
   }
 
   .workGrid {
