@@ -56,3 +56,46 @@
     link.addEventListener('click', closeMenu);
   });
 })();
+
+(function () {
+  const scatter = document.querySelector('.polaroidScatter');
+  if (!scatter) return;
+
+  const frames = Array.from(scatter.querySelectorAll('.polaroid'));
+
+  function countForWidth(width) {
+    if (width < 520) return 2;
+    if (width < 720) return 3;
+    if (width < 980) return 4;
+    if (width < 1240) return 5;
+    return 6;
+  }
+
+  function isCoarse() {
+    return window.matchMedia('(hover: none), (max-width: 860px)').matches;
+  }
+
+  function layout() {
+    const n = countForWidth(window.innerWidth);
+    scatter.style.setProperty('--n', String(n));
+    scatter.dataset.count = String(n);
+    frames.forEach(function (frame, i) {
+      frame.hidden = i >= n;
+      if (i >= n) frame.classList.remove('is-raised');
+    });
+  }
+
+  scatter.addEventListener('click', function (event) {
+    if (!isCoarse()) return;
+    const card = event.target.closest('.polaroid');
+    if (!card || card.hidden) return;
+    const wasRaised = card.classList.contains('is-raised');
+    frames.forEach(function (frame) {
+      frame.classList.remove('is-raised');
+    });
+    if (!wasRaised) card.classList.add('is-raised');
+  });
+
+  layout();
+  window.addEventListener('resize', layout);
+})();

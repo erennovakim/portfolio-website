@@ -33,7 +33,7 @@
   /* Desktop: original clamp plus 32px. Doubled when the cloud banks
      are visible (see the 1241px query). Mobile restores the original
      clamp with no extra (see the 860px query). */
-  --page-gutter: calc(clamp(1.25rem, 4vw, 2.5rem) + 32px);
+  --page-gutter: calc(2 * (clamp(1.25rem, 4vw, 2.5rem) + 32px));
   --scrim-footer: rgba(16, 27, 51, 0.72);
 
   /* Text sitting directly on the photograph. */
@@ -289,7 +289,7 @@ a {
 
 @media (min-width: 1241px) {
   :root {
-    --page-gutter: calc(2 * (clamp(1.25rem, 4vw, 2.5rem) + 32px));
+    --page-gutter: calc(4 * (clamp(1.25rem, 4vw, 2.5rem) + 32px));
   }
 }
 
@@ -550,8 +550,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: var(--overlay-fade);
-  padding-bottom: calc(var(--overlay-fade) * 0.3);
+  padding-top: calc(var(--overlay-fade) + var(--space-2xl));
+  padding-bottom: calc(var(--overlay-fade) + var(--space-2xl));
 }
 
 /* Content clears the decoration in every section. */
@@ -884,8 +884,8 @@ a {
 
 /* Phosphor Regular, sized to the CTA type. */
 .ctaIcon {
-  width: 1em;
-  height: 1em;
+  width: 1.1em;
+  height: 1.1em;
   flex-shrink: 0;
   display: block;
 }
@@ -926,17 +926,6 @@ a {
 
 .aboutProse p {
   max-width: none;
-}
-
-.aboutPullquote {
-  margin: var(--space-sm) 0;
-  padding-left: var(--space-md);
-  border-left: 3px solid var(--iris);
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
-  line-height: 1.4;
-  color: var(--ink);
 }
 
 /* Room for polaroids peeking up from the footer. */
@@ -1002,6 +991,37 @@ a {
   margin-top: var(--space-lg);
 }
 
+.resumeSubhead {
+  margin: var(--space-lg) 0 var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.01em;
+  color: var(--on-image);
+}
+
+.resumeCluster {
+  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
+  border-bottom: 1.5px solid rgba(var(--paper-rgb), 0.32);
+}
+
+.resumeCluster .resumeOrg {
+  margin: 1.1rem 0.85rem 0.15rem;
+}
+
+.resumeCluster .resumeItem,
+.resumeCluster .resumeItem:first-child {
+  border: 0;
+}
+
+.resumeList > .resumeCluster + .resumeItem {
+  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
+}
+
+.resumeCluster .resumeItem--nested summary {
+  padding-top: 0.4rem;
+}
+
 .resumeGroupLabel {
   margin-bottom: var(--space-md);
   font-size: var(--size-h2);
@@ -1014,7 +1034,15 @@ a {
 }
 
 .resumeItem {
+  padding-inline: 0.85rem;
+  margin-inline: -0.85rem;
   border-bottom: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--motion-fast) var(--ease);
+}
+
+.resumeItem:hover {
+  background-color: rgba(var(--paper-rgb), 0.04);
 }
 
 .resumeItem:first-child {
@@ -1086,8 +1114,9 @@ a {
 }
 
 .skillLabel {
-  font-size: 1.05rem;
-  font-weight: var(--weight-semibold);
+  font-family: var(--font-body);
+  font-size: calc(1.05rem + 12px);
+  font-weight: var(--weight-medium);
 }
 
 .skillList {
@@ -1117,17 +1146,26 @@ a {
   height: 0;
   z-index: 3;
   pointer-events: none;
+  --n: 6;
+}
+
+.polaroid[hidden] {
+  display: none;
 }
 
 .polaroid {
   position: absolute;
   pointer-events: auto;
   bottom: 0;
+  left: calc((var(--i) + 0.5) / var(--n) * 100%);
+  width: calc(100% / var(--n) * 0.82);
   padding: 0.75rem 0.75rem 2.6rem;
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
+  transform: translateX(-50%) translateY(var(--hide, 56%)) rotate(var(--tilt, -8deg));
   transform-origin: center bottom;
   cursor: pointer;
+  z-index: 2;
   transition: transform var(--motion-mid) var(--ease);
 }
 
@@ -1149,41 +1187,16 @@ a {
   color: var(--slate);
 }
 
-.polaroid--a {
-  right: 18%;
-  width: 15.2rem;
-  z-index: 2;
-  transform: translateY(58%) rotate(-11deg);
-}
-
-.polaroid--b {
-  right: 6%;
-  width: 12.1rem;
-  z-index: 3;
-  transform: translateY(54%) rotate(8deg);
-}
-
-.polaroid--c {
-  right: 30%;
-  width: 11rem;
-  z-index: 1;
-  transform: translateY(60%) rotate(15deg);
-}
-
-.polaroid:hover {
+.polaroid.is-raised {
   z-index: 6;
+  transform: translateX(-50%) translateY(-10%) rotate(calc(var(--tilt, -8deg) * 0.45));
 }
 
-.polaroid--a:hover {
-  transform: translateY(-8%) rotate(-6deg);
-}
-
-.polaroid--b:hover {
-  transform: translateY(-10%) rotate(4deg);
-}
-
-.polaroid--c:hover {
-  transform: translateY(-22%) rotate(9deg);
+@media (hover: hover) and (pointer: fine) {
+  .polaroid:hover {
+    z-index: 6;
+    transform: translateX(-50%) translateY(-10%) rotate(calc(var(--tilt, -8deg) * 0.45));
+  }
 }
 
 /* ---------------------------------------------------------------- *
@@ -1353,7 +1366,7 @@ a {
 
 @media (max-width: 860px) {
   :root {
-    --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+    --page-gutter: calc(2 * clamp(1.25rem, 4vw, 2.5rem));
   }
 
   /* The pill gives way to a single dot icon in the right corner. */
@@ -1379,21 +1392,6 @@ a {
 
   .tagList {
     display: none;
-  }
-
-  .polaroid--a {
-    right: 22%;
-    width: 10.4rem;
-  }
-
-  .polaroid--b {
-    right: 4%;
-    width: 8.8rem;
-  }
-
-  .polaroid--c {
-    right: 38%;
-    width: 8rem;
   }
 
   #about.section--washed {
