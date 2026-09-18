@@ -420,7 +420,12 @@ a {
 
 .navLink.is-current,
 .navWrapper[data-scrolled='true'] .navLink.is-current {
-  color: var(--iris);
+  color: #503431;
+}
+
+.navLink.is-current:hover::after,
+.navLink.is-current:focus-visible::after {
+  background-color: #503431;
 }
 
 /* ---------------------------------------------------------------- *
@@ -561,7 +566,12 @@ a {
 }
 
 .navSheetLink.is-current {
-  color: var(--iris);
+  color: #503431;
+}
+
+.navSheetLink.is-current:hover::after,
+.navSheetLink.is-current:focus-visible::after {
+  background-color: #503431;
 }
 
 /* ---------------------------------------------------------------- *
@@ -872,13 +882,14 @@ a {
   padding: 0.4rem var(--space-xs) var(--space-xs);
 }
 
-.cardTitle,
-.resumeSubhead,
-.skillLabel {
+h3.cardTitle,
+h4.resumeSubhead,
+h4.skillLabel {
   font-family: var(--font-body);
   font-size: calc(1.05rem + 12px);
   font-weight: var(--weight-regular);
   letter-spacing: 0.01em;
+  line-height: var(--leading-snug);
 }
 
 .cardMeta {
@@ -1383,10 +1394,6 @@ a {
 .at-work-corner {
   top: -110px;
   left: -310px;
-  width: 360px;
-  height: 185px;
-  mask-size: contain;
-  -webkit-mask-size: contain;
 }
 
 .at-about-left {
