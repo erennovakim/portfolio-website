@@ -398,11 +398,6 @@ a {
   transform: scaleX(1);
 }
 
-.navLink.is-current,
-.navWrapper[data-scrolled='true'] .navLink.is-current {
-  color: var(--iris);
-}
-
 .wordmark {
   font-family: var(--font-accent);
   font-style: italic;
@@ -421,6 +416,10 @@ a {
 .navWrapper[data-scrolled='true'] .navLink,
 .navWrapper[data-scrolled='true'] .wordmark {
   color: var(--ink);
+}
+
+.navLink.is-current {
+  color: var(--iris);
 }
 
 /* ---------------------------------------------------------------- *
