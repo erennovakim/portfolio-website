@@ -6,6 +6,7 @@ import { ScrollManager } from './lib/ScrollManager';
 export function App() {
   return (
     <>
+      <div className="backdrop" aria-hidden="true" />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

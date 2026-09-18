@@ -11,9 +11,7 @@
   display: inline-block;
   padding: 0.25rem 0.7rem;
   border: var(--border);
-  border-radius: var(--radius-pill);
-  background-color: var(--haze);
-  color: var(--slate);
+  border-radius: var(--radius-sm);
   font-size: var(--size-small);
   line-height: 1.5;
 }

@@ -1,7 +1,8 @@
 .header {
   padding-top: calc(var(--nav-height) + var(--space-xl));
   padding-bottom: var(--space-xl);
-  background:
+  background-color: var(--paper);
+  background-image:
     radial-gradient(80% 60% at 50% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 65%),
     linear-gradient(180deg, var(--dawn) 0%, var(--haze) 60%, var(--mist) 100%);
 }
@@ -74,6 +75,7 @@
 
 .body {
   padding-block: var(--space-2xl) var(--space-3xl);
+  background-color: var(--paper);
 }
 
 .draftNotice {

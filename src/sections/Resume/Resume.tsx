@@ -1,83 +1,114 @@
 import { Button } from '../../components/Button/Button';
-import { Motif } from '../../components/Motif/Motif';
-import { Reveal } from '../../components/Reveal/Reveal';
-import { SectionHeading } from '../../components/SectionHeading/SectionHeading';
-import { skillGroups, timeline } from '../../lib/resume';
+import { Cloud } from '../../components/Cloud/Cloud';
+import { DownloadIcon } from '../../components/icons';
+import {
+  educationItems,
+  peterplateCluster,
+  projectItems,
+  skillGroups,
+  workItems,
+  type ResumeItem,
+} from '../../lib/resume';
 import { site } from '../../lib/site';
 import styles from './Resume.module.css';
 
+function ResumeDetails({ item, nested = false }: { item: ResumeItem; nested?: boolean }) {
+  return (
+    <details className={`${styles.item} ${nested ? styles.nested : ''}`}>
+      <summary>
+        <span className={styles.summary}>
+          {item.org ? <span className={styles.org}>{item.org}</span> : null}
+          <span className={styles.meta}>{item.meta}</span>
+        </span>
+        <span className={styles.chevron} aria-hidden="true" />
+      </summary>
+      <ul className={styles.points}>
+        {item.points.map((point) => (
+          <li key={point}>{point}</li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
 export function Resume() {
   return (
-    <section className={styles.section} id="resume" aria-labelledby="resume-heading">
-      <Motif kind="stem" style={{ top: '10%', right: '3%' }} width={96} />
+    <section className="section" id="resume" aria-labelledby="resume-heading">
+      <Cloud kind="bank" fill="white" placement="resumeLeft" />
+      <Cloud kind="corner" fill="white" placement="resumeCorner" flip />
 
-      <div className="container">
-        <SectionHeading
-          id="resume-heading"
-          title="Resume"
-          lede="Education, projects and work, in the order they happened."
-          action={
-            <Button href={site.resume} download>
-              Download resume
-            </Button>
-          }
-        />
+      <div className={`container container-wide ${styles.inner}`}>
+        <div className={`haze ${styles.haze}`} aria-hidden="true" />
+        <h2 className="visually-hidden" id="resume-heading">
+          Resume
+        </h2>
 
-        {timeline.map((group) => (
-          <div className={styles.group} key={group.id}>
-            <h3 className={styles.groupLabel} id={`resume-${group.id}`}>
-              {group.label}
-            </h3>
+        <div className={styles.group}>
+          <h3 className={styles.groupLabel} id="resume-experience">
+            Experience
+          </h3>
 
-            <ol className={styles.rail} aria-labelledby={`resume-${group.id}`}>
-              {group.entries.map((entry) => (
-                <li className={styles.entry} key={`${entry.org}-${entry.role}-${entry.timeframe}`}>
-                  <span className={styles.node} aria-hidden="true" />
-
-                  <div className={styles.entryHead}>
-                    <h4 className={styles.role}>{entry.role}</h4>
-                    <span className={styles.timeframe}>{entry.timeframe}</span>
-                  </div>
-
-                  <p className={styles.org}>{entry.org}</p>
-
-                  <ul className={styles.points}>
-                    {entry.points.map((point) => (
-                      <li className={styles.point} key={point}>
-                        <span className={styles.pointMark} aria-hidden="true" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+          <h4 className={styles.subhead} id="resume-projects">
+            Projects
+          </h4>
+          <div className={styles.list}>
+            <div className={styles.cluster}>
+              <p className={styles.org}>{peterplateCluster.org}</p>
+              {peterplateCluster.roles.map((role) => (
+                <ResumeDetails key={role.meta} item={role} nested />
               ))}
-            </ol>
+            </div>
+            {projectItems.map((item) => (
+              <ResumeDetails key={item.org} item={item} />
+            ))}
           </div>
-        ))}
 
-        <div className={styles.skills}>
-          {skillGroups.map((group, index) => (
-            <Reveal key={group.id} className={styles.skillGroup} delay={index * 80}>
-              <h3 className={styles.skillLabel}>{group.label}</h3>
-              <p className={styles.skillDescription}>{group.description}</p>
-              <ul className={styles.skillList}>
-                {group.items.map((item) => (
-                  <li className={styles.skill} key={item}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
+          <h4 className={styles.subhead} id="resume-work">
+            Work
+          </h4>
+          <div className={styles.list}>
+            {workItems.map((item) => (
+              <ResumeDetails key={item.org} item={item} />
+            ))}
+          </div>
+
+          <div className={styles.experienceFooter}>
+            <Button href={site.resume} download variant="onDark">
+              Download Resume
+              <DownloadIcon />
+            </Button>
+          </div>
         </div>
 
-        <div className={styles.footnote}>
-          <p className={styles.footnoteText}>
-            Want the one-page version to pass along? Take the PDF.
-          </p>
-          <Button href={site.resume} download>
-            Download resume
-          </Button>
+        <div className={styles.group}>
+          <h3 className={styles.groupLabel} id="resume-education">
+            Education
+          </h3>
+          <div className={styles.list}>
+            {educationItems.map((item) => (
+              <ResumeDetails key={item.org} item={item} />
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.group}>
+          <h3 className={styles.groupLabel} id="resume-skills">
+            Skills
+          </h3>
+          <div className={styles.skills}>
+            {skillGroups.map((group) => (
+              <div className={styles.skillGroup} key={group.id}>
+                <h4 className={styles.skillLabel}>{group.label}</h4>
+                <ul className={styles.skillList}>
+                  {group.items.map((item) => (
+                    <li className={styles.skill} key={item}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

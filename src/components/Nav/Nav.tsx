@@ -1,24 +1,52 @@
-import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { sections, site } from '../../lib/site';
+import { navLeft, navRight, navSheet, site, spySectionIds } from '../../lib/site';
 import { useScrollSpy } from '../../lib/useScrollSpy';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Nav.module.css';
 
-const ids = sections.map((section) => section.id);
-const [leftLinks, rightLinks] = [sections.slice(0, 2), sections.slice(2)];
+type NavItem = (typeof navSheet)[number];
 
 export function Nav() {
   const { pathname, hash } = useLocation();
   const isHome = pathname === '/';
-  const active = useScrollSpy(ids, isHome);
+  const active = useScrollSpy(spySectionIds, isHome);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [behind, setBehind] = useState<'sky' | 'overlay'>('sky');
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const apply = () => {
+      setScrolled(window.scrollY > 24);
+
+      const toggle = toggleRef.current;
+      const washed = Array.from(document.querySelectorAll('.section--washed'));
+      if (!toggle || washed.length === 0) {
+        setBehind('sky');
+        return;
+      }
+      const box = toggle.getBoundingClientRect();
+      const midpoint = box.top + box.height / 2;
+      const overWash = washed.some((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= midpoint && rect.bottom >= midpoint;
+      });
+      setBehind(overWash ? 'overlay' : 'sky');
+    };
+
+    apply();
+    window.addEventListener('scroll', apply, { passive: true });
+    window.addEventListener('resize', apply);
+    return () => {
+      window.removeEventListener('scroll', apply);
+      window.removeEventListener('resize', apply);
+    };
+  }, []);
+
+  useEffect(() => {
+    const close = () => setOpen(false);
+    window.addEventListener('scroll', close, { passive: true });
+    return () => window.removeEventListener('scroll', close);
   }, []);
 
   useEffect(() => {
@@ -27,72 +55,70 @@ export function Nav() {
 
   const isCurrent = (id: string) => isHome && active === id;
 
-  const renderLinks = (items: typeof sections | typeof leftLinks) =>
-    items.map((section) => (
-      <li key={section.id}>
-        <Link
-          to={`/#${section.id}`}
-          className={`${styles.link} ${isCurrent(section.id) ? styles.current : ''}`}
-          aria-current={isCurrent(section.id) ? 'true' : undefined}
-        >
-          {section.label}
-        </Link>
-      </li>
-    ));
+  const itemLink = (item: NavItem, className: string) => {
+    if (item.kind === 'mail') {
+      return (
+        <a className={className} href={`mailto:${site.email}`} onClick={() => setOpen(false)}>
+          {item.label}
+        </a>
+      );
+    }
+
+    return (
+      <Link
+        to={`/#${item.id}`}
+        className={`${className} ${isCurrent(item.id) ? styles.current : ''}`}
+        aria-current={isCurrent(item.id) ? 'true' : undefined}
+        onClick={() => setOpen(false)}
+      >
+        {item.label}
+      </Link>
+    );
+  };
 
   return (
-    <header className={styles.wrapper}>
-      <nav
-        className={`${styles.pill} ${scrolled ? styles.scrolled : ''}`}
-        aria-label="Primary"
-      >
-        <ul className={styles.list}>{renderLinks(leftLinks)}</ul>
+    <header
+      className={styles.wrapper}
+      data-scrolled={scrolled ? 'true' : 'false'}
+      data-behind={behind}
+    >
+      <nav className={styles.pill} aria-label="Primary">
+        <ul className={styles.list}>
+          {navLeft.map((item) => (
+            <li key={item.label}>{itemLink(item, styles.link)}</li>
+          ))}
+        </ul>
 
         <Link to="/#home" className={styles.wordmark}>
           {site.name}
         </Link>
 
-        <ul className={styles.list}>{renderLinks(rightLinks)}</ul>
-
-        <button
-          type="button"
-          className={styles.toggle}
-          aria-expanded={open}
-          aria-controls="nav-sheet"
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="visually-hidden">{open ? 'Close menu' : 'Open menu'}</span>
-          <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true">
-            {open ? (
-              <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-                <path d="M3 2l12 10M15 2L3 12" />
-              </g>
-            ) : (
-              <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-                <path d="M1 2h16M1 7h16M1 12h16" />
-              </g>
-            )}
-          </svg>
-        </button>
-
-        {open ? (
-          <div className={styles.sheet} id="nav-sheet">
-            <ul className={styles.sheetList}>
-              {sections.map((section) => (
-                <li key={section.id}>
-                  <Link
-                    to={`/#${section.id}`}
-                    className={styles.sheetLink}
-                    aria-current={isCurrent(section.id) ? 'true' : undefined}
-                  >
-                    {section.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+        <ul className={styles.list}>
+          {navRight.map((item) => (
+            <li key={item.id}>{itemLink(item, styles.link)}</li>
+          ))}
+        </ul>
       </nav>
+
+      <button
+        ref={toggleRef}
+        type="button"
+        className={styles.toggle}
+        aria-expanded={open}
+        aria-controls="nav-sheet"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span className={`${styles.toggleBars} ${open ? styles.toggleOpen : ''}`} aria-hidden="true" />
+        <span className="visually-hidden">{open ? 'Close menu' : 'Menu'}</span>
+      </button>
+
+      <div className={`${styles.sheet} ${open ? styles.sheetOpen : ''}`} id="nav-sheet" hidden={!open}>
+        <ul className={styles.sheetList}>
+          {navSheet.map((item) => (
+            <li key={item.label}>{itemLink(item, styles.sheetLink)}</li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 }

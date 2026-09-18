@@ -1,32 +1,25 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Tracks which section occupies the reading position so the nav can mark it
- * as current. Uses a band near the top of the viewport rather than plain
- * intersection, which keeps short sections from stealing the active state.
+ * Marks the section that currently contains a probe 40% down the viewport,
+ * matching the mockup spy so short stacked sections do not steal the highlight.
  */
 export function useScrollSpy(ids: readonly string[], enabled: boolean) {
-  const [active, setActive] = useState<string>(ids[0] ?? '');
+  const [active, setActive] = useState('');
 
   useEffect(() => {
     if (!enabled) return;
 
     const read = () => {
-      const line = window.innerHeight * 0.35;
-      let current = ids[0] ?? '';
+      const probe = window.innerHeight * 0.4;
+      let current = '';
 
       ids.forEach((id) => {
         const node = document.getElementById(id);
-        if (node && node.getBoundingClientRect().top <= line) {
-          current = id;
-        }
+        if (!node) return;
+        const rect = node.getBoundingClientRect();
+        if (rect.top <= probe && rect.bottom > probe) current = id;
       });
-
-      const atBottom =
-        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
-      if (atBottom) {
-        current = ids[ids.length - 1] ?? current;
-      }
 
       setActive(current);
     };

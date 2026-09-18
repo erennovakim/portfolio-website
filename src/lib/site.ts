@@ -16,3 +16,17 @@ export const sections = [
 ] as const;
 
 export type SectionId = (typeof sections)[number]['id'];
+
+export const spySectionIds = ['work', 'about', 'resume'] as const;
+
+export const navLeft = [
+  { kind: 'mail' as const, label: 'Let’s Connect' },
+  { kind: 'hash' as const, id: 'work' as const, label: 'Works' },
+];
+
+export const navRight = [
+  { kind: 'hash' as const, id: 'about' as const, label: 'About' },
+  { kind: 'hash' as const, id: 'resume' as const, label: 'Resume' },
+];
+
+export const navSheet = [...navLeft, ...navRight];

@@ -1,107 +1,91 @@
-export interface TimelineEntry {
-  role: string;
-  org: string;
-  timeframe: string;
+export interface ResumeItem {
+  org?: string;
+  meta: string;
   points: string[];
 }
 
-export interface TimelineGroup {
-  id: string;
-  label: string;
-  entries: TimelineEntry[];
+export interface ResumeCluster {
+  org: string;
+  roles: ResumeItem[];
 }
 
-export const timeline: TimelineGroup[] = [
+export const peterplateCluster: ResumeCluster = {
+  org: 'PeterPlate',
+  roles: [
+    {
+      meta: 'UI/UX Designer, January 2026 - Present',
+      points: [
+        'Apply design thinking and journey mapping to build a 0-to-1 web and mobile interface for a campus dining ecosystem.',
+        'Conduct user interviews and usability testing to validate needs, then refine high-fidelity Figma prototypes with accessibility in mind.',
+        'Work with developers in Agile and Scrum to produce design specs, prioritise deliverables, and keep Figma handoff technically feasible across touchpoints.',
+      ],
+    },
+    {
+      meta: 'Software Developer, October 2025 - January 2026',
+      points: [
+        'Built frontend and backend components with TypeScript, Tailwind CSS, tRPC procedures and ShadCN, working with designers to meet design requirements and responsive UI standards.',
+      ],
+    },
+  ],
+};
+
+export const projectItems: ResumeItem[] = [
   {
-    id: 'education',
-    label: 'Education',
-    entries: [
-      {
-        role: 'B.S. Informatics, minor in Information & Computer Science',
-        org: 'University of California, Irvine',
-        timeframe: 'Expected June 2027',
-        points: [
-          'Regents Scholarship, Dean’s Honor List, and an invitation to the Campuswide Honors Collegium.',
-        ],
-      },
+    org: 'Ēkyu',
+    meta: 'UI/UX Designer, April 2026',
+    points: [
+      'Placed top 10 of more than 400 participants with an integrated hardware and software solution for selective noise cancellation, including a full case study written in a 40-hour sprint.',
+      'Designed a mobile controller app and a physical gesture system, with custom icons and brand identity carrying across both.',
+      'Interviewed a hearing-impaired collaborator and confirmed design choices with them to ground inclusive features in research.',
     ],
   },
   {
-    id: 'projects',
-    label: 'Project experience',
-    entries: [
-      {
-        role: 'UI/UX Designer',
-        org: 'PeterPlate, Information and Computer Science Student Council',
-        timeframe: 'January 2026 — Present',
-        points: [
-          'Apply design thinking and journey mapping to build a 0-to-1 web and mobile interface for a campus dining ecosystem.',
-          'Conduct user interviews and usability testing to validate needs, then refine high-fidelity Figma prototypes with accessibility in mind.',
-          'Work with developers in Agile and Scrum to produce design specs, prioritise deliverables, and keep Figma handoff technically feasible across touchpoints.',
-        ],
-      },
-      {
-        role: 'Software Developer',
-        org: 'PeterPlate, Information and Computer Science Student Council',
-        timeframe: 'October 2025 — January 2026',
-        points: [
-          'Built frontend and backend components with TypeScript, Tailwind CSS, tRPC procedures and ShadCN, working with designers to meet design requirements and responsive UI standards.',
-        ],
-      },
-      {
-        role: 'UI/UX Designer',
-        org: 'Ēkyu, UCI Design-a-thon',
-        timeframe: 'April 2026',
-        points: [
-          'Placed top 10 of more than 400 participants with an integrated hardware and software solution for selective noise cancellation, including a full case study written in a 40-hour sprint.',
-          'Designed a mobile controller app and a physical gesture system, with custom icons and brand identity carrying across both.',
-          'Interviewed a hearing-impaired collaborator and confirmed design choices with them to ground inclusive features in research.',
-        ],
-      },
-      {
-        role: 'UI/UX Designer',
-        org: 'Cosi, Design at UCI',
-        timeframe: 'January 2026 — March 2026',
-        points: [
-          'Designed an app that improves household dynamics through conflict-neutral communication flows and task management that makes each person’s contribution visible.',
-          'Ran user research to build personas and flows addressing friction points people described, then tested the proposed solutions.',
-          'Built the branding and design system in Figma so high-fidelity prototypes stayed consistent.',
-        ],
-      },
+    org: 'Cosi',
+    meta: 'UI/UX Designer, January 2026 - March 2026',
+    points: [
+      'Designed an app that improves household dynamics through conflict-neutral communication flows and task management that makes each person’s contribution visible.',
+      'Ran user research to build personas and flows addressing friction points people described, then tested the proposed solutions.',
+      'Built the branding and design system in Figma so high-fidelity prototypes stayed consistent.',
+    ],
+  },
+];
+
+export const workItems: ResumeItem[] = [
+  {
+    org: 'Design at UCI',
+    meta: 'Workshops Coordinator, April 2026 - Present',
+    points: [
+      'Research, create and present workshops on design trends, design thinking methods and tools like Figma, for new and experienced designers.',
+      'Host external workshops at hackathons and other events, using research insights to tailor the content to each audience.',
     ],
   },
   {
-    id: 'work',
-    label: 'Work experience',
-    entries: [
-      {
-        role: 'Workshops Coordinator',
-        org: 'Design at UCI',
-        timeframe: 'April 2026 — Present',
-        points: [
-          'Research, create and present workshops on design trends, design thinking methods and tools like Figma, for new and experienced designers.',
-          'Host external workshops at hackathons and other events, using research insights to tailor the content to each audience.',
-        ],
-      },
-      {
-        role: 'Research Engagement & Compliance Assistant',
-        org: 'UCI Office of Research, Conflict of Interest Oversight Committee',
-        timeframe: 'July 2025 — Present',
-        points: [
-          'Manage compliance documentation by distributing required forms, running systematic follow-up communication, and joining team synchronisation meetings.',
-          'Led a data cleanup across more than 2,000 records, improving database efficiency and consistency.',
-          'Synthesise complex research information into short, actionable summaries and compile financial interest review packets for committee evaluation.',
-        ],
-      },
-      {
-        role: 'Student Union Organizer',
-        org: 'Palisades Charter High School',
-        timeframe: 'May 2022 — June 2023',
-        points: [
-          'Led more than 50 club members organising fundraising and community service projects, and oversaw club finances.',
-          'Acted as liaison between the student body and school administration to secure funding and keep activities aligned with school policy.',
-        ],
-      },
+    org: 'UCI Office of Research',
+    meta: 'Research Engagement and Compliance Assistant, July 2025 - Present',
+    points: [
+      'Manage compliance documentation by distributing required forms, running systematic follow-up communication, and joining team synchronisation meetings.',
+      'Led a data cleanup across more than 2,000 records, improving database efficiency and consistency.',
+      'Synthesise complex research information into short, actionable summaries and compile financial interest review packets for committee evaluation.',
+    ],
+  },
+  {
+    org: 'Palisades Charter High School',
+    meta: 'Student Union Organizer, May 2022 - June 2023',
+    points: [
+      'Led more than 50 club members organising fundraising and community service projects, and oversaw club finances.',
+      'Acted as liaison between the student body and school administration to secure funding and keep activities aligned with school policy.',
+    ],
+  },
+];
+
+export const educationItems: ResumeItem[] = [
+  {
+    org: 'University of California, Irvine',
+    meta: 'B.S. Informatics, minor in Information and Computer Science, Expected June 2027',
+    points: [
+      'Regents Scholarship',
+      'Dean’s Honor List',
+      'Invited to the Campuswide Honors Collegium',
     ],
   },
 ];
@@ -109,15 +93,13 @@ export const timeline: TimelineGroup[] = [
 export interface SkillGroup {
   id: string;
   label: string;
-  description: string;
   items: string[];
 }
 
 export const skillGroups: SkillGroup[] = [
   {
     id: 'technical',
-    label: 'Technical tools',
-    description: 'What I design and build in.',
+    label: 'Technical Tools',
     items: [
       'Figma',
       'Framer',
@@ -136,8 +118,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     id: 'design',
-    label: 'Design and UX',
-    description: 'How I get from a question to a tested interface.',
+    label: 'Design And UX',
     items: [
       'High-fidelity prototyping',
       'Wireframing',
@@ -155,8 +136,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     id: 'collaboration',
-    label: 'Working with people',
-    description: 'Demonstrated across the roles listed above.',
+    label: 'Working With People',
     items: [
       'Cross-functional collaboration',
       'Agile and Scrum delivery',

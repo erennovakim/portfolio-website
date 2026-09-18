@@ -4,7 +4,7 @@
   justify-content: center;
   gap: var(--space-2xs);
   padding: 0.7rem 1.4rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   border: 1.5px solid transparent;
   font-family: var(--font-body);
   font-size: var(--size-body);
@@ -15,12 +15,7 @@
   transition:
     background-color var(--motion-fast) var(--ease),
     border-color var(--motion-fast) var(--ease),
-    color var(--motion-fast) var(--ease),
-    transform var(--motion-fast) var(--ease);
-}
-
-.button:active {
-  transform: translateY(1px);
+    color var(--motion-fast) var(--ease);
 }
 
 .primary {
@@ -59,9 +54,10 @@
 .onDark {
   background-color: var(--paper);
   color: var(--dusk);
+  box-shadow: var(--shadow-card);
 }
 
 .onDark:hover {
-  background-color: var(--dawn);
+  background-color: #fff;
   color: var(--dusk);
 }

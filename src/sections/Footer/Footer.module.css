@@ -1,12 +1,17 @@
 .footer {
   position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
-  padding-block: var(--space-3xl) var(--space-xl);
-  background-color: var(--dusk);
-  color: var(--paper);
+  padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
+  background-color: #292532;
+  color: var(--on-image);
 }
 
 .layout {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: var(--space-2xl);
@@ -14,7 +19,7 @@
 }
 
 .title {
-  color: var(--paper);
+  color: var(--on-image);
   font-size: var(--size-h2);
 }
 
@@ -22,7 +27,7 @@
   margin-top: var(--space-sm);
   max-width: 34ch;
   font-size: var(--size-body-lg);
-  color: #c3cfe6;
+  color: var(--on-image-soft);
 }
 
 .actions {
@@ -46,21 +51,22 @@
   font-family: var(--font-accent);
   font-style: italic;
   font-size: 1.15rem;
-  color: #a9bcdd;
+  color: var(--on-image-soft);
 }
 
 .contactLink {
-  color: var(--paper);
+  color: var(--on-image);
   font-size: var(--size-body-lg);
-  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-decoration-color: rgba(var(--paper-rgb), 0.45);
 }
 
 .contactLink:hover {
-  color: var(--dawn);
   text-decoration-color: currentColor;
 }
 
 .baseline {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -68,37 +74,20 @@
   gap: var(--space-sm);
   margin-top: var(--space-2xl);
   padding-top: var(--space-md);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-top: 1.5px solid rgba(var(--paper-rgb), 0.2);
   font-size: var(--size-small);
-  color: #a9bcdd;
+  color: var(--on-image-soft);
 }
 
 .topLink {
-  color: var(--paper);
+  color: var(--on-image);
   text-decoration: none;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
-}
-
-.topLink:hover {
-  color: var(--dawn);
-  border-color: var(--dawn);
-}
-
-.motif {
-  position: absolute;
-  right: 3%;
-  bottom: -2rem;
-  color: rgba(255, 255, 255, 0.16);
-  pointer-events: none;
+  border-bottom: 1.5px solid rgba(var(--paper-rgb), 0.4);
 }
 
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xl);
-  }
-
-  .motif {
-    display: none;
   }
 }

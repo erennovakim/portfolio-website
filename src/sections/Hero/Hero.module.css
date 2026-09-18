@@ -1,11 +1,11 @@
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding-top: calc(var(--nav-height) + var(--space-2xl));
-  padding-bottom: var(--space-3xl);
-  background:
-    radial-gradient(70% 46% at 50% 6%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 62%),
-    linear-gradient(180deg, #a8c6ee 0%, #c4d9f4 26%, var(--dawn) 52%, var(--haze) 82%, var(--mist) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  padding-block: 0;
 }
 
 .inner {
@@ -13,86 +13,53 @@
   z-index: 1;
   display: grid;
   justify-items: center;
+  align-content: center;
   text-align: center;
-  gap: var(--space-lg);
+  gap: 0;
 }
 
-.name {
-  font-size: var(--size-display);
-  font-weight: var(--weight-medium);
-  line-height: 0.95;
-  letter-spacing: -0.015em;
-  margin: 0;
+.haze {
+  inset: -18% -10%;
 }
 
-.tagline {
-  display: grid;
-  gap: 0.1em;
-  max-width: 34ch;
-  font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.1rem);
-  line-height: 1.25;
-  color: var(--ink);
-}
-
-.taglineAccent {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.12em;
-  color: var(--iris);
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-sm);
-}
-
-.postcard {
-  display: grid;
-  grid-template-columns: 6.5rem 1fr;
-  gap: var(--space-md);
-  align-items: center;
-  max-width: 30rem;
-  margin-top: var(--space-lg);
-  padding: var(--space-sm);
-  border: var(--border);
-  border-radius: var(--radius-lg);
-  background-color: rgba(255, 255, 255, 0.86);
-  box-shadow: var(--shadow-card);
-  text-align: left;
-}
-
-.portrait {
-  width: 6.5rem;
-  height: 7.5rem;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  background-color: var(--haze);
-}
-
-.postcardTitle {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.35rem;
-  color: var(--slate);
-  margin-bottom: 0.35rem;
-}
-
-.postcardList {
-  display: grid;
-  gap: 0.35rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--size-small);
-  color: var(--ink);
+.kicker,
+.sub {
+  font-size: 1.625rem;
+  font-weight: 300;
   line-height: 1.45;
+  color: var(--on-image-soft);
 }
 
-@media (max-width: 560px) {
-  .postcard {
-    grid-template-columns: 1fr;
-    justify-items: start;
+.kicker {
+  margin: 0 0 1.25rem;
+}
+
+.title {
+  margin: 0 0 1.25rem;
+  max-width: 14em;
+  font-size: var(--size-h2);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--on-image);
+}
+
+.title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(1em + 4px);
+  line-height: 1.2;
+  padding-bottom: 0.12em;
+}
+
+.sub {
+  margin: 0;
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: 100svh;
   }
 }

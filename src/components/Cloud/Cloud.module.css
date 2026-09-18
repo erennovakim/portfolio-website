@@ -1,0 +1,100 @@
+.cloud {
+  display: block;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  pointer-events: none;
+}
+
+.float {
+  position: absolute;
+  z-index: 0;
+}
+
+.white {
+  background-color: var(--on-image);
+  opacity: 0.28;
+}
+
+.reveal {
+  background: url('/dark-sunset.jpeg') center / cover fixed no-repeat;
+  opacity: 0.36;
+}
+
+.bank {
+  width: 277px;
+  height: 1275px;
+  mask-image: url('/art/cloud-bank.svg');
+  -webkit-mask-image: url('/art/cloud-bank.svg');
+}
+
+.corner {
+  width: 548px;
+  height: 281px;
+  mask-image: url('/art/cloud-corner.svg');
+  -webkit-mask-image: url('/art/cloud-corner.svg');
+}
+
+.crest {
+  width: 416px;
+  height: 135px;
+  mask-image: url('/art/cloud-crest.svg');
+  -webkit-mask-image: url('/art/cloud-crest.svg');
+}
+
+.flip {
+  transform: scaleX(-1);
+}
+
+.atHeroLeft {
+  top: 6%;
+  left: -118px;
+}
+
+.atHeroRight {
+  top: 16%;
+  right: -118px;
+}
+
+.atWorkRight {
+  top: 4%;
+  right: -124px;
+}
+
+.atWorkCorner {
+  top: -110px;
+  left: -310px;
+}
+
+.atAboutLeft {
+  top: 4%;
+  left: -124px;
+}
+
+.atAboutRight {
+  right: -250px;
+  bottom: 3%;
+}
+
+.atResumeLeft {
+  top: 3%;
+  left: -124px;
+}
+
+.atResumeCorner {
+  right: -230px;
+  bottom: -70px;
+}
+
+.atFooterCorner {
+  right: -210px;
+  bottom: -90px;
+}
+
+@media (max-width: 1240px) {
+  .bank,
+  .corner {
+    display: none;
+  }
+}
