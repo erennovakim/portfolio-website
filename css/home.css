@@ -872,8 +872,7 @@ html.has-js [data-reveal].is-inview {
   }
 
   .heroArt {
-    justify-self: start;
-    order: -1;
+    display: none;
   }
 
   .ascii--layer {
