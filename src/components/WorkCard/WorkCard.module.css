@@ -1,0 +1,104 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-sm);
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color var(--motion-mid) var(--ease),
+    box-shadow var(--motion-mid) var(--ease),
+    transform var(--motion-mid) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--iris);
+  box-shadow: 0 4px 8px rgba(22, 35, 63, 0.07), 0 20px 44px rgba(22, 35, 63, 0.14);
+  transform: translateY(-3px);
+  color: var(--ink);
+}
+
+.coverFrame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--haze);
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--line-strong);
+  background-color: var(--paper);
+  color: var(--slate);
+  font-size: var(--size-small);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xs) var(--space-xs);
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--size-small);
+  color: var(--slate);
+}
+
+.metaDivider {
+  width: 1px;
+  height: 0.9rem;
+  background-color: var(--line-strong);
+}
+
+.summary {
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--iris);
+  color: var(--paper);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-small);
+}
+
+.card:hover .cta {
+  background-color: var(--iris-deep);
+}

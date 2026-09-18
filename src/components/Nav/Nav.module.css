@@ -1,0 +1,152 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-sm) 0;
+  pointer-events: none;
+}
+
+.pill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  transition:
+    background-color var(--motion-mid) var(--ease),
+    border-color var(--motion-mid) var(--ease);
+}
+
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Equal-width flanks keep the wordmark optically centred in the pill. */
+.list {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list:first-of-type {
+  justify-content: flex-end;
+}
+
+.link {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  color: var(--slate);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transition:
+    color var(--motion-fast) var(--ease),
+    background-color var(--motion-fast) var(--ease);
+}
+
+.link:hover {
+  color: var(--ink);
+  background-color: rgba(43, 74, 168, 0.08);
+}
+
+.current {
+  color: var(--iris);
+  background-color: rgba(43, 74, 168, 0.1);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-inline: var(--space-2xs);
+}
+
+.wordmark:hover {
+  color: var(--iris);
+}
+
+.toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  background-color: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.sheet {
+  pointer-events: auto;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(20rem, calc(100vw - 2rem));
+  padding: var(--space-xs);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+}
+
+.sheetList {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheetLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.sheetLink:hover {
+  background-color: var(--haze);
+}
+
+@media (max-width: 860px) {
+  .pill {
+    gap: var(--space-sm);
+    position: relative;
+  }
+
+  .list {
+    display: none;
+  }
+
+  .toggle {
+    display: inline-flex;
+  }
+}

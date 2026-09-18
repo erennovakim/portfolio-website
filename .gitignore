@@ -1,5 +1,7 @@
 node_modules
-.vite
+dist
+dist-ssr
 .vercel
+*.local
 .DS_Store
 npm-debug.log*
