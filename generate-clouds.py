@@ -11,7 +11,7 @@ The output SVGs are used as CSS masks, not as images, so a single piece can
 be filled with flat white in one place and with the sunset photograph in
 another.
 
-Run from the mockups directory:  python3 generate-clouds.py
+Run from the project root:  python3 generate-clouds.py
 """
 
 import os
