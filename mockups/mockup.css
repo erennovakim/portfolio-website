@@ -709,8 +709,8 @@ a {
 
 .heroTitle {
   margin: 0;
-  max-width: 16em;
-  font-size: clamp(1.7rem, 1.05rem + 2.3vw, 2.55rem);
+  max-width: 22em;
+  font-size: clamp(1.55rem, 1rem + 1.8vw, 2.35rem);
   font-weight: var(--weight-medium);
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -839,9 +839,7 @@ a {
   display: inline-block;
   padding: 0.25rem 0.7rem;
   border: var(--border);
-  border-radius: var(--radius-md);
-  background-color: #f2e9df;
-  color: var(--slate);
+  border-radius: var(--radius-sm);
   font-size: var(--size-small);
   line-height: 1.5;
 }
