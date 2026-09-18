@@ -545,8 +545,15 @@ a {
   );
 }
 
+/* Cards sit in the solid middle of the wash: the top fade ends as they
+   begin, and the bottom fade starts before the last row ends. Width is
+   unchanged. */
 #work.section--washed {
-  padding-top: calc(var(--overlay-fade) + var(--space-xl));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--overlay-fade);
+  padding-bottom: calc(var(--overlay-fade) * 0.3);
 }
 
 /* Content clears the decoration in every section. */
@@ -698,7 +705,7 @@ a {
   justify-items: center;
   align-content: center;
   text-align: center;
-  gap: var(--space-sm);
+  gap: 0;
 }
 
 .heroHaze {
@@ -706,19 +713,26 @@ a {
 }
 
 .heroKicker {
-  margin: 0;
+  margin: 0 0 1.25rem;
   font-size: 1.125rem;
   color: var(--on-image-soft);
 }
 
 .heroTitle {
-  margin: 0;
+  margin: 0 0 1.25rem;
   max-width: 14em;
   font-size: var(--size-h2);
   font-weight: var(--weight-medium);
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--on-image);
+}
+
+.heroTitle em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  padding-bottom: 0.12em;
 }
 
 .heroSub {
@@ -860,12 +874,22 @@ a {
 .cta {
   display: inline-flex;
   align-items: center;
+  gap: 0.4em;
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-md);
   background-color: var(--iris);
   color: var(--paper);
   font-weight: var(--weight-semibold);
   font-size: var(--size-small);
+  line-height: 1;
+}
+
+/* Phosphor Regular, sized to the CTA type. */
+.ctaIcon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  display: block;
 }
 
 .card:hover .cta {
@@ -873,12 +897,9 @@ a {
 }
 
 /* ---------------------------------------------------------------- *
- * About: bare photograph, hazed white type, polaroid placeholders
+ * About: cream wash, single reading column
  * ---------------------------------------------------------------- */
 
-/* About shares the works gutter on the left. The copy stops short of
-   the right gutter so the polaroid column can sit there, with the
-   rightmost frame the same distance from the page edge as the text. */
 .aboutInner {
   position: relative;
   z-index: 1;
@@ -886,13 +907,12 @@ a {
 
 .aboutLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 46rem;
 }
 
 .aboutHeading h2 {
-  color: var(--on-image);
+  color: var(--ink);
 }
 
 .aboutHeading .headingText {
@@ -903,90 +923,79 @@ a {
   display: grid;
   gap: var(--space-md);
   font-size: var(--size-body-lg);
-  color: var(--on-image);
+  color: var(--ink);
 }
 
 .aboutProse p {
   max-width: none;
 }
 
-.aboutHaze {
-  inset: -2% -14%;
-}
-
 .aboutPullquote {
   margin: var(--space-sm) 0;
   padding-left: var(--space-md);
-  border-left: 3px solid rgba(var(--paper-rgb), 0.55);
+  border-left: 3px solid var(--iris);
   font-family: var(--font-accent);
   font-style: italic;
   font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem);
   line-height: 1.4;
-  color: var(--on-image);
+  color: var(--ink);
 }
 
-/*
- * Empty polaroid frames stacked on the right, waiting on real photographs.
- * Upper frame is 1.5× the area of the lower one. Neither is tilted; they
- * are staggered on both axes. The window is left translucent so the
- * sunset shows through rather than reading as a grey hole.
- */
-.aboutPhotos {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-lg);
-  padding-top: var(--space-xl);
-}
-
-.polaroid {
-  position: relative;
-  z-index: 2;
-  padding: 0.75rem 0.75rem 3rem;
-  background-color: var(--paper);
-  box-shadow: var(--shadow-card);
-}
-
-.polaroidWindow {
-  aspect-ratio: 1 / 1;
-  background-color: rgba(16, 27, 51, 0.28);
-  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
-}
-
-.polaroidCaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.9rem;
-  text-align: center;
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--slate);
-}
-
-/* Linear scale of √1.5 so the areas sit at 1.5:1. */
-.polaroid--large {
-  width: 16.5rem;
-  margin-right: 2.25rem;
-}
-
-.polaroid--small {
-  width: 13.47rem;
-}
-
-@media (max-width: 720px) {
-  .aboutPhotos {
-    display: none;
-  }
+/* Room for polaroids peeking up from the footer. */
+#about.section--washed {
+  padding-bottom: calc(var(--overlay-fade) + 11rem);
 }
 
 /* ---------------------------------------------------------------- *
  * Resume
  * ---------------------------------------------------------------- */
 
+#resume {
+  padding-bottom: var(--space-3xl);
+}
+
+.resumeInner {
+  position: relative;
+  z-index: 1;
+}
+
+.resumeHaze {
+  inset: -6% -10%;
+}
+
 .resumeGroup {
   margin-bottom: var(--space-xl);
+}
+
+.resumeGroup:last-child {
+  margin-bottom: 0;
+}
+
+#resume .resumeGroupLabel,
+#resume .resumeOrg,
+#resume .skillLabel {
+  color: var(--on-image);
+}
+
+#resume .resumeMeta,
+#resume .resumePoints {
+  color: var(--on-image-soft);
+}
+
+#resume .resumeItem,
+#resume .resumeItem:first-child {
+  border-color: rgba(var(--paper-rgb), 0.32);
+}
+
+#resume .resumeChevron {
+  border-right-color: var(--on-image);
+  border-bottom-color: var(--on-image);
+}
+
+#resume .skill {
+  background-color: rgba(var(--paper-rgb), 0.16);
+  border-color: rgba(var(--paper-rgb), 0.38);
+  color: var(--on-image);
 }
 
 .resumeExperienceFooter {
@@ -1102,19 +1111,92 @@ a {
 }
 
 /* ---------------------------------------------------------------- *
- * Footer: darkened photograph rather than a white wash
+ * Polaroids: scattered on the footer seam
+ * ---------------------------------------------------------------- */
+
+.polaroidScatter {
+  position: relative;
+  height: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.polaroid {
+  position: absolute;
+  pointer-events: auto;
+  bottom: 0;
+  padding: 0.75rem 0.75rem 2.6rem;
+  background-color: var(--paper);
+  box-shadow: var(--shadow-card);
+  transform-origin: center bottom;
+  transition: transform var(--motion-mid) var(--ease);
+}
+
+.polaroidWindow {
+  aspect-ratio: 1 / 1;
+  background-color: rgba(16, 27, 51, 0.28);
+  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+.polaroidCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--slate);
+}
+
+.polaroid--a {
+  right: 18%;
+  width: 15.2rem;
+  z-index: 2;
+  transform: translateY(56%) rotate(-11deg);
+}
+
+.polaroid--b {
+  right: 7%;
+  width: 12.1rem;
+  z-index: 3;
+  transform: translateY(52%) rotate(8deg);
+}
+
+.polaroid--c {
+  right: 27%;
+  width: 11rem;
+  z-index: 1;
+  transform: translateY(58%) rotate(15deg);
+}
+
+.polaroid:hover {
+  z-index: 6;
+}
+
+.polaroid--a:hover {
+  transform: translateY(-16%) rotate(-6deg);
+}
+
+.polaroid--b:hover {
+  transform: translateY(-20%) rotate(4deg);
+}
+
+.polaroid--c:hover {
+  transform: translateY(-28%) rotate(9deg);
+}
+
+/* ---------------------------------------------------------------- *
+ * Footer: solid accent, hard top edge
  * ---------------------------------------------------------------- */
 
 .footer {
   position: relative;
+  z-index: 4;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-image: linear-gradient(
-    180deg,
-    transparent 0,
-    var(--scrim-footer) var(--footer-fade),
-    var(--scrim-footer) 100%
-  );
+  background-color: var(--iris);
   color: var(--on-image);
 }
 
@@ -1292,16 +1374,31 @@ a {
     min-height: 100svh;
   }
 
-  .heroInner {
-    gap: var(--space-sm);
-  }
-
   .workGrid {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .tagList {
     display: none;
+  }
+
+  .polaroid--a {
+    right: 22%;
+    width: 10.4rem;
+  }
+
+  .polaroid--b {
+    right: 4%;
+    width: 8.8rem;
+  }
+
+  .polaroid--c {
+    right: 38%;
+    width: 8rem;
+  }
+
+  #about.section--washed {
+    padding-bottom: calc(var(--overlay-fade) + 8rem);
   }
 }
 
