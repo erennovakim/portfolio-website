@@ -367,6 +367,7 @@ a {
 }
 
 .navLink {
+  position: relative;
   display: inline-block;
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius-sm);
@@ -375,9 +376,31 @@ a {
   text-decoration: none;
   white-space: nowrap;
   color: var(--on-image);
-  transition:
-    color var(--motion-fast) var(--ease),
-    background-color var(--motion-fast) var(--ease);
+  transition: color var(--motion-fast) var(--ease);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.16rem;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--motion-mid) var(--ease);
+  pointer-events: none;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navLink.is-current,
+.navWrapper[data-scrolled='true'] .navLink.is-current {
+  color: var(--iris);
 }
 
 .wordmark {
@@ -395,17 +418,9 @@ a {
   color: var(--on-image);
 }
 
-.navLink:hover {
-  background-color: rgba(var(--paper-rgb), 0.14);
-}
-
 .navWrapper[data-scrolled='true'] .navLink,
 .navWrapper[data-scrolled='true'] .wordmark {
   color: var(--ink);
-}
-
-.navWrapper[data-scrolled='true'] .navLink:hover {
-  background-color: rgba(22, 35, 63, 0.09);
 }
 
 /* ---------------------------------------------------------------- *
@@ -517,6 +532,7 @@ a {
 }
 
 .navSheetLink {
+  position: relative;
   display: block;
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
@@ -525,8 +541,27 @@ a {
   text-decoration: none;
 }
 
-.navSheetLink:hover {
-  background-color: #f0e7dd;
+.navSheetLink::after {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.45rem;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--motion-mid) var(--ease);
+  pointer-events: none;
+}
+
+.navSheetLink:hover::after,
+.navSheetLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navSheetLink.is-current {
+  color: var(--iris);
 }
 
 /* ---------------------------------------------------------------- *
@@ -744,6 +779,8 @@ a {
   font-family: var(--font-accent);
   font-style: italic;
   font-weight: 400;
+  font-size: calc(1em + 4px);
+  line-height: 1.2;
   padding-bottom: 0.12em;
 }
 
@@ -751,6 +788,7 @@ a {
   margin: 0;
   max-width: 46ch;
   font-size: 1.625rem;
+  font-weight: 300;
   line-height: 1.45;
   color: var(--on-image-soft);
 }
@@ -947,9 +985,15 @@ a {
   max-width: none;
 }
 
-/* Room for polaroids peeking up from the footer. */
+/* Solid cream through the bottom edge so it meets the footer without a fade. */
 #about.section--washed {
-  padding-bottom: calc(var(--overlay-fade) + 11rem);
+  padding-bottom: 11rem;
+  background-image: linear-gradient(
+    180deg,
+    var(--overlay-clear) 0,
+    var(--overlay) var(--overlay-fade),
+    var(--overlay) 100%
+  );
 }
 
 /* ---------------------------------------------------------------- *
@@ -1022,6 +1066,7 @@ a {
 
 .resumeCluster .resumeOrg {
   margin: 1.1rem 0 0.15rem;
+  padding-inline: 16px;
 }
 
 .resumeCluster .resumeItem,
@@ -1049,6 +1094,7 @@ a {
 }
 
 .resumeItem {
+  padding-inline: 16px;
   border-bottom: 1.5px solid var(--line);
   border-radius: var(--radius-sm);
   transition: background-color var(--motion-fast) var(--ease);
@@ -1124,6 +1170,9 @@ a {
   display: grid;
   align-content: start;
   gap: var(--space-sm);
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(var(--paper-rgb), 0.1);
 }
 
 .skillLabel {
@@ -1227,7 +1276,7 @@ a {
   max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-color: var(--iris);
+  background-color: #292532;
   color: var(--on-image);
 }
 
@@ -1418,7 +1467,12 @@ a {
   }
 
   #about.section--washed {
-    padding-bottom: calc(var(--overlay-fade) + 8rem);
+    padding-bottom: 8rem;
+  }
+
+  .resumeItem,
+  .resumeCluster .resumeOrg {
+    padding-inline: 10px;
   }
 }
 

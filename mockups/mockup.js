@@ -21,9 +21,29 @@
     if (menu && menu.checked) menu.checked = false;
   }
 
+  const sectionIds = ['work', 'about', 'resume'];
+  const navSectionLinks = Array.from(
+    document.querySelectorAll('.navLink[href^="#"], .navSheetLink[href^="#"]')
+  );
+
+  function spy() {
+    const line = window.innerHeight * 0.28;
+    let current = '';
+    sectionIds.forEach(function (id) {
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (section.getBoundingClientRect().top <= line) current = id;
+    });
+    navSectionLinks.forEach(function (link) {
+      const id = link.getAttribute('href').slice(1);
+      link.classList.toggle('is-current', id === current);
+    });
+  }
+
   function apply() {
     queued = false;
     wrapper.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
+    spy();
 
     if (washed.length === 0) return;
     const box = toggle.getBoundingClientRect();
