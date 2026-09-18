@@ -425,7 +425,7 @@ main,
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(14rem, 0.7fr);
   align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
   min-height: 100dvh;
@@ -452,9 +452,9 @@ main,
 
 .heroTitle {
   margin: 0 0 1rem;
-  max-width: 13em;
+  max-width: 18em;
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 1.15rem + 2.4vw, 3.55rem);
+  font-size: clamp(1.9rem, 1.05rem + 1.9vw, 2.9rem);
   font-weight: 600;
   letter-spacing: -0.045em;
   line-height: 1.14;
@@ -479,11 +479,6 @@ main,
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-}
-
-.heroArt {
-  justify-self: end;
-  animation: hero-in 900ms var(--ease) 80ms both;
 }
 
 @keyframes hero-in {
