@@ -1,11 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
-  "trailingSlash": true,
-  "redirects": [
-    { "source": "/work/peterplate.html", "destination": "/work/peterplate/", "permanent": true },
-    { "source": "/work/ekyu.html", "destination": "/work/ekyu/", "permanent": true },
-    { "source": "/work/cosi.html", "destination": "/work/cosi/", "permanent": true },
-    { "source": "/work/fourth-project.html", "destination": "/work/fourth-project/", "permanent": true }
-  ]
+  "rewrites": [{ "source": "/((?!assets/|.*\\.[a-zA-Z0-9]+$).*)", "destination": "/index.html" }]
 }
