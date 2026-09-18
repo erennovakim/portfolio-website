@@ -108,10 +108,13 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: clip;
   /* Transparent so the fixed photograph layer shows through the whole
      document. The colour is only a load-in floor. */
   background-color: #2a2333;
@@ -196,6 +199,12 @@ a {
 .container--wide {
   width: calc(100% - 2 * var(--page-gutter));
   max-width: none;
+}
+
+/* Works cards keep the pre-2x gutter measure so they stay as wide as
+   they were before the last gutter doubling. */
+#work .container--wide {
+  width: calc(100% - var(--page-gutter));
 }
 
 .visually-hidden {
@@ -302,10 +311,13 @@ a {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   z-index: 50;
   display: flex;
   justify-content: center;
-  padding: 1.15rem var(--space-sm) 0;
+  padding: 1.15rem max(var(--space-sm), env(safe-area-inset-right, 0px)) 0 max(var(--space-sm), env(safe-area-inset-left, 0px));
   pointer-events: none;
 }
 
@@ -818,8 +830,13 @@ a {
   padding: 0.4rem var(--space-xs) var(--space-xs);
 }
 
-.cardTitle {
-  font-size: 1.6rem;
+.cardTitle,
+.resumeSubhead,
+.skillLabel {
+  font-family: var(--font-body);
+  font-size: calc(1.05rem + 12px);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.01em;
 }
 
 .cardMeta {
@@ -993,10 +1010,6 @@ a {
 
 .resumeSubhead {
   margin: var(--space-lg) 0 var(--space-sm);
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: var(--weight-medium);
-  letter-spacing: 0.01em;
   color: var(--on-image);
 }
 
@@ -1006,7 +1019,7 @@ a {
 }
 
 .resumeCluster .resumeOrg {
-  margin: 1.1rem 0.85rem 0.15rem;
+  margin: 1.1rem 0 0.15rem;
 }
 
 .resumeCluster .resumeItem,
@@ -1034,8 +1047,6 @@ a {
 }
 
 .resumeItem {
-  padding-inline: 0.85rem;
-  margin-inline: -0.85rem;
   border-bottom: 1.5px solid var(--line);
   border-radius: var(--radius-sm);
   transition: background-color var(--motion-fast) var(--ease);
@@ -1114,9 +1125,7 @@ a {
 }
 
 .skillLabel {
-  font-family: var(--font-body);
-  font-size: calc(1.05rem + 12px);
-  font-weight: var(--weight-medium);
+  color: inherit;
 }
 
 .skillList {
@@ -1146,6 +1155,8 @@ a {
   height: 0;
   z-index: 3;
   pointer-events: none;
+  max-width: 100%;
+  overflow: visible;
   --n: 6;
 }
 
@@ -1157,8 +1168,12 @@ a {
   position: absolute;
   pointer-events: auto;
   bottom: 0;
-  left: calc((var(--i) + 0.5) / var(--n) * 100%);
-  width: calc(100% / var(--n) * 0.82);
+  left: clamp(
+    calc(100% / var(--n) * 0.41),
+    calc((var(--i) + 0.5) / var(--n) * 100%),
+    calc(100% - 100% / var(--n) * 0.41)
+  );
+  width: calc(100% / var(--n) * 0.72);
   padding: 0.75rem 0.75rem 2.6rem;
   background-color: var(--paper);
   box-shadow: var(--shadow-card);
@@ -1206,6 +1221,8 @@ a {
 .footer {
   position: relative;
   z-index: 4;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
   background-color: var(--iris);
@@ -1372,6 +1389,9 @@ a {
   /* The pill gives way to a single dot icon in the right corner. */
   .navWrapper {
     justify-content: flex-end;
+    padding-top: 0.85rem;
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
   }
 
   .pill {
@@ -1380,6 +1400,7 @@ a {
 
   .navToggle {
     display: grid;
+    flex-shrink: 0;
   }
 
   .hero {
