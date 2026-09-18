@@ -130,6 +130,8 @@
   const nodes = Array.from(document.querySelectorAll('[data-reveal]'));
   if (nodes.length === 0) return;
 
+  document.documentElement.classList.add('has-js');
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) {
     nodes.forEach(function (node) {
@@ -146,7 +148,7 @@
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
+    { threshold: 0.08, rootMargin: '80px 0px 20% 0px' }
   );
 
   nodes.forEach(function (node) {
