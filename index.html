@@ -8,7 +8,7 @@
       name="description"
       content="Eren Nova Kim is a product designer driven by research and a background in development, studying Informatics at UC Irvine."
     />
-    <meta name="theme-color" content="#2b1638" />
+    <meta name="theme-color" content="#120e14" />
     <meta property="og:title" content="Eren Nova Kim - Product Designer" />
     <meta
       property="og:description"
@@ -18,569 +18,369 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&family=Syne:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/home.css" />
   </head>
-  <body class="page-home">
-    <div class="backdrop" aria-hidden="true">
-      <div class="sunsetVeil"></div>
+  <body>
+    <a class="skip" href="#home">Skip to content</a>
+
+    <div class="atmosphere" aria-hidden="true">
+      <span class="orb orb--dusk"></span>
+      <span class="orb orb--crimson"></span>
+      <span class="orb orb--ember"></span>
+      <span class="orb orb--gold"></span>
+      <span class="mesh"></span>
     </div>
 
-    <header class="navWrapper" data-scrolled="false">
-      <nav class="pill" aria-label="Primary">
-        <ul class="navList">
-          <li><a class="navLink" href="mailto:eren.novakim@gmail.com">Let’s Connect</a></li>
-          <li><a class="navLink" href="#work">Works</a></li>
-        </ul>
+    <pre class="ascii ascii--layer ascii--far" aria-hidden="true">
+      ⢀⣀⡀
+    ⢀⣾⣿⣿⣷⡀
+   ⢠⣿⣿⣿⣿⣿⣿⡄
+    ⠈⠻⣿⣿⠟⠁</pre>
+    <pre class="ascii ascii--layer ascii--near" aria-hidden="true">
+  ⣀⣤⣶⣦⣀
+⢰⣿⣿⣿⣿⣿⣿⡆
+⠈⠛⢿⣿⣿⡿⠛⠁</pre>
 
-        <a class="wordmark" href="#home">Eren Nova Kim</a>
-
-        <ul class="navList">
-          <li><a class="navLink" href="#about">About</a></li>
-          <li><a class="navLink" href="#resume">Resume</a></li>
-        </ul>
+    <header class="nav" data-scrolled="false">
+      <a class="navBrand" href="#home">Eren Nova Kim</a>
+      <nav class="navBar" aria-label="Primary">
+        <a class="navLink" href="#work">Works</a>
+        <a class="navLink" href="#about">About</a>
+        <a class="navLink" href="#resume">Resume</a>
+        <a class="navLink navLink--email" href="mailto:eren.novakim@gmail.com">Email</a>
       </nav>
-
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
       <label class="navToggle" for="nav-menu">
         <span class="navToggleBars" aria-hidden="true"></span>
         <span class="visually-hidden">Menu</span>
       </label>
-
       <div class="navSheet">
-        <ul class="navSheetList">
-          <li><a class="navSheetLink" href="mailto:eren.novakim@gmail.com">Let’s Connect</a></li>
-          <li><a class="navSheetLink" href="#work">Works</a></li>
-          <li><a class="navSheetLink" href="#about">About</a></li>
-          <li><a class="navSheetLink" href="#resume">Resume</a></li>
-        </ul>
+        <a class="navSheetLink" href="#work">Works</a>
+        <a class="navSheetLink" href="#about">About</a>
+        <a class="navSheetLink" href="#resume">Resume</a>
+        <a class="navSheetLink" href="mailto:eren.novakim@gmail.com">Email</a>
       </div>
     </header>
 
     <main>
-      <section class="section hero" id="home" aria-labelledby="hero-name">
-        <div class="cloudWrap cloudWrap--drift-a at-hero-left" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
-        </div>
-        <div class="cloudWrap cloudWrap--drift-b at-hero-right" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--bank cloud--flip"></span>
-        </div>
-        <pre class="asciiCloud asciiCloud--crest asciiCloud--drift-slow" aria-hidden="true">
-          ⢀⣀⣀⡀
-       ⢀⣴⣿⣿⣿⣿⣿⣦⡀
-     ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀
-      ⠈⠻⣿⣿⣿⣿⣿⠟⠁
-         ⠈⠉⠉⠁</pre>
-        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-left at-ascii-hero-mid" aria-hidden="true">
-    ⢀⣀⡀
-  ⢀⣾⣿⣿⣷⡀
- ⢀⣿⣿⣿⣿⣿⣆
-  ⠈⠻⣿⠟⠁</pre>
-        <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-right at-ascii-hero-far" aria-hidden="true">
-  ⢀⡀   ⣀
-⢀⣾⣿⣷⡀⢀⣾⣿⣆
-⠈⢿⣿⠟⠁⠈⠛⠁</pre>
-
-        <div class="container heroInner">
-          <div class="haze heroHaze" aria-hidden="true"></div>
-
-          <p class="heroKicker">Hi, I'm Eren.</p>
-          <h1 class="heroTitle" id="hero-name">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="heroCopy">
+          <p class="heroName">Product designer</p>
+          <h1 class="heroTitle" id="hero-title">
             Designing human<br />experiences, <em>thoughtfully</em>.
           </h1>
           <p class="heroSub">
-            I'm a product designer who combines research with my background in development to make
-            design decisions that are purposeful and feasible.
+            I pair research with a development background so design decisions stay purposeful and feasible.
           </p>
+          <div class="heroActions">
+            <a class="btn btn--primary" href="#work">View work</a>
+            <a class="btn btn--ghost" href="mailto:eren.novakim@gmail.com">Email</a>
+          </div>
+        </div>
+        <div class="heroArt" aria-hidden="true">
+          <pre class="ascii ascii--hero">
+            ⢀⣀⣀⡀
+         ⢀⣴⣿⣿⣿⣿⣿⣦⡀
+       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀
+      ⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+       ⠈⠻⣿⣿⣿⣿⣿⣿⣿⠟⠁
+          ⠈⠛⠿⠟⠋⠁</pre>
         </div>
       </section>
 
-      <section class="section section--washed" id="work" aria-labelledby="work-heading">
-        <div class="cloudWrap cloudWrap--drift-c at-work-right" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--bank cloud--flip"></span>
+      <section class="section" id="work" aria-labelledby="work-heading">
+        <div class="sectionHead" data-reveal>
+          <h2 id="work-heading">Selected work</h2>
+          <p class="sectionLede">Campus products, hardware sprints, and household systems, each started with people rather than a brief.</p>
         </div>
-        <div class="cloudWrap cloudWrap--drift-a at-work-corner" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--corner"></span>
+
+        <div class="workBento">
+          <a class="project glass project--lead" href="/work/peterplate/" data-reveal>
+            <div class="projectCover">
+              <img
+                src="/assets/covers/peterplate.svg"
+                alt="Placeholder mockup showing the PeterPlate dining interface on desktop and mobile"
+              />
+            </div>
+            <div class="projectBody">
+              <div class="projectMeta">
+                <h3>PeterPlate</h3>
+                <p>UI/UX Designer · January 2026 - Present</p>
+              </div>
+              <p class="projectSummary">
+                A 0-to-1 campus dining experience shaped by interviews and usability testing, then handed to developers as specs I could have built myself.
+              </p>
+              <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+            </div>
+          </a>
+
+          <a class="project glass" href="/work/ekyu/" data-reveal style="--reveal-delay: 70ms">
+            <div class="projectCover">
+              <img
+                src="/assets/covers/ekyu.svg"
+                alt="Placeholder mockup showing the Ēkyu controller app and sound rings"
+              />
+            </div>
+            <div class="projectBody">
+              <div class="projectMeta">
+                <h3>Ēkyu</h3>
+                <p>UI/UX Designer · April 2026</p>
+              </div>
+              <p class="projectSummary">
+                Hardware and software for choosing what you hear, designed in a 40-hour sprint and placed top 10 of more than 400.
+              </p>
+              <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+            </div>
+          </a>
+
+          <a class="project glass" href="/work/cosi/" data-reveal style="--reveal-delay: 110ms">
+            <div class="projectCover">
+              <img
+                src="/assets/covers/cosi.svg"
+                alt="Placeholder mockup showing the Cosi household task board and contribution chart"
+              />
+            </div>
+            <div class="projectBody">
+              <div class="projectMeta">
+                <h3>Cosi</h3>
+                <p>UI/UX Designer · January 2026 - March 2026</p>
+              </div>
+              <p class="projectSummary">
+                Household dynamics through conflict-neutral communication and task flows grounded in how housemates actually negotiate chores.
+              </p>
+              <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+            </div>
+          </a>
+
+          <a class="project glass project--wide" href="/work/fourth-project/" data-reveal style="--reveal-delay: 140ms">
+            <div class="projectCover">
+              <img
+                src="/assets/covers/fourth-project.svg"
+                alt="Placeholder wireframe standing in for a fourth project"
+              />
+            </div>
+            <div class="projectBody">
+              <div class="projectMeta">
+                <h3>Fourth Project</h3>
+                <p>Case study in progress</p>
+              </div>
+              <p class="projectSummary">
+                A slot for the next selected work. Replace the study folder and it will appear here.
+              </p>
+              <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
+            </div>
+          </a>
         </div>
-        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-slow at-ascii-work" aria-hidden="true">
-     ⣀⣤⣤⣀
-   ⢀⣾⣿⣿⣿⣿⣷⡀
-  ⢠⣿⣿⣿⣿⣿⣿⣿⣿⡄
-   ⠈⠛⢿⣿⣿⡿⠛⠁</pre>
+      </section>
 
-        <div class="container container--wide">
-          <h2 class="visually-hidden" id="work-heading">Works</h2>
-
-          <div class="workGrid">
-            <a class="card glass" href="/work/peterplate/" data-reveal style="--reveal-delay: 0ms">
-              <div class="coverFrame">
-                <img
-                  class="cover"
-                  src="/assets/covers/peterplate.svg"
-                  alt="Placeholder mockup showing the PeterPlate dining interface on desktop and mobile"
-                />
-              </div>
-              <div class="cardHead">
-                <h3 class="cardTitle">PeterPlate</h3>
-                <p class="cardRole">UI/UX Designer</p>
-              </div>
-              <div class="cardBody">
-                <p class="cardMeta">January 2026 - Present</p>
-                <p class="cardSummary">
-                  A 0-to-1 web and mobile experience for campus dining, shaped by interviews and
-                  usability testing and handed to developers as specs I could have built myself.
-                </p>
-                <ul class="tagList">
-                  <li class="tag">Journey mapping</li>
-                  <li class="tag">User interviews</li>
-                  <li class="tag">Usability testing</li>
-                  <li class="tag">Figma handoff</li>
-                </ul>
-                <div class="cardFooter">
-                  <span class="cta">View Case Study<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
-                </div>
-              </div>
-            </a>
-
-            <a class="card glass" href="/work/ekyu/" data-reveal style="--reveal-delay: 80ms">
-              <div class="coverFrame">
-                <img
-                  class="cover"
-                  src="/assets/covers/ekyu.svg"
-                  alt="Placeholder mockup showing the Ēkyu controller app and sound rings"
-                />
-              </div>
-              <div class="cardHead">
-                <h3 class="cardTitle">Ēkyu</h3>
-                <p class="cardRole">UI/UX Designer</p>
-              </div>
-              <div class="cardBody">
-                <p class="cardMeta">April 2026</p>
-                <p class="cardSummary">
-                  A hardware and software system that lets someone choose what they hear, designed
-                  in a 40-hour sprint and placed top 10 out of more than 400 participants.
-                </p>
-                <ul class="tagList">
-                  <li class="tag">Inclusive design</li>
-                  <li class="tag">Brand identity</li>
-                  <li class="tag">Gesture design</li>
-                  <li class="tag">Case study writing</li>
-                </ul>
-                <div class="cardFooter">
-                  <span class="cta">View Case Study<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
-                </div>
-              </div>
-            </a>
-
-            <a class="card glass" href="/work/cosi/" data-reveal style="--reveal-delay: 40ms">
-              <div class="coverFrame">
-                <img
-                  class="cover"
-                  src="/assets/covers/cosi.svg"
-                  alt="Placeholder mockup showing the Cosi household task board and contribution chart"
-                />
-              </div>
-              <div class="cardHead">
-                <h3 class="cardTitle">Cosi</h3>
-                <p class="cardRole">UI/UX Designer</p>
-              </div>
-              <div class="cardBody">
-                <p class="cardMeta">January 2026 - March 2026</p>
-                <p class="cardSummary">
-                  An app for household dynamics that pairs conflict-neutral communication flows
-                  with task management, built on research into how housemates actually negotiate
-                  chores.
-                </p>
-                <ul class="tagList">
-                  <li class="tag">User research</li>
-                  <li class="tag">Personas</li>
-                  <li class="tag">Design systems</li>
-                  <li class="tag">Prototyping</li>
-                </ul>
-                <div class="cardFooter">
-                  <span class="cta">View Case Study<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
-                </div>
-              </div>
-            </a>
-
-            <a class="card glass" href="/work/fourth-project/" data-reveal style="--reveal-delay: 120ms">
-              <div class="coverFrame">
-                <img
-                  class="cover"
-                  src="/assets/covers/fourth-project.svg"
-                  alt="Placeholder wireframe standing in for a fourth project"
-                />
-                <span class="badge">Case Study In Progress</span>
-              </div>
-              <div class="cardHead">
-                <h3 class="cardTitle">Fourth Project</h3>
-                <p class="cardRole">UI/UX Designer</p>
-              </div>
-              <div class="cardBody">
-                <p class="cardMeta">To be added</p>
-                <p class="cardSummary">
-                  A placeholder for the fourth selected work. Replace the frontmatter and sections
-                  below with the real project and it will appear everywhere on the site
-                  automatically.
-                </p>
-                <ul class="tagList">
-                  <li class="tag">Placeholder</li>
-                </ul>
-                <div class="cardFooter">
-                  <span class="cta">View Case Study<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></span>
-                </div>
-              </div>
-            </a>
+      <section class="section" id="about" aria-labelledby="about-heading">
+        <div class="aboutGrid">
+          <h2 id="about-heading" data-reveal>About</h2>
+          <div class="aboutProse glass" data-reveal>
+            <p>
+              I started out building products and moved toward the people using them. On PeterPlate I spent my first months as a software developer, writing the frontend and backend in TypeScript, tRPC and ShadCN, before taking the designer seat on the same team. Knowing what a decision costs to build changed how I make them.
+            </p>
+            <p>
+              Every project here began with people rather than a brief. I run interviews and usability tests, map the journey, and keep revising until the design answers a friction point someone actually described to me. For Ēkyu that meant designing alongside a hearing-impaired collaborator. For Cosi it meant learning how housemates really negotiate chores before proposing a single screen.
+            </p>
+            <p>
+              I also teach what I learn. As workshops coordinator at Design at UCI, I research and run sessions on design thinking, accessibility and Figma for new and experienced designers, including at hackathons and external events.
+            </p>
           </div>
         </div>
       </section>
 
       <section class="section" id="resume" aria-labelledby="resume-heading">
-        <div class="cloudWrap cloudWrap--drift-b at-resume-left" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
+        <div class="sectionHead" data-reveal>
+          <h2 id="resume-heading">Resume</h2>
+          <a class="btn btn--ghost" href="/Eren Kim-Resume.pdf" download>
+            Download PDF<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
+          </a>
         </div>
-        <div class="cloudWrap cloudWrap--drift-c at-resume-corner" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
-        </div>
-        <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-left at-ascii-resume" aria-hidden="true">
-     ⢀⣀⣤⡀
-   ⣰⣿⣿⣿⣿⣆
-  ⣿⣿⣿⣿⣿⣿⣿
-   ⠙⢿⣿⣿⡿⠋</pre>
 
-        <div class="container container--wide resumeInner">
-          <div class="haze resumeHaze" aria-hidden="true"></div>
-          <h2 class="visually-hidden" id="resume-heading">Resume</h2>
-
-          <div class="resumeGroup glass" data-reveal>
-            <h3 class="resumeGroupLabel" id="resume-experience">Experience</h3>
-
-            <h4 class="resumeSubhead" id="resume-projects">Projects</h4>
-            <div class="resumeList">
-              <div class="resumeCluster">
-                <p class="resumeOrg">PeterPlate</p>
-                <details class="resumeItem resumeItem--nested">
-                  <summary>
-                    <span class="resumeSummary">
-                      <span class="resumeMeta">UI/UX Designer, January 2026 - Present</span>
-                    </span>
-                    <span class="resumeChevron" aria-hidden="true"></span>
-                  </summary>
-                  <ul class="resumePoints">
-                    <li>Apply design thinking and journey mapping to build a 0-to-1 web and mobile interface for a campus dining ecosystem.</li>
-                    <li>Conduct user interviews and usability testing to validate needs, then refine high-fidelity Figma prototypes with accessibility in mind.</li>
-                    <li>Work with developers in Agile and Scrum to produce design specs, prioritise deliverables, and keep Figma handoff technically feasible across touchpoints.</li>
-                  </ul>
-                </details>
-                <details class="resumeItem resumeItem--nested resumeItem--joined">
-                  <summary>
-                    <span class="resumeSummary">
-                      <span class="resumeMeta">Software Developer, October 2025 - January 2026</span>
-                    </span>
-                    <span class="resumeChevron" aria-hidden="true"></span>
-                  </summary>
-                  <ul class="resumePoints">
-                    <li>Built frontend and backend components with TypeScript, Tailwind CSS, tRPC procedures and ShadCN, working with designers to meet design requirements and responsive UI standards.</li>
-                  </ul>
-                </details>
-              </div>
-
-              <details class="resumeItem">
-                <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">Ēkyu</span>
-                    <span class="resumeMeta">UI/UX Designer, April 2026</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
-                </summary>
-                <ul class="resumePoints">
-                  <li>Placed top 10 of more than 400 participants with an integrated hardware and software solution for selective noise cancellation, including a full case study written in a 40-hour sprint.</li>
-                  <li>Designed a mobile controller app and a physical gesture system, with custom icons and brand identity carrying across both.</li>
-                  <li>Interviewed a hearing-impaired collaborator and confirmed design choices with them to ground inclusive features in research.</li>
+        <div class="resumeLayout">
+          <article class="glass resumePanel" data-reveal>
+            <h3>Experience</h3>
+            <h4>Projects</h4>
+            <div class="resumeCluster">
+              <p class="resumeOrg">PeterPlate</p>
+              <details>
+                <summary>UI/UX Designer, January 2026 - Present</summary>
+                <ul>
+                  <li>Apply design thinking and journey mapping to build a 0-to-1 web and mobile interface for a campus dining ecosystem.</li>
+                  <li>Conduct user interviews and usability testing to validate needs, then refine high-fidelity Figma prototypes with accessibility in mind.</li>
+                  <li>Work with developers in Agile and Scrum to produce design specs, prioritise deliverables, and keep Figma handoff technically feasible across touchpoints.</li>
                 </ul>
               </details>
-
-              <details class="resumeItem">
-                <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">Cosi</span>
-                    <span class="resumeMeta">UI/UX Designer, January 2026 - March 2026</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
-                </summary>
-                <ul class="resumePoints">
-                  <li>Designed an app that improves household dynamics through conflict-neutral communication flows and task management that makes each person’s contribution visible.</li>
-                  <li>Ran user research to build personas and flows addressing friction points people described, then tested the proposed solutions.</li>
-                  <li>Built the branding and design system in Figma so high-fidelity prototypes stayed consistent.</li>
+              <details>
+                <summary>Software Developer, October 2025 - January 2026</summary>
+                <ul>
+                  <li>Built frontend and backend components with TypeScript, Tailwind CSS, tRPC procedures and ShadCN, working with designers to meet design requirements and responsive UI standards.</li>
                 </ul>
               </details>
             </div>
+            <details>
+              <summary>
+                <span>Ēkyu</span>
+                <span>UI/UX Designer, April 2026</span>
+              </summary>
+              <ul>
+                <li>Placed top 10 of more than 400 participants with an integrated hardware and software solution for selective noise cancellation, including a full case study written in a 40-hour sprint.</li>
+                <li>Designed a mobile controller app and a physical gesture system, with custom icons and brand identity carrying across both.</li>
+                <li>Interviewed a hearing-impaired collaborator and confirmed design choices with them to ground inclusive features in research.</li>
+              </ul>
+            </details>
+            <details>
+              <summary>
+                <span>Cosi</span>
+                <span>UI/UX Designer, January 2026 - March 2026</span>
+              </summary>
+              <ul>
+                <li>Designed an app that improves household dynamics through conflict-neutral communication flows and task management that makes each person’s contribution visible.</li>
+                <li>Ran user research to build personas and flows addressing friction points people described, then tested the proposed solutions.</li>
+                <li>Built the branding and design system in Figma so high-fidelity prototypes stayed consistent.</li>
+              </ul>
+            </details>
+            <h4>Work</h4>
+            <details>
+              <summary>
+                <span>Design at UCI</span>
+                <span>Workshops Coordinator, April 2026 - Present</span>
+              </summary>
+              <ul>
+                <li>Research, create and present workshops on design trends, design thinking methods and tools like Figma, for new and experienced designers.</li>
+                <li>Host external workshops at hackathons and other events, using research insights to tailor the content to each audience.</li>
+              </ul>
+            </details>
+            <details>
+              <summary>
+                <span>UCI Office of Research</span>
+                <span>Research Engagement and Compliance Assistant, July 2025 - Present</span>
+              </summary>
+              <ul>
+                <li>Manage compliance documentation by distributing required forms, running systematic follow-up communication, and joining team synchronisation meetings.</li>
+                <li>Led a data cleanup across more than 2,000 records, improving database efficiency and consistency.</li>
+                <li>Synthesise complex research information into short, actionable summaries and compile financial interest review packets for committee evaluation.</li>
+              </ul>
+            </details>
+            <details>
+              <summary>
+                <span>Palisades Charter High School</span>
+                <span>Student Union Organizer, May 2022 - June 2023</span>
+              </summary>
+              <ul>
+                <li>Led more than 50 club members organising fundraising and community service projects, and oversaw club finances.</li>
+                <li>Acted as liaison between the student body and school administration to secure funding and keep activities aligned with school policy.</li>
+              </ul>
+            </details>
+          </article>
 
-            <h4 class="resumeSubhead" id="resume-work">Work</h4>
-            <div class="resumeList">
-              <details class="resumeItem">
+          <div class="resumeSide">
+            <article class="glass resumePanel" data-reveal>
+              <h3>Education</h3>
+              <details open>
                 <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">Design at UCI</span>
-                    <span class="resumeMeta">Workshops Coordinator, April 2026 - Present</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
+                  <span>University of California, Irvine</span>
+                  <span>B.S. Informatics, minor in Information and Computer Science, Expected June 2027</span>
                 </summary>
-                <ul class="resumePoints">
-                  <li>Research, create and present workshops on design trends, design thinking methods and tools like Figma, for new and experienced designers.</li>
-                  <li>Host external workshops at hackathons and other events, using research insights to tailor the content to each audience.</li>
-                </ul>
-              </details>
-
-              <details class="resumeItem">
-                <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">UCI Office of Research</span>
-                    <span class="resumeMeta">Research Engagement and Compliance Assistant, July 2025 - Present</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
-                </summary>
-                <ul class="resumePoints">
-                  <li>Manage compliance documentation by distributing required forms, running systematic follow-up communication, and joining team synchronisation meetings.</li>
-                  <li>Led a data cleanup across more than 2,000 records, improving database efficiency and consistency.</li>
-                  <li>Synthesise complex research information into short, actionable summaries and compile financial interest review packets for committee evaluation.</li>
-                </ul>
-              </details>
-
-              <details class="resumeItem">
-                <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">Palisades Charter High School</span>
-                    <span class="resumeMeta">Student Union Organizer, May 2022 - June 2023</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
-                </summary>
-                <ul class="resumePoints">
-                  <li>Led more than 50 club members organising fundraising and community service projects, and oversaw club finances.</li>
-                  <li>Acted as liaison between the student body and school administration to secure funding and keep activities aligned with school policy.</li>
-                </ul>
-              </details>
-            </div>
-            <div class="resumeExperienceFooter">
-              <a class="button button--onImage" href="/Eren Kim-Resume.pdf" download>
-                Download Resume<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="resumeGroup glass" data-reveal>
-            <h3 class="resumeGroupLabel" id="resume-education">Education</h3>
-            <div class="resumeList">
-              <details class="resumeItem">
-                <summary>
-                  <span class="resumeSummary">
-                    <span class="resumeOrg">University of California, Irvine</span>
-                    <span class="resumeMeta">B.S. Informatics, minor in Information and Computer Science, Expected June 2027</span>
-                  </span>
-                  <span class="resumeChevron" aria-hidden="true"></span>
-                </summary>
-                <ul class="resumePoints">
+                <ul>
                   <li>Regents Scholarship</li>
                   <li>Dean’s Honor List</li>
                   <li>Invited to the Campuswide Honors Collegium</li>
                 </ul>
               </details>
-            </div>
-          </div>
-
-          <div class="resumeGroup glass" data-reveal>
-            <h3 class="resumeGroupLabel" id="resume-skills">Skills</h3>
-            <div class="skills">
-              <div class="skillGroup">
-                <h4 class="skillLabel">Technical Tools</h4>
+            </article>
+            <article class="glass resumePanel" data-reveal>
+              <h3>Skills</h3>
+              <div class="skillBlock">
+                <h4>Technical tools</h4>
                 <ul class="skillList">
-                  <li class="skill">Figma</li>
-                  <li class="skill">Framer</li>
-                  <li class="skill">Cursor</li>
-                  <li class="skill">Claude Code</li>
-                  <li class="skill">React</li>
-                  <li class="skill">TypeScript</li>
-                  <li class="skill">Python</li>
-                  <li class="skill">C++</li>
-                  <li class="skill">Java</li>
-                  <li class="skill">HTML</li>
-                  <li class="skill">CSS</li>
-                  <li class="skill">UnitTest</li>
-                  <li class="skill">GTest</li>
+                  <li>Figma</li>
+                  <li>Framer</li>
+                  <li>Cursor</li>
+                  <li>Claude Code</li>
+                  <li>React</li>
+                  <li>TypeScript</li>
+                  <li>Python</li>
+                  <li>C++</li>
+                  <li>Java</li>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>UnitTest</li>
+                  <li>GTest</li>
                 </ul>
               </div>
-              <div class="skillGroup">
-                <h4 class="skillLabel">Design And UX</h4>
+              <div class="skillBlock">
+                <h4>Design and UX</h4>
                 <ul class="skillList">
-                  <li class="skill">High-fidelity prototyping</li>
-                  <li class="skill">Wireframing</li>
-                  <li class="skill">UI design</li>
-                  <li class="skill">Inclusive and accessible design (WCAG)</li>
-                  <li class="skill">Branding and design systems</li>
-                  <li class="skill">Design thinking</li>
-                  <li class="skill">Journey mapping</li>
-                  <li class="skill">User interviews</li>
-                  <li class="skill">Usability testing</li>
-                  <li class="skill">Case study writing</li>
-                  <li class="skill">Persona development</li>
-                  <li class="skill">Information architecture</li>
+                  <li>High-fidelity prototyping</li>
+                  <li>Wireframing</li>
+                  <li>UI design</li>
+                  <li>Inclusive and accessible design (WCAG)</li>
+                  <li>Branding and design systems</li>
+                  <li>Design thinking</li>
+                  <li>Journey mapping</li>
+                  <li>User interviews</li>
+                  <li>Usability testing</li>
+                  <li>Case study writing</li>
+                  <li>Persona development</li>
+                  <li>Information architecture</li>
                 </ul>
               </div>
-              <div class="skillGroup">
-                <h4 class="skillLabel">Working With People</h4>
+              <div class="skillBlock">
+                <h4>Working with people</h4>
                 <ul class="skillList">
-                  <li class="skill">Cross-functional collaboration</li>
-                  <li class="skill">Agile and Scrum delivery</li>
-                  <li class="skill">Developer handoff</li>
-                  <li class="skill">Workshop facilitation</li>
-                  <li class="skill">Public speaking</li>
-                  <li class="skill">Research synthesis</li>
-                  <li class="skill">Stakeholder communication</li>
-                  <li class="skill">Team leadership</li>
+                  <li>Cross-functional collaboration</li>
+                  <li>Agile and Scrum delivery</li>
+                  <li>Developer handoff</li>
+                  <li>Workshop facilitation</li>
+                  <li>Public speaking</li>
+                  <li>Research synthesis</li>
+                  <li>Stakeholder communication</li>
+                  <li>Team leadership</li>
                 </ul>
               </div>
-            </div>
-          </div>
-        </div>
-
-      </section>
-      <section class="section section--washed" id="about" aria-labelledby="about-heading">
-        <div class="cloudWrap cloudWrap--drift-a at-about-left" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--bank"></span>
-        </div>
-        <div class="cloudWrap cloudWrap--drift-b at-about-right" aria-hidden="true">
-          <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
-        </div>
-        <pre class="asciiCloud asciiCloud--puff asciiCloud--drift-right at-ascii-about" aria-hidden="true">
-  ⣀⣤⣶⣶⣤⣀
-⢰⣿⣿⣿⣿⣿⣿⣿⡆
-⠈⠻⣿⣿⣿⣿⣿⠟⠁
-   ⠉⠛⠋</pre>
-
-        <div class="container container--wide aboutInner">
-          <div class="aboutLayout">
-            <div class="aboutCopy glass" data-reveal>
-              <div class="heading aboutHeading">
-                <div class="headingText">
-                  <h2 id="about-heading">About</h2>
-                </div>
-              </div>
-
-              <div class="aboutProse">
-                <p>
-                  I started out building products and moved toward the people using them. On
-                  PeterPlate I spent my first months as a software developer, writing the frontend and
-                  backend in TypeScript, tRPC and ShadCN, before taking the designer seat on the same
-                  team. Knowing what a decision costs to build changed how I make them.
-                </p>
-
-                <p>
-                  Every project here began with people rather than a brief. I run interviews and
-                  usability tests, map the journey, and keep revising until the design answers a
-                  friction point someone actually described to me. For Ēkyu that meant designing
-                  alongside a hearing-impaired collaborator. For Cosi it meant learning how housemates
-                  really negotiate chores before proposing a single screen.
-                </p>
-
-                <p>
-                  I also teach what I learn. As workshops coordinator at Design at UCI, I research and
-                  run sessions on design thinking, accessibility and Figma for new and experienced
-                  designers, including at hackathons and external events.
-                </p>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
-
     </main>
 
-    <div class="polaroidScatter" data-count="6" aria-hidden="true">
-      <figure class="polaroid" style="--i: 0; --tilt: -11deg; --hide: 58%; --w: 13.2rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-      <figure class="polaroid" style="--i: 1; --tilt: 8deg; --hide: 54%; --w: 11.4rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-      <figure class="polaroid" style="--i: 2; --tilt: -6deg; --hide: 60%; --w: 12.1rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-      <figure class="polaroid" style="--i: 3; --tilt: 13deg; --hide: 56%; --w: 10.6rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-      <figure class="polaroid" style="--i: 4; --tilt: -14deg; --hide: 62%; --w: 11.8rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-      <figure class="polaroid" style="--i: 5; --tilt: 7deg; --hide: 55%; --w: 12.6rem">
-        <div class="polaroidWindow"></div>
-        <figcaption class="polaroidCaption">photo to come</figcaption>
-      </figure>
-    </div>
-
-    <footer class="footer">
-      <div class="cloudWrap cloudWrap--drift-c at-footer-corner" aria-hidden="true">
-        <span class="cloud cloud--bob cloud--white cloud--corner cloud--flip"></span>
-      </div>
-      <pre class="asciiCloud asciiCloud--wisp asciiCloud--drift-slow at-ascii-footer" aria-hidden="true">
-   ⢀⣤⣾⣷⣤⡀
-  ⣾⣿⣿⣿⣿⣿⣷
-   ⠙⠻⣿⠟⠋</pre>
-
-      <div class="container">
-        <div class="footerLayout glass" data-reveal>
+    <footer class="footer" id="contact">
+      <div class="footerPanel glass" data-reveal>
+        <div>
+          <h2>Let’s build together</h2>
+          <p>I’m looking for product design internships and full-time roles.</p>
+          <div class="heroActions">
+            <a class="btn btn--primary" href="mailto:eren.novakim@gmail.com">Email</a>
+          </div>
+        </div>
+        <dl class="contactList">
           <div>
-            <h2 class="footerTitle" id="contact-heading">Let’s Build Together!</h2>
-            <p class="footerLede">
-              I’m looking for product design internships and full-time roles.
-            </p>
-
-            <div class="footerActions">
-              <a class="button button--onImage" href="mailto:eren.novakim@gmail.com">Email Me<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg></a>
-              <a class="button button--onImage" href="/Eren Kim-Resume.pdf" download>
-                Download Resume<svg class="ctaIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
-              </a>
-            </div>
+            <dt>Email</dt>
+            <dd><a href="mailto:eren.novakim@gmail.com">eren.novakim@gmail.com</a></dd>
           </div>
-
-          <div class="contact">
-            <div class="contactRow">
-              <span class="contactLabel">Email</span>
-              <a class="contactLink" href="mailto:eren.novakim@gmail.com">eren.novakim@gmail.com</a>
-            </div>
-
-            <div class="contactRow">
-              <span class="contactLabel">LinkedIn</span>
-              <a
-                class="contactLink"
-                href="https://www.linkedin.com/in/eren-kim"
-                target="_blank"
-                rel="noreferrer"
-              >
-                linkedin.com/in/eren-kim
-              </a>
-            </div>
-
-            <div class="contactRow">
-              <span class="contactLabel">Based In</span>
-              <span class="contactLink">Irvine, California</span>
-            </div>
+          <div>
+            <dt>LinkedIn</dt>
+            <dd>
+              <a href="https://www.linkedin.com/in/eren-kim" target="_blank" rel="noreferrer">linkedin.com/in/eren-kim</a>
+            </dd>
           </div>
-        </div>
-
-        <div class="baseline">
-          <span>© 2026 Eren Nova Kim</span>
-          <a class="topLink" href="#home">Back To Top</a>
-        </div>
+          <div>
+            <dt>Based in</dt>
+            <dd>Irvine, California</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="baseline">
+        <span>© 2026 Eren Nova Kim</span>
+        <a href="#home">Back to top</a>
       </div>
     </footer>
 
-    <script src="/js/site.js"></script>
+    <script src="/js/home.js"></script>
   </body>
 </html>
