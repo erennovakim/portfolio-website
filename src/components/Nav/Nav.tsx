@@ -79,8 +79,8 @@ export function Nav() {
   return (
     <header
       className={styles.wrapper}
-      data-scrolled={scrolled ? 'true' : 'false'}
-      data-behind={behind}
+      data-scrolled={scrolled || !isHome ? 'true' : 'false'}
+      data-behind={!isHome ? 'overlay' : behind}
     >
       <nav className={styles.pill} aria-label="Primary">
         <ul className={styles.list}>
