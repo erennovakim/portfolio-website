@@ -108,12 +108,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
   overflow-x: clip;
 }
 
 body {
   margin: 0;
   max-width: 100%;
+  overflow-x: hidden;
   overflow-x: clip;
   /* Transparent so the fixed photograph layer shows through the whole
      document. The colour is only a load-in floor. */
@@ -495,7 +497,7 @@ a {
   position: absolute;
   top: calc(100% + 0.5rem);
   right: 0;
-  width: min(17rem, calc(100vw - 2rem));
+  width: min(17rem, calc(100% - 2rem));
   padding: var(--space-xs);
   border-radius: var(--radius-md);
   background-color: var(--paper);
