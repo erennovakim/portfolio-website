@@ -344,6 +344,7 @@ a {
   margin: 0;
   padding: 0;
   list-style: none;
+  min-width: max-content;
 }
 
 .navList:first-of-type {
@@ -361,6 +362,7 @@ a {
   font-size: var(--size-small);
   font-weight: var(--weight-medium);
   text-decoration: none;
+  white-space: nowrap;
   color: var(--on-image);
   transition:
     color var(--motion-fast) var(--ease),
@@ -724,7 +726,6 @@ a {
 
 .heroTitleAccent {
   display: block;
-  max-width: 18ch;
   font-family: var(--font-accent);
   font-style: italic;
   font-weight: var(--weight-regular);
