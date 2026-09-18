@@ -27,12 +27,13 @@
   );
 
   function spy() {
-    const line = window.innerHeight * 0.28;
+    const probe = window.innerHeight * 0.4;
     let current = '';
     sectionIds.forEach(function (id) {
       const section = document.getElementById(id);
       if (!section) return;
-      if (section.getBoundingClientRect().top <= line) current = id;
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= probe && rect.bottom > probe) current = id;
     });
     navSectionLinks.forEach(function (link) {
       const id = link.getAttribute('href').slice(1);
