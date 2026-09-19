@@ -77,7 +77,6 @@
 
 (function () {
   const atmosphere = document.querySelector('.atmosphere');
-  const sun = document.querySelector('.sun');
   if (!atmosphere) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -91,12 +90,9 @@
   function tick() {
     x += (tx - x) * 0.05;
     y += (ty - y) * 0.05;
-    atmosphere.style.setProperty('--px', x.toFixed(4));
-    atmosphere.style.setProperty('--py', y.toFixed(4));
-    if (sun) {
-      sun.style.setProperty('--sx', ((x - 0.5) * 2).toFixed(3));
-      sun.style.setProperty('--sy', ((y - 0.35) * 2).toFixed(3));
-    }
+    const hero = atmosphere.closest('.hero') || atmosphere;
+    hero.style.setProperty('--px', x.toFixed(4));
+    hero.style.setProperty('--py', y.toFixed(4));
     frame = requestAnimationFrame(tick);
   }
 
