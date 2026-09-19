@@ -77,6 +77,7 @@
 
 (function () {
   const atmosphere = document.querySelector('.atmosphere');
+  const sun = document.querySelector('.sun');
   if (!atmosphere) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (window.matchMedia('(pointer: coarse)').matches) return;
@@ -92,6 +93,10 @@
     y += (ty - y) * 0.05;
     atmosphere.style.setProperty('--px', x.toFixed(4));
     atmosphere.style.setProperty('--py', y.toFixed(4));
+    if (sun) {
+      sun.style.setProperty('--sx', ((x - 0.5) * 2).toFixed(3));
+      sun.style.setProperty('--sy', ((y - 0.35) * 2).toFixed(3));
+    }
     frame = requestAnimationFrame(tick);
   }
 
@@ -107,5 +112,32 @@
   frame = requestAnimationFrame(tick);
   window.addEventListener('pagehide', function () {
     cancelAnimationFrame(frame);
+  });
+})();
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const cards = Array.from(document.querySelectorAll('.project'));
+  if (cards.length === 0) return;
+
+  cards.forEach(function (card) {
+    card.addEventListener(
+      'pointermove',
+      function (event) {
+        const rect = card.getBoundingClientRect();
+        const px = (event.clientX - rect.left) / rect.width - 0.5;
+        const py = (event.clientY - rect.top) / rect.height - 0.5;
+        card.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', (-py * 6).toFixed(2) + 'deg');
+      },
+      { passive: true }
+    );
+
+    card.addEventListener('pointerleave', function () {
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--rx', '0deg');
+    });
   });
 })();
