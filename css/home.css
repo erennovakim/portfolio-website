@@ -191,12 +191,13 @@ a {
 
 .sun {
   position: absolute;
-  top: 4%;
-  right: 5%;
-  width: min(18rem, 28vw);
+  top: 8%;
+  right: 0;
+  width: min(20rem, 36vw);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  pointer-events: none;
   transform: translate3d(calc(var(--sx, 0) * 14px), calc(var(--sy, 0) * 10px), 0);
 }
 
@@ -429,12 +430,14 @@ main,
 }
 
 .hero {
+  position: relative;
   display: grid;
   align-items: center;
   min-height: 100dvh;
   padding: calc(var(--nav-h) + 1.5rem) var(--gutter) 3rem;
   width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
   margin-inline: auto;
+  overflow: hidden;
 }
 
 .heroCopy {
@@ -856,7 +859,7 @@ html.has-js [data-reveal].is-inview {
 
   .hero {
     align-items: start;
-    padding-top: calc(var(--nav-h) + 1.25rem);
+    padding-top: calc(var(--nav-h) + 2.25rem);
   }
 }
 
