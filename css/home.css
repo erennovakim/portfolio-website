@@ -214,40 +214,41 @@ a {
 
 .bird {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  color: rgba(var(--gold-rgb), 0.62);
+  width: 52px;
+  height: 52px;
+  color: rgba(var(--gold-rgb), 0.7);
   will-change: transform;
+  filter: drop-shadow(0 4px 10px rgba(28, 34, 44, 0.35));
 }
 
 .bird--a {
-  top: 18%;
+  top: 16%;
   animation: fly-a 26s linear infinite;
 }
 
 .bird--b {
-  top: 28%;
-  width: 20px;
-  height: 20px;
-  color: rgba(243, 238, 230, 0.42);
+  top: 26%;
+  width: 38px;
+  height: 38px;
+  color: rgba(243, 238, 230, 0.5);
   animation: fly-b 34s linear infinite;
   animation-delay: -8s;
 }
 
 .bird--c {
-  top: 12%;
-  width: 16px;
-  height: 16px;
-  color: rgba(var(--gold-rgb), 0.4);
+  top: 10%;
+  width: 32px;
+  height: 32px;
+  color: rgba(var(--gold-rgb), 0.48);
   animation: fly-c 22s linear infinite;
   animation-delay: -14s;
 }
 
 .bird--d {
-  top: 62%;
-  width: 22px;
-  height: 22px;
-  color: rgba(243, 238, 230, 0.32);
+  top: 58%;
+  width: 42px;
+  height: 42px;
+  color: rgba(243, 238, 230, 0.38);
   animation: fly-d 40s linear infinite;
   animation-delay: -20s;
 }
