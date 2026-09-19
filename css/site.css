@@ -22,21 +22,21 @@
 
   /* Paper is no longer pure white. Every translucent white in the old
      component CSS is re-expressed against this triplet. */
-  --paper: #f7f1eb;
-  --paper-rgb: 247, 241, 235;
+  --paper: #ffffff;
+  --paper-rgb: 255, 255, 255;
 
-  --ink: #16233f;
-  --slate: #4c5a79;
+  --ink: #2a3140;
+  --slate: #5a6270;
   /* Was a cool iris blue; pulled toward the sunset's muted slate-plum. */
-  --iris: #404558;
-  --iris-deep: #2b2f3d;
+  --iris: #3d6496;
+  --iris-deep: #2a3140;
   --dusk: #101b33;
   /* The mobile menu icon where it crosses a washed section. */
   --on-overlay: #3b3947;
 
   /* Warmed to sit on cream instead of the old cool mist. */
-  --line: #ded4c8;
-  --line-strong: #c3b5a5;
+  --line: #e4e7ec;
+  --line-strong: #d0d5dc;
 
   /* Sections that wash the photograph rather than hide it. */
   --overlay: rgb(var(--paper-rgb));
@@ -875,7 +875,7 @@ a {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background-color: #efe6dc;
+  background-color: #f7f8fa;
 }
 
 .cover {
@@ -1412,14 +1412,103 @@ h4.skillLabel {
   color: #fff;
 }
 
-.page-study .footer,
-.page-study .baseline {
+.page-study .footer {
+  width: min(100% - 2 * var(--page-gutter), var(--container));
+  margin-inline: auto;
+  padding: 2rem 0 3rem;
+  background: #fff;
+  color: var(--ink);
+  overflow: visible;
+}
+
+.page-study .footerPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 2rem;
+  padding: 0 0 0.4rem;
+}
+
+.page-study .footer h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.2rem, 1.5rem + 2vw, 3.4rem);
+  letter-spacing: -0.03em;
+}
+
+.page-study .footer p {
+  margin: 0.7rem 0 1.3rem;
+  max-width: 32ch;
   color: var(--slate);
 }
 
-.page-study .footerTitle,
-.page-study .contactLink {
+.page-study .heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+
+.page-study .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.82rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--ink);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms var(--ease), background 180ms var(--ease);
+}
+
+.page-study .btn:hover {
+  background: #1d232e;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.page-study .btn .icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.page-study .contactList {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.page-study .contactList dt {
+  color: var(--accent-2);
+  font-size: 0.92rem;
+}
+
+.page-study .contactList dd {
+  margin: 0.15rem 0 0;
+}
+
+.page-study .contactList a {
   color: var(--ink);
+  text-underline-offset: 0.18em;
+}
+
+.page-study .baseline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: 0.9rem;
+  background: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -1483,6 +1572,10 @@ h4.skillLabel {
   .footerLayout {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xl);
+  }
+
+  .page-study .footerPanel {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .skills {
@@ -1636,7 +1729,7 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #efe6dc;
+  background-color: #f7f8fa;
 }
 
 .studyDraft {
@@ -1673,7 +1766,7 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #efe6dc;
+  background-color: #f7f8fa;
 }
 
 .studyCaption {
@@ -1758,7 +1851,7 @@ h4.skillLabel {
   padding: var(--space-md);
   border: 1.5px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  background-color: #efe6dc;
+  background-color: #f7f8fa;
 }
 
 .studyNote h3 {
