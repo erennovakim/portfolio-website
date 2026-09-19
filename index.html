@@ -21,7 +21,7 @@
   <body>
     <a class="skip" href="#home">Skip to content</a>
 
-    <header class="nav" data-scrolled="false">
+    <header class="nav">
       <a class="navBrand" href="#home">Eren Nova Kim</a>
       <nav class="navShell" aria-label="Primary">
         <ul class="navList">
@@ -49,23 +49,13 @@
 
     <main>
       <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="atmosphere" aria-hidden="true">
-          <span class="mesh"></span>
-        </div>
         <div class="heroCopy">
-          <p class="heroName">Product Designer</p>
-          <h1 class="heroTitle" id="hero-title">
-            Designing human experiences,<br /><em>thoughtfully</em>.
-          </h1>
+          <p class="heroName">Product designer, UC Irvine</p>
+          <h1 class="heroTitle" id="hero-title">I design campus products I can also ship.</h1>
           <p class="heroSub">
-            I pair research with a development background to make design decisions that are purposeful and feasible.
+            Research plus a TypeScript background, so the screens I draw are ones I know how to build.
           </p>
-          <div class="heroActions">
-            <a class="btn" href="#work">
-              View work
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"/></svg>
-            </a>
-          </div>
+          <a class="btn" href="#work">View work</a>
         </div>
       </section>
 
@@ -94,88 +84,67 @@
         </div>
 
         <section class="section" id="work" aria-label="Selected work">
-
-          <div class="workGrid">
-            <a class="project" href="/work/peterplate/" data-reveal>
-              <div class="projectCover">
+          <div class="workList">
+            <a class="workRow workRow--lead" href="/work/peterplate/">
+              <div class="workCover">
                 <img
                   src="/assets/covers/peterplate.svg"
                   alt="Placeholder mockup showing the PeterPlate dining interface on desktop and mobile"
                 />
               </div>
-              <div class="projectBody">
-                <div class="projectMeta">
-                  <h3>PeterPlate</h3>
-                  <p>UI/UX Designer · January 2026 - Present</p>
-                </div>
-                <p class="projectSummary">
-                  A 0-to-1 campus dining experience shaped by interviews and usability testing, then handed to developers as specs I could have built myself.
-                </p>
-                <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+              <div class="workCopy">
+                <h2>PeterPlate</h2>
+                <p class="workMeta">UI/UX Designer, January 2026 - Present</p>
+                <p class="workLine">Campus dining as a decision, not a menu board.</p>
               </div>
             </a>
 
-            <a class="project" href="/work/ekyu/" data-reveal style="--reveal-delay: 70ms">
-              <div class="projectCover">
+            <a class="workRow" href="/work/ekyu/">
+              <div class="workCover">
                 <img
                   src="/assets/covers/ekyu.svg"
-                  alt="Placeholder mockup showing the Ēkyu controller app and sound rings"
+                  alt="Placeholder mockup showing the Ekyu controller app and sound rings"
                 />
               </div>
-              <div class="projectBody">
-                <div class="projectMeta">
-                  <h3>Ēkyu</h3>
-                  <p>UI/UX Designer · April 2026</p>
-                </div>
-                <p class="projectSummary">
-                  Hardware and software for choosing what you hear, designed in a 40-hour sprint and placed top 10 of more than 400.
-                </p>
-                <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+              <div class="workCopy">
+                <h2>Ēkyu</h2>
+                <p class="workMeta">UI/UX Designer, April 2026</p>
+                <p class="workLine">Hardware and software for choosing what you hear, top 10 of more than 400.</p>
               </div>
             </a>
 
-            <a class="project" href="/work/cosi/" data-reveal style="--reveal-delay: 110ms">
-              <div class="projectCover">
+            <a class="workRow" href="/work/cosi/">
+              <div class="workCover">
                 <img
                   src="/assets/covers/cosi.svg"
                   alt="Placeholder mockup showing the Cosi household task board and contribution chart"
                 />
               </div>
-              <div class="projectBody">
-                <div class="projectMeta">
-                  <h3>Cosi</h3>
-                  <p>UI/UX Designer · January 2026 - March 2026</p>
-                </div>
-                <p class="projectSummary">
-                  Household dynamics through conflict-neutral communication and task flows grounded in how housemates actually negotiate chores.
-                </p>
-                <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+              <div class="workCopy">
+                <h2>Cosi</h2>
+                <p class="workMeta">UI/UX Designer, January 2026 - March 2026</p>
+                <p class="workLine">Household dynamics through conflict-neutral communication and task flows.</p>
               </div>
             </a>
 
-            <a class="project" href="/work/fourth-project/" data-reveal style="--reveal-delay: 140ms">
-              <div class="projectCover">
+            <a class="workRow" href="/work/fourth-project/">
+              <div class="workCover">
                 <img
                   src="/assets/covers/fourth-project.svg"
                   alt="Placeholder wireframe standing in for a fourth project"
                 />
               </div>
-              <div class="projectBody">
-                <div class="projectMeta">
-                  <h3>Fourth Project</h3>
-                  <p>Case study in progress</p>
-                </div>
-                <p class="projectSummary">
-                  A slot for the next selected work. Replace the study folder and it will appear here.
-                </p>
-                <span class="projectCta">View case study<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+              <div class="workCopy">
+                <h2>Fourth Project</h2>
+                <p class="workMeta">Coming later</p>
+                <p class="workLine">A slot for the next selected work.</p>
               </div>
             </a>
           </div>
         </section>
 
         <section class="section" id="about" aria-labelledby="about-heading">
-          <article class="aboutCard" data-reveal>
+          <article class="aboutLayout">
             <div class="aboutCopy">
               <h2 id="about-heading">About</h2>
               <div class="aboutProse">
@@ -188,45 +157,24 @@
               </div>
             </div>
             <div class="aboutGallery" aria-hidden="true">
-              <div class="aboutCol aboutCol--up">
-                <div class="aboutColTrack">
-                  <figure class="aboutTile" style="--h: 210px"></figure>
-                  <figure class="aboutTile" style="--h: 140px"></figure>
-                  <figure class="aboutTile" style="--h: 260px"></figure>
-                  <figure class="aboutTile" style="--h: 180px"></figure>
-                  <figure class="aboutTile" style="--h: 210px"></figure>
-                  <figure class="aboutTile" style="--h: 140px"></figure>
-                  <figure class="aboutTile" style="--h: 260px"></figure>
-                  <figure class="aboutTile" style="--h: 180px"></figure>
-                </div>
-              </div>
-              <div class="aboutCol aboutCol--down">
-                <div class="aboutColTrack">
-                  <figure class="aboutTile" style="--h: 160px"></figure>
-                  <figure class="aboutTile" style="--h: 240px"></figure>
-                  <figure class="aboutTile" style="--h: 130px"></figure>
-                  <figure class="aboutTile" style="--h: 220px"></figure>
-                  <figure class="aboutTile" style="--h: 160px"></figure>
-                  <figure class="aboutTile" style="--h: 240px"></figure>
-                  <figure class="aboutTile" style="--h: 130px"></figure>
-                  <figure class="aboutTile" style="--h: 220px"></figure>
-                </div>
-              </div>
+              <figure class="aboutTile"></figure>
+              <figure class="aboutTile aboutTile--tall"></figure>
+              <figure class="aboutTile aboutTile--wide"></figure>
+              <figure class="aboutTile"></figure>
+              <figure class="aboutTile"></figure>
+              <figure class="aboutTile aboutTile--tall"></figure>
             </div>
           </article>
         </section>
 
         <section class="section" id="resume" aria-labelledby="resume-heading">
-          <div class="sectionHead sectionHead--split" data-reveal>
+          <div class="sectionHead">
             <h2 id="resume-heading">Resume</h2>
-            <a class="btn" href="/Eren Kim-Resume.pdf" download>
-              Download PDF
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
-            </a>
+            <a class="btn" href="/Eren Kim-Resume.pdf" download>Download PDF</a>
           </div>
 
           <div class="resumeStack">
-            <div class="resumeBlock" data-reveal>
+            <div class="resumeBlock">
               <h3>Experience</h3>
               <h4>Projects</h4>
               <div class="resumeCluster">
@@ -320,7 +268,7 @@
               </details>
             </div>
 
-            <div class="resumeBlock" data-reveal>
+            <div class="resumeBlock">
               <h3>Education</h3>
               <details open>
                 <summary>
@@ -335,75 +283,17 @@
                   <li>Invited to the Campuswide Honors Collegium</li>
                 </ul>
               </details>
-            </div>
-
-            <div class="skillGrid">
-              <article class="skillCard" data-reveal>
-                <h3>Technical tools</h3>
-                <ul class="skillList">
-                  <li>Figma</li>
-                  <li>Framer</li>
-                  <li>Cursor</li>
-                  <li>Claude Code</li>
-                  <li>React</li>
-                  <li>TypeScript</li>
-                  <li>Python</li>
-                  <li>C++</li>
-                  <li>Java</li>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>UnitTest</li>
-                  <li>GTest</li>
-                </ul>
-              </article>
-              <article class="skillCard" data-reveal style="--reveal-delay: 70ms">
-                <h3>Design and UX</h3>
-                <ul class="skillList">
-                  <li>High-fidelity prototyping</li>
-                  <li>Wireframing</li>
-                  <li>UI design</li>
-                  <li>Inclusive and accessible design (WCAG)</li>
-                  <li>Branding and design systems</li>
-                  <li>Design thinking</li>
-                  <li>Journey mapping</li>
-                  <li>User interviews</li>
-                  <li>Usability testing</li>
-                  <li>Case study writing</li>
-                  <li>Persona development</li>
-                  <li>Information architecture</li>
-                </ul>
-              </article>
-              <article class="skillCard" data-reveal style="--reveal-delay: 110ms">
-                <h3>Working with people</h3>
-                <ul class="skillList">
-                  <li>Cross-functional collaboration</li>
-                  <li>Agile and Scrum delivery</li>
-                  <li>Developer handoff</li>
-                  <li>Workshop facilitation</li>
-                  <li>Public speaking</li>
-                  <li>Research synthesis</li>
-                  <li>Stakeholder communication</li>
-                  <li>Team leadership</li>
-                </ul>
-              </article>
+              <p class="skillLine">Figma, TypeScript, interviews, and developer handoff.</p>
             </div>
           </div>
         </section>
 
         <footer class="footer" id="contact">
-          <div class="footerPanel" data-reveal>
+          <div class="footerPanel">
             <div>
               <h2>Looking for product design full-time roles and internships.</h2>
-              <div class="heroActions">
-                <a class="btn" href="mailto:eren.novakim@gmail.com">
-                  Email
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>
-                </a>
-                <a class="btn" href="#home">
-                  Back to top
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"/></svg>
-                </a>
-              </div>
+              <p>UC Irvine Informatics. I still write production TypeScript when it helps the design.</p>
+              <a class="btn" href="mailto:eren.novakim@gmail.com">Email</a>
             </div>
             <dl class="contactList">
               <div>
@@ -420,6 +310,7 @@
           </div>
           <div class="baseline">
             <span>© 2026 Eren Nova Kim</span>
+            <a href="#home">Back to top</a>
           </div>
         </footer>
       </div>
