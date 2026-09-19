@@ -114,9 +114,9 @@ a {
   align-items: center;
   gap: 1.4rem;
   max-width: 100%;
-  padding: 0.3rem 0.45rem 0.3rem 1.1rem;
+  padding: 0.42rem 0.65rem 0.42rem 1.15rem;
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: 8px;
   pointer-events: auto;
   transition:
     background 280ms var(--ease),
@@ -379,8 +379,8 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.78rem 1.2rem;
-  border-radius: var(--radius);
+  padding: 0.82rem 1.25rem;
+  border-radius: 8px;
   border: 1px solid transparent;
   background: var(--ink);
   color: var(--white);
@@ -724,8 +724,7 @@ a {
 .skillList li {
   padding: 0.28rem 0.65rem;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  font-size: 0.82rem;
+  border-radius: 6px;
   color: var(--ink);
   background: var(--white);
 }
