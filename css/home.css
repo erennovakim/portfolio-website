@@ -224,7 +224,7 @@ a {
 
 .hero {
   display: grid;
-  align-content: center;
+  align-content: start;
   justify-items: start;
   min-height: 100dvh;
   padding: calc(var(--nav-h) + 2rem) var(--gutter) 3.5rem;
