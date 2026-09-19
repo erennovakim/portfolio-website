@@ -303,7 +303,19 @@ a {
   background:
     radial-gradient(ellipse 55% 48% at calc(72% + var(--px) * 8%) calc(12% + var(--py) * 10%), rgba(243, 196, 160, 0.55), transparent 62%),
     radial-gradient(ellipse 70% 55% at 18% 8%, rgba(196, 220, 242, 0.7), transparent 58%),
-    linear-gradient(180deg, var(--sky) 0%, #eef2f4 72%, var(--white) 100%);
+    linear-gradient(180deg, var(--sky) 0%, #eef2f4 78%, #f7f9fb 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: min(28vh, 14rem);
+  background: linear-gradient(180deg, rgba(247, 249, 251, 0) 0%, #f7f9fb 72%, var(--white) 100%);
+  pointer-events: none;
 }
 
 .atmosphere {
@@ -448,6 +460,42 @@ a {
   background: var(--white);
 }
 
+.heroToWork {
+  padding: 0 0 1.5rem;
+  background: linear-gradient(180deg, #f7f9fb 0%, var(--white) 88%);
+}
+
+.imageBelt {
+  overflow: hidden;
+  width: 100%;
+}
+
+.imageBeltTrack {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: max-content;
+  animation: belt-scroll 42s linear infinite;
+}
+
+.imageBeltItem {
+  flex: 0 0 var(--w, 200px);
+  width: var(--w, 200px);
+  height: 148px;
+  border-radius: var(--radius);
+  background: #edf2f7;
+  border: 1px solid var(--line);
+}
+
+@keyframes belt-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .section {
   width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
   margin-inline: auto;
@@ -570,61 +618,110 @@ a {
 }
 
 .projectCta {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  width: max-content;
   gap: 0.35rem;
   margin-top: auto;
-  padding-top: 0.4rem;
+  padding: 0.15rem 0 0.35rem;
   color: var(--ink);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.92rem;
 }
 
-.aboutLayout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.35fr) minmax(0, 0.78fr);
-  grid-template-areas:
-    'a copy b'
-    'c copy d';
-  gap: 1rem;
-  align-items: stretch;
+.projectCta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 280ms var(--ease);
+  pointer-events: none;
 }
 
-.photoSlot--a {
-  grid-area: a;
+.project:hover .projectCta::after,
+.project:focus-visible .projectCta::after {
+  transform: scaleX(1);
+}
+
+.aboutCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.92fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  min-height: 32rem;
+  padding: 2.1rem 2rem 2.1rem 2.25rem;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(90, 110, 140, 0.06);
 }
 
 .aboutCopy {
-  grid-area: copy;
   display: grid;
-  align-content: start;
+  align-content: center;
   gap: 1.1rem;
-  padding: 0.4rem 0.2rem;
+  padding: 0.4rem 0.2rem 0.4rem 0;
 }
 
-.photoSlot--b {
-  grid-area: b;
-}
-
-.photoSlot--c {
-  grid-area: c;
-}
-
-.photoSlot--d {
-  grid-area: d;
-}
-
-.photoSlot {
-  margin: 0;
+.aboutGallery {
   display: grid;
-  place-items: center;
-  min-height: 11rem;
-  border: 1px dashed rgba(42, 49, 64, 0.28);
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  min-height: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.aboutCol {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.aboutColTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aboutCol--up .aboutColTrack {
+  animation: about-scroll-up 36s linear infinite;
+}
+
+.aboutCol--down .aboutColTrack {
+  animation: about-scroll-down 42s linear infinite;
+}
+
+.aboutTile {
+  margin: 0;
+  flex: 0 0 var(--h, 180px);
+  height: var(--h, 180px);
   border-radius: var(--radius);
-  background: #f3f6f9;
-  color: var(--text-soft);
-  font-size: 0.92rem;
-  font-weight: 500;
+  background: #edf2f7;
+  border: 1px solid var(--line);
+}
+
+@keyframes about-scroll-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes about-scroll-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .aboutProse {
@@ -835,12 +932,14 @@ html.has-js [data-reveal].is-inview {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .aboutLayout {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'copy copy'
-      'a b'
-      'c d';
+  .aboutCard {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 1.6rem 1.35rem;
+  }
+
+  .aboutGallery {
+    height: 22rem;
   }
 }
 
@@ -879,8 +978,16 @@ html.has-js [data-reveal].is-inview {
   }
 
   .mesh,
-  .heroCopy {
+  .heroCopy,
+  .imageBeltTrack,
+  .aboutCol--up .aboutColTrack,
+  .aboutCol--down .aboutColTrack {
     animation: none !important;
+  }
+
+  .btn::after,
+  .projectCta::after {
+    transition: none;
   }
 
   html.has-js [data-reveal] {
@@ -898,6 +1005,7 @@ html.has-js [data-reveal].is-inview {
 @media (prefers-reduced-transparency: reduce) {
   .project,
   .skillCard,
+  .aboutCard,
   .nav[data-scrolled='true'] .navShell,
   .navSheet {
     background: #f7f5f2;
