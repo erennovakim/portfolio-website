@@ -37,8 +37,7 @@
     const probe = window.innerHeight * 0.38;
     let current = '';
     spySections.forEach(function (section) {
-      const rect = section.getBoundingClientRect();
-      if (rect.top <= probe && rect.bottom > probe) current = section.id;
+      if (section.getBoundingClientRect().top <= probe) current = section.id;
     });
     navLinks.forEach(function (link) {
       const href = link.getAttribute('href') || '';

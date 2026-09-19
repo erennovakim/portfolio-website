@@ -481,7 +481,7 @@ a {
 .imageBeltItem {
   flex: 0 0 var(--w, 200px);
   width: var(--w, 200px);
-  height: 148px;
+  height: 168px;
   border-radius: var(--radius);
   background: #edf2f7;
   border: 1px solid var(--line);
@@ -500,6 +500,10 @@ a {
   width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
   margin-inline: auto;
   padding: 5.5rem var(--gutter);
+}
+
+#work.section {
+  padding-top: 2.75rem;
 }
 
 .sectionHead {
@@ -618,43 +622,35 @@ a {
 }
 
 .projectCta {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  width: max-content;
+  align-self: start;
   gap: 0.35rem;
   margin-top: auto;
   padding: 0.15rem 0 0.35rem;
   color: var(--ink);
   font-weight: 600;
   font-size: 0.92rem;
+  white-space: nowrap;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: center 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1.5px;
+  transition: background-size 280ms var(--ease);
 }
 
-.projectCta::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1.5px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 280ms var(--ease);
-  pointer-events: none;
-}
-
-.project:hover .projectCta::after,
-.project:focus-visible .projectCta::after {
-  transform: scaleX(1);
+.project:hover .projectCta,
+.project:focus-visible .projectCta {
+  background-size: 100% 1.5px;
 }
 
 .aboutCard {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.92fr);
+  grid-template-rows: minmax(32rem, 36rem);
   gap: clamp(1.5rem, 3vw, 3rem);
-  min-height: 32rem;
-  padding: 2.1rem 2rem 2.1rem 2.25rem;
+  min-height: 0;
+  padding: 1.5rem 1.5rem 1.5rem 2.25rem;
   overflow: hidden;
   background: var(--card);
   border: 1px solid var(--line);
@@ -665,14 +661,16 @@ a {
 .aboutCopy {
   display: grid;
   align-content: center;
+  align-self: stretch;
   gap: 1.1rem;
-  padding: 0.4rem 0.2rem 0.4rem 0;
+  padding: 0.8rem 0.4rem 0.8rem 0;
 }
 
 .aboutGallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  height: 100%;
   min-height: 0;
   overflow: hidden;
   mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
@@ -681,6 +679,7 @@ a {
 .aboutCol {
   overflow: hidden;
   min-height: 0;
+  height: 100%;
 }
 
 .aboutColTrack {
@@ -934,12 +933,13 @@ html.has-js [data-reveal].is-inview {
 
   .aboutCard {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 22rem;
     min-height: 0;
     padding: 1.6rem 1.35rem;
   }
 
   .aboutGallery {
-    height: 22rem;
+    height: 100%;
   }
 }
 
@@ -986,7 +986,7 @@ html.has-js [data-reveal].is-inview {
   }
 
   .btn::after,
-  .projectCta::after {
+  .projectCta {
     transition: none;
   }
 
