@@ -653,7 +653,7 @@ h4.skillLabel {
 .tagList {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2xs);
+  gap: 0.2rem 0.85rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -666,10 +666,6 @@ h4.skillLabel {
   font-size: var(--size-small);
   line-height: 1.5;
   color: var(--slate);
-}
-
-.tag + .tag::before {
-  content: ', ';
 }
 
 .cardFooter {
