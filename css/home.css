@@ -362,31 +362,27 @@ a {
 .heroName {
   margin: 0 0 0.85rem;
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(1.2rem, 1.05rem + 0.45vw, 1.4rem);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.2;
   color: #1d4f8c;
-  background-image:
-    radial-gradient(circle at 18% 20%, #b44514 0%, transparent 42%),
-    radial-gradient(circle at 82% 78%, #1d4f8c 0%, transparent 46%),
-    radial-gradient(circle at 48% 48%, #215a9a 0%, transparent 52%),
-    linear-gradient(118deg, #1d4f8c 0%, #b44514 38%, #1a5aa6 70%, #a33d12 100%);
-  background-size: 220% 220%;
-  background-position: 12% 40%;
+  background-image: linear-gradient(105deg, #1d4f8c 32%, #b44514 68%);
+  background-size: 160% 160%;
+  background-position: 20% 40%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hero-name-mesh 16s ease-in-out infinite;
+  animation: hero-name-mesh 9s ease-in-out infinite;
 }
 
 @keyframes hero-name-mesh {
   0%,
   100% {
-    background-position: 8% 36%;
+    background-position: 8% 30%;
   }
   50% {
-    background-position: 92% 64%;
+    background-position: 88% 70%;
   }
 }
 
@@ -925,7 +921,7 @@ a {
 
 .footer .heroActions {
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1.4rem;
 }
 
@@ -940,7 +936,7 @@ a {
   align-content: start;
   gap: 1rem;
   margin: 0;
-  padding-top: 0.7rem;
+  padding-top: 1.15rem;
 }
 
 .contactList dt {
