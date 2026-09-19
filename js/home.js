@@ -156,13 +156,14 @@
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  function slowOnHover(host, trackSelector) {
+  function slowOnHover(host, trackSelector, hoverRate) {
     const tracks = Array.from(host.querySelectorAll(trackSelector));
     if (tracks.length === 0) return;
 
     let target = 1;
     let current = 1;
     let frame = 0;
+    const slowed = hoverRate == null ? 0 : hoverRate;
 
     function animations() {
       const list = [];
@@ -189,7 +190,7 @@
     }
 
     host.addEventListener('pointerenter', function () {
-      go(0);
+      go(slowed);
     });
     host.addEventListener('pointerleave', function () {
       go(1);
@@ -197,9 +198,9 @@
   }
 
   document.querySelectorAll('.imageBelt').forEach(function (belt) {
-    slowOnHover(belt, '.imageBeltTrack');
+    slowOnHover(belt, '.imageBeltTrack', 0.12);
   });
   document.querySelectorAll('.aboutGallery').forEach(function (gallery) {
-    slowOnHover(gallery, '.aboutColTrack');
+    slowOnHover(gallery, '.aboutColTrack', 0);
   });
 })();

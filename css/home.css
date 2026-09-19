@@ -1,31 +1,6 @@
-/* Home page. Sky lives only in the hero; the rest of the page is white. */
+@import url('tokens.css');
 
-:root {
-  --sky: #e4eef8;
-  --white: #ffffff;
-  --peach: #f3c4a0;
-  --accent-1: #e08a4a;
-  --accent-1-rgb: 224, 138, 74;
-  --accent-2: #3d6496;
-  --ink: #2a3140;
-  --text: #2a3140;
-  --text-soft: #5a6270;
-  --line: rgba(42, 49, 64, 0.12);
-  --card: #f7f8fa;
-  --font-display: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
-  --font-body: Figtree, 'Segoe UI', sans-serif;
-  --radius: 12px;
-  --nav-h: 72px;
-  --gutter: clamp(1.25rem, 4vw, 3rem);
-  --wrap: 1120px;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --z-atmosphere: 0;
-  --z-content: 2;
-  --z-nav: 20;
-  --px: 0.62;
-  --py: 0.22;
-  --caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='black' d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
-}
+/* Home page. Sky lives only in the hero; the rest of the page is white. */
 
 *,
 *::before,
@@ -36,6 +11,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -481,17 +457,41 @@ a {
 }
 
 .heroToWork {
-  padding: 0 0 1.5rem;
+  position: relative;
+  z-index: var(--z-belt);
+  padding: 1.25rem 0 2rem;
+  overflow: visible;
   background: linear-gradient(180deg, #f7f9fb 0%, var(--white) 88%);
 }
 
 .imageBelt {
   position: relative;
-  overflow: hidden;
+  z-index: var(--z-belt);
+  overflow: visible;
   width: 100%;
-  padding-block: 10px;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  padding-block: 3rem;
+  margin-block: -1.5rem;
+}
+
+.imageBelt::before,
+.imageBelt::after {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  bottom: 3rem;
+  width: min(8vw, 5.5rem);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.imageBelt::before {
+  left: 0;
+  background: linear-gradient(90deg, #f7f9fb 0%, rgba(247, 249, 251, 0) 100%);
+}
+
+.imageBelt::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--white) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .imageBeltTrack {
@@ -499,11 +499,13 @@ a {
   align-items: stretch;
   gap: 16px;
   width: max-content;
+  overflow: visible;
   animation: belt-scroll 42s linear infinite;
 }
 
 .imageBeltItem {
   position: relative;
+  z-index: 1;
   flex: 0 0 var(--w, 200px);
   width: var(--w, 200px);
   height: 168px;
@@ -512,13 +514,14 @@ a {
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
-  transition: transform 420ms var(--ease);
+  transition: transform 420ms var(--ease), box-shadow 420ms var(--ease);
 }
 
 .imageBeltItem:hover,
 .imageBeltItem:focus-visible {
-  --scale: 1.045;
-  z-index: 1;
+  --scale: 1.22;
+  z-index: var(--z-belt-lift);
+  box-shadow: var(--shadow-card-hover);
 }
 
 @keyframes belt-scroll {
@@ -570,6 +573,10 @@ a {
 .aboutCopy h2,
 .footer h2 {
   font-size: clamp(2.2rem, 1.5rem + 2vw, 3.4rem);
+}
+
+.footer h2 {
+  margin-bottom: 1.3rem;
 }
 
 .sectionLede {
