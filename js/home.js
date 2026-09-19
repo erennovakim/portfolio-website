@@ -140,8 +140,8 @@
         const rect = card.getBoundingClientRect();
         const px = (event.clientX - rect.left) / rect.width - 0.5;
         const py = (event.clientY - rect.top) / rect.height - 0.5;
-        card.style.setProperty('--ry', (px * 8).toFixed(2) + 'deg');
-        card.style.setProperty('--rx', (-py * 6).toFixed(2) + 'deg');
+        card.style.setProperty('--ry', (px * 4).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', (-py * 3).toFixed(2) + 'deg');
       },
       { passive: true }
     );
@@ -150,5 +150,56 @@
       card.style.setProperty('--ry', '0deg');
       card.style.setProperty('--rx', '0deg');
     });
+  });
+})();
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function slowOnHover(host, trackSelector) {
+    const tracks = Array.from(host.querySelectorAll(trackSelector));
+    if (tracks.length === 0) return;
+
+    let target = 1;
+    let current = 1;
+    let frame = 0;
+
+    function animations() {
+      const list = [];
+      tracks.forEach(function (track) {
+        track.getAnimations().forEach(function (anim) {
+          list.push(anim);
+        });
+      });
+      return list;
+    }
+
+    function tick() {
+      current += (target - current) * 0.09;
+      if (Math.abs(current - target) < 0.01) current = target;
+      animations().forEach(function (anim) {
+        anim.playbackRate = current;
+      });
+      frame = current === target ? 0 : requestAnimationFrame(tick);
+    }
+
+    function go(next) {
+      target = next;
+      if (!frame) frame = requestAnimationFrame(tick);
+    }
+
+    host.addEventListener('pointerenter', function () {
+      go(0);
+    });
+    host.addEventListener('pointerleave', function () {
+      go(1);
+    });
+  }
+
+  document.querySelectorAll('.imageBelt').forEach(function (belt) {
+    slowOnHover(belt, '.imageBeltTrack');
+  });
+  document.querySelectorAll('.aboutGallery').forEach(function (gallery) {
+    slowOnHover(gallery, '.aboutColTrack');
   });
 })();
