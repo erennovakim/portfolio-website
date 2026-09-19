@@ -191,9 +191,9 @@ a {
 
 .sun {
   position: absolute;
-  top: 8%;
-  right: 8%;
-  width: min(22rem, 34vw);
+  top: 4%;
+  right: 5%;
+  width: min(18rem, 28vw);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -270,6 +270,7 @@ a {
   justify-content: space-between;
   height: var(--nav-h);
   padding: 0 var(--gutter);
+  background: linear-gradient(180deg, rgba(228, 238, 248, 0.92) 55%, rgba(228, 238, 248, 0));
   pointer-events: none;
 }
 
@@ -847,10 +848,15 @@ html.has-js [data-reveal].is-inview {
   }
 
   .sun {
-    width: min(14rem, 46vw);
-    top: 10%;
-    right: 4%;
-    opacity: 0.7;
+    width: min(12rem, 40vw);
+    top: 6%;
+    right: 3%;
+    opacity: 0.55;
+  }
+
+  .hero {
+    align-items: start;
+    padding-top: calc(var(--nav-h) + 1.25rem);
   }
 }
 
