@@ -211,7 +211,7 @@
   --text: var(--color-foreground);
   --text-soft: var(--color-muted-foreground);
   --slate: var(--color-muted-foreground);
-  --iris: var(--color-accent);
+  --iris: var(--color-blue-700);
   --iris-deep: var(--color-ink-950);
   --dusk: var(--color-ink-950);
   --on-overlay: var(--color-foreground);

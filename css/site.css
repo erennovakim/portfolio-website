@@ -1610,7 +1610,7 @@ h4.skillLabel {
 .studyPullquote {
   margin: var(--space-xl) 0;
   padding-left: var(--space-md);
-  border-left: 3px solid var(--iris);
+  border-left: var(--hairline) solid var(--iris);
 }
 
 .studyPullquote p {
