@@ -2,8 +2,8 @@
  *
  * Light-only. Page canvas is white. Accents from eemonroy.com stay
  * vibrant (lime #e7ff7d, sky #afe3ff, blush #ffacc0, yellow #fee593).
- * Pale container tints (about, skill cards, footer) share one lightness
- * and chroma so the hues stay harmonious. Corners floor at 12px.
+ * Pale container tints (about, skill cards, footer) use the specified
+ * pink / blue / yellow / green / purple fills. Corners floor at 12px.
  *
  * Three layers: primitive → semantic → component.
  * Legacy aliases (--sky, --ink, --accent-1, …) keep home.css and
@@ -40,14 +40,14 @@
   --color-butter-300: #fee593;
 
   /* Pale containers — same lightness, modest chroma, distinct hues. */
-  --color-about: #f8f1f3;
-  --color-skill-tech: #f0f5fa;
-  --color-skill-tech-pill: #a8c8ea;
-  --color-skill-design: #f7f4ea;
-  --color-skill-design-pill: #e8c96a;
-  --color-skill-people: #f0f6f1;
-  --color-skill-people-pill: #9fd4b0;
-  --color-footer: #f3f1f8;
+  --color-about: #ffebf6;
+  --color-skill-tech: #ebf4ff;
+  --color-skill-tech-pill: #b5d7ff;
+  --color-skill-design: #fffeeb;
+  --color-skill-design-pill: #fffb9e;
+  --color-skill-people: #ebfff0;
+  --color-skill-people-pill: #b0ffc3;
+  --color-footer: #f6ebff;
 
   /* WCAG AA text derived from the lime (warm gold). */
   --color-gold-700: #7a5514;
@@ -377,8 +377,8 @@ html {
 
 /*
  * WCAG 2.2 AA (normal text 4.5:1), verified:
- * #111111 on #FFFFFF 18.88 / pale containers 16.86–17.23
- * #111111 on pills #A8C8EA 10.89 / #E8C96A 11.68 / #9FD4B0 11.26
+ * #111111 on #FFFFFF 18.88 / pale containers 16.41–18.55
+ * #111111 on pills #B5D7FF 12.70 / #FFFB9E 17.57 / #B0FFC3 16.13
  * #111111 on #E7FF7D 17.08 / #AFE3FF 13.72 / #FFACC0 10.71 / #FEE593 15.15
  * #7A5514 on #FFFFFF 6.69
  * #52525B on #FFFFFF 7.73 / pale containers 6.90–7.05
