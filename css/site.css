@@ -434,7 +434,7 @@ a:focus-visible {
  */
 .section--washed {
   padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem) - 20px);
-  background-color: var(--color-wash-orange);
+  background-color: var(--color-white);
   background-image: none;
 }
 
@@ -831,7 +831,7 @@ h4.skillLabel {
 /* Solid cream through the bottom edge so it meets the footer without a fade. */
 #about.section--washed {
   padding-bottom: 11rem;
-  background-color: var(--color-wash-pink);
+  background-color: var(--color-white);
   background-image: none;
 }
 
@@ -841,7 +841,7 @@ h4.skillLabel {
 
 #resume {
   padding-bottom: var(--space-3xl);
-  background-color: var(--color-wash-blue);
+  background-color: var(--color-white);
 }
 
 .resumeInner {
@@ -1115,7 +1115,7 @@ h4.skillLabel {
   max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-color: var(--color-wash-green);
+  background-color: var(--color-white);
   color: var(--ink);
   border-top: var(--border);
 }
@@ -1211,7 +1211,7 @@ h4.skillLabel {
   width: min(100% - 2 * var(--page-gutter), var(--container));
   margin-inline: auto;
   padding: 2rem 0 3rem;
-  background: var(--color-wash-pink);
+  background: var(--color-white);
   color: var(--ink);
   overflow: visible;
 }
@@ -1220,7 +1220,11 @@ h4.skillLabel {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2rem;
-  padding: 0 0 0.4rem;
+  padding: 1.5rem 1.5rem 1.6rem 2.25rem;
+  background: var(--color-footer);
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
 }
 
 .page-study .footer h2 {
@@ -1464,7 +1468,7 @@ h4.skillLabel {
  * ---------------------------------------------------------------- */
 
 .page-study {
-  background-color: var(--color-wash-blue);
+  background-color: var(--color-white);
   color: var(--ink);
 }
 

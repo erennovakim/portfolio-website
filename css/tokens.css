@@ -1,9 +1,9 @@
 /* Design tokens fused from Aromal Ashok, Eemon Roy, and Cindy Huang.
  *
- * Light-only. Accents from https://www.eemonroy.com/ kept vibrant:
- *   lime #e7ff7d, sky #afe3ff, blush #ffacc0, yellow #fee593.
- * Section washes are light blue / green / orange / pink — never
- * the same hue on neighboring bands. Corners floor at 12px; no 0-radius.
+ * Light-only. Page canvas is white. Accents from eemonroy.com stay
+ * vibrant (lime #e7ff7d, sky #afe3ff, blush #ffacc0, yellow #fee593).
+ * Pale container tints (about, skill cards, footer) share one lightness
+ * and chroma so the hues stay harmonious. Corners floor at 12px.
  *
  * Three layers: primitive → semantic → component.
  * Legacy aliases (--sky, --ink, --accent-1, …) keep home.css and
@@ -19,6 +19,8 @@
 
   --color-white: #ffffff;
   --color-white-rgb: 255, 255, 255;
+  --color-paper-50: #ffffff;
+  --color-paper-200: #e4e4e7;
 
   --color-ink-950: #111111;
   --color-ink-950-rgb: 17, 17, 17;
@@ -37,22 +39,22 @@
   --color-blush-300: #ffacc0;
   --color-butter-300: #fee593;
 
-  /* Light section washes — rotate so neighbors never share a hue. */
-  --color-wash-blue: #e7f4fc;
-  --color-wash-blue-rgb: 231, 244, 252;
-  --color-wash-green: #e5f6ec;
-  --color-wash-green-rgb: 229, 246, 236;
-  --color-wash-orange: #fff0e3;
-  --color-wash-orange-rgb: 255, 240, 227;
-  --color-wash-pink: #fdecef;
-  --color-wash-pink-rgb: 253, 236, 239;
+  /* Pale containers — same lightness, modest chroma, distinct hues. */
+  --color-about: #f8f1f3;
+  --color-skill-tech: #f0f5fa;
+  --color-skill-tech-pill: #a8c8ea;
+  --color-skill-design: #f7f4ea;
+  --color-skill-design-pill: #e8c96a;
+  --color-skill-people: #f0f6f1;
+  --color-skill-people-pill: #9fd4b0;
+  --color-footer: #f3f1f8;
 
   /* WCAG AA text derived from the lime (warm gold). */
   --color-gold-700: #7a5514;
   --color-gold-800: #6f4e14;
   --color-gold-700-rgb: 122, 85, 20;
 
-  --color-chip: #e7ff7d;
+  --color-chip: #e4e4e7;
   --color-focus: #111111;
   --color-destructive: #b42318;
 
@@ -129,16 +131,12 @@
    * Semantic
    * ---------------------------------------------------------------- */
 
-  --color-background: var(--color-wash-blue);
-  --color-background-subtle: var(--color-wash-green);
-  --color-section: var(--color-wash-orange);
-  --color-section-alt: var(--color-wash-green);
-  --color-section-blue: var(--color-wash-blue);
-  --color-section-green: var(--color-wash-green);
-  --color-section-orange: var(--color-wash-orange);
-  --color-section-pink: var(--color-wash-pink);
+  --color-background: var(--color-white);
+  --color-background-subtle: var(--color-white);
+  --color-section: var(--color-white);
+  --color-section-alt: var(--color-white);
   --color-foreground: var(--color-ink-950);
-  --color-muted: var(--color-wash-blue);
+  --color-muted: var(--color-paper-200);
   --color-muted-foreground: var(--color-ink-600);
   --color-primary: var(--color-ink-950);
   --color-primary-hover: var(--color-gold-700);
@@ -226,7 +224,7 @@
   --sky: var(--color-background);
   --white: var(--color-white);
   --paper: var(--color-background);
-  --paper-rgb: var(--color-wash-blue-rgb);
+  --paper-rgb: var(--color-white-rgb);
   --peach: var(--color-accent-3);
   --accent-1: var(--color-accent-text);
   --accent-1-rgb: var(--color-gold-700-rgb);
@@ -244,8 +242,8 @@
   --line: var(--color-border);
   --line-strong: var(--color-border-strong);
   --card: var(--color-card);
-  --overlay: var(--color-section);
-  --overlay-clear: rgba(var(--color-wash-blue-rgb), 0);
+  --overlay: var(--color-white);
+  --overlay-clear: rgba(var(--color-white-rgb), 0);
 
   --px: 0;
   --py: 0;
@@ -314,20 +312,12 @@ html {
   background-color: var(--color-section-alt);
 }
 
-.bg-section-blue {
-  background-color: var(--color-wash-blue);
+.bg-about {
+  background-color: var(--color-about);
 }
 
-.bg-section-green {
-  background-color: var(--color-wash-green);
-}
-
-.bg-section-orange {
-  background-color: var(--color-wash-orange);
-}
-
-.bg-section-pink {
-  background-color: var(--color-wash-pink);
+.bg-footer {
+  background-color: var(--color-footer);
 }
 
 .bg-accent {
@@ -387,9 +377,9 @@ html {
 
 /*
  * WCAG 2.2 AA (normal text 4.5:1), verified:
- * #111111 on #E7F4FC 16.85 / #E5F6EC 16.84 / #FFF0E3 16.93 / #FDECEF 16.56
+ * #111111 on #FFFFFF 18.88 / pale containers 16.86–17.23
+ * #111111 on pills #A8C8EA 10.89 / #E8C96A 11.68 / #9FD4B0 11.26
  * #111111 on #E7FF7D 17.08 / #AFE3FF 13.72 / #FFACC0 10.71 / #FEE593 15.15
- * #7A5514 on those washes 5.87–6.06; on #E7FF7D 6.06 / #AFE3FF 4.86 / #FEE593 5.37
- * #52525B on washes 6.78–6.93
- * #B42318 on #E7F4FC 5.87
+ * #7A5514 on #FFFFFF 6.69
+ * #52525B on #FFFFFF 7.73 / pale containers 6.90–7.05
  */

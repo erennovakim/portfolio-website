@@ -416,7 +416,7 @@ a {
 .pageBand {
   position: relative;
   z-index: var(--z-content);
-  background: transparent;
+  background: var(--color-white);
 }
 
 .heroToWork {
@@ -424,7 +424,7 @@ a {
   z-index: var(--z-belt);
   padding: 1.25rem 0 2rem;
   overflow: visible;
-  background: var(--color-wash-green);
+  background: var(--color-white);
 }
 
 .imageBelt {
@@ -449,12 +449,12 @@ a {
 
 .imageBelt::before {
   left: 0;
-  background: linear-gradient(90deg, var(--color-wash-green) 0%, rgba(var(--color-wash-green-rgb), 0) 100%);
+  background: linear-gradient(90deg, var(--color-white) 0%, rgba(var(--color-white-rgb), 0) 100%);
 }
 
 .imageBelt::after {
   right: 0;
-  background: linear-gradient(270deg, var(--color-wash-green) 0%, rgba(var(--color-wash-green-rgb), 0) 100%);
+  background: linear-gradient(270deg, var(--color-white) 0%, rgba(var(--color-white-rgb), 0) 100%);
 }
 
 .imageBeltTrack {
@@ -473,23 +473,11 @@ a {
   width: var(--w, 200px);
   height: 168px;
   border-radius: var(--radius-md);
-  background: var(--color-wash-blue);
+  background: var(--color-muted);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
   transition: transform var(--motion-hover), box-shadow var(--motion-hover);
-}
-
-.imageBeltItem:nth-child(3n+1) {
-  background: var(--color-wash-blue);
-}
-
-.imageBeltItem:nth-child(3n+2) {
-  background: var(--color-wash-orange);
-}
-
-.imageBeltItem:nth-child(3n+3) {
-  background: var(--color-wash-pink);
 }
 
 .imageBeltItem:hover,
@@ -515,17 +503,14 @@ a {
   padding: 5.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2));
 }
 
-#work.section {
-  background: var(--color-wash-orange);
-  padding-top: 2.75rem;
-}
-
-#about.section {
-  background: var(--color-wash-pink);
-}
-
+#work.section,
+#about.section,
 #resume.section {
-  background: var(--color-wash-blue);
+  background: var(--color-white);
+}
+
+#work.section {
+  padding-top: 2.75rem;
 }
 
 .sectionHead {
@@ -679,7 +664,7 @@ a {
   min-height: 0;
   padding: 1.5rem 1.5rem 1.5rem 2.25rem;
   overflow: hidden;
-  background: var(--card);
+  background: var(--color-about);
   border: 1px solid var(--line);
   border-radius: var(--card-radius);
   box-shadow: var(--shadow-card);
@@ -729,26 +714,11 @@ a {
   flex: 0 0 var(--h, 180px);
   height: var(--h, 180px);
   border-radius: var(--radius-md);
-  background: var(--color-wash-blue);
+  background: var(--color-muted);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
   transition: transform var(--motion-hover);
-}
-
-.aboutCol--up .aboutTile:nth-child(3n+1),
-.aboutCol--down .aboutTile:nth-child(3n+1) {
-  background: var(--color-wash-blue);
-}
-
-.aboutCol--up .aboutTile:nth-child(3n+2),
-.aboutCol--down .aboutTile:nth-child(3n+2) {
-  background: var(--color-wash-green);
-}
-
-.aboutCol--up .aboutTile:nth-child(3n+3),
-.aboutCol--down .aboutTile:nth-child(3n+3) {
-  background: var(--color-wash-orange);
 }
 
 .aboutTile:hover,
@@ -882,10 +852,21 @@ a {
 }
 
 .skillCard {
+  --skill-pill: var(--color-skill-tech-pill);
   padding: 1.25rem 1.2rem 1.35rem;
-  background: var(--card);
+  background: var(--color-skill-tech);
   border: 1px solid var(--line);
   border-radius: var(--card-radius);
+}
+
+.skillCard:nth-child(2) {
+  --skill-pill: var(--color-skill-design-pill);
+  background: var(--color-skill-design);
+}
+
+.skillCard:nth-child(3) {
+  --skill-pill: var(--color-skill-people-pill);
+  background: var(--color-skill-people);
 }
 
 .skillCard h3 {
@@ -904,10 +885,10 @@ a {
 
 .skillList li {
   padding: 0.28rem 0.65rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--radius-pill);
   color: var(--ink);
-  background: var(--color-accent);
+  background: var(--skill-pill);
 }
 
 .footer {
@@ -915,7 +896,7 @@ a {
   max-width: none;
   margin-inline: 0;
   padding: 2rem max(var(--gutter), calc((100% - var(--wrap)) / 2)) 3rem;
-  background: var(--color-wash-green);
+  background: var(--color-white);
 }
 
 .footerPanel {
@@ -923,7 +904,11 @@ a {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: start;
   gap: 2rem;
-  padding: 0 0 0.4rem;
+  padding: 1.5rem 1.5rem 1.6rem 2.25rem;
+  background: var(--color-footer);
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
 }
 
 .footer .heroActions {
