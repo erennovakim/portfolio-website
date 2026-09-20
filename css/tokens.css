@@ -1,9 +1,10 @@
 /* Design tokens fused from Aromal Ashok, Eemon Roy, and Cindy Huang.
  *
  * Light-only. Page canvas is white. Accents from eemonroy.com stay
- * vibrant (lime #e7ff7d, sky #afe3ff, blush #ffacc0, yellow #fee593).
- * Pale container tints (about, skill cards, footer) use the specified
- * pink / blue / yellow / green / purple fills. Corners floor at 12px.
+ * vibrant (lime #e7ff7d, sky #afe3ff, blush #ffacc0). Text accents use
+ * an AA blue–purple gradient. Pale container tints (about, skill cards,
+ * footer) keep the specified pink / blue / yellow / green / purple fills.
+ * Corners floor at 12px.
  *
  * Three layers: primitive → semantic → component.
  * Legacy aliases (--sky, --ink, --accent-1, …) keep home.css and
@@ -37,7 +38,12 @@
   --color-lime-400-rgb: 231, 255, 125;
   --color-sky-300: #afe3ff;
   --color-blush-300: #ffacc0;
-  --color-butter-300: #fee593;
+
+  /* AA text on white: #1D4ED8 5.47:1, #6D28D9 5.89:1. */
+  --color-grad-blue: #1d4ed8;
+  --color-grad-purple: #6d28d9;
+  --color-grad-blue-rgb: 29, 78, 216;
+  --color-grad-purple-rgb: 109, 40, 217;
 
   /* Pale containers — same lightness, modest chroma, distinct hues. */
   --color-about: #ffebf6;
@@ -48,11 +54,6 @@
   --color-skill-people: #ebfff0;
   --color-skill-people-pill: #b0ffc3;
   --color-footer: #f6ebff;
-
-  /* WCAG AA text derived from the lime (warm gold). */
-  --color-gold-700: #7a5514;
-  --color-gold-800: #6f4e14;
-  --color-gold-700-rgb: 122, 85, 20;
 
   --color-chip: #e4e4e7;
   --color-focus: #111111;
@@ -139,14 +140,14 @@
   --color-muted: var(--color-paper-200);
   --color-muted-foreground: var(--color-ink-600);
   --color-primary: var(--color-ink-950);
-  --color-primary-hover: var(--color-gold-700);
+  --color-primary-hover: var(--color-ink-950);
   --color-accent: var(--color-lime-400);
   --color-accent-2: var(--color-sky-300);
   --color-accent-3: var(--color-blush-300);
-  --color-accent-hover: var(--color-butter-300);
+  --color-accent-hover: var(--color-sky-300);
   --color-accent-soft: var(--color-lime-400);
-  --color-accent-text: var(--color-gold-700);
-  --color-accent-text-hover: var(--color-gold-800);
+  --color-accent-text: var(--color-grad-blue);
+  --color-accent-text-hover: var(--color-grad-purple);
   --color-on-accent: var(--color-ink-950);
   --color-border: rgba(var(--color-ink-950-rgb), 0.1);
   --color-border-strong: rgba(var(--color-ink-950-rgb), 0.18);
@@ -227,13 +228,13 @@
   --paper-rgb: var(--color-white-rgb);
   --peach: var(--color-accent-3);
   --accent-1: var(--color-accent-text);
-  --accent-1-rgb: var(--color-gold-700-rgb);
+  --accent-1-rgb: var(--color-grad-blue-rgb);
   --accent-2: var(--color-accent-text-hover);
   --ink: var(--color-foreground);
   --text: var(--color-foreground);
   --text-soft: var(--color-muted-foreground);
   --slate: var(--color-muted-foreground);
-  --iris: var(--color-accent-text);
+  --iris: var(--color-grad-purple);
   --iris-deep: var(--color-ink-950);
   --dusk: var(--color-ink-950);
   --on-overlay: var(--color-foreground);
@@ -256,10 +257,23 @@
   --nav-link-size: var(--size-small);
   --nav-link-weight: var(--weight-500);
   --nav-link-color: var(--color-foreground);
-  --nav-link-hover: var(--color-accent-text);
-  --nav-link-current: var(--color-accent-text-hover);
-  --nav-underline: var(--hairline);
+  --nav-link-hover: var(--color-foreground);
+  --nav-link-current: var(--color-grad-blue);
+  --nav-underline: 2px;
   --nav-radius: var(--radius-pill);
+
+  --gradient-morph: linear-gradient(
+    90deg,
+    var(--color-grad-blue) 0%,
+    var(--color-grad-purple) 35%,
+    var(--color-grad-blue) 65%,
+    var(--color-grad-purple) 100%
+  );
+  --gradient-still: linear-gradient(
+    105deg,
+    var(--color-grad-blue) 0%,
+    var(--color-grad-purple) 100%
+  );
 
   --button-bg: var(--color-accent);
   --button-fg: var(--color-on-accent);
@@ -268,7 +282,7 @@
   --button-underline: var(--hairline);
 
   --link-color: var(--color-foreground);
-  --link-hover: var(--color-accent-text);
+  --link-hover: var(--color-foreground);
   --link-underline-offset: 0.2em;
 
   --card-bg: var(--color-card);
@@ -289,13 +303,44 @@
 
 html {
   color-scheme: only light;
-  accent-color: var(--color-accent-text);
+  accent-color: var(--color-grad-blue);
   caret-color: var(--color-foreground);
   background-color: var(--color-background);
 }
 
-/* Tailwind-named utilities. Vibrant fills never ship as small text:
- * .text-accent uses the AA gold; .bg-accent pairs lime #e7ff7d with #111. */
+@keyframes gradient-morph {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient-morph,
+.text-gradient-still {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-morph {
+  background-image: var(--gradient-morph);
+  background-size: 220% 100%;
+  animation: gradient-morph 8s ease-in-out infinite;
+}
+
+.text-gradient-still {
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+}
+
+/* Tailwind-named utilities. Vibrant fills never ship as small text.
+ * .text-accent uses AA blue; .bg-accent pairs lime #e7ff7d with #111. */
 .bg-white {
   background-color: var(--color-white);
 }
@@ -375,11 +420,19 @@ html {
   border-radius: var(--radius-pill);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-morph {
+    animation: none;
+    background-image: var(--gradient-still);
+    background-size: 100% 100%;
+  }
+}
+
 /*
  * WCAG 2.2 AA (normal text 4.5:1), verified:
  * #111111 on #FFFFFF 18.88 / pale containers 16.41–18.55
  * #111111 on pills #B5D7FF 12.70 / #FFFB9E 17.57 / #B0FFC3 16.13
- * #111111 on #E7FF7D 17.08 / #AFE3FF 13.72 / #FFACC0 10.71 / #FEE593 15.15
- * #7A5514 on #FFFFFF 6.69
+ * #111111 on #E7FF7D 17.08 / #AFE3FF 13.72 / #FFACC0 10.71
+ * #1D4ED8 on #FFFFFF 5.47 / #6D28D9 on #FFFFFF 5.89
  * #52525B on #FFFFFF 7.73 / pale containers 6.90–7.05
  */

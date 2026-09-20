@@ -201,12 +201,6 @@ a:focus-visible {
   text-decoration: none;
   white-space: nowrap;
   color: var(--on-image);
-  transition: color var(--motion-hover);
-}
-
-.navLink:hover,
-.navLink:focus-visible {
-  color: var(--accent-1);
 }
 
 .navLink::after {
@@ -215,17 +209,16 @@ a:focus-visible {
   left: 0.75rem;
   right: 0.75rem;
   bottom: 0.16rem;
-  height: var(--hairline);
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform var(--motion-hover);
+  height: var(--nav-underline);
+  background-color: var(--ink);
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path var(--motion-hover);
   pointer-events: none;
 }
 
 .navLink:hover::after,
 .navLink:focus-visible::after {
-  transform: scaleX(1);
+  clip-path: inset(0 0 0 0);
 }
 
 .wordmark {
@@ -247,24 +240,15 @@ a:focus-visible {
   color: var(--ink);
 }
 
-.navWrapper[data-scrolled='true'] .navLink:hover,
-.navWrapper[data-scrolled='true'] .navLink:focus-visible {
-  color: var(--accent-1);
-}
-
 .navLink.is-current,
 .navWrapper[data-scrolled='true'] .navLink.is-current {
-  color: var(--accent-2);
-}
-
-.navLink.is-current:hover,
-.navLink.is-current:focus-visible {
-  color: var(--accent-2);
-}
-
-.navLink.is-current:hover::after,
-.navLink.is-current:focus-visible::after {
-  background-color: var(--accent-2);
+  font-weight: 700;
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -391,31 +375,26 @@ a:focus-visible {
   left: 1rem;
   right: 1rem;
   bottom: 0.45rem;
-  height: var(--hairline);
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform var(--motion-hover);
+  height: var(--nav-underline);
+  background-color: var(--ink);
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path var(--motion-hover);
   pointer-events: none;
-}
-
-.navSheetLink:hover,
-.navSheetLink:focus-visible {
-  color: var(--accent-1);
 }
 
 .navSheetLink:hover::after,
 .navSheetLink:focus-visible::after {
-  transform: scaleX(1);
+  clip-path: inset(0 0 0 0);
 }
 
 .navSheetLink.is-current {
-  color: var(--accent-2);
-}
-
-.navSheetLink.is-current:hover::after,
-.navSheetLink.is-current:focus-visible::after {
-  background-color: var(--accent-2);
+  font-weight: 700;
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -1305,8 +1284,9 @@ h4.skillLabel {
 }
 
 .page-study .contactList dt {
-  color: var(--accent-2);
-  font-size: 0.92rem;
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .page-study .contactList dd {
