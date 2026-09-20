@@ -1,6 +1,6 @@
 @import url('tokens.css');
 
-/* Home page. Sky lives only in the hero; the rest of the page is white. */
+/* Home page. Gallery paper; tokens live in tokens.css. */
 
 *,
 *::before,
@@ -17,12 +17,12 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--white);
+  background: var(--paper);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  font-weight: 400;
-  line-height: 1.6;
+  font-size: var(--size-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -120,7 +120,7 @@ a {
 .nav[data-scrolled='true'] .navShell {
   background: var(--white);
   border-color: var(--line);
-  box-shadow: 0 10px 28px rgba(90, 110, 140, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .navList {
@@ -164,7 +164,7 @@ a {
   left: 0.8rem;
   right: 0.8rem;
   bottom: 0.22rem;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -210,7 +210,7 @@ a {
 .navToggleBars::after {
   display: block;
   width: 20px;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   border-radius: 1px;
 }
@@ -258,7 +258,7 @@ a {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--white);
-  box-shadow: 0 12px 32px rgba(90, 110, 140, 0.12);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .navCheckbox:checked ~ .navSheet {
@@ -276,10 +276,9 @@ a {
   overflow: hidden;
   text-align: center;
   color: var(--ink);
-  background:
-    radial-gradient(ellipse 55% 48% at calc(72% + var(--px) * 8%) calc(12% + var(--py) * 10%), rgba(243, 196, 160, 0.55), transparent 62%),
-    radial-gradient(ellipse 70% 55% at 18% 8%, rgba(196, 220, 242, 0.7), transparent 58%),
-    linear-gradient(180deg, var(--sky) 0%, #eef2f4 78%, #f7f9fb 100%);
+  background-color: var(--paper);
+  background-image: radial-gradient(circle, var(--dot-color) var(--hero-dot-size), transparent var(--hero-dot-size));
+  background-size: var(--hero-dot-gap) var(--hero-dot-gap);
 }
 
 .hero::after {
@@ -290,7 +289,7 @@ a {
   bottom: 0;
   z-index: 1;
   height: min(28vh, 14rem);
-  background: linear-gradient(180deg, rgba(247, 249, 251, 0) 0%, #f7f9fb 72%, var(--white) 100%);
+  background: linear-gradient(180deg, rgba(var(--paper-rgb), 0) 0%, var(--paper) 100%);
   pointer-events: none;
 }
 
@@ -303,29 +302,7 @@ a {
 }
 
 .mesh {
-  position: absolute;
-  inset: -18%;
-  background:
-    conic-gradient(
-      from 210deg at 70% 18%,
-      rgba(196, 220, 242, 0.35),
-      rgba(243, 196, 160, 0.22),
-      rgba(224, 138, 74, 0.08),
-      rgba(196, 220, 242, 0.28)
-    );
-  filter: blur(80px);
-  opacity: 0.65;
-  animation: mesh-shift 34s ease-in-out infinite;
-}
-
-@keyframes mesh-shift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(-3%, 2%, 0) rotate(5deg);
-  }
+  display: none;
 }
 
 .heroCopy {
@@ -337,44 +314,29 @@ a {
 
 .heroName {
   margin: 0 0 0.85rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 1.05rem + 0.45vw, 1.4rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--track-label);
   line-height: 1.2;
-  color: #1d4f8c;
-  background-image: linear-gradient(105deg, #1d4f8c 32%, #b44514 68%);
-  background-size: 160% 160%;
-  background-position: 20% 40%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: hero-name-mesh 9s ease-in-out infinite;
-}
-
-@keyframes hero-name-mesh {
-  0%,
-  100% {
-    background-position: 8% 30%;
-  }
-  50% {
-    background-position: 88% 70%;
-  }
+  text-transform: uppercase;
+  color: var(--text-soft);
 }
 
 .heroTitle {
   margin: 0 0 1.1rem;
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 1.3rem + 2.4vw, 3.6rem);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
+  font-size: var(--size-display);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-display);
+  line-height: var(--leading-tight);
   text-wrap: balance;
 }
 
 .heroTitle em {
+  font-family: var(--font-accent);
   font-style: italic;
-  font-weight: 600;
+  font-weight: var(--weight-regular);
   line-height: 1.14;
   padding-bottom: 0.12em;
 }
@@ -431,7 +393,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -453,7 +415,7 @@ a {
 .pageBand {
   position: relative;
   z-index: var(--z-content);
-  background: var(--white);
+  background: var(--paper);
 }
 
 .heroToWork {
@@ -461,7 +423,7 @@ a {
   z-index: var(--z-belt);
   padding: 1.25rem 0 2rem;
   overflow: visible;
-  background: linear-gradient(180deg, #f7f9fb 0%, var(--white) 88%);
+  background: var(--paper);
 }
 
 .imageBelt {
@@ -486,12 +448,12 @@ a {
 
 .imageBelt::before {
   left: 0;
-  background: linear-gradient(90deg, #f7f9fb 0%, rgba(247, 249, 251, 0) 100%);
+  background: linear-gradient(90deg, var(--paper) 0%, rgba(var(--paper-rgb), 0) 100%);
 }
 
 .imageBelt::after {
   right: 0;
-  background: linear-gradient(270deg, var(--white) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(270deg, var(--paper) 0%, rgba(var(--paper-rgb), 0) 100%);
 }
 
 .imageBeltTrack {
@@ -510,7 +472,7 @@ a {
   width: var(--w, 200px);
   height: 168px;
   border-radius: var(--radius);
-  background: #edf2f7;
+  background: var(--color-muted);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
@@ -565,8 +527,8 @@ a {
 .footer h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-display);
 }
 
 .sectionHead h2,
@@ -603,7 +565,7 @@ a {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 12px 32px rgba(90, 110, 140, 0.06);
+  box-shadow: var(--shadow-card);
   transform: scale(var(--scale, 1)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transform-origin: center center;
   transform-style: preserve-3d;
@@ -615,7 +577,7 @@ a {
   --scale: 1.035;
   z-index: 1;
   border-color: rgba(var(--accent-1-rgb), 0.45);
-  box-shadow: 0 18px 40px rgba(90, 110, 140, 0.12);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .project:active {
@@ -624,7 +586,7 @@ a {
 
 .projectCover {
   overflow: hidden;
-  background: #edf2f7;
+  background: var(--color-muted);
 }
 
 .projectCover img {
@@ -679,13 +641,13 @@ a {
   background-image: linear-gradient(currentColor, currentColor);
   background-position: center 100%;
   background-repeat: no-repeat;
-  background-size: 0 1.5px;
+  background-size: 0 var(--hairline);
   transition: background-size 280ms var(--ease);
 }
 
 .project:hover .projectCta,
 .project:focus-visible .projectCta {
-  background-size: 100% 1.5px;
+  background-size: 100% var(--hairline);
 }
 
 .aboutCard {
@@ -699,7 +661,7 @@ a {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 12px 32px rgba(90, 110, 140, 0.06);
+  box-shadow: var(--shadow-card);
 }
 
 .aboutCopy {
@@ -746,7 +708,7 @@ a {
   flex: 0 0 var(--h, 180px);
   height: var(--h, 180px);
   border-radius: var(--radius);
-  background: #edf2f7;
+  background: var(--color-muted);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
@@ -1070,10 +1032,7 @@ html.has-js [data-reveal].is-inview {
 
 @media (forced-colors: active) {
   .heroName {
-    background: none;
     color: CanvasText;
-    -webkit-text-fill-color: CanvasText;
-    animation: none;
   }
 }
 

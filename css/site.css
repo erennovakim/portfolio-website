@@ -40,7 +40,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-title);
   line-height: var(--leading-snug);
   color: var(--ink);
   margin: 0;
@@ -66,8 +67,13 @@ p {
 }
 
 a {
-  color: var(--iris);
-  text-underline-offset: 0.2em;
+  color: var(--link-color);
+  text-underline-offset: var(--link-underline-offset);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
 }
 
 :focus-visible {
@@ -208,7 +214,7 @@ a {
   left: 0.75rem;
   right: 0.75rem;
   bottom: 0.16rem;
-  height: 1.5px;
+  height: var(--hairline);
   background-color: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -384,7 +390,7 @@ a {
   left: 1rem;
   right: 1rem;
   bottom: 0.45rem;
-  height: 1.5px;
+  height: var(--hairline);
   background-color: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -476,7 +482,7 @@ a {
    pulled toward ink so they hold against the 72% wash. */
 .section--washed .lede {
   font-size: var(--size-body);
-  color: #323c55;
+  color: var(--ink);
 }
 
 .section--washed .headingText {
@@ -513,7 +519,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -669,7 +675,7 @@ a {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .cover {
@@ -900,8 +906,8 @@ h4.skillLabel {
 }
 
 .resumeCluster {
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
-  border-bottom: 1.5px solid rgba(var(--paper-rgb), 0.32);
+  border-top: var(--border);
+  border-bottom: var(--border);
 }
 
 .resumeCluster .resumeOrg {
@@ -915,7 +921,7 @@ h4.skillLabel {
 }
 
 .resumeList > .resumeCluster + .resumeItem {
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
+  border-top: var(--border);
 }
 
 .resumeCluster .resumeItem--nested summary {
@@ -935,7 +941,7 @@ h4.skillLabel {
 
 .resumeItem {
   padding-inline: 16px;
-  border-bottom: 1.5px solid var(--line);
+  border-bottom: var(--border);
   border-radius: var(--radius-sm);
   transition: background-color var(--motion-fast) var(--ease);
 }
@@ -945,7 +951,7 @@ h4.skillLabel {
 }
 
 .resumeItem:first-child {
-  border-top: 1.5px solid var(--line);
+  border-top: var(--border);
 }
 
 .resumeItem summary {
@@ -983,8 +989,8 @@ h4.skillLabel {
   width: 0.45rem;
   height: 0.45rem;
   margin-right: 0.2rem;
-  border-right: 1.5px solid var(--ink);
-  border-bottom: 1.5px solid var(--ink);
+  border-right: var(--hairline) solid var(--ink);
+  border-bottom: var(--hairline) solid var(--ink);
   transform: rotate(45deg);
   transition: transform var(--motion-fast) var(--ease);
 }
@@ -1031,7 +1037,7 @@ h4.skillLabel {
   padding: 0.3rem 0.75rem;
   border: var(--border);
   border-radius: var(--radius-md);
-  background-color: #f2e9df;
+  background-color: var(--color-chip-bg);
   font-size: var(--size-small);
   color: var(--ink);
 }
@@ -1115,8 +1121,9 @@ h4.skillLabel {
   max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-color: #292532;
-  color: var(--on-image);
+  background-color: var(--paper);
+  color: var(--ink);
+  border-top: var(--border);
 }
 
 .footerLayout {
@@ -1184,7 +1191,7 @@ h4.skillLabel {
   gap: var(--space-sm);
   margin-top: var(--space-2xl);
   padding-top: var(--space-md);
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.2);
+  border-top: var(--border);
   font-size: var(--size-small);
   color: var(--on-image-soft);
 }
@@ -1196,21 +1203,21 @@ h4.skillLabel {
   padding: 0.55rem 0.9rem;
   border-radius: 8px;
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   text-decoration: none;
   border: 0;
 }
 
 .topLink:hover {
-  background: #1d232e;
-  color: #fff;
+  background: var(--color-ink-900);
+  color: var(--paper);
 }
 
 .page-study .footer {
   width: min(100% - 2 * var(--page-gutter), var(--container));
   margin-inline: auto;
   padding: 2rem 0 3rem;
-  background: #fff;
+  background: var(--paper);
   color: var(--ink);
   overflow: visible;
 }
@@ -1267,7 +1274,7 @@ h4.skillLabel {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -1498,7 +1505,7 @@ h4.skillLabel {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
@@ -1533,7 +1540,7 @@ h4.skillLabel {
   gap: var(--space-md);
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1.5px solid var(--line-strong);
+  border-top: var(--border-strong);
 }
 
 .studyMetaLabel {
@@ -1553,13 +1560,13 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyDraft {
   margin-bottom: var(--space-xl);
   padding: var(--space-md);
-  border: 1.5px solid var(--line-strong);
+  border: var(--border-strong);
   border-radius: var(--radius-lg);
   background-color: var(--paper);
   color: var(--slate);
@@ -1590,7 +1597,7 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyCaption {
@@ -1673,9 +1680,9 @@ h4.skillLabel {
 .studyNote {
   margin: var(--space-xl) 0;
   padding: var(--space-md);
-  border: 1.5px solid var(--line-strong);
+  border: var(--border-strong);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyNote h3 {
