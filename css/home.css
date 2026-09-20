@@ -9,6 +9,7 @@
 }
 
 html {
+  color-scheme: only light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
@@ -112,9 +113,9 @@ a {
   border: 1px solid transparent;
   border-radius: 8px;
   transition:
-    background 280ms var(--ease),
-    border-color 280ms var(--ease),
-    box-shadow 280ms var(--ease);
+    background var(--motion-hover),
+    border-color var(--motion-hover),
+    box-shadow var(--motion-hover);
 }
 
 .nav[data-scrolled='true'] .navShell {
@@ -154,7 +155,7 @@ a {
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 180ms var(--ease);
+  transition: color var(--motion-hover);
 }
 
 .navLink::after,
@@ -168,7 +169,7 @@ a {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 280ms var(--ease);
+  transition: transform var(--motion-hover);
   pointer-events: none;
 }
 
@@ -397,7 +398,7 @@ a {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 280ms var(--ease);
+  transition: transform var(--motion-hover);
   pointer-events: none;
 }
 
@@ -415,7 +416,7 @@ a {
 .pageBand {
   position: relative;
   z-index: var(--z-content);
-  background: var(--paper);
+  background: var(--color-section-alt);
 }
 
 .heroToWork {
@@ -423,7 +424,7 @@ a {
   z-index: var(--z-belt);
   padding: 1.25rem 0 2rem;
   overflow: visible;
-  background: var(--paper);
+  background: var(--color-section-alt);
 }
 
 .imageBelt {
@@ -448,12 +449,12 @@ a {
 
 .imageBelt::before {
   left: 0;
-  background: linear-gradient(90deg, var(--paper) 0%, rgba(var(--paper-rgb), 0) 100%);
+  background: linear-gradient(90deg, var(--color-section-alt) 0%, rgba(var(--color-white-rgb), 0) 100%);
 }
 
 .imageBelt::after {
   right: 0;
-  background: linear-gradient(270deg, var(--paper) 0%, rgba(var(--paper-rgb), 0) 100%);
+  background: linear-gradient(270deg, var(--color-section-alt) 0%, rgba(var(--color-white-rgb), 0) 100%);
 }
 
 .imageBeltTrack {
@@ -476,7 +477,7 @@ a {
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
-  transition: transform 420ms var(--ease), box-shadow 420ms var(--ease);
+  transition: transform var(--motion-hover), box-shadow var(--motion-hover);
 }
 
 .imageBeltItem:hover,
@@ -499,6 +500,15 @@ a {
   width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
   margin-inline: auto;
   padding: 5.5rem var(--gutter);
+}
+
+#work.section,
+#resume.section {
+  background: var(--color-section-alt);
+}
+
+#about.section {
+  background: var(--color-section);
 }
 
 #work.section {
@@ -569,7 +579,7 @@ a {
   transform: scale(var(--scale, 1)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transform-origin: center center;
   transform-style: preserve-3d;
-  transition: transform 420ms var(--ease), border-color 420ms var(--ease), box-shadow 420ms var(--ease);
+  transition: transform var(--motion-hover), border-color var(--motion-hover), box-shadow var(--motion-hover);
 }
 
 .project:hover,
@@ -642,7 +652,7 @@ a {
   background-position: center 100%;
   background-repeat: no-repeat;
   background-size: 0 var(--hairline);
-  transition: background-size 280ms var(--ease);
+  transition: background-size var(--motion-hover);
 }
 
 .project:hover .projectCta,
@@ -712,7 +722,7 @@ a {
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
-  transition: transform 420ms var(--ease);
+  transition: transform var(--motion-hover);
 }
 
 .aboutTile:hover,
@@ -795,7 +805,7 @@ a {
   border-radius: var(--radius);
   cursor: pointer;
   list-style: none;
-  transition: background 180ms var(--ease);
+  transition: background var(--motion-hover);
 }
 
 .resumeBlock summary::-webkit-details-marker {
@@ -824,7 +834,7 @@ a {
   background: currentColor;
   mask: var(--caret) center / contain no-repeat;
   -webkit-mask: var(--caret) center / contain no-repeat;
-  transition: transform 220ms var(--ease);
+  transition: transform var(--motion-hover);
 }
 
 .resumeBlock details[open] summary::after {
@@ -878,6 +888,7 @@ a {
   width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
   margin-inline: auto;
   padding: 2rem var(--gutter) 3rem;
+  background: var(--color-section);
 }
 
 .footerPanel {

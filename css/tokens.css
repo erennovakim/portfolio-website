@@ -1,7 +1,12 @@
-/* Design tokens fused from:
- *   Aromal Ashok  — aromaal.framer.website
- *   Eemon Roy     — eemonroy.com
- *   Cindy Huang   — cindyh.me
+/* Design tokens fused from Aromal Ashok, Eemon Roy, and Cindy Huang.
+ *
+ * Light-only. Accents extracted from https://www.eemonroy.com/ and
+ * shifted warmer + more pastel:
+ *   lime chip  #e7ff7d → --color-lime-400  #eae4bd
+ *   sky chip   #afe3ff → --color-sky-300   #cee0e8
+ *   blush/card #fff3f2 / #ffacc0 → --color-blush-300 #efd9d2
+ *   yellow     #fee593 → --color-butter-300 #ede5c9
+ * Pastel fills are for .bg-accent. .text-accent uses AA gold #7a5514.
  *
  * Three layers: primitive → semantic → component.
  * Legacy aliases (--sky, --ink, --accent-1, …) keep home.css and
@@ -9,42 +14,44 @@
  */
 
 :root {
+  color-scheme: only light;
+
   /* ---------------------------------------------------------------- *
    * Primitive
    * ---------------------------------------------------------------- */
 
-  --color-paper-50: #fefdfc;
-  --color-paper-100: #f9f8f7;
-  --color-paper-200: #edeceb;
-  --color-paper-300: #e5e5e5;
   --color-white: #ffffff;
   --color-white-rgb: 255, 255, 255;
+  --color-paper-50: #fafafa;
+  --color-paper-100: #f4f4f5;
+  --color-paper-200: #e4e4e7;
+  --color-paper-300: #d4d4d8;
 
-  --color-ink-950: #102737;
-  --color-ink-950-rgb: 16, 39, 55;
-  --color-ink-900: #1c1b19;
-  --color-ink-800: #1f2328;
-  --color-ink-700: #373737;
-  --color-ink-600: #47525a;
-  --color-ink-500: #555350;
-  --color-ink-400: #59636e;
-  --color-ink-300: #aaa5a0;
+  --color-ink-950: #111111;
+  --color-ink-950-rgb: 17, 17, 17;
+  --color-ink-900: #18181b;
+  --color-ink-800: #27272a;
+  --color-ink-700: #3f3f46;
+  --color-ink-600: #52525b;
+  --color-ink-500: #71717a;
+  --color-ink-400: #a1a1aa;
+  --color-ink-300: #d4d4d8;
 
-  --color-blue-700: #1a6296;
-  --color-blue-600: #0969da;
-  --color-blue-400: #238dd9;
-  --color-blue-300: #7cccff;
-  --color-blue-50: #e9f4ff;
+  /* Eemon pops, warmed + desaturated. Fill colors, not small text. */
+  --color-lime-400: #eae4bd;
+  --color-lime-400-rgb: 234, 228, 189;
+  --color-sky-300: #cee0e8;
+  --color-blush-300: #efd9d2;
+  --color-butter-300: #ede5c9;
 
-  --color-apricot-400: #efa874;
-  --color-apricot-400-rgb: 239, 168, 116;
-  --color-apricot-50: #fff4eb;
-  --color-blush-50: #fff3f2;
+  /* WCAG AA text derived from the lime (warm gold). */
+  --color-gold-700: #7a5514;
+  --color-gold-800: #6f4e14;
+  --color-gold-700-rgb: 122, 85, 20;
+
   --color-chip: #edefe9;
-  --color-rose-50: #ffedf6;
-
-  --color-focus: #102737;
-  --color-destructive: #dc2626;
+  --color-focus: #111111;
+  --color-destructive: #b42318;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -101,12 +108,13 @@
   --radius-pill: 100px;
 
   --hairline: 1px;
-  --duration-fast: 180ms;
-  --duration-mid: 280ms;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 300ms;
+  --duration-mid: 300ms;
+  --duration-300: 300ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 
-  --shadow-rest: 0 10px 28px rgba(16, 39, 55, 0.06);
-  --shadow-hover: 0 18px 40px rgba(16, 39, 55, 0.1);
+  --shadow-rest: 0 10px 28px rgba(17, 17, 17, 0.06);
+  --shadow-hover: 0 18px 40px rgba(17, 17, 17, 0.1);
 
   --z-atmosphere: 0;
   --z-content: 2;
@@ -118,15 +126,23 @@
    * Semantic
    * ---------------------------------------------------------------- */
 
-  --color-background: var(--color-paper-100);
+  --color-background: var(--color-paper-50);
+  --color-background-subtle: var(--color-paper-100);
+  --color-section: var(--color-paper-100);
+  --color-section-alt: var(--color-white);
   --color-foreground: var(--color-ink-950);
   --color-muted: var(--color-paper-200);
   --color-muted-foreground: var(--color-ink-600);
   --color-primary: var(--color-ink-950);
-  --color-primary-hover: var(--color-blue-600);
-  --color-accent: var(--color-blue-600);
-  --color-accent-hover: var(--color-blue-700);
-  --color-accent-soft: var(--color-blue-50);
+  --color-primary-hover: var(--color-gold-700);
+  --color-accent: var(--color-lime-400);
+  --color-accent-2: var(--color-sky-300);
+  --color-accent-3: var(--color-blush-300);
+  --color-accent-hover: var(--color-butter-300);
+  --color-accent-soft: var(--color-lime-400);
+  --color-accent-text: var(--color-gold-700);
+  --color-accent-text-hover: var(--color-gold-800);
+  --color-on-accent: var(--color-ink-950);
   --color-border: rgba(var(--color-ink-950-rgb), 0.1);
   --color-border-strong: rgba(var(--color-ink-950-rgb), 0.18);
   --color-card: var(--color-white);
@@ -185,8 +201,9 @@
   --shadow-card-hover: var(--shadow-hover);
 
   --ease: var(--ease-out);
-  --motion-fast: var(--duration-fast);
-  --motion-mid: var(--duration-mid);
+  --motion-fast: var(--duration-300);
+  --motion-mid: var(--duration-300);
+  --motion-hover: var(--duration-300) var(--ease-out);
 
   --overlay-fade: 8rem;
   --footer-fade: 6rem;
@@ -202,16 +219,16 @@
   --sky: var(--color-background);
   --white: var(--color-white);
   --paper: var(--color-background);
-  --paper-rgb: 249, 248, 247;
-  --peach: var(--color-apricot-400);
-  --accent-1: var(--color-accent);
-  --accent-1-rgb: 9, 105, 218;
-  --accent-2: var(--color-accent-hover);
+  --paper-rgb: 250, 250, 250;
+  --peach: var(--color-accent-3);
+  --accent-1: var(--color-accent-text);
+  --accent-1-rgb: var(--color-gold-700-rgb);
+  --accent-2: var(--color-accent-text-hover);
   --ink: var(--color-foreground);
   --text: var(--color-foreground);
   --text-soft: var(--color-muted-foreground);
   --slate: var(--color-muted-foreground);
-  --iris: var(--color-blue-700);
+  --iris: var(--color-accent-text);
   --iris-deep: var(--color-ink-950);
   --dusk: var(--color-ink-950);
   --on-overlay: var(--color-foreground);
@@ -220,12 +237,12 @@
   --line: var(--color-border);
   --line-strong: var(--color-border-strong);
   --card: var(--color-card);
-  --overlay: var(--color-background);
-  --overlay-clear: rgba(249, 248, 247, 0);
+  --overlay: var(--color-section);
+  --overlay-clear: rgba(250, 250, 250, 0);
 
   --px: 0;
   --py: 0;
-  --caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23102737' d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
+  --caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23111111' d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'/%3E%3C/svg%3E");
 
   /* ---------------------------------------------------------------- *
    * Component
@@ -234,17 +251,19 @@
   --nav-link-size: var(--size-small);
   --nav-link-weight: var(--weight-500);
   --nav-link-color: var(--color-foreground);
-  --nav-link-hover: var(--color-accent);
-  --nav-link-current: var(--color-accent-hover);
+  --nav-link-hover: var(--color-accent-text);
+  --nav-link-current: var(--color-accent-text-hover);
   --nav-underline: var(--hairline);
   --nav-radius: var(--radius-pill);
 
-  --button-fg: var(--color-foreground);
+  --button-bg: var(--color-accent);
+  --button-fg: var(--color-on-accent);
+  --button-hover-bg: var(--color-accent-hover);
+  --button-hover-fg: var(--color-on-accent);
   --button-underline: var(--hairline);
-  --button-hover-fg: var(--color-accent);
 
   --link-color: var(--color-foreground);
-  --link-hover: var(--color-accent);
+  --link-hover: var(--color-accent-text);
   --link-underline-offset: 0.2em;
 
   --card-bg: var(--color-card);
@@ -258,54 +277,82 @@
   --hero-dot-gap: var(--dot-gap);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-paper-50: #0b1720;
-    --color-paper-100: #102737;
-    --color-paper-200: #1a3546;
-    --color-paper-300: #2a4a5e;
-    --color-white: #152a38;
-    --color-white-rgb: 21, 42, 56;
-
-    --color-ink-950: #f9f8f7;
-    --color-ink-950-rgb: 249, 248, 247;
-    --color-ink-900: #fefdfc;
-    --color-ink-800: #edeceb;
-    --color-ink-700: #d4d0cb;
-    --color-ink-600: #c2c8cc;
-    --color-ink-500: #b8b3ae;
-    --color-ink-400: #9aa7b0;
-    --color-ink-300: #7a8790;
-
-    --color-blue-700: #7cccff;
-    --color-blue-600: #5eb6f2;
-    --color-blue-50: #16344a;
-
-    --color-chip: #1a3546;
-    --color-background: #102737;
-    --color-foreground: #f9f8f7;
-    --color-muted: #1a3546;
-    --color-muted-foreground: #c2c8cc;
-    --color-border: rgba(249, 248, 247, 0.14);
-    --color-border-strong: rgba(249, 248, 247, 0.24);
-    --color-card: #152a38;
-    --color-accent-soft: #16344a;
-    --paper-rgb: 16, 39, 55;
-    --dot-color: rgba(249, 248, 247, 0.1);
-    --shadow-rest: 0 10px 28px rgba(0, 0, 0, 0.28);
-    --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.4);
-    --overlay: var(--color-background);
-    --overlay-clear: rgba(16, 39, 55, 0);
-    --accent-1-rgb: 94, 182, 242;
-  }
-}
-
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-foreground);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 html {
-  accent-color: var(--color-accent);
+  color-scheme: only light;
+  accent-color: var(--color-accent-text);
   caret-color: var(--color-foreground);
+  background-color: var(--color-background);
 }
+
+/* Tailwind-named utilities. Pastel fills never ship as small text:
+ * .text-accent uses the AA gold; .bg-accent pairs the lime fill with #111. */
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.bg-section {
+  background-color: var(--color-section);
+}
+
+.bg-section-alt {
+  background-color: var(--color-section-alt);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  transition: background-color var(--motion-hover), color var(--motion-hover);
+}
+
+.bg-accent:hover,
+.bg-accent:focus-visible {
+  background-color: var(--color-accent-hover);
+}
+
+.bg-accent-2 {
+  background-color: var(--color-accent-2);
+  color: var(--color-on-accent);
+}
+
+.bg-accent-3 {
+  background-color: var(--color-accent-3);
+  color: var(--color-on-accent);
+}
+
+.text-accent {
+  color: var(--color-accent-text);
+  transition: color var(--motion-hover);
+}
+
+.text-accent:hover,
+.text-accent:focus-visible {
+  color: var(--color-accent-text-hover);
+}
+
+.duration-300 {
+  transition-duration: var(--duration-300);
+}
+
+.ease-out {
+  transition-timing-function: var(--ease-out);
+}
+
+/*
+ * WCAG 2.2 AA (normal text 4.5:1), verified:
+ * #111111 on #FFFFFF 18.88 / #FAFAFA 18.09 / #F4F4F5 17.18
+ * #111111 on #EAE4BD 14.68 / #CEE0E8 13.89 / #EFD9D2 13.96 / #EDE5C9 14.97
+ * #7A5514 on #FFFFFF 6.69 / #FAFAFA 6.41 / #F4F4F5 6.09
+ * #7A5514 on #EAE4BD 5.21 / #CEE0E8 4.93 / #EFD9D2 4.95 / #EDE5C9 5.31
+ * #6F4E14 on #FFFFFF 7.57 / #FAFAFA 7.25 / #F4F4F5 6.88
+ * #52525B on #FFFFFF 7.73 / #FAFAFA 7.41 / #F4F4F5 7.03
+ * #B42318 on #FAFAFA 6.30
+ */
