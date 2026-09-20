@@ -40,6 +40,7 @@ a {
 :focus-visible {
   outline: 2px solid var(--accent-2);
   outline-offset: 3px;
+  border-radius: var(--radius);
 }
 
 [id] {
@@ -111,7 +112,7 @@ a {
   max-width: 100%;
   padding: 0.45rem 1.1rem;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: var(--radius);
   transition:
     background var(--motion-hover),
     border-color var(--motion-hover),
@@ -149,9 +150,8 @@ a {
 .navSheetLink {
   position: relative;
   padding: 0.45rem 0.8rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   color: var(--ink);
-  font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
@@ -211,9 +211,9 @@ a {
 .navToggleBars::after {
   display: block;
   width: 20px;
-  height: var(--hairline);
+  height: 3px;
   background: currentColor;
-  border-radius: 1px;
+  border-radius: var(--radius-pill);
 }
 
 .navToggleBars {
@@ -376,7 +376,7 @@ a {
   gap: 0.45rem;
   padding: 0.15rem 0 0.35rem;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--ink);
   font-family: inherit;
@@ -416,7 +416,7 @@ a {
 .pageBand {
   position: relative;
   z-index: var(--z-content);
-  background: var(--color-section-alt);
+  background: transparent;
 }
 
 .heroToWork {
@@ -424,7 +424,7 @@ a {
   z-index: var(--z-belt);
   padding: 1.25rem 0 2rem;
   overflow: visible;
-  background: var(--color-section-alt);
+  background: var(--color-wash-green);
 }
 
 .imageBelt {
@@ -449,12 +449,12 @@ a {
 
 .imageBelt::before {
   left: 0;
-  background: linear-gradient(90deg, var(--color-section-alt) 0%, rgba(var(--color-white-rgb), 0) 100%);
+  background: linear-gradient(90deg, var(--color-wash-green) 0%, rgba(var(--color-wash-green-rgb), 0) 100%);
 }
 
 .imageBelt::after {
   right: 0;
-  background: linear-gradient(270deg, var(--color-section-alt) 0%, rgba(var(--color-white-rgb), 0) 100%);
+  background: linear-gradient(270deg, var(--color-wash-green) 0%, rgba(var(--color-wash-green-rgb), 0) 100%);
 }
 
 .imageBeltTrack {
@@ -472,12 +472,24 @@ a {
   flex: 0 0 var(--w, 200px);
   width: var(--w, 200px);
   height: 168px;
-  border-radius: var(--radius);
-  background: var(--color-muted);
+  border-radius: var(--radius-md);
+  background: var(--color-wash-blue);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
   transition: transform var(--motion-hover), box-shadow var(--motion-hover);
+}
+
+.imageBeltItem:nth-child(3n+1) {
+  background: var(--color-wash-blue);
+}
+
+.imageBeltItem:nth-child(3n+2) {
+  background: var(--color-wash-orange);
+}
+
+.imageBeltItem:nth-child(3n+3) {
+  background: var(--color-wash-pink);
 }
 
 .imageBeltItem:hover,
@@ -497,22 +509,23 @@ a {
 }
 
 .section {
-  width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
-  margin-inline: auto;
-  padding: 5.5rem var(--gutter);
-}
-
-#work.section,
-#resume.section {
-  background: var(--color-section-alt);
-}
-
-#about.section {
-  background: var(--color-section);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 5.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2));
 }
 
 #work.section {
+  background: var(--color-wash-orange);
   padding-top: 2.75rem;
+}
+
+#about.section {
+  background: var(--color-wash-pink);
+}
+
+#resume.section {
+  background: var(--color-wash-blue);
 }
 
 .sectionHead {
@@ -574,9 +587,7 @@ a {
   text-decoration: none;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  transform: scale(var(--scale, 1)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  border-radius: var(--card-radius);
   transform-origin: center center;
   transform-style: preserve-3d;
   transition: transform var(--motion-hover), border-color var(--motion-hover), box-shadow var(--motion-hover);
@@ -670,7 +681,7 @@ a {
   overflow: hidden;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--card-radius);
   box-shadow: var(--shadow-card);
 }
 
@@ -717,12 +728,27 @@ a {
   margin: 0;
   flex: 0 0 var(--h, 180px);
   height: var(--h, 180px);
-  border-radius: var(--radius);
-  background: var(--color-muted);
+  border-radius: var(--radius-md);
+  background: var(--color-wash-blue);
   border: 1px solid var(--line);
   transform: scale(var(--scale, 1));
   transform-origin: center center;
   transition: transform var(--motion-hover);
+}
+
+.aboutCol--up .aboutTile:nth-child(3n+1),
+.aboutCol--down .aboutTile:nth-child(3n+1) {
+  background: var(--color-wash-blue);
+}
+
+.aboutCol--up .aboutTile:nth-child(3n+2),
+.aboutCol--down .aboutTile:nth-child(3n+2) {
+  background: var(--color-wash-green);
+}
+
+.aboutCol--up .aboutTile:nth-child(3n+3),
+.aboutCol--down .aboutTile:nth-child(3n+3) {
+  background: var(--color-wash-orange);
 }
 
 .aboutTile:hover,
@@ -859,7 +885,7 @@ a {
   padding: 1.25rem 1.2rem 1.35rem;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--card-radius);
 }
 
 .skillCard h3 {
@@ -879,16 +905,17 @@ a {
 .skillList li {
   padding: 0.28rem 0.65rem;
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: var(--radius-pill);
   color: var(--ink);
-  background: var(--white);
+  background: var(--color-accent);
 }
 
 .footer {
-  width: min(100%, calc(var(--wrap) + 2 * var(--gutter)));
-  margin-inline: auto;
-  padding: 2rem var(--gutter) 3rem;
-  background: var(--color-section);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 2rem max(var(--gutter), calc((100% - var(--wrap)) / 2)) 3rem;
+  background: var(--color-wash-green);
 }
 
 .footerPanel {

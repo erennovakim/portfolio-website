@@ -80,7 +80,7 @@ a:focus-visible {
 :focus-visible {
   outline: 3px solid var(--on-image);
   outline-offset: 3px;
-  border-radius: 1.2px;
+  border-radius: var(--radius);
 }
 
 [id] {
@@ -160,7 +160,7 @@ a:focus-visible {
   width: max-content;
   max-width: calc(100% - 2 * var(--page-gutter));
   padding: 0.55rem 1.1rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background-color: transparent;
   box-shadow: none;
   transition:
@@ -169,7 +169,7 @@ a:focus-visible {
 }
 
 .navWrapper[data-scrolled='true'] .pill {
-  background-color: var(--paper);
+  background-color: var(--color-card);
   box-shadow: var(--shadow-card);
 }
 
@@ -307,8 +307,8 @@ a:focus-visible {
 .navToggleBars::after {
   display: block;
   width: 24px;
-  height: 2px;
-  border-radius: 0.6px;
+  height: 3px;
+  border-radius: var(--radius-pill);
   background-color: currentColor;
   transition:
     transform var(--motion-hover),
@@ -434,13 +434,8 @@ a:focus-visible {
  */
 .section--washed {
   padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem) - 20px);
-  background-image: linear-gradient(
-    180deg,
-    var(--overlay-clear) 0,
-    var(--overlay) var(--overlay-fade),
-    var(--overlay) calc(100% - var(--overlay-fade)),
-    var(--overlay-clear) 100%
-  );
+  background-color: var(--color-wash-orange);
+  background-image: none;
 }
 
 /* Cards sit in the solid middle of the wash: the top fade ends as they
@@ -501,7 +496,7 @@ a:focus-visible {
   justify-content: center;
   gap: 0.45rem;
   padding: 0.15rem 0 0.35rem;
-  border-radius: 0;
+  border-radius: var(--radius);
   border: 0;
   background: transparent;
   color: var(--ink);
@@ -836,12 +831,8 @@ h4.skillLabel {
 /* Solid cream through the bottom edge so it meets the footer without a fade. */
 #about.section--washed {
   padding-bottom: 11rem;
-  background-image: linear-gradient(
-    180deg,
-    var(--overlay-clear) 0,
-    var(--overlay) var(--overlay-fade),
-    var(--overlay) 100%
-  );
+  background-color: var(--color-wash-pink);
+  background-image: none;
 }
 
 /* ---------------------------------------------------------------- *
@@ -850,6 +841,7 @@ h4.skillLabel {
 
 #resume {
   padding-bottom: var(--space-3xl);
+  background-color: var(--color-wash-blue);
 }
 
 .resumeInner {
@@ -1123,7 +1115,7 @@ h4.skillLabel {
   max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-color: var(--paper);
+  background-color: var(--color-wash-green);
   color: var(--ink);
   border-top: var(--border);
 }
@@ -1203,23 +1195,23 @@ h4.skillLabel {
   align-items: center;
   gap: 0.4rem;
   padding: 0.55rem 0.9rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--ink);
-  color: var(--paper);
+  color: var(--color-white);
   text-decoration: none;
   border: 0;
 }
 
 .topLink:hover {
   background: var(--color-ink-900);
-  color: var(--paper);
+  color: var(--color-white);
 }
 
 .page-study .footer {
   width: min(100% - 2 * var(--page-gutter), var(--container));
   margin-inline: auto;
   padding: 2rem 0 3rem;
-  background: var(--paper);
+  background: var(--color-wash-pink);
   color: var(--ink);
   overflow: visible;
 }
@@ -1258,7 +1250,7 @@ h4.skillLabel {
   gap: 0.45rem;
   padding: 0.15rem 0 0.35rem;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--ink);
   font-family: inherit;
@@ -1472,7 +1464,7 @@ h4.skillLabel {
  * ---------------------------------------------------------------- */
 
 .page-study {
-  background-color: var(--paper);
+  background-color: var(--color-wash-blue);
   color: var(--ink);
 }
 
