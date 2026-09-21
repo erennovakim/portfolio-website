@@ -35,11 +35,11 @@
         </ul>
       </nav>
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
-      <label class="navToggle" for="nav-menu">
+      <label class="navToggle" for="nav-menu" aria-controls="nav-sheet" aria-expanded="false">
         <span class="navToggleBars" aria-hidden="true"></span>
-        <span class="visually-hidden">Menu</span>
+        <span class="visually-hidden navToggleLabel">Open menu</span>
       </label>
-      <div class="navSheet">
+      <div class="navSheet" id="nav-sheet">
         <a class="navSheetLink" href="mailto:eren.novakim@gmail.com">Email</a>
         <a class="navSheetLink" href="#work">Works</a>
         <a class="navSheetLink" href="#about">About</a>
@@ -93,7 +93,10 @@
           </div>
         </div>
 
-        <section class="section" id="work" aria-label="Selected work">
+        <section class="section" id="work" aria-labelledby="work-heading">
+          <div class="sectionHead" data-reveal>
+            <h2 id="work-heading">Selected Works</h2>
+          </div>
 
           <div class="workGrid">
             <a class="project" href="/work/peterplate/" data-reveal>

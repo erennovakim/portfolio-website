@@ -243,13 +243,19 @@ a:focus-visible {
 
 .navLink.is-current,
 .navWrapper[data-scrolled='true'] .navLink.is-current {
-  font-weight: 700;
+  font-weight: var(--nav-link-current-weight);
   background-image: var(--gradient-still);
   background-size: 100% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+.navLink.is-current::after,
+.navWrapper[data-scrolled='true'] .navLink.is-current::after {
+  background: var(--gradient-still);
+  background-color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -280,6 +286,7 @@ a:focus-visible {
   height: 2.75rem;
   color: var(--on-image);
   cursor: pointer;
+  z-index: 3;
 }
 
 .navWrapper[data-behind='overlay'] .navToggle {
@@ -292,7 +299,7 @@ a:focus-visible {
 .navToggleBars::after {
   display: block;
   width: 24px;
-  height: 3px;
+  height: 2px;
   border-radius: var(--radius-pill);
   background-color: currentColor;
   transition:
@@ -366,7 +373,7 @@ a:focus-visible {
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   color: var(--ink);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-medium);
   text-decoration: none;
 }
 
@@ -389,13 +396,18 @@ a:focus-visible {
 }
 
 .navSheetLink.is-current {
-  font-weight: 700;
+  font-weight: var(--nav-link-current-weight);
   background-image: var(--gradient-still);
   background-size: 100% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+.navSheetLink.is-current::after {
+  background: var(--gradient-still);
+  background-color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -768,6 +780,9 @@ h4.skillLabel {
   height: 1.1em;
   flex-shrink: 0;
   display: block;
+  stroke: currentColor;
+  stroke-width: 8;
+  overflow: visible;
 }
 
 .card:hover .cta {
@@ -1278,6 +1293,13 @@ h4.skillLabel {
   flex-shrink: 0;
 }
 
+.page-study .btn[href='#home'] .icon,
+.page-study .btn[download] .icon {
+  stroke: currentColor;
+  stroke-width: 8;
+  overflow: visible;
+}
+
 .page-study .contactList {
   display: grid;
   gap: 1rem;
@@ -1490,6 +1512,10 @@ h4.skillLabel {
   transform-origin: center;
   transition: transform var(--motion-hover);
   pointer-events: none;
+}
+
+.studyBack svg path {
+  stroke-width: 3.2;
 }
 
 .studyBack:hover::after,

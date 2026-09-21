@@ -181,13 +181,18 @@ a {
 
 .navLink.is-current,
 .navSheetLink.is-current {
-  font-weight: 700;
+  font-weight: var(--nav-link-current-weight);
   background-image: var(--gradient-still);
   background-size: 100% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+.navLink.is-current::after,
+.navSheetLink.is-current::after {
+  background: var(--gradient-still);
 }
 
 .navCheckbox {
@@ -204,6 +209,7 @@ a {
   margin-left: auto;
   color: var(--ink);
   cursor: pointer;
+  z-index: 3;
 }
 
 .navToggleBars,
@@ -211,9 +217,14 @@ a {
 .navToggleBars::after {
   display: block;
   width: 20px;
-  height: 3px;
+  height: 2px;
   background: currentColor;
   border-radius: var(--radius-pill);
+  transition:
+    transform var(--motion-hover),
+    top var(--motion-hover),
+    opacity var(--motion-hover),
+    background-color var(--motion-hover);
 }
 
 .navToggleBars {
@@ -228,11 +239,11 @@ a {
 }
 
 .navToggleBars::before {
-  top: -6px;
+  top: -7px;
 }
 
 .navToggleBars::after {
-  top: 6px;
+  top: 7px;
 }
 
 .navCheckbox:checked ~ .navToggle .navToggleBars {
@@ -419,6 +430,15 @@ a {
   flex-shrink: 0;
 }
 
+.projectCta .icon,
+.btn[download] .icon,
+.heroActions .btn[href='#work'] .icon,
+.heroActions .btn[href='#home'] .icon {
+  stroke: currentColor;
+  stroke-width: 8;
+  overflow: visible;
+}
+
 .pageBand {
   position: relative;
   z-index: var(--z-content);
@@ -591,7 +611,7 @@ a {
   inset: 0;
   z-index: 2;
   border-radius: inherit;
-  padding: 2px;
+  padding: 1px;
   background-image: var(--gradient-morph);
   background-size: 220% 100%;
   pointer-events: none;
@@ -994,9 +1014,16 @@ a {
 
 html.has-js [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  transform: translate3d(0, 2.25rem, 0);
+  transition:
+    opacity 800ms var(--ease-out),
+    transform 800ms var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.has-js .project[data-reveal],
+html.has-js .skillCard[data-reveal] {
+  transform: translate3d(0, 2.75rem, 0);
 }
 
 html.has-js [data-reveal].is-inview {
@@ -1095,6 +1122,9 @@ html.has-js [data-reveal].is-inview {
     transition: none;
   }
 
+  .navToggleBars,
+  .navToggleBars::before,
+  .navToggleBars::after,
   .navLink::after,
   .navSheetLink::after {
     transition: none;
