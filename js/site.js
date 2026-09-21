@@ -81,6 +81,20 @@
   document.querySelectorAll('.navSheetLink').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
+
+  const toggleLabel = toggle.querySelector('.navToggleLabel');
+
+  function syncMenu() {
+    if (!menu) return;
+    const open = menu.checked;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (toggleLabel) toggleLabel.textContent = open ? 'Close menu' : 'Open menu';
+  }
+
+  if (menu) {
+    menu.addEventListener('change', syncMenu);
+    syncMenu();
+  }
 })();
 
 (function () {

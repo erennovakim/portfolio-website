@@ -11,15 +11,19 @@
 }
 
 html {
+  color-scheme: only light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
   background-color: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
@@ -40,7 +44,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-title);
   line-height: var(--leading-snug);
   color: var(--ink);
   margin: 0;
@@ -66,14 +71,19 @@ p {
 }
 
 a {
-  color: var(--iris);
-  text-underline-offset: 0.2em;
+  color: var(--link-color);
+  text-underline-offset: var(--link-underline-offset);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
 }
 
 :focus-visible {
   outline: 3px solid var(--on-image);
   outline-offset: 3px;
-  border-radius: 1.2px;
+  border-radius: var(--radius);
 }
 
 [id] {
@@ -153,16 +163,16 @@ a {
   width: max-content;
   max-width: calc(100% - 2 * var(--page-gutter));
   padding: 0.55rem 1.1rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background-color: transparent;
   box-shadow: none;
   transition:
-    background-color var(--motion-mid) var(--ease),
-    box-shadow var(--motion-mid) var(--ease);
+    background-color var(--motion-hover),
+    box-shadow var(--motion-hover);
 }
 
 .navWrapper[data-scrolled='true'] .pill {
-  background-color: var(--paper);
+  background-color: var(--color-card);
   box-shadow: var(--shadow-card);
 }
 
@@ -194,12 +204,6 @@ a {
   text-decoration: none;
   white-space: nowrap;
   color: var(--on-image);
-  transition: color var(--motion-fast) var(--ease);
-}
-
-.navLink:hover,
-.navLink:focus-visible {
-  color: var(--accent-1);
 }
 
 .navLink::after {
@@ -208,17 +212,16 @@ a {
   left: 0.75rem;
   right: 0.75rem;
   bottom: 0.16rem;
-  height: 1.5px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform var(--motion-mid) var(--ease);
+  height: var(--nav-underline);
+  background-color: var(--ink);
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path var(--motion-hover);
   pointer-events: none;
 }
 
 .navLink:hover::after,
 .navLink:focus-visible::after {
-  transform: scaleX(1);
+  clip-path: inset(0 0 0 0);
 }
 
 .wordmark {
@@ -240,24 +243,21 @@ a {
   color: var(--ink);
 }
 
-.navWrapper[data-scrolled='true'] .navLink:hover,
-.navWrapper[data-scrolled='true'] .navLink:focus-visible {
-  color: var(--accent-1);
-}
-
 .navLink.is-current,
 .navWrapper[data-scrolled='true'] .navLink.is-current {
-  color: var(--accent-2);
+  font-weight: var(--nav-link-current-weight);
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.navLink.is-current:hover,
-.navLink.is-current:focus-visible {
-  color: var(--accent-2);
-}
-
-.navLink.is-current:hover::after,
-.navLink.is-current:focus-visible::after {
-  background-color: var(--accent-2);
+.navLink.is-current::after,
+.navWrapper[data-scrolled='true'] .navLink.is-current::after {
+  background: var(--gradient-still);
+  background-color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -288,6 +288,7 @@ a {
   height: 2.75rem;
   color: var(--on-image);
   cursor: pointer;
+  z-index: 3;
 }
 
 .navWrapper[data-behind='overlay'] .navToggle {
@@ -301,12 +302,12 @@ a {
   display: block;
   width: 24px;
   height: 2px;
-  border-radius: 0.6px;
+  border-radius: var(--radius-pill);
   background-color: currentColor;
   transition:
-    transform var(--motion-fast) var(--ease),
-    background-color var(--motion-fast) var(--ease),
-    top var(--motion-fast) var(--ease);
+    transform var(--motion-hover),
+    background-color var(--motion-hover),
+    top var(--motion-hover);
 }
 
 .navToggleBars {
@@ -374,7 +375,7 @@ a {
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   color: var(--ink);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-medium);
   text-decoration: none;
 }
 
@@ -384,31 +385,31 @@ a {
   left: 1rem;
   right: 1rem;
   bottom: 0.45rem;
-  height: 1.5px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform var(--motion-mid) var(--ease);
+  height: var(--nav-underline);
+  background-color: var(--ink);
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path var(--motion-hover);
   pointer-events: none;
-}
-
-.navSheetLink:hover,
-.navSheetLink:focus-visible {
-  color: var(--accent-1);
 }
 
 .navSheetLink:hover::after,
 .navSheetLink:focus-visible::after {
-  transform: scaleX(1);
+  clip-path: inset(0 0 0 0);
 }
 
 .navSheetLink.is-current {
-  color: var(--accent-2);
+  font-weight: var(--nav-link-current-weight);
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.navSheetLink.is-current:hover::after,
-.navSheetLink.is-current:focus-visible::after {
-  background-color: var(--accent-2);
+.navSheetLink.is-current::after {
+  background: var(--gradient-still);
+  background-color: transparent;
 }
 
 /* ---------------------------------------------------------------- *
@@ -427,13 +428,8 @@ a {
  */
 .section--washed {
   padding-top: calc(var(--overlay-fade) + clamp(5.5rem, 12vh, 8.5rem) - 20px);
-  background-image: linear-gradient(
-    180deg,
-    var(--overlay-clear) 0,
-    var(--overlay) var(--overlay-fade),
-    var(--overlay) calc(100% - var(--overlay-fade)),
-    var(--overlay-clear) 100%
-  );
+  background-color: var(--color-white);
+  background-image: none;
 }
 
 /* Cards sit in the solid middle of the wash: the top fade ends as they
@@ -476,7 +472,7 @@ a {
    pulled toward ink so they hold against the 72% wash. */
 .section--washed .lede {
   font-size: var(--size-body);
-  color: #323c55;
+  color: var(--ink);
 }
 
 .section--washed .headingText {
@@ -494,7 +490,7 @@ a {
   justify-content: center;
   gap: 0.45rem;
   padding: 0.15rem 0 0.35rem;
-  border-radius: 0;
+  border-radius: var(--radius);
   border: 0;
   background: transparent;
   color: var(--ink);
@@ -513,11 +509,11 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform var(--motion-mid) var(--ease);
+  transition: transform var(--motion-hover);
   pointer-events: none;
 }
 
@@ -650,13 +646,13 @@ a {
   padding: var(--space-sm);
   border-radius: var(--radius-lg);
   border: var(--border);
-  background-color: var(--paper);
+  background-color: var(--color-card);
   box-shadow: none;
   color: var(--ink);
   text-decoration: none;
   transition:
-    border-color var(--motion-mid) var(--ease),
-    transform var(--motion-mid) var(--ease);
+    border-color var(--motion-hover),
+    transform var(--motion-hover);
 }
 
 .card:hover {
@@ -669,7 +665,7 @@ a {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .cover {
@@ -696,8 +692,8 @@ a {
   left: var(--space-xs);
   padding: 0.2rem 0.7rem;
   border-radius: var(--radius-md);
-  background-color: var(--paper);
-  color: var(--slate);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
   font-size: var(--size-small);
 }
 
@@ -772,11 +768,12 @@ h4.skillLabel {
   gap: 0.4em;
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-md);
-  background-color: var(--iris);
-  color: var(--paper);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
   font-weight: var(--weight-semibold);
   font-size: var(--size-small);
   line-height: 1;
+  transition: background-color var(--motion-hover);
 }
 
 /* Phosphor Regular, sized to the CTA type. */
@@ -785,10 +782,13 @@ h4.skillLabel {
   height: 1.1em;
   flex-shrink: 0;
   display: block;
+  stroke: currentColor;
+  stroke-width: 8;
+  overflow: visible;
 }
 
 .card:hover .cta {
-  background-color: var(--iris-deep);
+  background-color: var(--color-accent-hover);
 }
 
 /* ---------------------------------------------------------------- *
@@ -828,12 +828,8 @@ h4.skillLabel {
 /* Solid cream through the bottom edge so it meets the footer without a fade. */
 #about.section--washed {
   padding-bottom: 11rem;
-  background-image: linear-gradient(
-    180deg,
-    var(--overlay-clear) 0,
-    var(--overlay) var(--overlay-fade),
-    var(--overlay) 100%
-  );
+  background-color: var(--color-white);
+  background-image: none;
 }
 
 /* ---------------------------------------------------------------- *
@@ -842,6 +838,7 @@ h4.skillLabel {
 
 #resume {
   padding-bottom: var(--space-3xl);
+  background-color: var(--color-white);
 }
 
 .resumeInner {
@@ -874,7 +871,7 @@ h4.skillLabel {
 
 #resume .resumeItem,
 #resume .resumeItem:first-child {
-  border-color: rgba(var(--paper-rgb), 0.32);
+  border-color: var(--color-border);
 }
 
 #resume .resumeChevron {
@@ -883,8 +880,8 @@ h4.skillLabel {
 }
 
 #resume .skill {
-  background-color: rgba(var(--paper-rgb), 0.88);
-  border-color: rgba(var(--paper-rgb), 0.92);
+  background-color: var(--color-chip-bg);
+  border-color: var(--color-border);
   color: var(--ink);
 }
 
@@ -900,8 +897,8 @@ h4.skillLabel {
 }
 
 .resumeCluster {
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
-  border-bottom: 1.5px solid rgba(var(--paper-rgb), 0.32);
+  border-top: var(--border);
+  border-bottom: var(--border);
 }
 
 .resumeCluster .resumeOrg {
@@ -915,7 +912,7 @@ h4.skillLabel {
 }
 
 .resumeList > .resumeCluster + .resumeItem {
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.32);
+  border-top: var(--border);
 }
 
 .resumeCluster .resumeItem--nested summary {
@@ -935,17 +932,17 @@ h4.skillLabel {
 
 .resumeItem {
   padding-inline: 16px;
-  border-bottom: 1.5px solid var(--line);
+  border-bottom: var(--border);
   border-radius: var(--radius-sm);
-  transition: background-color var(--motion-fast) var(--ease);
+  transition: background-color var(--motion-hover);
 }
 
 .resumeItem:hover {
-  background-color: rgba(var(--paper-rgb), 0.04);
+  background-color: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 
 .resumeItem:first-child {
-  border-top: 1.5px solid var(--line);
+  border-top: var(--border);
 }
 
 .resumeItem summary {
@@ -983,10 +980,10 @@ h4.skillLabel {
   width: 0.45rem;
   height: 0.45rem;
   margin-right: 0.2rem;
-  border-right: 1.5px solid var(--ink);
-  border-bottom: 1.5px solid var(--ink);
+  border-right: var(--hairline) solid var(--ink);
+  border-bottom: var(--hairline) solid var(--ink);
   transform: rotate(45deg);
-  transition: transform var(--motion-fast) var(--ease);
+  transition: transform var(--motion-hover);
 }
 
 .resumeItem[open] .resumeChevron {
@@ -1024,14 +1021,14 @@ h4.skillLabel {
   padding: 0.85rem 1rem;
   list-style: none;
   border-radius: var(--radius-md);
-  background-color: rgba(var(--paper-rgb), 0.1);
+  background-color: var(--color-section);
 }
 
 .skill {
   padding: 0.3rem 0.75rem;
   border: var(--border);
   border-radius: var(--radius-md);
-  background-color: #f2e9df;
+  background-color: var(--color-chip-bg);
   font-size: var(--size-small);
   color: var(--ink);
 }
@@ -1071,13 +1068,13 @@ h4.skillLabel {
   transform-origin: center bottom;
   cursor: pointer;
   z-index: 2;
-  transition: transform var(--motion-mid) var(--ease);
+  transition: transform var(--motion-hover);
 }
 
 .polaroidWindow {
   aspect-ratio: 1 / 1;
-  background-color: rgba(16, 27, 51, 0.28);
-  box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-muted);
+  box-shadow: inset 0 1px 6px rgba(var(--color-ink-950-rgb), 0.08);
 }
 
 .polaroidCaption {
@@ -1115,8 +1112,9 @@ h4.skillLabel {
   max-width: 100%;
   overflow: hidden;
   padding-block: calc(var(--space-3xl) - 20px) var(--space-xl);
-  background-color: #292532;
-  color: var(--on-image);
+  background-color: var(--color-white);
+  color: var(--ink);
+  border-top: var(--border);
 }
 
 .footerLayout {
@@ -1167,7 +1165,7 @@ h4.skillLabel {
 .contactLink {
   color: var(--on-image);
   font-size: var(--size-body-lg);
-  text-decoration-color: rgba(var(--paper-rgb), 0.45);
+  text-decoration-color: rgba(var(--color-ink-950-rgb), 0.35);
 }
 
 .contactLink:hover {
@@ -1184,7 +1182,7 @@ h4.skillLabel {
   gap: var(--space-sm);
   margin-top: var(--space-2xl);
   padding-top: var(--space-md);
-  border-top: 1.5px solid rgba(var(--paper-rgb), 0.2);
+  border-top: var(--border);
   font-size: var(--size-small);
   color: var(--on-image-soft);
 }
@@ -1194,23 +1192,23 @@ h4.skillLabel {
   align-items: center;
   gap: 0.4rem;
   padding: 0.55rem 0.9rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--ink);
-  color: #fff;
+  color: var(--color-white);
   text-decoration: none;
   border: 0;
 }
 
 .topLink:hover {
-  background: #1d232e;
-  color: #fff;
+  background: var(--color-ink-900);
+  color: var(--color-white);
 }
 
 .page-study .footer {
   width: min(100% - 2 * var(--page-gutter), var(--container));
   margin-inline: auto;
   padding: 2rem 0 3rem;
-  background: #fff;
+  background: var(--color-white);
   color: var(--ink);
   overflow: visible;
 }
@@ -1219,7 +1217,11 @@ h4.skillLabel {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2rem;
-  padding: 0 0 0.4rem;
+  padding: 1.5rem 1.5rem 1.6rem 2.25rem;
+  background: var(--color-footer);
+  border: 1px solid var(--line);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
 }
 
 .page-study .footer h2 {
@@ -1249,7 +1251,7 @@ h4.skillLabel {
   gap: 0.45rem;
   padding: 0.15rem 0 0.35rem;
   border: 0;
-  border-radius: 0;
+  border-radius: var(--radius);
   background: transparent;
   color: var(--ink);
   font-family: inherit;
@@ -1267,11 +1269,11 @@ h4.skillLabel {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform var(--motion-mid) var(--ease);
+  transition: transform var(--motion-hover);
   pointer-events: none;
 }
 
@@ -1293,6 +1295,13 @@ h4.skillLabel {
   flex-shrink: 0;
 }
 
+.page-study .btn[href='#home'] .icon,
+.page-study .btn[download] .icon {
+  stroke: currentColor;
+  stroke-width: 8;
+  overflow: visible;
+}
+
 .page-study .contactList {
   display: grid;
   gap: 1rem;
@@ -1300,8 +1309,9 @@ h4.skillLabel {
 }
 
 .page-study .contactList dt {
-  color: var(--accent-2);
-  font-size: 0.92rem;
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .page-study .contactList dd {
@@ -1399,15 +1409,36 @@ h4.skillLabel {
   .aboutLayout {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .workGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #work .tagList {
+    display: none;
+  }
+
+  #about.section--washed {
+    padding-bottom: 8rem;
+  }
+
+  .resumeItem,
+  .resumeCluster .resumeOrg {
+    padding-inline: 10px;
+  }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1280px) {
   .navWrapper {
     justify-content: space-between;
     align-items: center;
     padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
     padding-right: max(1rem, env(safe-area-inset-right, 0px));
     padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    background: var(--white);
+    border-bottom: 1px solid var(--color-ink-300);
+    pointer-events: auto;
   }
 
   .navBrand {
@@ -1425,23 +1456,6 @@ h4.skillLabel {
 
   .hero {
     min-height: 100svh;
-  }
-
-  .workGrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  #work .tagList {
-    display: none;
-  }
-
-  #about.section--washed {
-    padding-bottom: 8rem;
-  }
-
-  .resumeItem,
-  .resumeCluster .resumeOrg {
-    padding-inline: 10px;
   }
 }
 
@@ -1463,7 +1477,7 @@ h4.skillLabel {
  * ---------------------------------------------------------------- */
 
 .page-study {
-  background-color: var(--paper);
+  background-color: var(--color-white);
   color: var(--ink);
 }
 
@@ -1498,12 +1512,16 @@ h4.skillLabel {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.5px;
+  height: var(--hairline);
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform var(--motion-mid) var(--ease);
+  transition: transform var(--motion-hover);
   pointer-events: none;
+}
+
+.studyBack svg path {
+  stroke-width: 3.2;
 }
 
 .studyBack:hover::after,
@@ -1533,7 +1551,7 @@ h4.skillLabel {
   gap: var(--space-md);
   margin-top: var(--space-xl);
   padding-top: var(--space-md);
-  border-top: 1.5px solid var(--line-strong);
+  border-top: var(--border-strong);
 }
 
 .studyMetaLabel {
@@ -1553,13 +1571,13 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyDraft {
   margin-bottom: var(--space-xl);
   padding: var(--space-md);
-  border: 1.5px solid var(--line-strong);
+  border: var(--border-strong);
   border-radius: var(--radius-lg);
   background-color: var(--paper);
   color: var(--slate);
@@ -1590,7 +1608,7 @@ h4.skillLabel {
   width: 100%;
   border: var(--border);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyCaption {
@@ -1603,7 +1621,7 @@ h4.skillLabel {
 .studyPullquote {
   margin: var(--space-xl) 0;
   padding-left: var(--space-md);
-  border-left: 3px solid var(--iris);
+  border-left: var(--hairline) solid var(--iris);
 }
 
 .studyPullquote p {
@@ -1673,9 +1691,9 @@ h4.skillLabel {
 .studyNote {
   margin: var(--space-xl) 0;
   padding: var(--space-md);
-  border: 1.5px solid var(--line-strong);
+  border: var(--border-strong);
   border-radius: var(--radius-lg);
-  background-color: #f7f8fa;
+  background-color: var(--card);
 }
 
 .studyNote h3 {

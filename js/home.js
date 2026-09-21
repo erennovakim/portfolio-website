@@ -58,6 +58,21 @@
   document.querySelectorAll('.navSheetLink').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
+
+  const toggle = document.querySelector('.navToggle');
+  const toggleLabel = toggle && toggle.querySelector('.navToggleLabel');
+
+  function syncMenu() {
+    if (!toggle || !menu) return;
+    const open = menu.checked;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (toggleLabel) toggleLabel.textContent = open ? 'Close menu' : 'Open menu';
+  }
+
+  if (menu) {
+    menu.addEventListener('change', syncMenu);
+    syncMenu();
+  }
 })();
 
 (function () {
@@ -202,5 +217,31 @@
   });
   document.querySelectorAll('.aboutGallery').forEach(function (gallery) {
     slowOnHover(gallery, '.aboutColTrack', 0);
+  });
+})();
+
+(function () {
+  const pills = Array.from(document.querySelectorAll('.skillList li'));
+  if (pills.length === 0) return;
+
+  function markMultiline() {
+    pills.forEach(function (pill) {
+      const styles = getComputedStyle(pill);
+      const line = parseFloat(styles.lineHeight);
+      const pad =
+        parseFloat(styles.paddingTop) +
+        parseFloat(styles.paddingBottom) +
+        parseFloat(styles.borderTopWidth) +
+        parseFloat(styles.borderBottomWidth);
+      pill.classList.toggle('is-multiline', pill.offsetHeight > line + pad + 1);
+    });
+  }
+
+  markMultiline();
+  window.addEventListener('resize', markMultiline);
+  if (typeof ResizeObserver === 'undefined') return;
+  const observer = new ResizeObserver(markMultiline);
+  pills.forEach(function (pill) {
+    observer.observe(pill);
   });
 })();

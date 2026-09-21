@@ -30,12 +30,12 @@
       </nav>
 
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
-      <label class="navToggle" for="nav-menu">
+      <label class="navToggle" for="nav-menu" aria-controls="nav-sheet" aria-expanded="false">
         <span class="navToggleBars" aria-hidden="true"></span>
-        <span class="visually-hidden">Menu</span>
+        <span class="visually-hidden navToggleLabel">Open menu</span>
       </label>
 
-      <div class="navSheet">
+      <div class="navSheet" id="nav-sheet">
         <ul class="navSheetList">
           <li><a class="navSheetLink" href="mailto:eren.novakim@gmail.com">Email</a></li>
           <li><a class="navSheetLink" href="/#work">Works</a></li>
