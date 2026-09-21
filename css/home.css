@@ -330,7 +330,7 @@ a {
   position: relative;
   z-index: var(--z-content);
   max-width: 40rem;
-  animation: hero-in 800ms var(--ease);
+  animation: hero-in 960ms var(--ease);
 }
 
 .heroName {
@@ -387,7 +387,7 @@ a {
 @keyframes hero-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(19.2px);
   }
   to {
     opacity: 1;
@@ -966,11 +966,16 @@ a {
 }
 
 .skillList li {
+  max-width: 100%;
   padding: 0.28rem 0.65rem;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   color: var(--ink);
   background: var(--skill-pill);
+}
+
+.skillList li.is-multiline {
+  border-radius: var(--radius-12);
 }
 
 .footer {
@@ -1045,16 +1050,16 @@ a {
 
 html.has-js [data-reveal] {
   opacity: 0;
-  transform: translate3d(0, 2.25rem, 0);
+  transform: translate3d(0, 2.7rem, 0);
   transition:
-    opacity 800ms var(--ease-out),
-    transform 800ms var(--ease-out);
+    opacity 960ms var(--ease-out),
+    transform 960ms var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 html.has-js .project[data-reveal],
 html.has-js .skillCard[data-reveal] {
-  transform: translate3d(0, 2.75rem, 0);
+  transform: translate3d(0, 3.3rem, 0);
 }
 
 html.has-js [data-reveal].is-inview {
@@ -1104,7 +1109,10 @@ html.has-js [data-reveal].is-inview {
   .nav {
     justify-content: space-between;
     align-items: center;
-    padding: 0.65rem var(--gutter) 0;
+    padding: 0.65rem var(--gutter);
+    background: var(--white);
+    border-bottom: 1px solid var(--color-ink-300);
+    pointer-events: auto;
   }
 
   .navBrand {
