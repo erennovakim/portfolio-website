@@ -191,7 +191,7 @@
   --nav-height: var(--nav-h);
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
   --page-gutter: var(--gutter);
-  --wrap: 1120px;
+  --wrap: min(1120px, 100%);
   --container: 70rem;
   --measure: 68ch;
   --measure-narrow: 56ch;

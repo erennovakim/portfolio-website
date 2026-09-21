@@ -12,13 +12,17 @@ html {
   color-scheme: only light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
-  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   min-height: 100dvh;
+  overflow-x: hidden;
   background: var(--paper);
   color: var(--text);
   font-family: var(--font-body);
@@ -83,8 +87,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
   height: var(--nav-h);
   padding: 0.85rem var(--gutter) 0;
+  box-sizing: border-box;
   pointer-events: none;
 }
 
@@ -283,6 +290,8 @@ a {
   isolation: isolate;
   display: grid;
   place-items: center;
+  width: 100%;
+  max-width: 100%;
   min-height: 100dvh;
   padding: calc(var(--nav-h) + 1.25rem) var(--gutter) 4.5rem;
   overflow: hidden;
@@ -442,22 +451,28 @@ a {
 .pageBand {
   position: relative;
   z-index: var(--z-content);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--color-white);
 }
 
 .heroToWork {
   position: relative;
   z-index: var(--z-belt);
+  width: 100%;
+  max-width: 100%;
   padding: 1.25rem 0 2rem;
-  overflow: visible;
+  overflow-x: hidden;
   background: var(--color-white);
 }
 
 .imageBelt {
   position: relative;
   z-index: var(--z-belt);
-  overflow: visible;
+  overflow: hidden;
   width: 100%;
+  max-width: 100%;
   padding-block: 3rem;
   margin-block: -1.5rem;
 }
@@ -524,9 +539,20 @@ a {
 
 .section {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin-inline: 0;
-  padding: 5.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2));
+  padding: 5.5rem var(--gutter);
+  box-sizing: border-box;
+}
+
+.sectionHead,
+.workGrid,
+.aboutCard,
+.resumeStack,
+.skillGrid {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
 }
 
 #work.section,
@@ -543,13 +569,13 @@ a {
   display: grid;
   gap: 0.75rem;
   margin-bottom: 2rem;
-  max-width: 40rem;
+  max-width: var(--wrap);
 }
 
 .sectionHead--split {
   display: flex;
   flex-wrap: wrap;
-  max-width: none;
+  max-width: var(--wrap);
   align-items: center;
   justify-content: space-between;
 }
@@ -586,6 +612,7 @@ a {
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 1fr;
   gap: 2rem;
+  min-width: 0;
 }
 
 .project {
@@ -948,9 +975,10 @@ a {
 
 .footer {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
   margin-inline: 0;
-  padding: 2rem max(var(--gutter), calc((100% - var(--wrap)) / 2)) 3rem;
+  padding: 2rem var(--gutter) 3rem;
+  box-sizing: border-box;
   background: var(--color-white);
 }
 
@@ -959,6 +987,9 @@ a {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: start;
   gap: 2rem;
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
   padding: 1.5rem 1.5rem 1.6rem 2.25rem;
   background: var(--color-footer);
   border: 1px solid var(--line);
@@ -1050,7 +1081,26 @@ html.has-js [data-reveal].is-inview {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
+  .workGrid,
+  .footerPanel,
+  .skillGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aboutCard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 22rem;
+    min-height: 0;
+    padding: 1.6rem 1.35rem;
+  }
+
+  .aboutGallery {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1280px) {
   .nav {
     justify-content: space-between;
     align-items: center;
@@ -1072,7 +1122,9 @@ html.has-js [data-reveal].is-inview {
   .heroTitle {
     max-width: none;
   }
+}
 
+@media (max-width: 760px) {
   .workGrid {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;

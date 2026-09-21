@@ -14,14 +14,16 @@ html {
   color-scheme: only light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
-  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
   background-color: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
@@ -1407,9 +1409,26 @@ h4.skillLabel {
   .aboutLayout {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .workGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #work .tagList {
+    display: none;
+  }
+
+  #about.section--washed {
+    padding-bottom: 8rem;
+  }
+
+  .resumeItem,
+  .resumeCluster .resumeOrg {
+    padding-inline: 10px;
+  }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1280px) {
   .navWrapper {
     justify-content: space-between;
     align-items: center;
@@ -1433,23 +1452,6 @@ h4.skillLabel {
 
   .hero {
     min-height: 100svh;
-  }
-
-  .workGrid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  #work .tagList {
-    display: none;
-  }
-
-  #about.section--washed {
-    padding-bottom: 8rem;
-  }
-
-  .resumeItem,
-  .resumeCluster .resumeOrg {
-    padding-inline: 10px;
   }
 }
 
