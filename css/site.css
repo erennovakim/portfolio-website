@@ -967,8 +967,9 @@ h4.skillLabel {
   color: var(--ink);
 }
 
-.studyMetaValue {
-  margin-top: 0.15rem;
+.studyMetaValue,
+.studyMeta .tagList {
+  margin-top: 2rem;
 }
 
 .studyCover {
