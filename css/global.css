@@ -154,7 +154,8 @@ a:focus-visible {
 .btn[download] .icon,
 .heroActions .btn[href='#work'] .icon,
 .heroActions .btn[href='#home'] .icon,
-.heroActions .btn[href='/#home'] .icon {
+.heroActions .btn[href='/#home'] .icon,
+.studyBack .icon {
   stroke: currentColor;
   stroke-width: 8;
   overflow: visible;

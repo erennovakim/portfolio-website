@@ -902,10 +902,6 @@ h4.skillLabel {
   pointer-events: none;
 }
 
-.studyBack svg path {
-  stroke-width: 3.2;
-}
-
 .studyBack:hover::after,
 .studyBack:focus-visible::after {
   transform: scaleX(1);
