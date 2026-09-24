@@ -1076,18 +1076,6 @@ h4.skillLabel {
   color: var(--slate);
 }
 
-.studyNote {
-  margin: var(--space-xl) 0;
-  padding: var(--space-md);
-  border: var(--border-strong);
-  border-radius: var(--radius-lg);
-  background-color: var(--card);
-}
-
-.studyNote h3 {
-  margin-bottom: var(--space-2xs);
-}
-
 .studyNext {
   display: flex;
   flex-wrap: wrap;
