@@ -435,11 +435,12 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: start;
-  gap: 2rem;
+  column-gap: 6rem;
+  row-gap: 2rem;
   width: 100%;
   max-width: var(--wrap);
   margin-inline: auto;
-  padding: 1.5rem 1.5rem 1.6rem 2.25rem;
+  padding: 2.6rem 2.25rem;
   background: var(--color-footer);
   border: 1px solid var(--line);
   border-radius: var(--card-radius);
@@ -467,7 +468,7 @@ a:focus-visible {
   align-content: start;
   gap: 1rem;
   margin: 0;
-  padding-top: 1.15rem;
+  padding-top: 0.25rem;
 }
 
 .contactList dt {
