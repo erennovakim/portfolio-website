@@ -218,7 +218,7 @@
 
   --dot-size: 1.25px;
   --dot-gap: 22px;
-  --dot-color: rgba(var(--color-ink-950-rgb), 0.08);
+  --dot-color: rgba(var(--color-ink-950-rgb), 0.1);
 
   /* ---------------------------------------------------------------- *
    * Legacy aliases (consumed by home.css / site.css)
