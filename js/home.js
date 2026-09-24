@@ -7,18 +7,45 @@
     if (menu && menu.checked) menu.checked = false;
   }
 
-  const scrolled = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.target.id !== 'home') return;
-        nav.dataset.scrolled = entry.isIntersecting ? 'false' : 'true';
-      });
-    },
-    { threshold: 0.55 }
-  );
+  const navTexts = Array.from(document.querySelectorAll('.navShell .navLink, .navShell .wordmark'));
+  const contentNodes = Array.from(
+    document.querySelectorAll(
+      'main :is(h1, h2, h3, h4, p, a, img, button, li, blockquote, figcaption, dt, dd, .imageBeltItem, .project, .skillCard, .footerPanel, .tag)'
+    )
+  ).filter(function (el) {
+    return !nav.contains(el);
+  });
 
-  const home = document.getElementById('home');
-  if (home) scrolled.observe(home);
+  function navTextBoxes() {
+    const boxes = [];
+    navTexts.forEach(function (el) {
+      if (!el.childNodes.length) return;
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const rect = range.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) boxes.push(rect);
+    });
+    return boxes;
+  }
+
+  function navOverlapsContent() {
+    const texts = navTextBoxes();
+    if (texts.length === 0) return false;
+    let navBottom = -Infinity;
+    texts.forEach(function (box) {
+      navBottom = Math.max(navBottom, box.bottom);
+    });
+    for (let i = 0; i < contentNodes.length; i++) {
+      const rect = contentNodes[i].getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) continue;
+      if (rect.top >= navBottom) continue;
+      for (let t = 0; t < texts.length; t++) {
+        const box = texts[t];
+        if (box.left < rect.right && box.right > rect.left) return true;
+      }
+    }
+    return false;
+  }
 
   const navLinks = Array.from(
     document.querySelectorAll('.navLink[href^="#"], .navSheetLink[href^="#"]')
@@ -34,6 +61,7 @@
 
   function spy() {
     spyQueued = false;
+    nav.dataset.scrolled = navOverlapsContent() ? 'true' : 'false';
     const probe = window.innerHeight * 0.38;
     let current = '';
     spySections.forEach(function (section) {
