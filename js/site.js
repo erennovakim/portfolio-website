@@ -44,7 +44,14 @@
   function apply() {
     queued = false;
     if (studyPage) {
-      wrapper.dataset.scrolled = 'true';
+      const title = document.querySelector('.studyTitle');
+      if (title) {
+        const navBottom = wrapper.getBoundingClientRect().bottom;
+        const titleTop = title.getBoundingClientRect().top;
+        wrapper.dataset.scrolled = titleTop <= navBottom ? 'true' : 'false';
+      } else {
+        wrapper.dataset.scrolled = 'true';
+      }
       wrapper.dataset.behind = 'overlay';
       return;
     }
