@@ -915,12 +915,27 @@ h4.skillLabel {
 .studySubtitle {
   margin-top: var(--space-sm);
   max-width: 40ch;
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: clamp(1.35rem, 1rem + 1.4vw, 2rem);
-  line-height: 1.35;
-  font-weight: var(--weight-regular);
-  color: var(--iris);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 1.5rem + 2vw, 3.4rem);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--track-display);
+  line-height: 1.15;
+  font-style: normal;
+  text-wrap: balance;
+  background-image: var(--gradient-still);
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@media (forced-colors: active) {
+  .studySubtitle {
+    background: none;
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+  }
 }
 
 .studyMeta {
