@@ -105,13 +105,13 @@
   --weight-600: 600;
   --weight-700: 700;
 
-  --radius-0: 12px;
-  --radius-4: 12px;
-  --radius-8: 12px;
-  --radius-12: 12px;
-  --radius-16: 16px;
-  --radius-24: 24px;
-  --radius-pill: 100px;
+  --radius-0: 9px;
+  --radius-4: 9px;
+  --radius-8: 9px;
+  --radius-12: 9px;
+  --radius-16: 12px;
+  --radius-24: 18px;
+  --radius-pill: 75px;
 
   --hairline: 1px;
   --duration-fast: 300ms;
