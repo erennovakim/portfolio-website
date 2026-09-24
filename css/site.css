@@ -916,10 +916,10 @@ h4.skillLabel {
   margin-top: var(--space-sm);
   max-width: 40ch;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 1.5rem + 2vw, 3.4rem);
+  font-size: 1.55rem;
   font-weight: var(--weight-semibold);
-  letter-spacing: var(--track-display);
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
   font-style: normal;
   text-wrap: balance;
   background-image: var(--gradient-still);
