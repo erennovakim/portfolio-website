@@ -1088,16 +1088,22 @@ h4.skillLabel {
 }
 
 .studyNextLabel {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--slate);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-snug);
+  font-style: normal;
+  color: var(--ink);
 }
 
 .studyNextTitle {
-  margin-top: 0.1rem;
-  font-family: var(--font-display);
-  font-size: var(--size-h3);
+  margin-top: 0.15rem;
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
   color: var(--ink);
 }
 
