@@ -175,6 +175,9 @@ svg {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  /* Overlap the hero so the top 10% of each 168px belt tile is in the first viewport.
+     Tiles sit 1.25rem + 3rem - 1.5rem below the hero; pull that gap plus 17px back up. */
+  margin-top: calc(-1 * (1.25rem + 3rem - 1.5rem) - 17px);
   background: var(--color-white);
 }
 
