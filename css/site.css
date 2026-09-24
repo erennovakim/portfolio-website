@@ -866,7 +866,7 @@ h4.skillLabel {
 .study {
   position: relative;
   z-index: 1;
-  padding-top: calc(var(--nav-height) + var(--space-xl));
+  padding-top: calc(var(--nav-height) + 6rem);
   padding-bottom: var(--space-3xl);
 }
 
