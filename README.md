@@ -20,8 +20,7 @@ Then open `http://127.0.0.1:4173/`.
 - `css/site.css`, `js/site.js` — case studies and the 404 page
 - `work/{slug}/index.html` — case studies
 - `404.html` — unknown routes
-- `assets/` — photograph, covers, placeholders
-- `art/` — 4px-dot cloud masks (`generate-clouds.py` regenerates them)
+- `assets/` — covers and placeholders
 
 ## Case studies
 
