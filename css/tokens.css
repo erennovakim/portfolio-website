@@ -216,8 +216,8 @@
   --overlay-fade: 8rem;
   --footer-fade: 6rem;
 
-  --dot-size: 1.25px;
-  --dot-gap: 22px;
+  --dot-size: 2.5px;
+  --dot-gap: 44px;
   --dot-color: rgba(var(--color-ink-950-rgb), 0.1);
 
   /* ---------------------------------------------------------------- *
