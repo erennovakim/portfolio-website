@@ -15,7 +15,9 @@ Then open `http://127.0.0.1:4173/`.
 
 ## Layout
 
-- `index.html`, `css/site.css`, `js/site.js` — home page (the design source)
+- `index.html`, `css/home.css`, `js/home.js` — home page
+- `css/global.css` — shared type scale, links, buttons, navigation, and footer
+- `css/site.css`, `js/site.js` — case studies and the 404 page
 - `work/{slug}/index.html` — case studies
 - `404.html` — unknown routes
 - `assets/` — photograph, covers, placeholders
@@ -24,5 +26,5 @@ Then open `http://127.0.0.1:4173/`.
 ## Case studies
 
 Each study is a folder under `work/`. Card links on the home page point at `/work/{slug}/`.
-Shared chrome (nav, footer, type, colour) comes from `css/site.css`. Study-only rules are
-namespaced under `.page-study` so they cannot change the home page.
+Shared chrome (nav, footer, type, links, and buttons) comes from `css/global.css`.
+Study-only rules live in `css/site.css`.

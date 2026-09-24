@@ -7,7 +7,7 @@
  * Colour for the mobile bars is derived from the section behind them.
  */
 (function () {
-  const wrapper = document.querySelector('.navWrapper');
+  const wrapper = document.querySelector('.nav');
   const toggle = document.querySelector('.navToggle');
   const menu = document.getElementById('nav-menu');
   const washed = Array.from(document.querySelectorAll('.section--washed'));
