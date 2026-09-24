@@ -807,7 +807,7 @@ h4.skillLabel {
   }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 767px) {
   .navWrapper {
     justify-content: space-between;
     align-items: center;
@@ -824,7 +824,8 @@ h4.skillLabel {
     display: block;
   }
 
-  .pill {
+  .pill,
+  .navShell {
     display: none;
   }
 
@@ -832,7 +833,9 @@ h4.skillLabel {
     display: grid;
     flex-shrink: 0;
   }
+}
 
+@media (max-width: 1280px) {
   .hero {
     min-height: 100svh;
   }

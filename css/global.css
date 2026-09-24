@@ -393,7 +393,7 @@ a:focus-visible {
   display: block;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 767px) {
   .nav {
     justify-content: space-between;
     align-items: center;
