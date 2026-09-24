@@ -440,7 +440,7 @@ a:focus-visible {
   width: 100%;
   max-width: var(--wrap);
   margin-inline: auto;
-  padding: 2.6rem 2.25rem;
+  padding: 3rem 2.25rem;
   background: var(--color-footer);
   border: 1px solid var(--line);
   border-radius: var(--card-radius);
@@ -468,7 +468,6 @@ a:focus-visible {
   align-content: start;
   gap: 1rem;
   margin: 0;
-  padding-top: 0.25rem;
 }
 
 .contactList dt {
