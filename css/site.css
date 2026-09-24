@@ -947,6 +947,12 @@ h4.skillLabel {
   border-top: var(--border-strong);
 }
 
+@media (min-width: 960px) {
+  .studyMeta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 .studyMetaLabel {
   margin: 0;
   font-family: var(--font-display);
