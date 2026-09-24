@@ -942,8 +942,8 @@ h4.skillLabel {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: var(--space-md);
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
+  margin-top: 2.25rem;
+  padding-top: 2.25rem;
   border-top: var(--border-strong);
 }
 
