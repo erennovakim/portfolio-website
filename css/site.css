@@ -1101,7 +1101,7 @@ h4.skillLabel {
 .studyNext {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-md);
   margin-top: var(--space-2xl);
@@ -1120,26 +1120,22 @@ h4.skillLabel {
   color: var(--ink);
 }
 
-.studyNextTitle {
+.studyNextProject {
+  margin-left: auto;
+  text-align: right;
+}
+
+.studyNextProject .studyBack {
   margin-top: 0.15rem;
-  font-family: var(--font-body);
-  font-size: var(--size-body);
-  font-weight: var(--weight-regular);
-  line-height: var(--leading-body);
-  color: var(--ink);
 }
 
 .studyNext .studyBack {
   margin-bottom: 0;
+  padding-top: 0;
 }
 
 .studyNext a {
   text-decoration: none;
-}
-
-.studyNext a:not(.studyBack) {
-  margin-left: auto;
-  text-align: right;
 }
 
 .notFound {
