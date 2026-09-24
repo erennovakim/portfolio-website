@@ -1123,8 +1123,17 @@ h4.skillLabel {
   color: var(--ink);
 }
 
+.studyNext .studyBack {
+  margin-bottom: 0;
+}
+
 .studyNext a {
   text-decoration: none;
+}
+
+.studyNext a:not(.studyBack) {
+  margin-left: auto;
+  text-align: right;
 }
 
 .notFound {
