@@ -440,7 +440,7 @@ a:focus-visible {
   width: 100%;
   max-width: var(--wrap);
   margin-inline: auto;
-  padding: 3rem 2.25rem;
+  padding: 2.7rem 2.025rem;
   background: var(--color-footer);
   border: 1px solid var(--line);
   border-radius: var(--card-radius);
