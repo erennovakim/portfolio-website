@@ -120,6 +120,27 @@ h4 {
   line-height: var(--leading-snug);
 }
 
+/* Reading text stays ink. Page styles that paint paragraphs and
+   lists with the muted token lose to these selectors. */
+body .lede,
+body .sectionLede,
+body .cardSummary,
+body .projectMeta p,
+body .projectSummary,
+body .aboutProse p,
+body .studyProse p:not(.studyCaption),
+body .studyDraft,
+body .notFound p,
+body .resumePoints,
+body .resumeBlock ul,
+body.page-cosi .cosiSection p:not(.typeNote),
+body.page-cosi .cosiOwned li,
+body.page-cosi .cosiFeature p,
+body.page-cosi .cosiPersonaBody ul,
+body .footer p {
+  color: var(--ink);
+}
+
 /* ---------------------------------------------------------------- *
  * Links
  * ---------------------------------------------------------------- */
@@ -518,7 +539,7 @@ a:focus-visible {
 .footer p {
   margin: 0.7rem 0 1.3rem;
   max-width: 32ch;
-  color: var(--text-soft);
+  color: var(--ink);
 }
 
 .contactList {
