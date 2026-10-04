@@ -947,8 +947,9 @@
 
 .cosiNotes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(2, max-content);
+  justify-content: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .cosiNote {
