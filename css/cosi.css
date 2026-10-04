@@ -53,7 +53,6 @@
 }
 
 .page-cosi .cosiSection p,
-.page-cosi .cosiOwned li,
 .page-cosi .cosiFeature p {
   color: var(--slate);
 }
@@ -167,47 +166,6 @@
   font-size: 0.95rem;
   line-height: 1.35;
   color: var(--ink);
-}
-
-.cosiOwned {
-  margin-top: var(--space-md);
-  padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
-  border: var(--border);
-  border-radius: var(--card-radius);
-  background: var(--color-card);
-}
-
-.cosiOwned h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: -0.02em;
-}
-
-.cosiOwned ul {
-  display: grid;
-  gap: 0.4rem;
-  margin: 0.85rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.cosiOwned li {
-  position: relative;
-  padding-left: 1rem;
-  max-width: 70ch;
-}
-
-.cosiOwned li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
-  background: var(--cosi-green-deep);
 }
 
 /* ---------------------------------------------------------------- *
