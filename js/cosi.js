@@ -42,6 +42,7 @@
       tracking = true;
       startX = event.clientX;
       startY = event.clientY;
+      if (strip.setPointerCapture) strip.setPointerCapture(event.pointerId);
     });
 
     strip.addEventListener('pointerup', function (event) {

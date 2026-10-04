@@ -1449,8 +1449,16 @@
 
   .cosiStrip {
     display: block;
+    width: calc(100% + 2 * var(--page-gutter));
+    margin-inline: calc(var(--page-gutter) * -1);
     overflow: hidden;
     touch-action: pan-y;
+  }
+
+  .cosiStrip img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
   }
 
   .cosiStripTrack {
