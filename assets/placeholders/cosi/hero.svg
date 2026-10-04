@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 860" role="img">
+  <rect width="1400" height="860" fill="#FFD5AF"/>
+  <g transform="translate(860 430)">
+    <ellipse cx="0" cy="40" rx="210" ry="170" fill="#76C7A1"/>
+    <ellipse cx="-46" cy="10" rx="16" ry="20" fill="#302222"/>
+    <ellipse cx="46" cy="10" rx="16" ry="20" fill="#302222"/>
+    <path d="M-36 62 Q0 96 36 62" fill="none" stroke="#302222" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(430 70) rotate(-8 270 380)">
+    <rect x="0" y="0" width="460" height="760" rx="58" fill="#fff" stroke="#302222" stroke-width="8"/>
+    <rect x="150" y="22" width="160" height="20" rx="10" fill="#FFD5AF"/>
+    <text x="230" y="390" text-anchor="middle" fill="#302222" font-family="Mona Sans, Segoe UI, sans-serif" font-size="36" font-weight="650">Home screen</text>
+    <text x="230" y="440" text-anchor="middle" fill="#554845" font-family="Mona Sans, Segoe UI, sans-serif" font-size="22">Photo goes here</text>
+  </g>
+</svg>
