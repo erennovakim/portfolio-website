@@ -988,19 +988,6 @@
   order: 2;
 }
 
-.cosiWhy {
-  display: inline-flex;
-  width: fit-content;
-  margin: 0 0 0.7rem;
-  padding: 0.22rem 0.7rem;
-  border-radius: var(--radius-pill);
-  background: var(--cosi-green);
-  color: var(--cosi-black);
-  font-size: var(--size-small);
-  font-weight: var(--weight-semibold);
-  max-width: none;
-}
-
 .cosiFeature h3 {
   display: flex;
   flex-wrap: wrap;
