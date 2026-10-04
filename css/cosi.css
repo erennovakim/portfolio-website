@@ -37,24 +37,45 @@
 }
 
 .cosi .studyTitle {
-  max-width: 11em;
+  max-width: 18em;
+  font-size: clamp(1.85rem, 1.35rem + 1.1vw, 2.15rem);
+  line-height: 1.22;
 }
 
 .cosi .studySubtitle {
-  max-width: 34ch;
+  max-width: 48ch;
+  margin-top: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 1.075rem;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  line-height: 1.5;
+  background: none;
+  color: var(--slate);
+  -webkit-text-fill-color: var(--slate);
 }
 
 .cosiHero {
-  margin: var(--space-xl) 0 0;
-  background: var(--cosi-cream);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.75rem 0 0;
+  background: transparent;
 }
 
 .cosiHero img {
   display: block;
-  width: 100%;
+  width: min(100%, 32rem);
   height: auto;
+  border-radius: var(--radius-lg);
+}
+
+.cosiHeroCaption {
+  margin: 0.75rem 0 0;
+  max-width: 42ch;
+  font-size: var(--size-small);
+  line-height: 1.45;
+  color: var(--slate);
 }
 
 .cosiMeta {
@@ -75,19 +96,24 @@
 }
 
 .cosiMeta dt {
-  margin: 0;
-  font-size: var(--size-small);
-  color: var(--slate);
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
 }
 
 .cosiMeta dd {
-  margin: 0.35rem 0 0;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: var(--ink);
+  margin: 0;
+  max-width: 28ch;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  line-height: 1.45;
+  color: var(--slate);
 }
 
 .cosiOwned {
@@ -127,18 +153,20 @@
 }
 
 .cosiSection {
-  margin-top: clamp(4.5rem, 8vw, 7rem);
+  margin-top: 4.25rem;
 }
 
-.cosiSection > h2,
 .cosiFeature h3 {
-  max-width: 22em;
+  max-width: 24em;
 }
 
 .cosiSection > h2 {
-  margin-bottom: var(--space-md);
-  font-size: clamp(1.85rem, 1.25rem + 1.5vw, 2.65rem);
-  line-height: 1.18;
+  margin-bottom: 1rem;
+  max-width: 28em;
+  font-size: clamp(1.45rem, 1.15rem + 0.9vw, 1.925rem);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
 }
 
 .cosiProse {
@@ -408,7 +436,7 @@
 
 .cosiPersona {
   display: grid;
-  grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+  grid-template-columns: 9.5rem minmax(0, 1fr);
   gap: var(--space-md);
   margin-top: var(--space-md);
   padding: var(--space-md);
@@ -604,30 +632,36 @@
 }
 
 .cosiFrames {
-  display: flex;
-  gap: var(--space-sm);
-  overflow-x: auto;
-  padding-bottom: 0.35rem;
-  scroll-snap-type: x mandatory;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 14rem));
+  gap: 1.25rem;
 }
 
 .cosiFrames figure {
-  flex: 0 0 min(78%, 18rem);
   margin: 0;
-  scroll-snap-align: start;
+  min-width: 0;
 }
 
 .cosiFrames img,
 .cosiShot img,
-.cosiCrop img,
+.cosiNote img,
 .cosiPair img,
 .cosiProto img,
+.cosiPhones img,
 .cosiBobs img {
   display: block;
-  width: 100%;
+  width: min(100%, 13.75rem);
   height: auto;
   border-radius: var(--radius);
   background: var(--color-chip);
+}
+
+.cosiPhones img {
+  width: 100%;
+}
+
+.cosiFrames img {
+  width: 100%;
 }
 
 .cosiFrames figcaption,
@@ -651,21 +685,19 @@
 }
 
 .cosiNote img {
-  display: block;
-  width: 100%;
-  height: auto;
+  width: min(100%, 11rem);
   border-radius: var(--radius-lg);
   background: var(--cosi-pink);
 }
 
 .cosiNote figcaption {
   margin-top: 0.65rem;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  line-height: 1.45;
+  color: var(--slate);
 }
 
 .cosiPivot {
@@ -685,11 +717,13 @@
 
 .cosiShot figcaption {
   margin-top: 0.7rem;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: -0.02em;
-  color: var(--ink);
+  max-width: 28ch;
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  line-height: 1.45;
+  color: var(--slate);
 }
 
 .cosiTableWrap {
@@ -808,14 +842,14 @@
 
 .cosiFeature {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.72fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 2fr) minmax(11rem, 1fr);
+  gap: 3.125rem;
   align-items: center;
-  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  margin-top: 3.25rem;
 }
 
 .cosiFeature--flip {
-  grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1fr);
+  grid-template-columns: minmax(11rem, 1fr) minmax(0, 2fr);
 }
 
 .cosiFeature--flip .cosiFeatureCopy {
@@ -870,8 +904,8 @@
 
 .cosiPhones {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  grid-template-columns: minmax(0, 13.75rem);
+  gap: 1.25rem;
   margin: 0;
 }
 
@@ -882,15 +916,23 @@
 }
 
 .cosiLock {
-  margin: 0;
+  margin: 0 auto;
+  width: min(100%, 15rem);
   padding: 1.25rem 1rem 1.5rem;
-  border-radius: 2rem;
+  border-radius: 1.6rem;
   background: var(--cosi-ink);
   color: #fff;
 }
 
 .cosiLock p {
   margin: 0;
+}
+
+.cosiLock figcaption {
+  margin-top: 0.9rem;
+  font-size: var(--size-small);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .cosiLockTime {
@@ -933,28 +975,28 @@
 }
 
 .cosiProto {
-  margin: var(--space-lg) 0 0;
-  max-width: 22rem;
+  margin: 1.5rem 0 0;
+  max-width: 16rem;
 }
 
 .cosiProto img {
-  border-radius: 2rem;
+  border-radius: 1.6rem;
   background: var(--cosi-cream);
 }
 
 .cosiClose {
-  margin-top: clamp(4rem, 8vw, 6rem);
-  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+  margin-top: 4rem;
+  padding: 1.75rem 1.5rem;
   border-radius: var(--radius-lg);
   background: var(--cosi-cream);
   display: grid;
-  grid-template-columns: minmax(8rem, 14rem) minmax(0, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: center;
 }
 
 .cosiClose img {
-  width: 100%;
+  width: 7.5rem;
   height: auto;
   border-radius: var(--radius);
 }
@@ -963,7 +1005,7 @@
   margin: 0;
   max-width: 18em;
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 1.2rem + 1.4vw, 2.5rem);
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.85rem);
   font-weight: var(--weight-semibold);
   letter-spacing: -0.03em;
   line-height: 1.18;
@@ -1020,6 +1062,18 @@
 
   .cosiSwatches {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cosiFrames {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .cosiFrames figure {
+    flex: 0 0 12.5rem;
+    scroll-snap-align: start;
   }
 
   .cosiStat {

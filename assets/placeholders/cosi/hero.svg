@@ -10,6 +10,5 @@
     <rect x="0" y="0" width="460" height="760" rx="58" fill="#fff" stroke="#302222" stroke-width="8"/>
     <rect x="150" y="22" width="160" height="20" rx="10" fill="#FFD5AF"/>
     <text x="230" y="390" text-anchor="middle" fill="#302222" font-family="Mona Sans, Segoe UI, sans-serif" font-size="36" font-weight="650">Home screen</text>
-    <text x="230" y="440" text-anchor="middle" fill="#554845" font-family="Mona Sans, Segoe UI, sans-serif" font-size="22">Photo goes here</text>
   </g>
 </svg>
