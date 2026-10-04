@@ -5,15 +5,8 @@
   var names = ['Lo-fi', 'Mid-fi', 'Hi-fi'];
   var mobileQuery = window.matchMedia('(max-width: 760px)');
 
-  function hintFor(index) {
-    if (index <= 0) return 'Swipe right for Mid-fi';
-    if (index === 1) return 'Swipe left for Lo-fi or swipe right for Hi-fi';
-    return 'Swipe left for Mid-fi';
-  }
-
   strips.forEach(function (strip) {
     var track = strip.querySelector('.cosiStripTrack');
-    var hint = strip.querySelector('.cosiSwipeHint');
     var slides = Array.prototype.slice.call(track.children);
     var index = 0;
     var startX = 0;
@@ -43,9 +36,6 @@
       var mobile = mobileQuery.matches;
       var slideWidth = slides[0] ? slides[0].getBoundingClientRect().width : 0;
       track.style.transform = mobile ? 'translateX(' + -index * slideWidth + 'px)' : '';
-      if (hint) {
-        hint.textContent = mobile ? hintFor(index) : '';
-      }
       prev.disabled = index === 0;
       next.disabled = index === slides.length - 1;
       prev.setAttribute('aria-label', index > 0 ? 'Show ' + names[index - 1] : 'Previous version');
