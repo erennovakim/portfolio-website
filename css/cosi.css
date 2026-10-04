@@ -1,0 +1,1507 @@
+/*
+ * Cosi case study. Portfolio chrome, type, and spacing stay global.
+ * #FFD5AF, #554845, #302222, #76C7A1, and #5EAE88 appear only on
+ * project mockups, callouts, the comparison highlight, swatches, and
+ * the closing card.
+ */
+
+.page-cosi {
+  --cosi-cream: #ffd5af;
+  --cosi-brown: #554845;
+  --cosi-black: #302222;
+  --cosi-green: #76c7a1;
+  --cosi-green-deep: #5eae88;
+  --cosi-pink: #f7c7d4;
+  --cosi-pink-deep: #e38aa0;
+  --cosi-claim: #e15b6a;
+}
+
+.page-cosi .studyTitle {
+  max-width: 16em;
+  font-size: clamp(2.15rem, 1.3rem + 2.4vw, 3.5rem);
+}
+
+.page-cosi button.claim {
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+}
+
+.page-cosi .studySubtitle {
+  max-width: 38ch;
+}
+
+.page-cosi .studyProse {
+  gap: var(--space-lg);
+}
+
+.page-cosi .cosiSection {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.page-cosi .cosiSection h2 {
+  margin-top: 0;
+  max-width: 22em;
+  font-family: 'Poppins', var(--font-display);
+  font-size: clamp(1.7rem, 1.15rem + 1.55vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.22;
+  color: var(--ink);
+}
+
+.page-cosi .cosiSection p,
+.page-cosi .cosiFeature p {
+  color: var(--slate);
+}
+
+.page-cosi .cosiSection h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.4vw, 1.45rem);
+}
+
+/* ---------------------------------------------------------------- *
+ * Hero stage
+ * ---------------------------------------------------------------- */
+
+.cosiHero {
+  margin: var(--space-xl) 0 0;
+}
+
+.cosiStage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 2.75rem 1.5rem;
+  overflow: hidden;
+  border: var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--cosi-cream);
+}
+
+.cosiStageGlow {
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 213, 175, 0) 68%);
+  pointer-events: none;
+}
+
+.cosiShot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+  background: #f4f4f5;
+}
+
+.cosiShot--hero {
+  position: relative;
+  z-index: 1;
+  width: min(11.25rem, 68%);
+  max-height: 70vh;
+  margin-inline: auto;
+  transform: rotate(-7deg);
+  border-radius: 1.6rem;
+  box-shadow: 0 22px 40px rgba(48, 34, 34, 0.16);
+  object-fit: contain;
+}
+
+.cosiAvatar .cosiShot {
+  border-radius: var(--radius-md);
+}
+
+.cosiAvatar .cosiShot {
+  width: 9.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.cosiFeature .cosiShot,
+.cosiProto .cosiShot,
+.cosiPivot .cosiShot,
+.cosiNote .cosiShot,
+.cosiStrip .cosiShot {
+  width: 100%;
+  max-width: 11.25rem;
+  max-height: 70vh;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------------- *
+ * Metadata + ownership
+ * ---------------------------------------------------------------- */
+
+.cosiMeta {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: var(--space-lg) 0 0;
+}
+
+.cosiMeta div {
+  min-width: 0;
+  padding: 0.8rem 0.85rem 0.9rem;
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiMeta dt {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+  color: var(--slate);
+}
+
+.cosiMeta dd {
+  margin: 0.28rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------- *
+ * Problem, callout, research
+ * ---------------------------------------------------------------- */
+
+.cosiTriad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: 0;
+}
+
+.cosiCard {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  padding: var(--space-md);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiCard h3,
+.cosiPrinciple h3,
+.cosiFeature h3 {
+  margin: 0;
+}
+
+.cosiCard p,
+.cosiPrinciple p {
+  margin: 0;
+  max-width: none;
+}
+
+.cosiIcon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md);
+  background: var(--cosi-cream);
+  color: var(--cosi-brown);
+}
+
+.cosiIcon svg {
+  width: 1.55rem;
+  height: 1.55rem;
+}
+
+.cosiCallout {
+  margin: 0;
+  padding: clamp(1.25rem, 2vw, 2rem);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--cosi-cream);
+  color: var(--cosi-black);
+}
+
+.cosiCallout p {
+  max-width: 40em;
+  margin: 0;
+  color: var(--cosi-black);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 0.7vw, 1.7rem);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.cosiMark {
+  padding: 0 0.15em;
+  border-radius: 0.3em;
+  background: var(--cosi-green);
+  color: var(--cosi-black);
+}
+
+.cosiResearch {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(14rem, 0.7fr);
+  gap: var(--space-md);
+  align-items: stretch;
+}
+
+.cosiChart,
+.cosiStats {
+  padding: var(--space-md);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiChart h3,
+.cosiKicker {
+  margin: 0 0 1rem;
+  font-family: var(--font-body);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+  color: var(--slate);
+}
+
+.cosiBars {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cosiBars li {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.cosiBars span {
+  font-size: var(--size-small);
+  color: var(--ink);
+}
+
+.cosiTrack {
+  height: 0.7rem;
+  border-radius: var(--radius-pill);
+  background: rgba(48, 34, 34, 0.08);
+  overflow: hidden;
+}
+
+.cosiTrack i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--cosi-brown);
+}
+
+.cosiBars li.is-lead .cosiTrack i {
+  background: var(--cosi-green-deep);
+}
+
+.cosiBars b {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-semibold);
+}
+
+.cosiStats {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cosiStat {
+  display: grid;
+  align-content: end;
+  min-height: 8.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  border: var(--border);
+}
+
+.cosiStat strong {
+  font-family: 'Poppins', var(--font-display);
+  font-size: clamp(2.6rem, 2rem + 1.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--cosi-black);
+}
+
+.cosiStat span {
+  margin-top: 0.45rem;
+  max-width: 18ch;
+  color: var(--slate);
+  font-size: var(--size-small);
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------- *
+ * Quotes
+ * ---------------------------------------------------------------- */
+
+.cosiQuotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.cosiQuoteCol {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.cosiQuoteCol h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.cosiQuote {
+  margin: 0;
+  padding: 0.95rem 1rem 1rem 1.05rem;
+  border: var(--border);
+  border-left: 6px solid var(--cosi-green);
+  border-radius: var(--radius-md);
+  background: var(--color-card);
+}
+
+.cosiQuote p,
+.cosiPunch p,
+.cosiPersonaQuote p {
+  margin: 0;
+  max-width: none;
+  color: var(--ink);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.cosiPunch {
+  margin: 0;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+}
+
+.cosiPunch blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.cosiPunch p {
+  max-width: 22em;
+  font-size: clamp(1.45rem, 1.15rem + 0.8vw, 1.9rem);
+}
+
+.cosiPunch figcaption {
+  margin-top: 0.8rem;
+  color: var(--slate);
+  font-size: var(--size-small);
+}
+
+/* ---------------------------------------------------------------- *
+ * Principles + persona
+ * ---------------------------------------------------------------- */
+
+.cosiPrinciples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.cosiPrinciple {
+  display: grid;
+  gap: 0.55rem;
+  padding: var(--space-md);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiPersona {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiAvatar {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 0.45rem;
+  text-align: center;
+}
+
+.cosiAvatar svg {
+  width: 100%;
+  height: auto;
+}
+
+.cosiAvatar p {
+  margin: 0;
+  max-width: none;
+  color: var(--ink);
+  font-size: var(--size-small);
+}
+
+.cosiAvatar p strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.cosiPersonaBody {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.cosiPersonaBody ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--slate);
+}
+
+.cosiPersonaQuote {
+  margin: 0;
+  padding-top: 0.85rem;
+  border-top: var(--border);
+}
+
+.cosiPersonaQuote p {
+  font-size: clamp(1.25rem, 1rem + 0.5vw, 1.55rem);
+  max-width: 28em;
+}
+
+/* ---------------------------------------------------------------- *
+ * Comparison
+ * ---------------------------------------------------------------- */
+
+.cosiTableWrap {
+  overflow-x: auto;
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiTable {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: var(--size-small);
+}
+
+.cosiTable th,
+.cosiTable td {
+  padding: 0.85rem 0.75rem;
+  border-bottom: var(--border);
+  text-align: center;
+  font-weight: var(--weight-regular);
+}
+
+.cosiTable thead th {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+}
+
+.cosiTable tbody th {
+  text-align: left;
+  font-weight: var(--weight-medium);
+  color: var(--ink);
+}
+
+.cosiTable tr:last-child th,
+.cosiTable tr:last-child td {
+  border-bottom: 0;
+}
+
+.cosiTable .is-cosi {
+  background: var(--cosi-cream);
+  color: var(--cosi-black);
+}
+
+.cosiTable tr.is-comm th,
+.cosiTable tr.is-comm td {
+  background: #e7f6ee;
+}
+
+.cosiTable tr.is-comm .is-cosi {
+  background: var(--cosi-green);
+  color: var(--cosi-black);
+  font-weight: var(--weight-semibold);
+}
+
+.markYes,
+.markNo {
+  display: inline-block;
+  min-width: 1.1rem;
+}
+
+.markYes {
+  color: var(--cosi-black);
+  font-weight: var(--weight-semibold);
+}
+
+.markNo {
+  color: var(--slate);
+}
+
+/* ---------------------------------------------------------------- *
+ * Flow + evolution
+ * ---------------------------------------------------------------- */
+
+.cosiFlow {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+
+.cosiFlow li {
+  display: flex;
+  flex: 1 0 8.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 4.4rem;
+  padding: 0.8rem 0.85rem;
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+  color: var(--ink);
+  font-weight: var(--weight-semibold);
+  line-height: 1.25;
+}
+
+.cosiFlow li::after {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-left: auto;
+  border-right: 2px solid var(--cosi-brown);
+  border-top: 2px solid var(--cosi-brown);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.cosiFlow li:last-child::after {
+  display: none;
+}
+
+.cosiEvo {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.cosiEvo article {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.cosiEvo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.cosiStrip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.cosiStripTrack {
+  display: contents;
+}
+
+.cosiStripStage {
+  display: contents;
+}
+
+.cosiStripArrow {
+  display: none;
+}
+
+.cosiStrip figure {
+  margin: 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.miniPhone {
+  border: var(--border);
+  border-radius: 1.1rem;
+  background: var(--color-white);
+  overflow: hidden;
+  min-height: 11.5rem;
+}
+
+.miniPhone header,
+.miniPhone .miniBody {
+  padding: 0.55rem 0.6rem;
+}
+
+.miniPhone header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: 'Poppins', var(--font-body);
+}
+
+.wire {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.wire i,
+.wire b {
+  display: block;
+  height: 0.55rem;
+  border-radius: 99px;
+  background: #e4e4e7;
+}
+
+.wire b {
+  width: 46%;
+  height: 0.7rem;
+}
+
+.wire i:nth-child(3) {
+  width: 72%;
+}
+
+.mid .wire i,
+.mid .wire b {
+  background: transparent;
+  border: 1.5px solid var(--cosi-brown);
+}
+
+.hi {
+  background: #fff6ee;
+  color: var(--cosi-black);
+}
+
+.hi header {
+  background: var(--cosi-cream);
+}
+
+.hi .chip {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 99px;
+  background: var(--cosi-green);
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- *
+ * Pivot
+ * ---------------------------------------------------------------- */
+
+.cosiPivot {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.cosiPivot figure {
+  margin: 0;
+  padding: 1.25rem 1rem 1rem;
+  border: var(--border);
+  border-radius: var(--card-radius);
+}
+
+.cosiPivot .is-before {
+  background: #fff0f4;
+}
+
+.cosiPivot .is-after {
+  background: var(--cosi-cream);
+}
+
+.cosiPivot figcaption {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.9rem;
+}
+
+.cosiTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: var(--border);
+  background: var(--color-white);
+  color: var(--ink);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+}
+
+.cosiCrops {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.cosiCrop {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.9rem;
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiCrop figcaption {
+  grid-column: 1 / -1;
+  color: var(--slate);
+  font-size: var(--size-small);
+}
+
+.arrow {
+  color: var(--slate);
+  font-size: 1.2rem;
+}
+
+.swatchRow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.swatch {
+  margin: 0;
+}
+
+.swatch i {
+  display: block;
+  height: 4.4rem;
+  border-radius: var(--radius-md);
+  border: var(--border);
+}
+
+.swatch figcaption {
+  margin-top: 0.4rem;
+  font-size: var(--size-small);
+  color: var(--ink);
+}
+
+.swatch code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--slate);
+}
+
+.bobIntro {
+  position: relative;
+  max-width: calc(68ch + 14rem);
+  min-height: 15rem;
+  padding: 2.6rem 0 2.2rem;
+}
+
+.bobIntro p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.bobFloat {
+  position: absolute;
+  width: 6.25rem;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  background: none;
+}
+
+.bobFloat:nth-of-type(1) {
+  top: 0;
+  right: 6.5rem;
+  width: 7rem;
+}
+
+.bobFloat:nth-of-type(2) {
+  top: 4.8rem;
+  right: 0;
+  width: 5.6rem;
+}
+
+.bobFloat:nth-of-type(3) {
+  bottom: 0;
+  right: 5.2rem;
+  width: 6rem;
+}
+
+.bobFloat:nth-of-type(4) {
+  top: 0.2rem;
+  right: 12.2rem;
+  width: 4.6rem;
+}
+
+.bobFloat:nth-of-type(5) {
+  bottom: 0.2rem;
+  right: 11rem;
+  width: 4.8rem;
+}
+
+.typeNote {
+  margin: 0;
+  color: var(--slate);
+  font-size: var(--size-small);
+}
+
+.typeNote strong {
+  font-family: 'Poppins', var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cosiChange {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-small);
+}
+
+.cosiChange th,
+.cosiChange td {
+  padding: 0.75rem 0.2rem;
+  border-bottom: var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.cosiChange th {
+  width: 38%;
+  padding-right: 1rem;
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------- *
+ * Annotated feedback
+ * ---------------------------------------------------------------- */
+
+.cosiNotes {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.cosiNote {
+  display: grid;
+  justify-items: center;
+  margin: 0;
+}
+
+.cosiNote .phone {
+  width: 240px;
+}
+
+.cosiNote figcaption {
+  margin-top: 0.55rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-md);
+  background: var(--color-skill-design);
+  border: var(--border);
+  color: var(--ink);
+  font-size: var(--size-small);
+  font-weight: var(--weight-semibold);
+}
+
+/* ---------------------------------------------------------------- *
+ * Features
+ * ---------------------------------------------------------------- */
+
+.cosiFeature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 18rem);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center;
+  padding-block: var(--space-md);
+}
+
+.cosiFeature--flip .cosiFeatureCopy {
+  order: 2;
+}
+
+.cosiFeature h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cosiOwn {
+  display: inline-flex;
+  padding: 0.15rem 0.55rem;
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--slate);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0;
+}
+
+.cosiFeature p {
+  margin-top: 0.7rem;
+}
+
+.lock {
+  width: min(100%, 280px);
+  margin-inline: auto;
+  padding: 1.1rem 0.9rem 1rem;
+  border-radius: 1.6rem;
+  background: #1c1414;
+  color: white;
+  box-shadow: var(--shadow-card);
+}
+
+.lock time {
+  display: block;
+  font-family: 'Poppins', var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.lock .note {
+  margin-top: 1.2rem;
+  padding: 0.75rem 0.8rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.lock .note b,
+.lock .note strong,
+.lock .note span {
+  display: block;
+}
+
+.lock .note b {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #ffd5af;
+}
+
+.lock .note strong {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.lock .note span {
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* ---------------------------------------------------------------- *
+ * Impact, prototype, close
+ * ---------------------------------------------------------------- */
+
+.cosiImpact {
+  margin: 0;
+  padding: var(--space-md);
+  border: var(--border);
+  border-left: 6px solid var(--cosi-green-deep);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiImpact p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--ink);
+}
+
+.cosiProto {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: center;
+  padding: var(--space-md);
+  border: var(--border);
+  border-radius: var(--card-radius);
+  background: var(--color-card);
+}
+
+.cosiProtoCopy h3 {
+  margin: 0 0 0.5rem;
+}
+
+.cosiProtoCopy p {
+  max-width: 42ch;
+}
+
+.cosiProtoActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  margin-top: 1rem;
+}
+
+.cosiProtoActions button {
+  font: inherit;
+}
+
+/* ---------------------------------------------------------------- *
+ * Phone
+ * ---------------------------------------------------------------- */
+
+.phone {
+  width: 250px;
+  padding: 0.55rem;
+  border-radius: 2rem;
+  background: var(--cosi-black);
+  box-shadow: 0 22px 40px rgba(48, 34, 34, 0.18);
+}
+
+.phone--lg {
+  width: 270px;
+}
+
+.phoneScreen {
+  overflow: hidden;
+  border-radius: 1.55rem;
+  background: #fff8f3;
+  color: var(--cosi-black);
+  font-family: 'Poppins', var(--font-body);
+}
+
+.cosiHero .phoneScreen,
+#cosi-proto-phone .phoneScreen {
+  min-height: 430px;
+}
+
+.phoneScreen.is-lock {
+  background: #1c1414;
+  min-height: 430px;
+}
+
+.phoneScreen[hidden] {
+  display: none;
+}
+
+.phoneScreen * {
+  font-family: inherit;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0.95rem 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.appHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0.95rem 0.6rem;
+}
+
+.appHead strong {
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+}
+
+.appBody {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0 0.8rem 0.9rem;
+}
+
+.hello {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--cosi-brown);
+}
+
+.task,
+.event {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 0.8rem;
+  background: white;
+}
+
+.task b,
+.event b {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.task span,
+.event span {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--cosi-brown);
+}
+
+.check {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1.5px solid var(--cosi-brown);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.check.on {
+  background: var(--cosi-green);
+  border-color: var(--cosi-green-deep);
+}
+
+.report {
+  padding: 0.6rem;
+  border-radius: 0.8rem;
+  background: white;
+}
+
+.report p {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--cosi-black);
+  max-width: none;
+}
+
+.barLine {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: 0.28rem;
+  font-size: 0.62rem;
+}
+
+.barLine i {
+  display: block;
+  height: 0.38rem;
+  border-radius: 99px;
+  background: var(--cosi-green-deep);
+}
+
+.bobLine {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.8rem;
+  background: var(--cosi-cream);
+  font-size: 0.68rem;
+  line-height: 1.3;
+}
+
+.screenPink {
+  background: #ffe8ef;
+}
+
+.screenPink .claim {
+  background: var(--cosi-claim);
+  color: #ffd5df;
+}
+
+.claim,
+.ghost {
+  display: inline-flex;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.claim {
+  background: var(--cosi-green-deep);
+  color: var(--cosi-black);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--cosi-brown);
+}
+
+.sectionLabel {
+  margin: 0.2rem 0 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--cosi-brown);
+  max-width: none;
+}
+
+.cal {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  padding: 0.55rem;
+  border-radius: 0.8rem;
+  background: white;
+  text-align: center;
+  font-size: 0.62rem;
+}
+
+.cal b {
+  display: grid;
+  place-items: center;
+  height: 1.35rem;
+  border-radius: 0.4rem;
+}
+
+.cal .mine {
+  background: var(--cosi-cream);
+  font-weight: 700;
+}
+
+.wave {
+  display: block;
+  height: 0.28rem;
+  margin-top: 0.1rem;
+  border-radius: 99px;
+  background: var(--cosi-green);
+}
+
+.prompt {
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.85rem;
+  background: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.choices {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.choices span {
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid rgba(48, 34, 34, 0.15);
+  font-size: 0.65rem;
+}
+
+.choices .on {
+  background: var(--cosi-brown);
+  color: white;
+  border-color: var(--cosi-brown);
+}
+
+.progressBits {
+  height: 0.28rem;
+  border-radius: 99px;
+  background: rgba(48, 34, 34, 0.1);
+  overflow: hidden;
+}
+
+.progressBits i {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: var(--cosi-green-deep);
+}
+
+.miniActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------- *
+ * Responsive
+ * ---------------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .cosiMeta,
+  .swatchRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cosiResearch,
+  .cosiFeature,
+  .cosiFeature--flip,
+  .cosiProto {
+    grid-template-columns: 1fr;
+  }
+
+  .cosiFeature--flip .cosiFeatureCopy {
+    order: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .cosiPersona {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cosiAvatar .cosiShot {
+    display: none;
+  }
+
+  .cosiAvatar {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .cosiTriad,
+  .cosiQuotes,
+  .cosiPrinciples,
+  .cosiPivot,
+  .cosiCrops,
+  .cosiNotes {
+    grid-template-columns: 1fr;
+  }
+
+  .bobIntro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1.35rem;
+    max-width: none;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .bobIntro p {
+    flex: 1 0 100%;
+  }
+
+  .bobFloat {
+    position: static;
+    width: 5.4rem;
+  }
+
+  .bobFloat--wide {
+    display: none;
+  }
+
+  .cosiMeta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cosiStage {
+    min-height: 0;
+    padding-top: 2.4rem;
+  }
+
+  .cosiShot--hero,
+  .cosiFeature .cosiShot,
+  .cosiProto .cosiShot,
+  .cosiPivot .cosiShot,
+  .cosiNote .cosiShot,
+  .cosiStrip .cosiShot {
+    max-height: 80vh;
+    max-width: min(12.5rem, 72vw);
+  }
+
+  .cosiShot--hero {
+    transform: none;
+  }
+
+  .cosiStrip {
+    display: block;
+    width: calc(100% + 2 * var(--page-gutter));
+    margin-inline: calc(var(--page-gutter) * -1);
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  .cosiStripStage {
+    display: block;
+    position: relative;
+  }
+
+  .cosiStripArrow {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: var(--border);
+    border-radius: 50%;
+    background: var(--color-white);
+    color: var(--ink);
+    box-shadow: var(--shadow-rest);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .cosiStripArrow svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .cosiStripArrow--prev {
+    left: 0.4rem;
+  }
+
+  .cosiStripArrow--next {
+    right: 0.4rem;
+  }
+
+  .cosiStripArrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .cosiStrip img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .cosiStripTrack {
+    display: flex;
+    align-items: flex-start;
+    transition: transform 280ms var(--ease-out);
+  }
+
+  .cosiStrip figure {
+    flex: 0 0 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosiShot--hero {
+    transform: none;
+  }
+
+  .cosiStripTrack {
+    transition: none;
+  }
+}
