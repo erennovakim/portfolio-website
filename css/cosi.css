@@ -75,8 +75,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 640px;
-  padding: 2.5rem 1.5rem 2.75rem;
+  min-height: 0;
+  padding: 2.75rem 1.5rem;
   overflow: hidden;
   border: var(--border);
   border-radius: var(--radius-lg);
@@ -92,22 +92,40 @@
   pointer-events: none;
 }
 
-.cosiHeroPhone {
+.cosiShot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+  background: #f4f4f5;
+}
+
+.cosiShot--hero {
   position: relative;
   z-index: 1;
+  width: min(230px, 68%);
+  margin-inline: auto;
   transform: rotate(-7deg);
+  border-radius: 1.6rem;
+  box-shadow: 0 22px 40px rgba(48, 34, 34, 0.16);
 }
 
-.bobPeek {
-  position: absolute;
-  z-index: 0;
-  left: calc(50% - 250px);
-  bottom: 3.2rem;
-  width: 168px;
+.cosiAvatar .cosiShot,
+.cosiClose .cosiShot,
+.bobRow .cosiShot {
+  border-radius: var(--radius-md);
 }
 
-.cosiHeroPhone {
-  z-index: 1;
+.cosiClose .cosiShot {
+  width: 7.5rem;
+}
+
+.cosiFeature .cosiShot,
+.cosiProto .cosiShot,
+.cosiPivot .cosiShot,
+.cosiNote .cosiShot {
+  width: min(250px, 100%);
+  margin-inline: auto;
 }
 
 /* ---------------------------------------------------------------- *
@@ -1391,12 +1409,6 @@
   .cosiFeature--flip .cosiFeatureCopy {
     order: 0;
   }
-
-  .bobPeek {
-    left: 0.5rem;
-    bottom: 1rem;
-    width: 110px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1415,17 +1427,11 @@
   }
 
   .cosiStage {
-    min-height: 560px;
+    min-height: 0;
     padding-top: 2.4rem;
   }
 
-  .bobPeek {
-    left: 0.25rem;
-    bottom: 1.5rem;
-    width: 120px;
-  }
-
-  .cosiHeroPhone {
+  .cosiShot--hero {
     transform: none;
   }
 
@@ -1435,7 +1441,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosiHeroPhone {
+  .cosiShot--hero {
     transform: none;
   }
 }
