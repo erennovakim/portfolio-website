@@ -20,6 +20,25 @@
     var startY = 0;
     var tracking = false;
 
+    var stage = document.createElement('div');
+    stage.className = 'cosiStripStage';
+    strip.insertBefore(stage, track);
+    stage.appendChild(track);
+
+    function arrow(direction) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'cosiStripArrow cosiStripArrow--' + direction;
+      button.innerHTML = '<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="' + (direction === 'prev'
+        ? 'M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z'
+        : 'M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,0,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z') + '"/></svg>';
+      stage.appendChild(button);
+      return button;
+    }
+
+    var prev = arrow('prev');
+    var next = arrow('next');
+
     function render() {
       var mobile = mobileQuery.matches;
       var slideWidth = slides[0] ? slides[0].getBoundingClientRect().width : 0;
@@ -27,6 +46,10 @@
       if (hint) {
         hint.textContent = mobile ? hintFor(index) : '';
       }
+      prev.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+      prev.setAttribute('aria-label', index > 0 ? 'Show ' + names[index - 1] : 'Previous version');
+      next.setAttribute('aria-label', index < slides.length - 1 ? 'Show ' + names[index + 1] : 'Next version');
       slides.forEach(function (slide, i) {
         slide.setAttribute('aria-hidden', mobile && i !== index ? 'true' : 'false');
       });
@@ -39,6 +62,7 @@
 
     strip.addEventListener('pointerdown', function (event) {
       if (!mobileQuery.matches || event.button > 0) return;
+      if (event.target.closest('.cosiStripArrow')) return;
       tracking = true;
       startX = event.clientX;
       startY = event.clientY;
@@ -58,6 +82,9 @@
     strip.addEventListener('pointercancel', function () {
       tracking = false;
     });
+
+    prev.addEventListener('click', function () { go(index - 1); });
+    next.addEventListener('click', function () { go(index + 1); });
 
     strip.addEventListener('keydown', function (event) {
       if (!mobileQuery.matches) return;

@@ -675,6 +675,14 @@
   display: contents;
 }
 
+.cosiStripStage {
+  display: contents;
+}
+
+.cosiStripArrow {
+  display: none;
+}
+
 .cosiStrip figure {
   margin: 0;
   min-width: 0;
@@ -1444,6 +1452,47 @@
     margin-inline: calc(var(--page-gutter) * -1);
     overflow: hidden;
     touch-action: pan-y;
+  }
+
+  .cosiStripStage {
+    display: block;
+    position: relative;
+  }
+
+  .cosiStripArrow {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: var(--border);
+    border-radius: 50%;
+    background: var(--color-white);
+    color: var(--ink);
+    box-shadow: var(--shadow-rest);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .cosiStripArrow svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .cosiStripArrow--prev {
+    left: 0.4rem;
+  }
+
+  .cosiStripArrow--next {
+    right: 0.4rem;
+  }
+
+  .cosiStripArrow:disabled {
+    opacity: 0.35;
+    cursor: default;
   }
 
   .cosiStrip img {
