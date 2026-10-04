@@ -427,21 +427,6 @@
   line-height: 1.4;
 }
 
-.cosiQuoteCol:nth-child(2) .cosiQuote {
-  position: relative;
-  border-left-color: transparent;
-}
-
-.cosiQuoteCol:nth-child(2) .cosiQuote::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  background: var(--gradient-still);
-}
-
 .cosiPunch {
   margin: 0;
   padding: clamp(1.2rem, 2vw, 1.8rem);
