@@ -4,15 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cosi - Eren Nova Kim</title>
-    <meta name="description" content="Making household contribution visible, so housemates argue less about it." />
+    <meta
+      name="description"
+      content="Cosi is a co-living app that handles the conversations roommates avoid, so chores get done and friendships survive."
+    />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content="Cosi - Eren Nova Kim" />
-    <meta property="og:description" content="Making household contribution visible, so housemates argue less about it." />
+    <meta
+      property="og:description"
+      content="A co-living app that handles the conversations roommates avoid, so chores get done and friendships survive."
+    />
     <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/global.css" />
     <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/cosi.css" />
   </head>
-  <body class="page-study">
+  <body class="page-study page-cosi">
     <header class="nav" data-scrolled="false" data-behind="overlay">
       <a class="navBrand" href="/#home">Eren Nova Kim</a>
       <nav class="navShell" aria-label="Primary">
@@ -20,21 +33,17 @@
           <li><a class="navLink" href="mailto:eren.novakim@gmail.com">Email</a></li>
           <li><a class="navLink is-current" href="/#work">Works</a></li>
         </ul>
-
         <a class="wordmark" href="/#home">Eren Nova Kim</a>
-
         <ul class="navList">
           <li><a class="navLink" href="/#about">About</a></li>
           <li><a class="navLink" href="/#resume">Resume</a></li>
         </ul>
       </nav>
-
       <input class="navCheckbox" type="checkbox" id="nav-menu" />
       <label class="navToggle" for="nav-menu" aria-controls="nav-sheet" aria-expanded="false">
         <span class="navToggleBars" aria-hidden="true"></span>
         <span class="visually-hidden navToggleLabel">Open menu</span>
       </label>
-
       <div class="navSheet" id="nav-sheet">
         <a class="navSheetLink" href="mailto:eren.novakim@gmail.com">Email</a>
         <a class="navSheetLink is-current" href="/#work">Works</a>
@@ -42,80 +51,675 @@
         <a class="navSheetLink" href="/#resume">Resume</a>
       </div>
     </header>
+
     <main>
       <article class="study">
         <div class="container">
           <header class="studyHeader">
-              <a class="studyBack" href="/#work">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>
-                Back to selected works
-              </a>
+            <a class="studyBack" href="/#work">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>
+              Back to selected works
+            </a>
+            <h1 class="studyTitle">Cosi: Taking the Awkwardness Out of Living Together</h1>
+            <p class="studySubtitle">A co-living app that handles the conversations roommates avoid, so chores get done and friendships survive.</p>
 
-            <h1 class="studyTitle">Cosi</h1>
-            <p class="studySubtitle">Making household contribution visible, so housemates argue less about it.</p>
+            <figure class="cosiHero">
+              <div class="cosiStage">
+                <span class="cosiStageGlow" aria-hidden="true"></span>
+                <svg class="bobPeek" viewBox="0 0 140 160" aria-hidden="true">
+                  <ellipse cx="78" cy="96" rx="48" ry="44" fill="#76C7A1"/>
+                  <ellipse cx="58" cy="90" rx="6" ry="8" fill="#302222"/>
+                  <ellipse cx="86" cy="86" rx="6" ry="8" fill="#302222"/>
+                  <path d="M62 108c8 10 22 8 30-2" fill="none" stroke="#302222" stroke-width="3.5" stroke-linecap="round"/>
+                  <ellipse cx="108" cy="118" rx="14" ry="10" fill="#5EAE88" transform="rotate(-20 108 118)"/>
+                </svg>
+                <div class="phone phone--lg cosiHeroPhone">
+                  <div class="phoneScreen" aria-hidden="true">
+                    <div class="status"><span>9:41</span><span>5G</span></div>
+                    <div class="appHead"><strong>Home</strong><span class="check on"></span></div>
+                    <div class="appBody">
+                      <p class="hello">Good evening, Hannah</p>
+                      <div class="bobLine">
+                        <svg width="28" height="28" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="22" rx="14" ry="12" fill="#76C7A1"/><circle cx="15" cy="21" r="1.6" fill="#302222"/><circle cx="24" cy="21" r="1.6" fill="#302222"/><path d="M15 26c2 2 6 2 8 0" fill="none" stroke="#302222" stroke-width="1.4" stroke-linecap="round"/></svg>
+                        <span>Kitchen looks settled. Tomorrow is your cleaning day.</span>
+                      </div>
+                      <p class="sectionLabel">Today</p>
+                      <div class="task"><span class="check on"></span><div><b>Take out trash</b><span>Done · you</span></div></div>
+                      <div class="task"><span class="check"></span><div><b>Wipe counters</b><span>Due tonight</span></div></div>
+                      <div class="report">
+                        <p>This week</p>
+                        <div class="barLine"><span>You</span><i style="width:80%"></i></div>
+                        <div class="barLine"><span>Sam</span><i style="width:40%"></i></div>
+                        <div class="barLine"><span>Mia</span><i style="width:60%"></i></div>
+                      </div>
+                      <div class="event"><div><b>Thu · your cleaning day</b><span>Kitchen and bathroom</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption class="visually-hidden">The Cosi home screen, tilted on a warm cream background, with Bob the Blob peeking from behind the phone. The screen shows today’s chores and a weekly contribution chart.</figcaption>
+            </figure>
 
-            <div class="studyMeta">
+            <dl class="cosiMeta">
               <div>
-                <p class="studyMetaLabel">Role</p>
-                <p class="studyMetaValue">UI/UX Designer</p>
+                <dt>Role</dt>
+                <dd>UI/UX Designer</dd>
               </div>
               <div>
-                <p class="studyMetaLabel">Team</p>
-                <p class="studyMetaValue">Design at UCI</p>
+                <dt>Team</dt>
+                <dd>6 students</dd>
               </div>
               <div>
-                <p class="studyMetaLabel">Timeframe</p>
-                <p class="studyMetaValue">January 2026 - March 2026</p>
+                <dt>Program</dt>
+                <dd>Design at UCI Project Teams</dd>
               </div>
               <div>
-                <p class="studyMetaLabel">Focus</p>
-              <ul class="tagList" aria-label="Focus">                  <li class="tag">User research</li>
-                  <li class="tag">Personas</li>
-                  <li class="tag">Design systems</li>
-                  <li class="tag">Prototyping</li>
+                <dt>Timeline</dt>
+                <dd>Winter 2026, one quarter</dd>
+              </div>
+              <div>
+                <dt>Platform</dt>
+                <dd>iOS concept</dd>
+              </div>
+              <div>
+                <dt>Tools</dt>
+                <dd>Figma, FigJam, Google Forms</dd>
+              </div>
+            </dl>
+
+            <section class="cosiOwned" aria-labelledby="owned-heading">
+              <h2 id="owned-heading">What I owned</h2>
+              <ul>
+                <li>Wrote and ran the survey (48 respondents) and conducted user interviews</li>
+                <li>Mapped the user flows and built the lo-fi and mid-fi wireframes</li>
+                <li>Designed the Roommate Agreement flow end to end, on my own</li>
+                <li>Co-designed Home, Tasks, Unassigned Tasks, and Calendar with one teammate</li>
+                <li>Worked on the visual identity and the rebrand</li>
+                <li>Ran the feedback sessions and usability testing, then turned findings into design changes</li>
+                <li>Built the interactive Figma prototype</li>
               </ul>
-              </div>
-            </div>
-
-            <img class="studyCover" src="/assets/covers/cosi.svg" alt="Placeholder mockup showing the Cosi household task board and contribution chart" />
+            </section>
           </header>
 
           <div class="studyProse">
-            <h2>Overview</h2>
-            <p>Cosi is an app for the friction of living together. It combines task management with communication flows designed to stay conflict-neutral, and it makes each person's contribution visible so the conversation is about facts rather than impressions.</p>
-            <h2>The research</h2>
-            <p>I ran user research with people living in shared housing and built personas and user flows from what they described. The recurring pattern was not laziness. It was invisibility: people underestimate what housemates do when they do not see it happen, and the resulting conversation starts as an accusation.</p>
-            <figure class="studyFigure">
-              <img src="/assets/placeholders/research.svg" alt="Placeholder showing personas and user flows" />
-              <figcaption class="studyCaption">Placeholder: personas and the flows built from real friction points.</figcaption>
-            </figure>
-            <blockquote class="studyPullquote">
-              <p>Most chore arguments are not about chores. They are about not being seen.</p>
-            </blockquote>
-            <h2>The design response</h2>
-            <div class="studySplit">
-              <div class="studyPanel">
-                <h3>Conflict-neutral flows</h3>
-                <p>The app phrases requests as shared state rather than personal complaint, so raising something does not require confrontation.</p>
+            <section class="cosiSection" aria-labelledby="silence-heading">
+              <h2 id="silence-heading">Roommate problems rarely start with a mess. They start with silence.</h2>
+              <p>When we dug into why shared houses fall apart, the cause wasn’t usually the dishes or the noise. Telling someone you live with that something bothers you is uncomfortable. So most people say nothing, clean up quietly, and let resentment build.</p>
+              <p>Every shared house we heard about broke down in the same three ways.</p>
+              <div class="cosiTriad">
+                <article class="cosiCard">
+                  <div class="cosiIcon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 22h24"/><path d="M8 22l8-12 8 12"/><circle cx="10" cy="14" r="2.2" fill="currentColor" stroke="none"/><circle cx="22" cy="18" r="2.2" fill="currentColor" stroke="none"/></svg>
+                  </div>
+                  <h3>Uneven responsibility</h3>
+                  <p>Chores quietly fall on whoever cares most.</p>
+                </article>
+                <article class="cosiCard">
+                  <div class="cosiIcon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 8h14a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H12l-5 4v-4"/><path d="M12 15h.1M16 15h.1M20 15h.1"/></svg>
+                  </div>
+                  <h3>Confrontation awkwardness</h3>
+                  <p>People avoid bringing up cleaning, noise, or guests, in person and over text.</p>
+                </article>
+                <article class="cosiCard">
+                  <div class="cosiIcon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 7h14l2 3v15H8z"/><path d="M8 14c2 1 4-1 6 0s4-1 6 0 4-1 6 0"/></svg>
+                  </div>
+                  <h3>Failed informal systems</h3>
+                  <p>Fridge lists, whiteboards, and group chats start strong and fizzle out, because nothing keeps them going.</p>
+                </article>
               </div>
-              <div class="studyPanel">
-                <h3>Visible contribution</h3>
-                <p>Contribution is visualised and incentivised, which replaces the argument's evidence problem with a shared picture.</p>
+              <blockquote class="cosiCallout">
+                <p>How might we encourage people to be better roommates by opening channels of <span class="cosiMark">neutral communication</span>, <span class="cosiMark">visualizing responsibilities</span>, and emphasizing <span class="cosiMark">individual impact</span>?</p>
+              </blockquote>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="survey-heading">
+              <h2 id="survey-heading">Half of the students we surveyed find it hard to confront a roommate, even when something is clearly wrong.</h2>
+              <p>To check that this wasn’t just our own experience, I wrote and ran a survey with <strong>48 college students</strong> and asked an open-ended question about their most common roommate issues. I coded the responses into themes. Cleaning came up in 16 responses, a third of everyone surveyed, without being prompted.</p>
+              <div class="cosiResearch">
+                <div class="cosiChart">
+                  <h3>Open-ended responses, coded by theme (n=48)</h3>
+                  <ul class="cosiBars">
+                    <li class="is-lead"><span>Cleaning</span><span class="cosiTrack"><i style="width:100%"></i></span><b>16</b></li>
+                    <li><span>Noise</span><span class="cosiTrack"><i style="width:62.5%"></i></span><b>10</b></li>
+                    <li><span>Guests</span><span class="cosiTrack"><i style="width:56.25%"></i></span><b>9</b></li>
+                    <li><span>Hygiene</span><span class="cosiTrack"><i style="width:18.75%"></i></span><b>3</b></li>
+                  </ul>
+                </div>
+                <div class="cosiStats">
+                  <article class="cosiStat">
+                    <strong>50%</strong>
+                    <span>said it’s difficult to confront roommates about ongoing issues.</span>
+                  </article>
+                  <article class="cosiStat">
+                    <strong>67%</strong>
+                    <span>said a shared calendar for cleaning and guests would be useful.</span>
+                  </article>
+                </div>
               </div>
-            </div>
-            <figure class="studyFigure">
-              <img src="/assets/placeholders/screens.svg" alt="Placeholder showing high fidelity Cosi screens" />
-              <figcaption class="studyCaption">Placeholder: high-fidelity screens produced from the design system.</figcaption>
-            </figure>
-            <h2>System work</h2>
-            <p>I built the branding and design system in Figma first, so the high-fidelity prototypes stayed consistent as the flows grew, and tested the proposed solutions with users rather than shipping assumptions.</p>
+              <p>The problem wasn’t that students didn’t know what bothered them. It was that they had no comfortable way to say it. Of the rest, 31% said a shared calendar would not help, and 2% said maybe.</p>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="interview-heading">
+              <h2 id="interview-heading">In interviews, two words kept coming up: “nobody” and “never.”</h2>
+              <p>I interviewed students about how their households actually manage chores and communication. Two patterns showed up again and again.</p>
+              <div class="cosiQuotes">
+                <div class="cosiQuoteCol">
+                  <h3>Lack of accountability</h3>
+                  <blockquote class="cosiQuote"><p>“Sent out a schedule but only 2/4 roommates actually cleaned.”</p></blockquote>
+                  <blockquote class="cosiQuote"><p>“We have a standing to-do list on the fridge, no one seems to do things though.”</p></blockquote>
+                </div>
+                <div class="cosiQuoteCol">
+                  <h3>Hard to communicate</h3>
+                  <blockquote class="cosiQuote"><p>“There is no communication happening.”</p></blockquote>
+                  <blockquote class="cosiQuote"><p>“I would say never verbally and through text in terms of chores.”</p></blockquote>
+                </div>
+              </div>
+              <figure class="cosiPunch">
+                <blockquote>
+                  <p>“Everyone is so dumb, I’m just trying to wait it out.”</p>
+                </blockquote>
+                <figcaption>When someone would rather wait out a lease than have one conversation, the problem isn’t chores. It’s the conversation.</figcaption>
+              </figure>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="principles-heading">
+              <h2 id="principles-heading">The research boiled down to two needs: accountability without nagging, and communication without confrontation.</h2>
+              <p>Putting the survey and interviews side by side, every pain point fit under one of two needs. These became the design principles we checked every feature against. As a team, we turned them into a persona so we had one person to design for.</p>
+              <div class="cosiPrinciples">
+                <article class="cosiPrinciple">
+                  <div class="cosiIcon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="16" cy="16" r="9"/><path d="M16 11v6l4 2" stroke-linecap="round"/></svg>
+                  </div>
+                  <h3>Accountability without nagging</h3>
+                  <p>The system should remind people, so roommates don’t have to.</p>
+                </article>
+                <article class="cosiPrinciple">
+                  <div class="cosiIcon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 16h8l3-5 4 10 3-5h4"/></svg>
+                  </div>
+                  <h3>Communication without confrontation</h3>
+                  <p>Hard conversations should have a neutral starting point.</p>
+                </article>
+              </div>
+              <article class="cosiPersona">
+                <div class="cosiAvatar">
+                  <svg viewBox="0 0 160 180" role="img" aria-label="Illustrated portrait of the persona Hannah Park">
+                    <rect width="160" height="180" rx="18" fill="#FFD5AF"/>
+                    <circle cx="80" cy="78" r="36" fill="#F3C7A5"/>
+                    <path d="M46 70c2-28 22-40 34-40s32 12 34 40c-8-8-18-10-34-10S54 62 46 70z" fill="#302222"/>
+                    <circle cx="68" cy="80" r="3" fill="#302222"/>
+                    <circle cx="92" cy="80" r="3" fill="#302222"/>
+                    <path d="M72 94c4 4 12 4 16 0" fill="none" stroke="#554845" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M48 150c8-22 18-32 32-32s24 10 32 32v30H48z" fill="#554845"/>
+                  </svg>
+                  <p><strong>Hannah Park</strong>20 · 3rd-year Biology<br />UC Irvine</p>
+                </div>
+                <div class="cosiPersonaBody">
+                  <p>Lives on campus at VDC with three housemates and shares a room with one of them.</p>
+                  <div>
+                    <h3>Goals and frustrations</h3>
+                    <ul>
+                      <li><strong>Goal:</strong> Keep everyone accountable for cleaning up after themselves, without constant conversations that could ruin the relationship.</li>
+                      <li><strong>Frustration:</strong> She keeps cleaning up everyone’s messes, and her housemates aren’t considerate of shared spaces.</li>
+                    </ul>
+                  </div>
+                  <blockquote class="cosiPersonaQuote">
+                    <p>“I’m scared of confrontation but I’m tired of cleaning up after everyone else.”</p>
+                  </blockquote>
+                </div>
+              </article>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="gap-heading">
+              <h2 id="gap-heading">Existing apps track bills, chores, or calendars, but none of them help roommates talk to each other.</h2>
+              <p>We audited four tools people already use to manage shared living. Splitwise handles bills, not chores. OurHome gamifies chores for parents and kids, not peers. Google Calendar schedules events without task rotation. Tody builds personal cleaning routines with no shared household. Every one of them treats co-living as a logistics problem. None address the part our research said hurts most: the conversation.</p>
+              <div class="cosiTableWrap">
+                <table class="cosiTable">
+                  <caption class="visually-hidden">Capability comparison of Splitwise, OurHome, Google Calendar, Tody, and Cosi. Only Cosi encourages communication.</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Capability</th>
+                      <th scope="col">Splitwise</th>
+                      <th scope="col">OurHome</th>
+                      <th scope="col">Google Calendar</th>
+                      <th scope="col">Tody</th>
+                      <th scope="col" class="is-cosi">Cosi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Breaks down complex tasks</th>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markYes">Yes</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markYes">Yes</span></td>
+                      <td class="is-cosi"><span class="markYes">Yes</span></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Builds productive habits</th>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markYes">Yes</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markYes">Yes</span></td>
+                      <td class="is-cosi"><span class="markYes">Yes</span></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Holds users accountable</th>
+                      <td><span class="markYes">Yes</span></td>
+                      <td><span class="markYes">Yes</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td class="is-cosi"><span class="markYes">Yes</span></td>
+                    </tr>
+                    <tr class="is-comm">
+                      <th scope="row">Encourages communication</th>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td><span class="markNo">No</span></td>
+                      <td class="is-cosi"><span class="markYes">Yes</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="flow-heading">
+              <h2 id="flow-heading">I mapped the flows around one goal: get roommates aligned once, so they don’t have to keep negotiating.</h2>
+              <p>Before designing screens, I mapped how a user moves through Cosi: setting up a household, creating a Roommate Agreement together, then getting into a daily loop of seeing tasks, completing them, and picking up unassigned messes.</p>
+              <p>The key decision was putting the <strong>Roommate Agreement up front</strong>. If expectations are set together at the start, every later reminder enforces something everyone already agreed to, instead of one roommate’s opinion.</p>
+              <ol class="cosiFlow">
+                <li>Onboarding</li>
+                <li>Roommate Agreement</li>
+                <li>Home</li>
+                <li>Tasks and unassigned tasks</li>
+                <li>Notifications</li>
+              </ol>
+              <div class="cosiEvo">
+                <article>
+                  <h3>Roommate Agreement</h3>
+                  <div class="cosiStrip">
+                    <figure><div class="miniPhone"><header>Agreement</header><div class="miniBody wire"><b></b><i></i><i></i><i></i></div></div><figcaption>Lo-fi</figcaption></figure>
+                    <figure><div class="miniPhone mid"><header>Agreement</header><div class="miniBody wire"><b></b><i></i><i></i><i></i></div></div><figcaption>Mid-fi</figcaption></figure>
+                    <figure><div class="miniPhone hi"><header>How often?</header><div class="miniBody"><span class="chip">Weekly</span></div></div><figcaption>Hi-fi</figcaption></figure>
+                  </div>
+                </article>
+                <article>
+                  <h3>Tasks</h3>
+                  <div class="cosiStrip">
+                    <figure><div class="miniPhone"><header>Tasks</header><div class="miniBody wire"><i></i><i></i><i></i></div></div><figcaption>Lo-fi</figcaption></figure>
+                    <figure><div class="miniPhone mid"><header>My Tasks</header><div class="miniBody wire"><i></i><i></i><i></i></div></div><figcaption>Mid-fi</figcaption></figure>
+                    <figure><div class="miniPhone hi"><header>My Tasks</header><div class="miniBody"><span class="chip">Due tonight</span></div></div><figcaption>Hi-fi</figcaption></figure>
+                  </div>
+                </article>
+                <article>
+                  <h3>Unassigned Tasks</h3>
+                  <div class="cosiStrip">
+                    <figure><div class="miniPhone"><header>Pool</header><div class="miniBody wire"><b></b><i></i><i></i></div></div><figcaption>Lo-fi</figcaption></figure>
+                    <figure><div class="miniPhone mid"><header>Unassigned</header><div class="miniBody wire"><b></b><i></i><i></i></div></div><figcaption>Mid-fi</figcaption></figure>
+                    <figure><div class="miniPhone hi"><header>Unassigned</header><div class="miniBody"><span class="chip">Claim</span></div></div><figcaption>Hi-fi</figcaption></figure>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="wrong-app-heading">
+              <h2 id="wrong-app-heading">Our first design worked on paper, but users told us it felt like the wrong app.</h2>
+              <p>Our first visual direction used a soft pink palette. Before going further, I gathered open-ended feedback from <strong>10 target users</strong> on the branding, colors, fonts, and how the design made them feel. The feedback was clear: it looked too much like Flo, a period-tracking app. Instead of feeling warm and safe, it felt unfamiliar for what the app was meant to do.</p>
+              <p>Next, I ran <strong>usability testing with 4 target users</strong> on the core flows. The Claim button was hard to read: low-contrast red on pink made one participant visibly strain, and this was the main action on Unassigned Tasks. On a plain calendar, people weren’t sure where to see when it was their turn. Taken together, the interface was adding stress to an experience that was supposed to remove it.</p>
+              <div class="cosiNotes">
+                <figure class="cosiNote">
+                  <div class="phone">
+                    <div class="phoneScreen screenPink" aria-hidden="true">
+                      <div class="status"><span>9:41</span><span></span></div>
+                      <div class="appHead"><strong>Today</strong></div>
+                      <div class="appBody">
+                        <div class="cal">
+                          <b>M</b><b>T</b><b class="mine">W</b><b>T</b><b>F</b><b>S</b><b>S</b>
+                        </div>
+                        <div class="task"><div><b>Cycle day</b><span>Soft pink, rounded, clinical</span></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <figcaption>Too similar to Flo</figcaption>
+                </figure>
+                <figure class="cosiNote">
+                  <div class="phone">
+                    <div class="phoneScreen screenPink" aria-hidden="true">
+                      <div class="appBody">
+                        <div class="task"><div><b>Leftovers on the counter</b><span>Posted by the house</span></div><span class="claim">Claim</span></div>
+                        <p class="hello">Red on pink. The main action disappears.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <figcaption>Claim is hard to read</figcaption>
+                </figure>
+                <figure class="cosiNote">
+                  <div class="phone">
+                    <div class="phoneScreen screenPink" aria-hidden="true">
+                      <div class="appHead"><strong>Calendar</strong></div>
+                      <div class="appBody">
+                        <div class="cal">
+                          <b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b>7</b>
+                          <b>8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <figcaption>Where’s my day?</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="pivot-heading">
+              <h2 id="pivot-heading">So we redesigned around one feeling: coming home to a warm, lamp-lit room.</h2>
+              <p>Rather than patching the issues one at a time, we treated them as a single brief. The new direction took inspiration from cozy interior lighting: warm oranges, deep browns, and calm greens, with Poppins for a friendly, rounded type voice.</p>
+              <div class="cosiPivot">
+                <figure class="is-before">
+                  <div class="phone" style="margin-inline:auto">
+                    <div class="phoneScreen screenPink" aria-hidden="true">
+                      <div class="status"><span>9:41</span><span>LTE</span></div>
+                      <div class="appHead"><strong>Cosi</strong></div>
+                      <div class="appBody">
+                        <p class="hello">Wednesday</p>
+                        <div class="cal"><b>M</b><b>T</b><b class="mine">W</b><b>T</b><b>F</b><b>S</b><b>S</b></div>
+                        <div class="task"><div><b>Dishes</b><span>Unassigned</span></div><span class="claim">Claim</span></div>
+                        <div class="task"><div><b>Bathroom</b><span>Maybe later</span></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <figcaption><span class="cosiTag">Before: Read as a period tracker</span></figcaption>
+                </figure>
+                <figure class="is-after">
+                  <div class="phone" style="margin-inline:auto">
+                    <div class="phoneScreen" aria-hidden="true">
+                      <div class="status"><span>9:41</span><span>5G</span></div>
+                      <div class="appHead"><strong>Home</strong></div>
+                      <div class="appBody">
+                        <div class="bobLine">
+                          <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="22" rx="14" ry="12" fill="#76C7A1"/><circle cx="15" cy="21" r="1.6" fill="#302222"/><circle cx="24" cy="21" r="1.6" fill="#302222"/></svg>
+                          <span>Your turn is Thursday. I’ve got the reminder.</span>
+                        </div>
+                        <div class="cal">
+                          <b>M</b><b>T</b><b>W</b><b class="mine">T<span class="wave"></span></b><b>F</b><b>S</b><b>S</b>
+                        </div>
+                        <div class="task"><div><b>Dishes</b><span>Anyone can claim</span></div><span class="claim">Claim</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <figcaption><span class="cosiTag">After: Feels like home</span></figcaption>
+                </figure>
+              </div>
+
+              <table class="cosiChange">
+                <caption class="visually-hidden">What testing found, and what changed in the redesign</caption>
+                <tbody>
+                  <tr><th scope="row">Looked like a period tracker</th><td>Warm orange and brown palette inspired by cozy home lighting</td></tr>
+                  <tr><th scope="row">Low-contrast Claim button</th><td>High-contrast green actions throughout the app</td></tr>
+                  <tr><th scope="row">Cleaning days hard to find</th><td>Wave and bubble markers under scheduled cleaning days</td></tr>
+                  <tr><th scope="row">Didn’t feel welcoming</th><td>Bob the Blob added as a friendly, neutral voice</td></tr>
+                </tbody>
+              </table>
+
+              <p><strong>Meet Bob the Blob.</strong> Bob is our team’s mascot and the voice of the app. Bob delivers reminders, reacts to your status, and suggests conversation starters. A reminder from Bob doesn’t feel like a roommate nagging you. Bob turns “you didn’t do the dishes” into a neutral nudge no one has to take personally.</p>
+
+              <div class="swatchRow" aria-label="Cosi color system">
+                <figure class="swatch"><i style="background:#FFD5AF"></i><figcaption>Primary <code>#FFD5AF</code></figcaption></figure>
+                <figure class="swatch"><i style="background:#554845"></i><figcaption>Subheads <code>#554845</code></figcaption></figure>
+                <figure class="swatch"><i style="background:#302222"></i><figcaption>Cosi Black <code>#302222</code></figcaption></figure>
+                <figure class="swatch"><i style="background:#76C7A1"></i><figcaption>Blob Green <code>#76C7A1</code></figcaption></figure>
+                <figure class="swatch"><i style="background:#5EAE88"></i><figcaption>Dark Green <code>#5EAE88</code></figcaption></figure>
+              </div>
+              <p class="typeNote">Type inside the product is <strong>Poppins</strong> Regular, Medium, and Bold. This page keeps the portfolio’s Mona Sans for body copy.</p>
+
+              <div class="bobRow">
+                <figure>
+                  <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="60" cy="62" rx="40" ry="34" fill="#76C7A1"/><circle cx="46" cy="58" r="4" fill="#302222"/><circle cx="74" cy="58" r="4" fill="#302222"/><path d="M46 74c6 10 22 10 28 0" fill="none" stroke="#302222" stroke-width="3" stroke-linecap="round"/></svg>
+                  <figcaption>Happy</figcaption>
+                </figure>
+                <figure>
+                  <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="60" cy="62" rx="40" ry="34" fill="#76C7A1"/><circle cx="46" cy="58" r="4" fill="#302222"/><circle cx="74" cy="58" r="4" fill="#302222"/><path d="M48 72c8 6 18 6 26 0" fill="none" stroke="#302222" stroke-width="3" stroke-linecap="round"/><ellipse cx="96" cy="78" rx="12" ry="8" fill="#5EAE88" transform="rotate(-30 96 78)"/></svg>
+                  <figcaption>Encouraging</figcaption>
+                </figure>
+                <figure>
+                  <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="60" cy="64" rx="40" ry="34" fill="#76C7A1"/><circle cx="46" cy="58" r="4" fill="#302222"/><circle cx="74" cy="58" r="4" fill="#302222"/><path d="M48 80c8-6 18-6 26 0" fill="none" stroke="#302222" stroke-width="3" stroke-linecap="round"/></svg>
+                  <figcaption>Concerned</figcaption>
+                </figure>
+                <figure>
+                  <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="58" cy="64" rx="38" ry="32" fill="#76C7A1"/><circle cx="46" cy="60" r="4" fill="#302222"/><circle cx="70" cy="58" r="4" fill="#302222"/><path d="M48 74c6 6 16 6 22 0" fill="none" stroke="#302222" stroke-width="3" stroke-linecap="round"/><path d="M92 70c8-16 18-16 20-2" fill="none" stroke="#5EAE88" stroke-width="8" stroke-linecap="round"/></svg>
+                  <figcaption>Waving</figcaption>
+                </figure>
+                <figure>
+                  <svg viewBox="0 0 120 110" aria-hidden="true"><ellipse cx="60" cy="62" rx="40" ry="34" fill="#76C7A1"/><path d="M40 58c4-2 8 2 8 2M72 56c4-2 8 2 8 2" fill="none" stroke="#302222" stroke-width="3" stroke-linecap="round"/><path d="M50 76h20" stroke="#302222" stroke-width="3" stroke-linecap="round"/></svg>
+                  <figcaption>Neutral</figcaption>
+                </figure>
+              </div>
+
+              <div class="cosiCrops">
+                <figure class="cosiCrop">
+                  <div class="task" style="background:#ffe8ef"><b style="font-size:0.8rem">Claim</b><span class="claim" style="background:#e15b6a;color:#ffd0d8">Claim</span></div>
+                  <span class="arrow" aria-hidden="true">→</span>
+                  <div class="task"><b style="font-size:0.8rem">Claim</b><span class="claim">Claim</span></div>
+                  <figcaption>The low-contrast red action became a high-contrast green one.</figcaption>
+                </figure>
+                <figure class="cosiCrop">
+                  <div class="cal" style="background:#ffe8ef"><b>12</b><b>13</b><b>14</b></div>
+                  <span class="arrow" aria-hidden="true">→</span>
+                  <div class="cal"><b>12</b><b class="mine">13<span class="wave"></span></b><b>14</b></div>
+                  <figcaption>Plain dates gained wave markers on cleaning days.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="features-heading">
+              <h2 id="features-heading">Every feature answers one of the two needs from research.</h2>
+
+              <article class="cosiFeature">
+                <div class="cosiFeatureCopy">
+                  <p class="cosiWhy">Why an agreement?</p>
+                  <h3>Roommate Agreement <span class="cosiOwn">Designed solo</span></h3>
+                  <p>Interviewees had schedules, but nobody had agreed to them, so nobody followed them. The agreement makes expectations shared from day one.</p>
+                  <p>Housemates set the cleaning schedule, rotation order, checklist, policies, and shared items together. Bob suggests prompts like “How often should we clean?” and “How long can items sit out?” so nobody has to be the one who brings it up. Once it’s saved, Cosi rotates the tasks automatically.</p>
+                  <p>I designed this flow end to end. The biggest challenge was length: an agreement covers a lot, and onboarding can’t feel like paperwork. I grouped it into clear sections — schedule, checklist, policies, and shared items — and added a save-draft option so housemates don’t have to finish in one sitting.</p>
+                </div>
+                <div class="phone" aria-hidden="true">
+                  <div class="phoneScreen">
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>Agreement</strong><span>2 of 4</span></div>
+                    <div class="appBody">
+                      <div class="progressBits"><i></i></div>
+                      <div class="bobLine">Bob asks so you don’t have to.</div>
+                      <p class="prompt">How often should we clean?</p>
+                      <div class="choices"><span class="on">Weekly</span><span>Biweekly</span><span>As needed</span></div>
+                      <p class="prompt">How long can items sit out?</p>
+                      <div class="choices"><span>1 day</span><span class="on">2 days</span><span>A week</span></div>
+                      <div class="miniActions"><span class="ghost">Save draft</span><span class="claim">Next</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="cosiFeature cosiFeature--flip">
+                <div class="cosiFeatureCopy">
+                  <p class="cosiWhy">Why an unassigned pool?</p>
+                  <h3>My Tasks and Unassigned Tasks <span class="cosiOwn">Co-designed</span></h3>
+                  <p>Not every mess fits a schedule. Food left out on the counter used to mean a passive-aggressive text. Now it’s a task anyone can see.</p>
+                  <p><strong>My Tasks</strong> shows your assigned chores for the week. <strong>Unassigned Tasks</strong> is a shared pool where anyone can post a quick task, and anyone can Claim it or mark it Resolved. No names, no blame, just something that needs doing.</p>
+                </div>
+                <div class="phone" aria-hidden="true">
+                  <div class="phoneScreen">
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>Tasks</strong></div>
+                    <div class="appBody">
+                      <p class="sectionLabel">My tasks</p>
+                      <div class="task"><span class="check"></span><div><b>Kitchen · Thursday</b><span>From the agreement</span></div></div>
+                      <div class="task"><span class="check on"></span><div><b>Trash · Monday</b><span>Done</span></div></div>
+                      <p class="sectionLabel">Unassigned</p>
+                      <div class="task"><div><b>Containers on the counter</b><span>No owner</span></div><span class="claim">Claim</span></div>
+                      <div class="task"><div><b>Unknown mug</b><span>Resolved by Mia</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="cosiFeature">
+                <div class="cosiFeatureCopy">
+                  <p class="cosiWhy">Why a dashboard?</p>
+                  <h3>Home <span class="cosiOwn">Co-designed</span></h3>
+                  <p>Hannah’s frustration was feeling like her effort went unseen. The home screen makes everyone’s contribution visible: today’s tasks, upcoming events, and a short report on how consistently you’ve been completing tasks, so individual impact is concrete instead of assumed.</p>
+                </div>
+                <div class="phone" aria-hidden="true">
+                  <div class="phoneScreen">
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>Home</strong></div>
+                    <div class="appBody">
+                      <p class="hello">Your effort, visible</p>
+                      <div class="report">
+                        <p>Consistency this month</p>
+                        <div class="barLine"><span>You</span><i style="width:84%"></i></div>
+                        <div class="barLine"><span>Sam</span><i style="width:48%"></i></div>
+                        <div class="barLine"><span>Mia</span><i style="width:62%"></i></div>
+                      </div>
+                      <div class="event"><div><b>Guest night · Fri</b><span>On the shared calendar</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="cosiFeature cosiFeature--flip">
+                <div class="cosiFeatureCopy">
+                  <p class="cosiWhy">Why a thank-you?</p>
+                  <h3>The Thank You button <span class="cosiOwn">My screen</span></h3>
+                  <p>Accountability alone can feel like surveillance. We wanted positive communication to be just as easy as reminders.</p>
+                  <p>One tap sends a housemate a notification: “Sam thanked you! Thank you for helping out with everything recently!” Roommates feel appreciated, and seeing others get shoutouts motivates everyone to pitch in.</p>
+                </div>
+                <div class="lock" role="img" aria-label="Lock screen notification. Time sensitive. Sam thanked you for helping out recently.">
+                  <time>9:41</time>
+                  <div class="note">
+                    <b>TIME SENSITIVE</b>
+                    <strong>Sam thanked you!</strong>
+                    <span>Thank you for helping out with everything recently!</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="cosiFeature">
+                <div class="cosiFeatureCopy">
+                  <p class="cosiWhy">Why mark the day?</p>
+                  <h3>Calendar <span class="cosiOwn">Co-designed</span></h3>
+                  <p>Scheduled cleaning days get wave and bubble markers, so you can see whose turn it is at a glance. This came directly from usability testing, when people could not find their day on a plain calendar.</p>
+                </div>
+                <div class="phone" aria-hidden="true">
+                  <div class="phoneScreen">
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>Calendar</strong></div>
+                    <div class="appBody">
+                      <div class="cal">
+                        <b>1</b><b>2</b><b class="mine">3<span class="wave"></span></b><b>4</b><b>5</b><b>6</b><b>7</b>
+                        <b>8</b><b>9</b><b class="mine">10<span class="wave"></span></b><b>11</b><b>12</b><b>13</b><b>14</b>
+                      </div>
+                      <div class="event"><div><b>Thu 3 · You</b><span>Kitchen wave marker</span></div></div>
+                      <div class="event"><div><b>Sat 10 · Sam</b><span>Bathroom</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+
+            <section class="cosiSection" id="prototype" aria-labelledby="impact-heading">
+              <h2 id="impact-heading">After the redesign, users finished tasks faster and were far less confused.</h2>
+              <div class="cosiImpact">
+                <p>In follow-up user testing with the redesigned app, participants completed tasks more quickly and were less confused about how the app works than in the first round. The changes that looked cosmetic — color, contrast, and a few calendar graphics — turned out to be functional. Making Cosi feel calmer also made it easier to use.</p>
+              </div>
+              <div class="cosiProto">
+                <div class="phone phone--lg" id="cosi-proto-phone">
+                  <div class="phoneScreen" data-proto-screen>
+                    <div class="status"><span>9:41</span><span>5G</span></div>
+                    <div class="appHead"><strong>Home</strong></div>
+                    <div class="appBody">
+                      <div class="bobLine">Thursday is your day. Want to check the pool?</div>
+                      <div class="task"><span class="check"></span><div><b>Wipe counters</b><span>From the agreement</span></div></div>
+                      <button class="claim" type="button" data-proto-go="1">See unassigned</button>
+                    </div>
+                  </div>
+                  <div class="phoneScreen" data-proto-screen hidden>
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>Unassigned</strong></div>
+                    <div class="appBody">
+                      <div class="task"><div><b>Containers on the counter</b><span>No name attached</span></div></div>
+                      <button class="claim" type="button" data-proto-go="2">Claim</button>
+                    </div>
+                  </div>
+                  <div class="phoneScreen" data-proto-screen hidden>
+                    <div class="status"><span>9:41</span><span></span></div>
+                    <div class="appHead"><strong>You claimed it</strong></div>
+                    <div class="appBody">
+                      <div class="bobLine">Nice. Want to thank someone else?</div>
+                      <div class="task"><span class="check on"></span><div><b>Containers</b><span>Yours for now</span></div></div>
+                      <button class="claim" type="button" data-proto-go="3">Thank Sam</button>
+                    </div>
+                  </div>
+                  <div class="phoneScreen is-lock" data-proto-screen hidden>
+                    <div class="lock" style="width:auto;border-radius:1.2rem;box-shadow:none">
+                      <time>9:41</time>
+                      <div class="note">
+                        <b>TIME SENSITIVE</b>
+                        <strong>Sam thanked you!</strong>
+                        <span>Thank you for helping out with everything recently!</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cosiProtoCopy">
+                  <h3>Try the prototype</h3>
+                  <p>Walk the core loop: see your day, claim a mess without naming anyone, then send a thank-you. This is the same path as the Figma prototype, rebuilt here so it works without leaving the page.</p>
+                  <div class="cosiProtoActions">
+                    <button class="btn" type="button" id="proto-back">Back</button>
+                    <button class="btn" type="button" id="proto-next">Next screen</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="cosiSection" aria-labelledby="reflect-heading">
+              <h2 id="reflect-heading">The hardest part wasn’t designing the app. It was remembering why we were building it.</h2>
+              <p>Midway through the quarter, we got caught up in brainstorming features and lost track of how each one answered our problem statement. What brought us back was the research: Hannah’s quote, the fridge to-do list nobody touched, the student waiting out the lease. We started checking every feature against the two needs: accountability and communication.</p>
+              <h3>What I’m taking with me</h3>
+              <div class="cosiTriad">
+                <article class="cosiCard">
+                  <h3>Go back to the research</h3>
+                  <p>When you lose the thread, the interviews are the fastest way to know what matters and what’s just scope creep.</p>
+                </article>
+                <article class="cosiCard">
+                  <h3>Late changes can be worth it</h3>
+                  <p>Rebranding after the feedback felt risky, but it improved both how the app felt and how well it worked.</p>
+                </article>
+                <article class="cosiCard">
+                  <h3>The process isn’t a straight line</h3>
+                  <p>We went back to testing, redesigned, and tested again. Being flexible made the product stronger.</p>
+                </article>
+              </div>
+              <p>Cosi started as a chore app. By the end, I understood it as something closer to a translator: a way to say the hard thing without anyone having to be the bad guy. That’s the kind of design I want to keep doing, where the interface takes on the discomfort so people don’t have to.</p>
+              <aside class="cosiClose">
+                <svg viewBox="0 0 140 150" aria-hidden="true">
+                  <ellipse cx="68" cy="88" rx="46" ry="40" fill="#76C7A1"/>
+                  <circle cx="52" cy="82" r="5" fill="#302222"/>
+                  <circle cx="78" cy="80" r="5" fill="#302222"/>
+                  <path d="M54 100c8 8 22 8 30 0" fill="none" stroke="#302222" stroke-width="3.5" stroke-linecap="round"/>
+                  <path d="M104 78c10-22 24-20 26 0" fill="none" stroke="#5EAE88" stroke-width="10" stroke-linecap="round"/>
+                </svg>
+                <p>Cosi lets people stop staying silent. Bob will wave them in.</p>
+              </aside>
+            </section>
           </div>
 
           <div class="studyNext">
-              <a class="studyBack" href="/#work">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>
-                Back to selected works
-              </a>
+            <a class="studyBack" href="/#work">
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>
+              Back to selected works
+            </a>
             <div class="studyNextProject">
               <p class="studyNextLabel">Next project</p>
               <a class="studyBack" href="/work/fourth-project/">
@@ -127,6 +731,7 @@
         </div>
       </article>
     </main>
+
     <footer class="footer" id="contact">
       <div class="footerPanel">
         <div>
@@ -161,5 +766,6 @@
     </footer>
 
     <script src="/js/site.js"></script>
+    <script src="/js/cosi.js"></script>
   </body>
 </html>
