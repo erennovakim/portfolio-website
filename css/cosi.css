@@ -434,6 +434,12 @@
   border-radius: var(--card-radius);
   background: var(--color-card);
   box-shadow: var(--shadow-card);
+  text-align: left;
+}
+
+.cosiPunch blockquote {
+  margin: 0;
+  padding: 0;
 }
 
 .cosiPunch p {
