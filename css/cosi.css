@@ -116,6 +116,12 @@
   border-radius: var(--radius-md);
 }
 
+.cosiAvatar .cosiShot {
+  width: 9.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
 .cosiClose .cosiShot {
   width: 7.5rem;
 }
@@ -1401,7 +1407,6 @@
   .cosiFeature,
   .cosiFeature--flip,
   .cosiProto,
-  .cosiPersona,
   .cosiClose {
     grid-template-columns: 1fr;
   }
@@ -1412,6 +1417,19 @@
 }
 
 @media (max-width: 760px) {
+  .cosiPersona {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cosiAvatar .cosiShot {
+    display: none;
+  }
+
+  .cosiAvatar {
+    justify-items: start;
+    text-align: left;
+  }
+
   .cosiTriad,
   .cosiQuotes,
   .cosiPrinciples,
